@@ -1,18 +1,14 @@
 {
-  "name": "inventory",
-  "version": "1.0.0",
+  "name": "svelte-doric",
+  "version": "0.0.0",
   "description": "",
-  "main": "inventory.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
+  "author": "Axel",
+  "license": "MIT",
+  "devDependencies": {
     "@axel669/norn": "^4.0.0-alpha.0",
     "rollup": "^2.7.2",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -20,5 +16,9 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-svelte": "^5.2.3",
     "svelte": "^3.23.2"
-  }
+  },
+  "files": [
+    "core/",
+    "index.js"
+  ]
 }
