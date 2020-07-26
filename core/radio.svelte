@@ -22,28 +22,12 @@ const toggle = () => {
     if (functional !== true) {
         group = value
     }
-    // const next = !checked
-    // if (functional !== true) {
-    //     checked = next
-    // }
     dispatch("change", value)
 }
-// const updateGroup = checked => {
-//     if (checked === false) {
-//         if (group.indexOf(value) !== -1) {
-//             group = group.filter(v => v !== value)
-//         }
-//         return
-//     }
-//     if (group.indexOf(value) === -1) {
-//         group = [...group, value]
-//     }
-// }
 
 ;$: icon = checked ? checkedIcon : uncheckedIcon
 ;$: buttonColor = checked ? color : "default"
 ;$: checked = group === value
-// ;$: updateGroup(checked)
 ;</script>
 
 <style>

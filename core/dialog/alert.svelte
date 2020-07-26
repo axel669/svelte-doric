@@ -5,7 +5,7 @@ import CardActions from "../card/actions.svelte"
 import CardContent from "../card/content.svelte"
 import Divider from "../divider.svelte"
 import Text from "../text.svelte"
-import css from "../style/css.js"
+import {vars} from "../style/css.js"
 
 
 export let options
@@ -15,10 +15,10 @@ export let okText = "OK"
 
 const okClose = () => close(true)
 
-;$: positionVars = css.vars({
+;$: positionVars = {
     "alert-top": position.y,
     "alert-left": position.x
-})
+}
 ;</script>
 
 <style>
@@ -35,7 +35,7 @@ alert-actions {
 }
 </style>
 
-<alert-wrapper style={positionVars}>
+<alert-wrapper use:vars={positionVars}>
     <Card>
         <CardContent>
             <Text variant="header">

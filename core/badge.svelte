@@ -1,16 +1,16 @@
 <script>
-import css from "./style/css.js"
+import {vars} from "./style/css.js"
 
 export let color = "primary"
 export let anchor = {}
 export let translate = {}
 
-;$: vars = css.vars({
+;$: badgeVars = {
     "anchor-top": anchor.top,
     "anchor-left": anchor.left,
     "translate-x": translate.x,
     "translate-y": translate.y,
-})
+}
 ;</script>
 
 <style>
@@ -50,7 +50,7 @@ badge {
 
 <badge-wrapper>
     <slot />
-    <badge class="{color}" style={vars}>
+    <badge class="{color}" use:vars={badgeVars}>
         <slot name="content" />
     </badge>
 </badge-wrapper>

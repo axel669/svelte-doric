@@ -1,5 +1,5 @@
 <script>
-import css from "./style/css.js"
+import {vars} from "./style/css.js"
 
 export let image
 export let alt
@@ -7,10 +7,13 @@ export let height
 export let width
 export let fit = "contain"
 
-;$: imageSize = css.vars({
+;$: imageSize = {
     "image-width": width,
     "image-height": height,
-})
+}
+;$: imageFit = {
+    "image-contain": fit,
+}
 ;</script>
 
 <style>
@@ -19,13 +22,13 @@ img {
     width: 100%;
     height: 100%;
 }
-div {
+image-container {
     display: inline-block;
     width: var(--image-width);
     height: var(--image-height);
 }
 </style>
 
-<div style={imageSize}>
-    <img src={image} style="--image-contain: {fit}" {alt} />
-</div>
+<image-container use:vars={imageSize}>
+    <img src={image} {alt} use:vars={imageFit} />
+</image-container>

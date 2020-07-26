@@ -1,6 +1,7 @@
 <script>
 import bubbler from "./event/bubbler.js"
 import Ripple from "./ripple.svelte"
+import {vars} from "./style/css.js"
 
 export let color = "default"
 export let variant = "normal"
@@ -21,6 +22,10 @@ const clicks = bubbler(
     }
 )
 
+;$: buttonVars = {
+    "button-round-size": round,
+}
+
 ;</script>
 
 <style>
@@ -40,9 +45,9 @@ button-content {
     z-index: +1;
     font-weight: 500;
 
-    --ripple-color: var(--ripple-normal);
     --button-color: var(--text-normal);
-    --text-color: var(--text-invert);
+    --fill-color: var(--button-default-fill);
+    --text-color: var(--button-default-text);
 
     color: var(--button-color);
 }
@@ -65,23 +70,26 @@ button-content {
 
 .primary {
     --button-color: var(--button-primary);
+    --fill-color: var(--button-primary);
     --ripple-color: var(--button-primary-ripple);
     --text-color: var(--button-primary-text);
 }
 .secondary {
     --button-color: var(--button-secondary);
+    --fill-color: var(--button-secondary);
     --ripple-color: var(--button-secondary-ripple);
     --text-color: var(--button-secondary-text);
 }
 .danger {
     --button-color: var(--button-danger);
+    --fill-color: var(--button-danger);
     --ripple-color: var(--button-danger-ripple);
     --text-color: var(--button-danger-text);
 }
 
-.filled:not(.default) {
+.fill {
     --ripple-color: var(--button-filled-ripple);
-    background-color: var(--button-color);
+    background-color: var(--fill-color);
     color: var(--text-color);
 }
 .outline {
@@ -92,11 +100,12 @@ button-content {
 
 <button-content
     on:click={clicks}
+    use:vars={buttonVars}
     class="{color} {variant} {klass}"
     class:disabled
     class:round
     class:fab
-    style="--button-round-size: {round}; {style}"
+    {style}
 >
     <slot />
     <Ripple {disabled} />

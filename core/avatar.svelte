@@ -1,5 +1,5 @@
 <script>
-import css from "./style/css.js"
+import {vars} from "./style/css.js"
 
 export let size = "36px"
 export let imageSize = "contain"
@@ -7,13 +7,13 @@ export let image
 export let textColor
 export let background
 
-;$: vars = css.vars({
+;$: avatarVars = {
     "avatar-size": size,
-    "avatar-image": `url(${image})`,
+    "avatar-image": image ? `url(${image})` : null,
     "avatar-image-size": imageSize,
     "avatar-background": background,
     "avatar-text": textColor,
-})
+}
 ;</script>
 
 <style>
@@ -27,12 +27,12 @@ avatar {
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    background-color: var(--avatar-background, transparent);
-    color: var(--avatar-text, var(--text-normal));
-    font-size: var(--text-size-title);
+    background-color: var(--avatar-background, var(--button-default-fill));
+    color: var(--avatar-text, var(--button-default-text));
+    font-size: var(--text-size-header);
 }
 </style>
 
-<avatar style={vars}>
+<avatar use:vars={avatarVars}>
     <slot />
 </avatar>

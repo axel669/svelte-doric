@@ -7,6 +7,7 @@ adornment {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    padding: 8px;
 }
 adornment.start {
     grid-area: start-adornment;

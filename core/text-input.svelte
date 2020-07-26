@@ -40,6 +40,5 @@ input:focus {
     <ControlLabel {error}>
         {error}
     </ControlLabel>
-    <slot name="start-adornment" />
-    <slot name="end-adornment" />
+    <slot />
 </ControlBorder>

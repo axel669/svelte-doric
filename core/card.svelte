@@ -17,6 +17,7 @@ card:not(.content):not(.actions) {
     border-radius: 4px;
     margin: 4px;
     background-color: var(--card-background);
+    border: var(--card-border);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }

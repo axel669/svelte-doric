@@ -5,5 +5,5 @@
     "liveServer.settings.ignoreFiles": [
         "**/*"
     ],
-    "liveServer.settings.root": "/dist"
+    "liveServer.settings.root": "/demo"
 }

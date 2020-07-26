@@ -5,7 +5,7 @@ import CardActions from "../card/actions.svelte"
 import CardContent from "../card/content.svelte"
 import Divider from "../divider.svelte"
 import Text from "../text.svelte"
-import css from "../style/css.js"
+import {vars} from "../style/css.js"
 
 export let options
 export let close
@@ -16,10 +16,10 @@ export let cancelText = "Cancel"
 const cancelClose = () => close(false)
 const okClose = () => close(true)
 
-;$: positionVars = css.vars({
+;$: positionVars = {
     "confirm-top": position.y,
     "confirm-left": position.x
-})
+}
 ;</script>
 
 <style>
@@ -38,7 +38,7 @@ confirm-actions {
 }
 </style>
 
-<confirm-wrapper style={positionVars}>
+<confirm-wrapper use:vars={positionVars}>
     <Card>
         <CardContent>
             <Text variant="header">

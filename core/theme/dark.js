@@ -5,7 +5,7 @@ export default {
     "ripple-light": "#FFFFFF60",
     "text-light": "white",
     "text-dark": "black",
-    "primary": "#5092ff",
+    "primary": "#00aaff",
     "primary-light": "#79c0f7",
 
     "text-normal": "var(--text-light)",
@@ -19,6 +19,9 @@ export default {
 
     "ripple-normal": "var(--ripple-light)",
     "ripple-invert": "var(--ripple-dark)",
+
+    "app-bar-background": "var(--primary)",
+    "app-bar-text": "var(--text-dark)",
 
     "button-primary": "var(--primary)",
     "button-primary-text": "var(--text-dark)",

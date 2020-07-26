@@ -1,6 +1,6 @@
 <style>
 list-item-content {
-    grid-area: label;
+    grid-area: content;
     display: flex;
     flex-direction: column;
     justify-content: center;

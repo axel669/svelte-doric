@@ -30,7 +30,7 @@ const customAnimation = (node, options) => {
 import {scale, fade} from "svelte/transition"
 import {linear as easing} from "svelte/easing"
 
-import css from "./style/css.js"
+import {vars} from "./style/css.js"
 
 export let color = null
 export let disabled = false
@@ -72,7 +72,7 @@ const addRipple = evt => {
         )
     }
 }
-const rippleVars = (info, color) => css.vars({
+const rippleVars = (info, color) => ({
     "x": [info.x, "px"],
     "y": [info.y, "px"],
     "size": [info.size, "px"],
@@ -111,7 +111,7 @@ ripple {
     {#each ripples as info (info.id)}
         <ripple
             in:customAnimation
-            style={rippleVars(info, color)}
+            use:vars={rippleVars(info, color)}
         />
     {/each}
 </ripple-wrapper>

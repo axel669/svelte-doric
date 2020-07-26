@@ -34,22 +34,6 @@ fieldset {
 *:focus ~ fieldset:not(.error) {
     border-color: var(--button-primary);
 }
-
-control-border > :global(adornment) {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-control-border > :global(adornment[position="start-adornment"]) {
-    grid-area: start-adornment;
-    padding-left: 12px;
-    margin-right: -8px;
-}
-control-border > :global(adornment[position="end-adornment"]) {
-    grid-area: end-adornment;
-    padding-right: 12px;
-    margin-left: -8px;
-}
 </style>
 
 <control-border class={klass} {style} class:error>

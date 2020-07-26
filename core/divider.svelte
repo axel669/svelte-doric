@@ -14,6 +14,9 @@ divider.vertical {
     height: 100%;
     align-self: stretch;
 }
+:global(list-container) > divider {
+    margin: 0px;
+}
 </style>
 
 <divider class:vertical />

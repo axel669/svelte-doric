@@ -58,8 +58,8 @@ checkbox-check {
 
 <ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement}>
     <checkbox-check>
-        <Button round="48px" color={buttonColor} {disabled}>
-            <Icon name={icon} size="24px" {outlined} />
+        <Button round="40px" color={buttonColor} {disabled} fab>
+            <Icon name={icon} size="22px" {outlined} />
         </Button>
     </checkbox-check>
     <checkbox-label slot="label">
