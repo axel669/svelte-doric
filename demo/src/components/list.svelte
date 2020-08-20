@@ -4,9 +4,11 @@
         Avatar,
         Card,
         CardContent,
+        Checkbox,
 
         Divider,
         List,
+        ListHeader,
         ListItem,
         ListItemContent,
     } from "#lib"
@@ -22,13 +24,16 @@
         "https://banner2.cleanpng.com/20180411/idq/kisspng-mega-man-universe-mega-man-6-mega-man-battle-netwo-megaman-5acdbe2e8274f1.4622027515234330065344.jpg",
         "https://art.pixilart.com/8ef4ae1d162cdb9.png",
     ]
-</script>
+;</script>
 
 <style>
 </style>
 
 <Card>
     <List>
+        <ListHeader color="primary">
+            Image Avatars
+        </ListHeader>
         {#each items as item, index}
             <ListItem clickable>
                 <Adornment position="start">
@@ -40,6 +45,10 @@
             </ListItem>
             <Divider />
         {/each}
+
+        <ListHeader color="secondary">
+            Text Avatars
+        </ListHeader>
         {#each items as item, index}
             <ListItem clickable>
                 <Adornment position="start">
@@ -47,6 +56,20 @@
                 </Adornment>
                 <ListItemContent>
                     {item}
+                </ListItemContent>
+            </ListItem>
+            <Divider />
+        {/each}
+
+        <ListHeader>
+            Checkboxes:
+        </ListHeader>
+        {#each items as item, index}
+            <ListItem>
+                <ListItemContent control>
+                    <Checkbox>
+                        Label: {item}
+                    </Checkbox>
                 </ListItemContent>
             </ListItem>
             <Divider />

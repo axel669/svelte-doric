@@ -16,11 +16,21 @@ import {
     ListHeader,
     ListItemContent,
     Checkbox,
+
+    Select,
+
+    Tabs,
+    TabLabel,
+    TabList,
+    TabPanel,
 } from "#lib"
 
 import AppBarDemo from "./components/app-bar.svelte"
 import ButtonDemo from "./components/button.svelte"
 import ListDemo from "./components/list.svelte"
+import TextInputDemo from "./components/text-input.svelte"
+
+import NewControl from "./test/new-control.svelte"
 
 // const images = {
 //     tifa: "https://media.discordapp.net/attachments/641431274916937738/726691343111553065/tifa_bikini_alt_by_nopeys_ddyq6fp-fullview.png?width=606&height=937",
@@ -41,24 +51,22 @@ let open = false
 const openDrawer = () => open = true
 const closeDrawer = () => open = false
 
-const demos = [
-    "app-bar",
-    "button",
-    "list",
-]
+let selectedTab = document.location.hash.toString().slice(1)
+const demos = {
+    "app-bar": AppBarDemo,
+    "button": ButtonDemo,
+    "list": ListDemo,
+    "text-input": TextInputDemo,
+}
+;$: (selectedTab, closeDrawer())
+;$: selectedTab, document.location.hash = selectedTab
+
+let options = [1, 2, 3, 4]
+let value = null
 
 ;</script>
 
 <style>
-/* :global(body) {
-    background-image: url(https://media.discordapp.net/attachments/641431274916937738/726691343111553065/tifa_bikini_alt_by_nopeys_ddyq6fp-fullview.png);
-    background-image: url(https://media.discordapp.net/attachments/511777706438950922/728027209377513582/3l5ovvzru9851.png);
-    background-position: center center;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    backdrop-filter: opacity(10%);
-} */
-
 page-layout {
     display: grid;
     grid-template-rows: min-content auto;
@@ -92,28 +100,27 @@ demo-area {
             />
         </Adornment>
     </AppBar>
-    <div>
-        <demo-area>
-            <AppBarDemo />
-            <ButtonDemo />
-            <ListDemo />
-        </demo-area>
-    </div>
+
+    <Tabs bind:selectedTab>
+        <Drawer bind:open on:close={closeDrawer}>
+            <div style="width: 15vw;" />
+            <TabList vertical>
+                {#each Object.keys(demos) as demo}
+                    <TabLabel value={demo}>
+                        {demo.replace(/\b\w/g, s => s.toUpperCase())}
+                    </TabLabel>
+                {/each}
+            </TabList>
+        </Drawer>
+
+        <div>
+            <demo-area>
+                {#each Object.entries(demos) as [demo, component]}
+                    <TabPanel value={demo}>
+                        <svelte:component this={component} />
+                    </TabPanel>
+                {/each}
+            </demo-area>
+        </div>
+    </Tabs>
 </page-layout>
-
-<Drawer bind:open on:close={closeDrawer}>
-    <div style="width: 15vw;" />
-    <List>
-        <ListHeader color="primary">
-            Components
-        </ListHeader>
-
-        {#each demos as demo}
-            <ListItem href="#{demo}">
-                <ListItemContent>
-                    {demo.replace(/\b\w/g, s => s.toUpperCase())}
-                </ListItemContent>
-            </ListItem>
-        {/each}
-    </List>
-</Drawer>

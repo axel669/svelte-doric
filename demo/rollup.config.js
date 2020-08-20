@@ -21,7 +21,9 @@ export default {
     },
     plugins: [
         libLoader(),
-        svelte(),
+        svelte({
+            // dev: true,
+        }),
         resolve(),
         commonjs(),
     ]
