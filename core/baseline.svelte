@@ -33,5 +33,28 @@
     background-color: var(--background);
     color: var(--text-normal);
     font-size: var(--text-size);
+
+    --app-bar-background: var(--primary);
+    --app-bar-text: var(--text-invert);
+
+    --button-default-fill: #aaaaaa;
+    --button-default-text: var(--text-dark);
+    --button-primary: var(--primary);
+    --button-primary-text: var(--text-dark);
+    --button-primary-ripple: var(--primary-ripple);
+    --button-secondary: var(--secondary);
+    --button-secondary-text: var(--text-dark);
+    --button-secondary-ripple: var(--secondary-ripple);
+    --button-danger: var(--danger);
+    --button-danger-text: var(--text-dark);
+    --button-danger-ripple: var(--danger-ripple);
+    --button-filled-ripple: var(--ripple-invert);
+
+    --card-background: var(--background-layer);
+    --card-border: var(--layer-border-width) solid var(--text-normal);
+
+    --control-border: var(--text-secondary);
+    --control-border-focus: var(--primary);
+    --control-border-error: var(--danger);
 }
 </style>
