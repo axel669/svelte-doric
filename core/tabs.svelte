@@ -30,6 +30,6 @@ tabs-wrapper {
 }
 </style>
 
-<tabs-wrapper>
+<!-- <tabs-wrapper> -->
     <slot />
-</tabs-wrapper>
+<!-- </tabs-wrapper> -->

@@ -31,6 +31,14 @@ tab-label.active {
     color: var(--primary);
     border-bottom-color: var(--primary);
 }
+
+:global(.vertical) tab-label {
+    border-bottom: 1px solid var(--text-secondary);
+    border-right: 4px solid transparent;
+}
+:global(.vertical) tab-label.active {
+    border-right-color: var(--primary);
+}
 </style>
 
 <tab-label on:click={changeTab} class:active={$currentTab === value}>

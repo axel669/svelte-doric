@@ -32,11 +32,6 @@ export {default as TabPanel} from "./core/tabs/panel.svelte"
 export {default as Text} from "./core/text.svelte"
 export {default as TextInput} from "./core/text-input.svelte"
 
-// export {default as Adornment} from "./core/control/adornment.svelte"
-export {default as ControlLabel} from "./core/control/label.svelte"
-
 export * from "./core/style/css.js"
 export {default as DarkTheme} from "./core/theme/dark.svelte"
 export {default as LightTheme} from "./core/theme/light.svelte"
-// export {default as darkTheme} from "./core/theme/dark.js"
-// export {default as lightTheme} from "./core/theme/light.js"

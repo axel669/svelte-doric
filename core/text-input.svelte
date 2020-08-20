@@ -1,44 +1,69 @@
 <script>
-import ControlBorder from "./control/border.svelte"
-import ControlLabel from "./control/label.svelte"
+import Control from "./control.svelte"
+
+export let label = ""
+export let error = ""
+export let info = ""
+export let variant
+export let style
+export let labelStyle
+export let borderStyle
+let klass = ""
+export {klass as class}
 
 export let value = ""
 export let disabled = false
-export let label = ""
-export let error = ""
-export let style = ""
-let klass = ""
-export {klass as class}
+export let type = "text"
+
+let inputElement = null
+export function focus() {
+    inputElement.focus()
+}
+
+;$: controlProps = {
+    label,
+    info,
+    error,
+    style,
+    labelStyle,
+    borderStyle,
+    variant,
+    disabled,
+    klass,
+}
+;$: inputProps = {
+    type,
+    disabled,
+    ...$$restProps,
+}
 
 ;</script>
 
 <style>
 input {
     font-family: var(--font);
-    font-size: 16px;
+    font-size: var(--text-size);
+    grid-area: control;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 8px 4px;
     border-width: 0px;
     background-color: transparent;
     color: var(--text-normal);
-    padding: 24px 12px;
 }
 input:focus {
     outline: none;
 }
 </style>
 
-<ControlBorder {klass} {style} {error}>
+<Control type="text-input" {...controlProps}>
     <input
-        type="text"
+        {...inputProps}
+        bind:this={inputElement}
         bind:value
-        {disabled}
         on:input
-        style="grid-area: control"
+        on:focus
+        on:blur
     />
-    <ControlLabel>
-        {label}
-    </ControlLabel>
-    <ControlLabel {error}>
-        {error}
-    </ControlLabel>
     <slot />
-</ControlBorder>
+</Control>

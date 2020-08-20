@@ -1,5 +1,8 @@
 <script>
 export let vertical = false
+export let style = ""
+let klass
+export {klass as class}
 ;</script>
 
 <style>
@@ -19,4 +22,4 @@ divider.vertical {
 }
 </style>
 
-<divider class:vertical />
+<divider class:vertical {style} class={klass} />

@@ -1,3 +1,7 @@
+<script>
+    export let control
+;</script>
+
 <style>
 list-item-content {
     grid-area: content;
@@ -8,8 +12,11 @@ list-item-content {
     grid-area: content;
     padding: 8px;
 }
+list-item-content.control {
+    padding: 0px;
+}
 </style>
 
-<list-item-content>
+<list-item-content class:control>
     <slot />
 </list-item-content>
