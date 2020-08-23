@@ -30,6 +30,7 @@ export {default as TabLabel} from "./core/tabs/label.svelte"
 export {default as TabList} from "./core/tabs/list.svelte"
 export {default as TabPanel} from "./core/tabs/panel.svelte"
 export {default as Text} from "./core/text.svelte"
+export {default as TextArea} from "./core/text-area.svelte"
 export {default as TextInput} from "./core/text-input.svelte"
 
 export * from "./core/style/css.js"

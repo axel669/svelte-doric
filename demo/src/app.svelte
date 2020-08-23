@@ -28,6 +28,7 @@ import {
 import AppBarDemo from "./components/app-bar.svelte"
 import ButtonDemo from "./components/button.svelte"
 import ListDemo from "./components/list.svelte"
+import TextAreaDemo from "./components/text-area.svelte"
 import TextInputDemo from "./components/text-input.svelte"
 
 import NewControl from "./test/new-control.svelte"
@@ -56,7 +57,8 @@ const demos = {
     "app-bar": AppBarDemo,
     "button": ButtonDemo,
     "list": ListDemo,
-    "text-input": TextInputDemo,
+    "textArea": TextAreaDemo,
+    "textInput": TextInputDemo,
 }
 ;$: (selectedTab, closeDrawer())
 ;$: selectedTab, document.location.hash = selectedTab
