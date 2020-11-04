@@ -3,14 +3,15 @@ import Ripple from "../ripple.svelte"
 
 export let clickable
 export let href = null
+export let target = "_blank"
 ;</script>
 
 <style>
 list-item {
     display: grid;
     position: relative;
+    overflow: hidden;
     padding: 12px 16px;
-    /* background-color: var(--control-background); */
     color: var(--text-normal);
     grid-template-areas:
         "start-adornment content end-adornment"
@@ -41,6 +42,6 @@ a {
         <Ripple />
     {/if}
     {#if href}
-        <a {href}>{href}</a>
+        <a {href} {target}>{href}</a>
     {/if}
 </list-item>
