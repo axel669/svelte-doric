@@ -27,6 +27,7 @@ import {
 
 import AppBarDemo from "./components/app-bar.svelte"
 import ButtonDemo from "./components/button.svelte"
+import ChipDemo from "./components/chip.svelte"
 import ListDemo from "./components/list.svelte"
 import TextAreaDemo from "./components/text-area.svelte"
 import TextInputDemo from "./components/text-input.svelte"
@@ -56,6 +57,7 @@ let selectedTab = document.location.hash.toString().slice(1)
 const demos = {
     "app-bar": AppBarDemo,
     "button": ButtonDemo,
+    "chip": ChipDemo,
     "list": ListDemo,
     "textArea": TextAreaDemo,
     "textInput": TextInputDemo,

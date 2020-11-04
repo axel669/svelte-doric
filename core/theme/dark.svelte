@@ -27,6 +27,7 @@
             --text-size: 14px;
             --text-size-title: 18px;
             --text-size-header: 16px;
+            --text-size-info: 13px;
             --text-size-secondary: 12px;
 
             --ripple-normal: var(--ripple-light);

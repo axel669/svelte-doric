@@ -54,10 +54,10 @@
     fieldset.error {
         border-color: var(--control-border-error);
     }
-    *:focus ~ fieldset:not(.error) {
+    control-content > :global(*:focus ~ fieldset:not(.error)) {
         border-color: var(--control-border-focus);
     }
-    *:focus ~ fieldset > legend {
+    control-content > :global(*:focus ~ fieldset > legend) {
         color: var(--control-border-focus);
     }
     info-label {
