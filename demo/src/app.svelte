@@ -1,100 +1,131 @@
 <script>
-import {
-    AppTheme,
-    Baseline as baseline,
-    DarkTheme,
-    LightTheme,
+    import {
+        AppTheme,
+        Baseline as baseline,
+        DarkTheme,
+        LightTheme,
 
-    Adornment,
-    AppBar,
-    Button,
-    Divider,
-    Drawer,
-    Icon,
-    List,
-    ListItem,
-    ListHeader,
-    ListItemContent,
-    Checkbox,
+        Adornment,
+        AppBar,
+        Button,
+        Card,
+        CardContent,
+        Checkbox,
+        Dialog,
+        Drawer,
+        Icon,
+        Text,
 
-    Select,
+        Tabs,
+        TabLabel,
+        TabList,
+        TabPanel,
 
-    Tabs,
-    TabLabel,
-    TabList,
-    TabPanel,
-} from "#lib"
+        List,
+        ListItem,
+        ListItemContent,
+        ListHeader,
+        Divider,
 
-import AppBarDemo from "./components/app-bar.svelte"
-import ButtonDemo from "./components/button.svelte"
-import ChipDemo from "./components/chip.svelte"
-import ListDemo from "./components/list.svelte"
-import TextAreaDemo from "./components/text-area.svelte"
-import TextInputDemo from "./components/text-input.svelte"
+        hash,
+    } from "#lib"
 
-import NewControl from "./test/new-control.svelte"
+    import AppBarDemo from "./components/app-bar.svelte"
+    import ButtonDemo from "./components/button.svelte"
+    import ChipDemo from "./components/chip.svelte"
+    import ListDemo from "./components/list.svelte"
+    import TableDemo from "./components/table.svelte"
+    import TextAreaDemo from "./components/text-area.svelte"
+    import TextInputDemo from "./components/text-input.svelte"
 
-// const images = {
-//     tifa: "https://media.discordapp.net/attachments/641431274916937738/726691343111553065/tifa_bikini_alt_by_nopeys_ddyq6fp-fullview.png?width=606&height=937",
-//     camilla: "https://media.discordapp.net/attachments/641431274916937738/726691793801838642/dcqeyjp-bba7f4f5-a6f0-4b2f-8f15-13967385a3f7.png?width=571&height=937",
-//     samus: "https://i.etsystatic.com/17439113/r/il/9346c1/2039257844/il_570xN.2039257844_jh20.jpg",
-//     dnd: "https://media.discordapp.net/attachments/511777706438950922/728027209377513582/3l5ovvzru9851.png",
-// }
-// const image = images.dnd
+    import NewControl from "./test/new-control.svelte"
 
-let checked = JSON.parse(localStorage.themeToggle ?? "false")
-;$: theme = (checked === true) ? DarkTheme : LightTheme
-;$: localStorage.themeToggle = JSON.stringify(checked)
-// const theme = darkTheme
-// const theme = lightTheme
-// const theme = DarkTheme
+    // const images = {
+    //     tifa: "https://media.discordapp.net/attachments/641431274916937738/726691343111553065/tifa_bikini_alt_by_nopeys_ddyq6fp-fullview.png?width=606&height=937",
+    //     camilla: "https://media.discordapp.net/attachments/641431274916937738/726691793801838642/dcqeyjp-bba7f4f5-a6f0-4b2f-8f15-13967385a3f7.png?width=571&height=937",
+    //     samus: "https://i.etsystatic.com/17439113/r/il/9346c1/2039257844/il_570xN.2039257844_jh20.jpg",
+    //     dnd: "https://media.discordapp.net/attachments/511777706438950922/728027209377513582/3l5ovvzru9851.png",
+    // }
+    // const image = images.dnd
 
-let open = false
-const openDrawer = () => open = true
-const closeDrawer = () => open = false
+    // let menu
+    ;$: selectedTab = $hash
+    // const change = (tab, post = () => {}) =>
+    //     () => {
+    //         document.location.hash = `/${tab}`
+    //         post()
+    //     }
 
-let selectedTab = document.location.hash.toString().slice(1)
-const demos = {
-    "app-bar": AppBarDemo,
-    "button": ButtonDemo,
-    "chip": ChipDemo,
-    "list": ListDemo,
-    "textArea": TextAreaDemo,
-    "textInput": TextInputDemo,
-}
-;$: (selectedTab, closeDrawer())
-;$: selectedTab, document.location.hash = selectedTab
+    let checked = JSON.parse(localStorage.themeToggle ?? "false")
+    ;$: theme = (checked === true) ? DarkTheme : LightTheme
+    ;$: localStorage.themeToggle = JSON.stringify(checked)
 
-let options = [1, 2, 3, 4]
-let value = null
+    const demos = {
+        "app-bar": AppBarDemo,
+        "button": ButtonDemo,
+        "chip": ChipDemo,
+        "list": ListDemo,
+        "textArea": TextAreaDemo,
+        "textInput": TextInputDemo,
+        table: TableDemo,
+    }
+    const demoList = Object.keys(demos).sort()
 
+    let open = false
+    const openMenu = () => open = true
+    const closeMenu = () => open = false
+    ;$: closeMenu($hash)
+
+    // let options = [1, 2, 3, 4]
+    // let value = null
 ;</script>
 
 <style>
-page-layout {
-    display: grid;
-    grid-template-rows: min-content auto;
-}
-demo-area {
-    display: block;
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
-}
+    page-layout {
+        display: grid;
+        grid-template-rows: min-content auto;
+    }
+    demo-area {
+        display: block;
+        width: 100%;
+        max-width: 1024px;
+        margin: auto;
+    }
+    /* demo-options {
+        display: grid;
+        grid-auto-rows: 60px;
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(160px, 1fr)
+        );
+        padding: 4px;
+        gap: 4px;
+    }
+    demo-menu {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        width: 760px;
+        max-width: 80vw;
+        max-height: 80vh;
+        transform: translateX(-50%);
+    } */
 </style>
 
 <AppTheme {theme} {baseline} />
 
 <page-layout>
     <AppBar>
-        <Adornment position="start">
-            <Button on:click={openDrawer} round="40px" fab>
-                <Icon name="menu" size="22px" />
-            </Button>
-        </Adornment>
         <app-title>
             Svelte Doric Components
         </app-title>
+
+        <Adornment position="start">
+            <!-- <Button on:click={() => menu.show()} fab round="40px"> -->
+            <Button on:click={openMenu} fab round="40px">
+                <Icon name="menu" size="22px" />
+            </Button>
+        </Adornment>
 
         <Adornment position="end">
             <Checkbox
@@ -106,25 +137,58 @@ demo-area {
     </AppBar>
 
     <Tabs bind:selectedTab>
-        <Drawer bind:open on:close={closeDrawer}>
+        <Drawer bind:open on:close={closeMenu}>
             <div style="width: 15vw;" />
-            <TabList vertical>
+            <!-- <TabList vertical>
                 {#each Object.keys(demos) as demo}
-                    <TabLabel value={demo}>
+                    <TabLabel href="#/{demo}">
                         {demo.replace(/\b\w/g, s => s.toUpperCase())}
                     </TabLabel>
                 {/each}
-            </TabList>
+            </TabList> -->
+            <List>
+                <ListHeader color="primary">
+                    Components
+                </ListHeader>
+                {#each demoList as demo}
+                    <ListItem href="#/{demo}" target="_self">
+                        <ListItemContent>
+                            {demo.replace(/\b\w/g, s => s.toUpperCase())}
+                        </ListItemContent>
+                    </ListItem>
+                    <Divider />
+                {/each}
+            </List>
         </Drawer>
 
-        <div>
-            <demo-area>
-                {#each Object.entries(demos) as [demo, component]}
-                    <TabPanel value={demo}>
-                        <svelte:component this={component} />
-                    </TabPanel>
-                {/each}
-            </demo-area>
-        </div>
+        <demo-area>
+            <TabPanel value="">
+                Testing?
+            </TabPanel>
+            {#each Object.entries(demos) as [demo, component]}
+                <TabPanel value="/{demo}">
+                    <svelte:component this={component} />
+                </TabPanel>
+            {/each}
+        </demo-area>
     </Tabs>
 </page-layout>
+
+<!-- <Dialog bind:this={menu} let:close>
+    <demo-menu>
+        <Card>
+            <CardContent>
+                <Text variant="header">
+                    Doric Components
+                </Text>
+            </CardContent>
+            <demo-options>
+                {#each Object.keys(demos) as demo}
+                <Button variant="outline" on:click={change(demo, close)} color="primary">
+                    {demo.replace(/\b\w/g, s => s.toUpperCase())}
+                </Button>
+                {/each}
+            </demo-options>
+        </Card>
+    </demo-menu>
+</Dialog> -->

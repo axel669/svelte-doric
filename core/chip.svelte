@@ -13,7 +13,7 @@
         vertical-align: text-bottom;
         display: inline-grid;
         grid-template-columns:
-            minmax(8px, min-content) auto minmax(8px, min-content)
+            minmax(12px, min-content) auto minmax(12px, min-content)
         ;
         grid-template-areas:
             "start-adornment content end-adornment"
