@@ -60,7 +60,6 @@ button-content {
 }
 .fab {
     width: var(--button-round-size);
-    color: var(--button-fab-color);
     padding: 0px;
 }
 
