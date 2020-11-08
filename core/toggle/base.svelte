@@ -45,6 +45,7 @@ toggle-wrapper > *:nth-child(2) {
 }
 .disabled {
     filter: contrast(50%);
+    cursor: default;
 }
 .right {
     grid-template-columns: min-content auto;
@@ -85,7 +86,7 @@ toggle-label {
 }
 </style>
 
-<toggle-wrapper {disabled} {style} class="{labelPlacement} {klass}" on:click={boxClick}>
+<toggle-wrapper class:disabled {style} class="{labelPlacement} {klass}" on:click={boxClick}>
     <slot />
     <toggle-label class:labelToggle bind:this={labelElement}>
         <slot name="label" />
