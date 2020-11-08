@@ -7,7 +7,7 @@ import Icon from "./icon.svelte"
 
 export let disabled
 export let color = "default"
-export let functional = false
+// export let functional = false
 export let labelPlacement
 
 export let checkedIcon = "radio_button_checked"
@@ -17,13 +17,14 @@ export let outlined
 export let group = []
 export let value
 
-const dispatch = createEventDispatcher()
-const toggle = () => {
-    if (functional !== true) {
-        group = value
-    }
-    dispatch("change", value)
-}
+// const dispatch = createEventDispatcher()
+// const toggle = () => {
+//     if (functional !== true) {
+//         group = value
+//     }
+//     dispatch("change", value)
+// }
+const toggle = () => group = value
 
 ;$: icon = checked ? checkedIcon : uncheckedIcon
 ;$: buttonColor = checked ? color : "default"

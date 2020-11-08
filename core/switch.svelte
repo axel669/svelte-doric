@@ -1,5 +1,5 @@
 <script>
-import {createEventDispatcher} from "svelte"
+// import {createEventDispatcher} from "svelte"
 
 import ToggleBase from "./toggle/base.svelte"
 import Button from "./button.svelte"
@@ -11,18 +11,19 @@ export let value
 export let checked = group.indexOf(value) !== -1
 export let disabled
 export let color = "default"
-export let functional = false
+// export let functional = false
 export let labelPlacement
 
 
-const dispatch = createEventDispatcher()
-const toggle = () => {
-    const next = !checked
-    if (functional !== true) {
-        checked = next
-    }
-    dispatch("change", next)
-}
+// const dispatch = createEventDispatcher()
+// const toggle = () => {
+//     const next = !checked
+//     if (functional !== true) {
+//         checked = next
+//     }
+//     dispatch("change", next)
+// }
+const toggle = () => checked = !checked
 const updateGroup = checked => {
     if (checked === false) {
         if (group.indexOf(value) !== -1) {

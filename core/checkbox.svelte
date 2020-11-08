@@ -1,5 +1,5 @@
 <script>
-import {createEventDispatcher} from "svelte"
+// import {createEventDispatcher} from "svelte"
 
 import ToggleBase from "./toggle/base.svelte"
 import Button from "./button.svelte"
@@ -11,22 +11,24 @@ export let value
 export let checked = group.indexOf(value) !== -1
 export let disabled
 export let color = "default"
-export let functional = false
+// export let functional = false
 export let labelPlacement
+export let labelToggle = true
 
 export let checkedIcon = "check_box"
 export let uncheckedIcon = "check_box_outline_blank"
 export let outlined
 
 
-const dispatch = createEventDispatcher()
-const toggle = () => {
-    const next = !checked
-    if (functional !== true) {
-        checked = next
-    }
-    dispatch("change", next)
-}
+// const dispatch = createEventDispatcher()
+// const toggle = () => {
+//     const next = !checked
+//     if (functional !== true) {
+//         checked = next
+//     }
+//     dispatch("change", next)
+// }
+const toggle = () => checked = !checked
 const updateGroup = checked => {
     if (checked === false) {
         if (group.indexOf(value) !== -1) {
@@ -35,7 +37,7 @@ const updateGroup = checked => {
         return
     }
     if (group.indexOf(value) === -1) {
-        group = [...group, value]
+        group = [...group, value].sort()
     }
 }
 
@@ -56,7 +58,7 @@ checkbox-check {
 }
 </style>
 
-<ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement}>
+<ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement} {labelToggle}>
     <checkbox-check>
         <Button round="40px" color={buttonColor} {disabled} fab>
             <Icon name={icon} size="22px" {outlined} />
