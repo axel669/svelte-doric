@@ -6,63 +6,60 @@
     } from "#lib"
     export let props
 
-    ;$: entries = Object.entries(props)
+    ;$: propList = Object.keys(props)
+        .sort()
+        .map(
+            name => ({
+                name,
+                ...props[name]
+            })
+        )
 ;</script>
 
 <style>
     prop-entry {
-        display: grid;
-        grid-template-areas:
-            "name type"
-            "name desc"
-        ;
-        grid-template-columns: min-content auto;
+        display: block;
+        padding: 8px;
     }
     prop-entry:nth-child(2n + 1) {
-        background-color: var(--control-background);
+        background-color: var(--background-highlight);
     }
 
-    prop-name, prop-type, prop-description, prop-default {
-        display: flex;
-        align-items: center;
+    prop-name, prop-type, prop-description {
+        display: block;
+        padding: 8px;
     }
     prop-name {
-        grid-area: name;
-        padding: 8px;
         font-size: var(--text-header);
         font-weight: 700;
     }
     prop-type {
-        grid-area: type;
-        padding: 8px;
         font-style: italic;
-    }
-    prop-description {
-        grid-area: desc;
-        padding: 8px;
     }
     prop-default:empty {
         display: none;
     }
     prop-default::before {
-        content: "Default: ";
+        content: ", default: ";
+    }
+    prop-description {
+        display: block;
     }
 </style>
 
 <Card>
-    <CardContent>
-        <Text variant="header">
-            Component Props
-        </Text>
-        {#each entries as [name, info] (name)}
-            <prop-entry>
-                <prop-name>{name}</prop-name>
-                <prop-type>
-                    {info.type}
-                    <prop-default>{info.defaultValue ?? ""}</prop-default>
-                </prop-type>
-                <prop-description>{info.desc}</prop-description>
-            </prop-entry>
-        {/each}
-    </CardContent>
+    {#each propList as prop}
+        <prop-entry>
+            <prop-name>
+                {prop.name}
+            </prop-name>
+            <prop-type>
+                {prop.type}
+                <prop-default>{prop.defaultValue ?? ""}</prop-default>
+            </prop-type>
+            <prop-description>
+                {prop.desc}
+            </prop-description>
+        </prop-entry>
+    {/each}
 </Card>

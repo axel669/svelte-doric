@@ -23,7 +23,7 @@ list-item.clickable {
     user-select: none;
 }
 
-.compact > list-item {
+.compact > :global(list-item) {
     padding: 4px 8px;
 }
 a {

@@ -37,6 +37,7 @@
     import TableDemo from "./components/table.svelte"
     import TextAreaDemo from "./components/text-area.svelte"
     import TextInputDemo from "./components/text-input.svelte"
+    import CheckboxDemo from "./components/checkbox.svelte"
 
     import NewControl from "./test/new-control.svelte"
 
@@ -48,13 +49,7 @@
     // }
     // const image = images.dnd
 
-    // let menu
     ;$: selectedTab = $hash
-    // const change = (tab, post = () => {}) =>
-    //     () => {
-    //         document.location.hash = `/${tab}`
-    //         post()
-    //     }
 
     let checked = JSON.parse(localStorage.themeToggle ?? "false")
     ;$: theme = (checked === true) ? DarkTheme : LightTheme
@@ -68,6 +63,7 @@
         "textArea": TextAreaDemo,
         "textInput": TextInputDemo,
         table: TableDemo,
+        checkbox: CheckboxDemo,
     }
     const demoList = Object.keys(demos).sort()
 
@@ -75,9 +71,6 @@
     const openMenu = () => open = true
     const closeMenu = () => open = false
     ;$: closeMenu($hash)
-
-    // let options = [1, 2, 3, 4]
-    // let value = null
 ;</script>
 
 <style>
@@ -91,25 +84,6 @@
         max-width: 1024px;
         margin: auto;
     }
-    /* demo-options {
-        display: grid;
-        grid-auto-rows: 60px;
-        grid-template-columns: repeat(
-            auto-fill,
-            minmax(160px, 1fr)
-        );
-        padding: 4px;
-        gap: 4px;
-    }
-    demo-menu {
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        width: 760px;
-        max-width: 80vw;
-        max-height: 80vh;
-        transform: translateX(-50%);
-    } */
 </style>
 
 <AppTheme {theme} {baseline} />
@@ -139,13 +113,6 @@
     <Tabs bind:selectedTab>
         <Drawer bind:open on:close={closeMenu}>
             <div style="width: 15vw;" />
-            <!-- <TabList vertical>
-                {#each Object.keys(demos) as demo}
-                    <TabLabel href="#/{demo}">
-                        {demo.replace(/\b\w/g, s => s.toUpperCase())}
-                    </TabLabel>
-                {/each}
-            </TabList> -->
             <List>
                 <ListHeader color="primary">
                     Components
@@ -173,22 +140,3 @@
         </demo-area>
     </Tabs>
 </page-layout>
-
-<!-- <Dialog bind:this={menu} let:close>
-    <demo-menu>
-        <Card>
-            <CardContent>
-                <Text variant="header">
-                    Doric Components
-                </Text>
-            </CardContent>
-            <demo-options>
-                {#each Object.keys(demos) as demo}
-                <Button variant="outline" on:click={change(demo, close)} color="primary">
-                    {demo.replace(/\b\w/g, s => s.toUpperCase())}
-                </Button>
-                {/each}
-            </demo-options>
-        </Card>
-    </demo-menu>
-</Dialog> -->

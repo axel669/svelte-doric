@@ -6,6 +6,7 @@
             --font: Inconsolata;
             --background: #161616;
             --background-layer: #333333;
+            --background-highlight: #171717;
             --layer-border-width: 1px;
 
             --ripple-dark: #00000060;
