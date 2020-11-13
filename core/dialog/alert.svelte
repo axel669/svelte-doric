@@ -1,8 +1,8 @@
 <script>
 import Button from "../button.svelte"
 import Card from "../card.svelte"
-import CardActions from "../card/actions.svelte"
-import CardContent from "../card/content.svelte"
+// import CardActions from "../card/actions.svelte"
+// import CardContent from "../card/content.svelte"
 import Divider from "../divider.svelte"
 import Text from "../text.svelte"
 import {vars} from "../style/css.js"
@@ -37,19 +37,19 @@ alert-actions {
 
 <alert-wrapper use:vars={positionVars}>
     <Card>
-        <CardContent>
+        <card-content>
             <Text variant="header">
                 {options.title || "Alert"}
             </Text>
             <Divider />
             {options.message || ""}
-        </CardContent>
-        <CardActions>
+        </card-content>
+        <card-actions>
             <alert-actions>
                 <Button color="primary" on:click={okClose}>
                     {okText}
                 </Button>
             </alert-actions>
-        </CardActions>
+        </card-actions>
     </Card>
 </alert-wrapper>

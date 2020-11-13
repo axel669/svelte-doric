@@ -34,9 +34,6 @@
     color: var(--text-normal);
     font-size: var(--text-size);
 
-    --app-bar-background: var(--primary);
-    --app-bar-text: var(--text-invert);
-
     --button-default-fill: #aaaaaa;
     --button-default-text: var(--text-dark);
     --button-primary: var(--primary);
@@ -56,5 +53,8 @@
     --control-border: var(--text-secondary);
     --control-border-focus: var(--primary);
     --control-border-error: var(--danger);
+
+    --title-bar-background: var(--primary);
+    --title-bar-text: var(--text-invert);
 }
 </style>

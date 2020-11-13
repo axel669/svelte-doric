@@ -1,8 +1,8 @@
 <script>
 import Button from "../button.svelte"
 import Card from "../card.svelte"
-import CardActions from "../card/actions.svelte"
-import CardContent from "../card/content.svelte"
+// import CardActions from "../card/actions.svelte"
+// import CardContent from "../card/content.svelte"
 import Divider from "../divider.svelte"
 import Text from "../text.svelte"
 import {vars} from "../style/css.js"
@@ -40,14 +40,14 @@ confirm-actions {
 
 <confirm-wrapper use:vars={positionVars}>
     <Card>
-        <CardContent>
+        <card-content>
             <Text variant="header">
                 {options.title || "Confirm"}
             </Text>
             <Divider />
             {options.message || ""}
-        </CardContent>
-        <CardActions>
+        </card-content>
+        <card-actions>
             <confirm-actions>
                 <Button color="danger" on:click={cancelClose}>
                     {cancelText}
@@ -56,6 +56,6 @@ confirm-actions {
                     {confirmText}
                 </Button>
             </confirm-actions>
-        </CardActions>
+        </card-actions>
     </Card>
 </confirm-wrapper>

@@ -1,6 +1,5 @@
 <script>
 export let position = ""
-export let style
 ;</script>
 
 <style>
@@ -18,6 +17,6 @@ adornment.end {
 }
 </style>
 
-<adornment class={position} {style}>
+<adornment class={position}>
     <slot />
 </adornment>

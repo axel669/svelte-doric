@@ -2,7 +2,7 @@
 import {
     Button,
     Card,
-    CardContent,
+    // CardContent,
     Text,
 } from "#lib"
 
@@ -25,14 +25,14 @@ grid {
 </style>
 
 <Card>
-    <CardContent>
+    <card-content>
         <Text variant="title">
             Buttons
         </Text>
-    </CardContent>
+    </card-content>
     {#each buttonTypes as variant}
         <Card>
-            <CardContent>
+            <card-content>
                 <Text variant="header">
                     Button Variant: {variant}
                 </Text>
@@ -55,10 +55,10 @@ grid {
                         </Button>
                     {/each}
                 </grid>
-            </CardContent>
+            </card-content>
         </Card>
     {/each}
-    <CardContent>
+    <card-content>
         Clicked: {clicked.join(" / ")}
-    </CardContent>
+    </card-content>
 </Card>

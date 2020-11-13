@@ -1,7 +1,6 @@
 <script>
 import Ripple from "./ripple.svelte"
 
-export let style
 let klass = ""
 export {klass as class}
 ;</script>
@@ -16,7 +15,7 @@ action-area {
 }
 </style>
 
-<action-area on:click {style} class={klass}>
+<action-area on:click class={klass}>
     <slot />
     <Ripple />
 </action-area>

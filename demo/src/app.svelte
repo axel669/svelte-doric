@@ -6,10 +6,9 @@
         LightTheme,
 
         Adornment,
-        AppBar,
+        TitleBar,
         Button,
         Card,
-        CardContent,
         Checkbox,
         Dialog,
         Drawer,
@@ -22,24 +21,22 @@
         TabPanel,
 
         List,
-        ListItem,
-        ListItemContent,
-        ListHeader,
+        Ripple,
         Divider,
 
         hash,
     } from "#lib"
 
-    import AppBarDemo from "./components/app-bar.svelte"
+    // import TitleBarDemo from "./components/app-bar.svelte"
     import ButtonDemo from "./components/button.svelte"
-    import ChipDemo from "./components/chip.svelte"
-    import ListDemo from "./components/list.svelte"
-    import TableDemo from "./components/table.svelte"
-    import TextAreaDemo from "./components/text-area.svelte"
-    import TextInputDemo from "./components/text-input.svelte"
-    import CheckboxDemo from "./components/checkbox.svelte"
+    // import ChipDemo from "./components/chip.svelte"
+    // import ListDemo from "./components/list.svelte"
+    // import TableDemo from "./components/table.svelte"
+    // import TextAreaDemo from "./components/text-area.svelte"
+    // import TextInputDemo from "./components/text-input.svelte"
+    // import CheckboxDemo from "./components/checkbox.svelte"
 
-    import NewControl from "./test/new-control.svelte"
+    // import NewControl from "./test/new-control.svelte"
 
     // const images = {
     //     tifa: "https://media.discordapp.net/attachments/641431274916937738/726691343111553065/tifa_bikini_alt_by_nopeys_ddyq6fp-fullview.png?width=606&height=937",
@@ -56,16 +53,18 @@
     ;$: localStorage.themeToggle = JSON.stringify(checked)
 
     const demos = {
-        "app-bar": AppBarDemo,
+        // "app-bar": TitleBarDemo,
         "button": ButtonDemo,
-        "chip": ChipDemo,
-        "list": ListDemo,
-        "textArea": TextAreaDemo,
-        "textInput": TextInputDemo,
-        table: TableDemo,
-        checkbox: CheckboxDemo,
+        // "chip": ChipDemo,
+        // "list": ListDemo,
+        // "textArea": TextAreaDemo,
+        // "textInput": TextInputDemo,
+        // table: TableDemo,
+        // checkbox: CheckboxDemo,
     }
     const demoList = Object.keys(demos).sort()
+    const nav = location =>
+        () => document.location.hash = `/${location}`
 
     let open = false
     const openMenu = () => open = true
@@ -89,13 +88,12 @@
 <AppTheme {theme} {baseline} />
 
 <page-layout>
-    <AppBar>
-        <app-title>
+    <TitleBar sticky>
+        <title-text>
             Svelte Doric Components
-        </app-title>
+        </title-text>
 
         <Adornment position="start">
-            <!-- <Button on:click={() => menu.show()} fab round="40px"> -->
             <Button on:click={openMenu} fab round="40px">
                 <Icon name="menu" size="22px" />
             </Button>
@@ -108,23 +106,24 @@
                 checkedIcon="brightness_low"
             />
         </Adornment>
-    </AppBar>
+    </TitleBar>
 
     <Tabs bind:selectedTab>
         <Drawer bind:open on:close={closeMenu}>
             <div style="width: 15vw;" />
-            <List>
-                <ListHeader color="primary">
+            <TitleBar>
+                <title-text>
                     Components
-                </ListHeader>
-                {#each demoList as demo}
-                    <ListItem href="#/{demo}" target="_self">
-                        <ListItemContent>
-                            {demo.replace(/\b\w/g, s => s.toUpperCase())}
-                        </ListItemContent>
-                    </ListItem>
-                    <Divider />
-                {/each}
+                </title-text>
+            </TitleBar>
+            <List items={demoList}>
+                <list-item let:item slot="item" dividers control>
+                    <list-item-content>
+                        <Button on:click={nav(item)}>
+                            {item.replace(/\b\w/g, s => s.toUpperCase())}
+                        </Button>
+                    </list-item-content>
+                </list-item>
             </List>
         </Drawer>
 
