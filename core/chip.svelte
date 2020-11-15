@@ -52,7 +52,7 @@
     }
 </style>
 
-<chip class="{color}" on:click class:clickable>
+<chip class="{color}" on:tap class:clickable>
     {#if clickable}
         <Ripple />
     {/if}

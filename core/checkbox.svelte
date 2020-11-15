@@ -1,61 +1,49 @@
 <script>
-// import {createEventDispatcher} from "svelte"
+    import ToggleBase from "./toggle/base.svelte"
+    import Button from "./button.svelte"
+    import Icon from "./icon.svelte"
 
-import ToggleBase from "./toggle/base.svelte"
-import Button from "./button.svelte"
-import Icon from "./icon.svelte"
+    export let group = []
+    export let value
 
-export let group = []
-export let value
+    export let checked = group.indexOf(value) !== -1
+    export let disabled
+    export let color = "default"
+    export let labelPlacement
+    export let labelToggle = true
 
-export let checked = group.indexOf(value) !== -1
-export let disabled
-export let color = "default"
-// export let functional = false
-export let labelPlacement
-export let labelToggle = true
+    export let checkedIcon = "check_box"
+    export let uncheckedIcon = "check_box_outline_blank"
+    export let outlined
 
-export let checkedIcon = "check_box"
-export let uncheckedIcon = "check_box_outline_blank"
-export let outlined
-
-
-// const dispatch = createEventDispatcher()
-// const toggle = () => {
-//     const next = !checked
-//     if (functional !== true) {
-//         checked = next
-//     }
-//     dispatch("change", next)
-// }
-const toggle = () => checked = !checked
-const updateGroup = checked => {
-    if (checked === false) {
-        if (group.indexOf(value) !== -1) {
-            group = group.filter(v => v !== value)
+    const toggle = () => checked = !checked
+    const updateGroup = checked => {
+        if (checked === false) {
+            if (group.indexOf(value) !== -1) {
+                group = group.filter(v => v !== value)
+            }
+            return
         }
-        return
+        if (group.indexOf(value) === -1) {
+            group = [...group, value].sort()
+        }
     }
-    if (group.indexOf(value) === -1) {
-        group = [...group, value].sort()
-    }
-}
 
-;$: icon = checked ? checkedIcon : uncheckedIcon
-;$: buttonColor = checked ? color : "default"
-;$: updateGroup(checked)
+    ;$: icon = checked ? checkedIcon : uncheckedIcon
+    ;$: buttonColor = checked ? color : "default"
+    ;$: updateGroup(checked)
 ;</script>
 
 <style>
-checkbox-label {
-    display: flex;
-    align-items: center;
-}
-checkbox-check {
-    grid-area: symbol;
-    align-self: center;
-    justify-self: center;
-}
+    checkbox-label {
+        display: flex;
+        align-items: center;
+    }
+    checkbox-check {
+        grid-area: symbol;
+        align-self: center;
+        justify-self: center;
+    }
 </style>
 
 <ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement} {labelToggle}>

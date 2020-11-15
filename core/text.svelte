@@ -25,7 +25,7 @@
         font-weight: 400;
         margin: 4px 0px;
     }
-    .varaint-secondary {
+    .variant-secondary {
         color: var(--text-secondary);
         font-size: var(--text-size-secondary);
     }

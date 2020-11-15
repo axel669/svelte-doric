@@ -1,37 +1,46 @@
 const touchState = {}
 
 if (typeof window !== "undefined") {
-    if (window.ontouchstart === undefined) {
-        window.addEventListener(
-            "mousedown",
-            evt => {
-                if (evt.button !== 0) {
-                    return
-                }
-                const customEvt = new CustomEvent("touchstart")
-                evt.identifier = -1
-                customEvt.changedTouches = [evt]
-                evt.target.dispatchEvent(customEvt)
-            },
-            {capture: true}
-        )
-        window.addEventListener(
-            "mouseup",
-            evt => {
-                if (evt.button !== 0) {
-                    return
-                }
-                const customEvt = new CustomEvent("touchend")
-                evt.identifier = -1
-                customEvt.changedTouches = [evt]
-                evt.target.dispatchEvent(customEvt)
-            },
-            {capture: true}
-        )
-    }
+    const pointerStart = "pointer-start"
+    const pointerEnd = "pointer-end"
+    const evtOptions = {bubbles: true}
+
+    const isMobile = (window.ontouchstart !== undefined)
+    const sourceEvents = isMobile
+        ? {down: "touchstart", up: "touchend"}
+        : {down: "mousedown", up: "mouseup"}
+
+    console.log(isMobile, sourceEvents)
 
     window.addEventListener(
-        "touchstart",
+        sourceEvents.down,
+        evt => {
+            if (isMobile === false && evt.button !== 0) {
+                return
+            }
+            const customEvent = new CustomEvent(pointerStart, evtOptions)
+            evt.identifier = evt.identifier ?? -1
+            customEvent.changedTouches = isMobile ? evt.changedTouches : [evt]
+            evt.target.dispatchEvent(customEvent)
+        },
+        {capture: true}
+    )
+    window.addEventListener(
+        sourceEvents.up,
+        evt => {
+            if (isMobile === false && evt.button !== 0) {
+                return
+            }
+            const customEvent = new CustomEvent(pointerEnd, evtOptions)
+            evt.identifier = evt.identifier ?? -1
+            customEvent.changedTouches = isMobile ? evt.changedTouches : [evt]
+            evt.target.dispatchEvent(customEvent)
+        },
+        {capture: true}
+    )
+
+    window.addEventListener(
+        pointerStart,
         evt => {
             const timestamp = Date.now()
             for (const touch of evt.changedTouches) {
@@ -44,7 +53,7 @@ if (typeof window !== "undefined") {
         {capture: true}
     )
     window.addEventListener(
-        "touchend",
+        pointerEnd,
         evt => {
             const timestamp = Date.now()
             for (const touch of evt.changedTouches) {
@@ -64,7 +73,7 @@ if (typeof window !== "undefined") {
                     return
                 }
 
-                const customEvent = new CustomEvent("tap")
+                const customEvent = new CustomEvent("tap", evtOptions)
                 customEvent.changedTouches = [touch]
                 touch.target.dispatchEvent(customEvent)
             }

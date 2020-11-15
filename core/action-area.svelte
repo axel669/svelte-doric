@@ -15,7 +15,7 @@ action-area {
 }
 </style>
 
-<action-area on:click class={klass}>
+<action-area on:tap class={klass}>
     <slot />
     <Ripple />
 </action-area>

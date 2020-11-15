@@ -6,9 +6,6 @@ export let label = ""
 export let error = ""
 export let info = ""
 export let variant
-export let style
-export let labelStyle
-export let borderStyle
 let klass = ""
 export {klass as class}
 
@@ -19,9 +16,6 @@ export let disabled = false
     label,
     info,
     error,
-    style,
-    labelStyle,
-    borderStyle,
     variant,
     klass,
 }

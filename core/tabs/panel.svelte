@@ -1,23 +1,23 @@
 <script context="module">
-import {tabContext} from "../tabs.svelte"
+    import {tabContext} from "../tabs.svelte"
 ;</script>
 
 <script>
-import {getContext} from "svelte"
+    import {getContext} from "svelte"
 
-export let value
+    export let value
 
-const currentTab = getContext(tabContext)
+    const currentTab = getContext(tabContext)
 ;</script>
 
 <style>
-tab-panel {
-    display: none;
-    grid-area: panel;
-}
-tab-panel.active {
-    display: block;
-}
+    tab-panel {
+        display: none;
+        grid-area: panel;
+    }
+    tab-panel.active {
+        display: block;
+    }
 </style>
 
 <tab-panel class:active={$currentTab === value}>

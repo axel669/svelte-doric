@@ -1,5 +1,5 @@
 <script>
-    import bubbler from "./event/bubbler.js"
+    import {createEventDispatcher} from "svelte";
     import Ripple from "./ripple.svelte"
     import {vars} from "./style/css.js"
 
@@ -12,14 +12,13 @@
     let klass = ""
     export {klass as class}
 
-    const clicks = bubbler(
-        (evt, bubble) => {
-            if (disabled === true) {
-                return
-            }
-            bubble(evt)
+    const dispatch = createEventDispatcher()
+    const handleTap = evt => {
+        if (disabled === true) {
+            return
         }
-    )
+        dispatch("tap", evt)
+    }
 
     ;$: buttonVars = {
         "button-round-size": round,
@@ -96,7 +95,7 @@
 </style>
 
 <doric-button
-    on:click={clicks}
+    on:click={handleTap}
     use:vars={buttonVars}
     class="{color} {variant} {klass}"
     class:disabled

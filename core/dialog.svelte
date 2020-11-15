@@ -1,34 +1,30 @@
 <script>
-import Modal from "./modal.svelte"
+    import Modal from "./modal.svelte"
 
-export let forceInteraction
+    export let forceInteraction
 
-let open = false
-let options = {}
-let resolver
+    let open = false
+    let options = {}
+    let resolver
 
-export const show = opts => new Promise(
-    (resolve) => {
-        resolver = resolve
-        options = opts
-        open = true
+    export const show = opts => new Promise(
+        (resolve) => {
+            resolver = resolve
+            options = opts
+            open = true
+        }
+    )
+    const close = value => {
+        open = false
+        resolver(value)
     }
-)
-const close = value => {
-    open = false
-    resolver(value)
-    // resolver = null
-}
-const closeOuter = () => {
-    if (forceInteraction === true) {
-        return
+    const closeOuter = () => {
+        if (forceInteraction === true) {
+            return
+        }
+        close(undefined)
     }
-    close(undefined)
-}
 ;</script>
-
-<style>
-</style>
 
 <Modal {open} on:close={closeOuter}>
     <slot {options} {close} />

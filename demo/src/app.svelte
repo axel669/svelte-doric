@@ -1,6 +1,6 @@
 <script>
     import {
-        AppTheme,
+        AppStyle,
         Baseline as baseline,
         DarkTheme,
         LightTheme,
@@ -29,7 +29,7 @@
 
     // import TitleBarDemo from "./components/app-bar.svelte"
     import ButtonDemo from "./components/button.svelte"
-    // import ChipDemo from "./components/chip.svelte"
+    import ChipDemo from "./components/chip.svelte"
     // import ListDemo from "./components/list.svelte"
     // import TableDemo from "./components/table.svelte"
     // import TextAreaDemo from "./components/text-area.svelte"
@@ -55,7 +55,7 @@
     const demos = {
         // "app-bar": TitleBarDemo,
         "button": ButtonDemo,
-        // "chip": ChipDemo,
+        "chip": ChipDemo,
         // "list": ListDemo,
         // "textArea": TextAreaDemo,
         // "textInput": TextInputDemo,
@@ -72,6 +72,8 @@
     ;$: closeMenu($hash)
 ;</script>
 
+<!-- <svelte:window on:pointer-start={console.log} /> -->
+
 <style>
     page-layout {
         display: grid;
@@ -85,7 +87,7 @@
     }
 </style>
 
-<AppTheme {theme} {baseline} />
+<AppStyle {theme} {baseline} />
 
 <page-layout>
     <TitleBar sticky>
@@ -94,7 +96,7 @@
         </title-text>
 
         <Adornment position="start">
-            <Button on:click={openMenu} fab round="40px">
+            <Button on:tap={openMenu} fab round="40px">
                 <Icon name="menu" size="22px" />
             </Button>
         </Adornment>
@@ -119,7 +121,7 @@
             <List items={demoList}>
                 <list-item let:item slot="item" dividers control>
                     <list-item-content>
-                        <Button on:click={nav(item)}>
+                        <Button on:tap={nav(item)}>
                             {item.replace(/\b\w/g, s => s.toUpperCase())}
                         </Button>
                     </list-item-content>

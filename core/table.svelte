@@ -5,9 +5,6 @@
     export let rowID = i => i
     export let rowHeight = "min-content"
     export let scrollHeight
-
-    // const colSize = col => col.size ?? "1fr"
-    // ;$: columnSizes = columns.map(colSize).join(" ")
 ;</script>
 
 <style>

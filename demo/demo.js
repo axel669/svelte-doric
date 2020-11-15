@@ -876,81 +876,6 @@ var demo = (function () {
         }
     }
 
-    const touchState = {};
-
-    if (typeof window !== "undefined") {
-        if (window.ontouchstart === undefined) {
-            window.addEventListener(
-                "mousedown",
-                evt => {
-                    if (evt.button !== 0) {
-                        return
-                    }
-                    const customEvt = new CustomEvent("touchstart");
-                    evt.identifier = -1;
-                    customEvt.changedTouches = [evt];
-                    evt.target.dispatchEvent(customEvt);
-                },
-                {capture: true}
-            );
-            window.addEventListener(
-                "mouseup",
-                evt => {
-                    if (evt.button !== 0) {
-                        return
-                    }
-                    const customEvt = new CustomEvent("touchend");
-                    evt.identifier = -1;
-                    customEvt.changedTouches = [evt];
-                    evt.target.dispatchEvent(customEvt);
-                },
-                {capture: true}
-            );
-        }
-
-        window.addEventListener(
-            "touchstart",
-            evt => {
-                const timestamp = Date.now();
-                for (const touch of evt.changedTouches) {
-                    touchState[touch.identifier] = {
-                        timestamp,
-                        touch,
-                    };
-                }
-            },
-            {capture: true}
-        );
-        window.addEventListener(
-            "touchend",
-            evt => {
-                const timestamp = Date.now();
-                for (const touch of evt.changedTouches) {
-                    const prev = touchState[touch.identifier];
-                    touchState[touch.identifier] = null;
-
-                    if (prev === null || prev === undefined) {
-                        return
-                    }
-
-                    const duration = timestamp - prev.timestamp;
-                    const dist = Math.sqrt(
-                        (prev.touch.clientX - touch.clientX) ** 2
-                        + (prev.touch.clientY - touch.clientY) ** 2
-                    );
-                    if (dist > 30 || duration > 500) {
-                        return
-                    }
-
-                    const customEvent = new CustomEvent("tap");
-                    customEvent.changedTouches = [touch];
-                    touch.target.dispatchEvent(customEvent);
-                }
-            },
-            {capture: true}
-        );
-    }
-
     function fade(node, { delay = 0, duration = 400, easing = identity }) {
         const o = +getComputedStyle(node).opacity;
         return {
@@ -1016,8 +941,8 @@ var demo = (function () {
 
     function add_css() {
     	var style = element("style");
-    	style.id = "svelte-4mv18w-style";
-    	style.textContent = "ripple-wrapper.svelte-4mv18w{position:absolute;top:0px;left:0px;right:0px;bottom:0px;overflow:hidden}ripple.svelte-4mv18w{width:var(--size);height:var(--size);border-radius:50%;background-color:var(--ripple-color, var(--ripple-normal));position:absolute;left:var(--x);top:var(--y);transform:translate3d(-50%, -50%, 0);pointer-events:none;box-shadow:0px 0px 2px rgba(0, 0, 0, 0.25)}";
+    	style.id = "svelte-acwzgw-style";
+    	style.textContent = "ripple-wrapper.svelte-acwzgw{position:absolute;top:0px;left:0px;right:0px;bottom:0px;overflow:hidden}ripple.svelte-acwzgw{width:var(--size);height:var(--size);border-radius:50%;background-color:var(--ripple-color, var(--ripple-normal));position:absolute;left:var(--x);top:var(--y);transform:translate3d(-50%, -50%, 0);pointer-events:none;box-shadow:0px 0px 2px rgba(0, 0, 0, 0.25)}";
     	append(document.head, style);
     }
 
@@ -1027,7 +952,7 @@ var demo = (function () {
     	return child_ctx;
     }
 
-    // (111:4) {#each ripples as info (info.id)}
+    // (109:4) {#each ripples as info (info.id)}
     function create_each_block(key_1, ctx) {
     	let ripple;
     	let vars_action;
@@ -1040,7 +965,7 @@ var demo = (function () {
     		first: null,
     		c() {
     			ripple = element("ripple");
-    			attr(ripple, "class", "svelte-4mv18w");
+    			attr(ripple, "class", "svelte-acwzgw");
     			this.first = ripple;
     		},
     		m(target, anchor) {
@@ -1096,7 +1021,7 @@ var demo = (function () {
     				each_blocks[i].c();
     			}
 
-    			set_custom_element_data(ripple_wrapper, "class", "svelte-4mv18w");
+    			set_custom_element_data(ripple_wrapper, "class", "svelte-acwzgw");
     			add_render_callback(() => /*ripple_wrapper_elementresize_handler*/ ctx[7].call(ripple_wrapper));
     		},
     		m(target, anchor) {
@@ -1109,7 +1034,7 @@ var demo = (function () {
     			ripple_wrapper_resize_listener = add_resize_listener(ripple_wrapper, /*ripple_wrapper_elementresize_handler*/ ctx[7].bind(ripple_wrapper));
 
     			if (!mounted) {
-    				dispose = listen(ripple_wrapper, "touchstart", /*addRipple*/ ctx[4], { passive: true });
+    				dispose = listen(ripple_wrapper, "pointer-start", /*addRipple*/ ctx[4]);
     				mounted = true;
     			}
     		},
@@ -1152,9 +1077,9 @@ var demo = (function () {
     		delay: 0,
     		duration: 500,
     		css: (t, u) => `
-            transform: translate3d(-50%, -50%, 0) scale(${1 - u ** 1.3});
-            opacity: ${u ** 1.3};
-        `
+                transform: translate3d(-50%, -50%, 0) scale(${1 - u ** 1.3});
+                opacity: ${u ** 1.3};
+            `
     	};
     };
 
@@ -1222,7 +1147,7 @@ var demo = (function () {
     class Ripple extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-4mv18w-style")) add_css();
+    		if (!document.getElementById("svelte-acwzgw-style")) add_css();
     		init(this, options, instance, create_fragment, safe_not_equal, { color: 0, disabled: 6 });
     	}
     }
@@ -1231,8 +1156,8 @@ var demo = (function () {
 
     function add_css$1() {
     	var style = element("style");
-    	style.id = "svelte-1issscl-style";
-    	style.textContent = "adornment.svelte-1issscl{display:inline-flex;justify-content:center;align-items:center;padding:4px}adornment.start.svelte-1issscl{grid-area:start-adornment}adornment.end.svelte-1issscl{grid-area:end-adornment}";
+    	style.id = "svelte-wuqcg5-style";
+    	style.textContent = "adornment.svelte-wuqcg5{display:inline-flex;justify-content:center;align-items:center;padding:4px}adornment.start.svelte-wuqcg5{grid-area:start-adornment}adornment.end.svelte-wuqcg5{grid-area:end-adornment}";
     	append(document.head, style);
     }
 
@@ -1247,7 +1172,7 @@ var demo = (function () {
     		c() {
     			adornment = element("adornment");
     			if (default_slot) default_slot.c();
-    			attr(adornment, "class", adornment_class_value = "" + (null_to_empty(/*position*/ ctx[0]) + " svelte-1issscl"));
+    			attr(adornment, "class", adornment_class_value = "" + (null_to_empty(/*position*/ ctx[0]) + " svelte-wuqcg5"));
     		},
     		m(target, anchor) {
     			insert(target, adornment, anchor);
@@ -1265,7 +1190,7 @@ var demo = (function () {
     				}
     			}
 
-    			if (!current || dirty & /*position*/ 1 && adornment_class_value !== (adornment_class_value = "" + (null_to_empty(/*position*/ ctx[0]) + " svelte-1issscl"))) {
+    			if (!current || dirty & /*position*/ 1 && adornment_class_value !== (adornment_class_value = "" + (null_to_empty(/*position*/ ctx[0]) + " svelte-wuqcg5"))) {
     				attr(adornment, "class", adornment_class_value);
     			}
     		},
@@ -1300,12 +1225,96 @@ var demo = (function () {
     class Adornment extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-1issscl-style")) add_css$1();
+    		if (!document.getElementById("svelte-wuqcg5-style")) add_css$1();
     		init(this, options, instance$1, create_fragment$1, safe_not_equal, { position: 0 });
     	}
     }
 
-    /* core\app-theme.svelte generated by Svelte v3.29.4 */
+    const touchState = {};
+
+    if (typeof window !== "undefined") {
+        const pointerStart = "pointer-start";
+        const pointerEnd = "pointer-end";
+        const evtOptions = {bubbles: true};
+
+        const isMobile = (window.ontouchstart !== undefined);
+        const sourceEvents = isMobile
+            ? {down: "touchstart", up: "touchend"}
+            : {down: "mousedown", up: "mouseup"};
+
+        console.log(isMobile, sourceEvents);
+
+        window.addEventListener(
+            sourceEvents.down,
+            evt => {
+                if (isMobile === false && evt.button !== 0) {
+                    return
+                }
+                const customEvent = new CustomEvent(pointerStart, evtOptions);
+                evt.identifier = evt.identifier ?? -1;
+                customEvent.changedTouches = isMobile ? evt.changedTouches : [evt];
+                evt.target.dispatchEvent(customEvent);
+            },
+            {capture: true}
+        );
+        window.addEventListener(
+            sourceEvents.up,
+            evt => {
+                if (isMobile === false && evt.button !== 0) {
+                    return
+                }
+                const customEvent = new CustomEvent(pointerEnd, evtOptions);
+                evt.identifier = evt.identifier ?? -1;
+                customEvent.changedTouches = isMobile ? evt.changedTouches : [evt];
+                evt.target.dispatchEvent(customEvent);
+            },
+            {capture: true}
+        );
+
+        window.addEventListener(
+            pointerStart,
+            evt => {
+                const timestamp = Date.now();
+                for (const touch of evt.changedTouches) {
+                    touchState[touch.identifier] = {
+                        timestamp,
+                        touch,
+                    };
+                }
+            },
+            {capture: true}
+        );
+        window.addEventListener(
+            pointerEnd,
+            evt => {
+                const timestamp = Date.now();
+                for (const touch of evt.changedTouches) {
+                    const prev = touchState[touch.identifier];
+                    touchState[touch.identifier] = null;
+
+                    if (prev === null || prev === undefined) {
+                        return
+                    }
+
+                    const duration = timestamp - prev.timestamp;
+                    const dist = Math.sqrt(
+                        (prev.touch.clientX - touch.clientX) ** 2
+                        + (prev.touch.clientY - touch.clientY) ** 2
+                    );
+                    if (dist > 30 || duration > 500) {
+                        return
+                    }
+
+                    const customEvent = new CustomEvent("tap", evtOptions);
+                    customEvent.changedTouches = [touch];
+                    touch.target.dispatchEvent(customEvent);
+                }
+            },
+            {capture: true}
+        );
+    }
+
+    /* core\app-style.svelte generated by Svelte v3.29.4 */
 
     function create_fragment$2(ctx) {
     	let switch_instance0;
@@ -1431,7 +1440,7 @@ var demo = (function () {
     	return [theme, baseline];
     }
 
-    class App_theme extends SvelteComponent {
+    class App_style extends SvelteComponent {
     	constructor(options) {
     		super();
     		init(this, options, instance$2, create_fragment$2, safe_not_equal, { theme: 0, baseline: 1 });
@@ -1490,13 +1499,6 @@ var demo = (function () {
     	}
     }
 
-    var bubbler = (handler) => {
-        const component = get_current_component();
-        const bubbleEvent = evt => bubble(component, evt);
-
-        return evt => handler(evt, bubbleEvent)
-    };
-
     /* core\button.svelte generated by Svelte v3.29.4 */
 
     function add_css$3() {
@@ -1543,7 +1545,7 @@ var demo = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen(doric_button, "click", /*clicks*/ ctx[7]),
+    					listen(doric_button, "click", /*handleTap*/ ctx[7]),
     					action_destroyer(vars_action = vars.call(null, doric_button, /*buttonVars*/ ctx[6]))
     				];
 
@@ -1608,14 +1610,15 @@ var demo = (function () {
     	let { round } = $$props;
     	let { fab } = $$props;
     	let { class: klass = "" } = $$props;
+    	const dispatch = createEventDispatcher();
 
-    	const clicks = bubbler((evt, bubble) => {
+    	const handleTap = evt => {
     		if (disabled === true) {
     			return;
     		}
 
-    		bubble(evt);
-    	});
+    		dispatch("tap", evt);
+    	};
 
     	$$self.$$set = $$props => {
     		if ("color" in $$props) $$invalidate(0, color = $$props.color);
@@ -1643,7 +1646,7 @@ var demo = (function () {
     		fab,
     		klass,
     		buttonVars,
-    		clicks,
+    		handleTap,
     		$$scope,
     		slots
     	];
@@ -1747,8 +1750,8 @@ var demo = (function () {
 
     function add_css$5() {
     	var style = element("style");
-    	style.id = "svelte-1ioqmn9-style";
-    	style.textContent = "toggle-wrapper.svelte-1ioqmn9.svelte-1ioqmn9{position:relative;display:inline-grid;border-radius:4px;overflow:hidden;column-gap:4px;user-select:none}toggle-wrapper.svelte-1ioqmn9 .svelte-1ioqmn9:first-child{grid-area:symbol;align-self:center;justify-self:center}toggle-wrapper.svelte-1ioqmn9>.svelte-1ioqmn9:nth-child(2){grid-area:label}.disabled.svelte-1ioqmn9.svelte-1ioqmn9{filter:contrast(50%);cursor:default}.right.svelte-1ioqmn9.svelte-1ioqmn9{grid-template-columns:min-content auto;grid-template-areas:\"symbol label\"\r\n    }.left.svelte-1ioqmn9.svelte-1ioqmn9{grid-template-columns:auto min-content;grid-template-areas:\"label symbol\"\r\n    }.top.svelte-1ioqmn9.svelte-1ioqmn9{grid-template-rows:auto min-content;grid-template-areas:\"label\"\r\n        \"symbol\"\r\n    }.bottom.svelte-1ioqmn9.svelte-1ioqmn9{grid-template-rows:min-content auto;grid-template-areas:\"symbol\"\r\n        \"label\"\r\n    }toggle-wrapper.top.svelte-1ioqmn9>.svelte-1ioqmn9,toggle-wrapper.bottom.svelte-1ioqmn9>.svelte-1ioqmn9{justify-content:center}toggle-label.svelte-1ioqmn9.svelte-1ioqmn9{display:grid;align-items:center}.labelToggle.svelte-1ioqmn9.svelte-1ioqmn9{cursor:pointer}";
+    	style.id = "svelte-tgukdh-style";
+    	style.textContent = "toggle-wrapper.svelte-tgukdh.svelte-tgukdh{position:relative;display:inline-grid;border-radius:4px;overflow:hidden;column-gap:4px;user-select:none}toggle-wrapper.svelte-tgukdh .svelte-tgukdh:first-child{grid-area:symbol;align-self:center;justify-self:center}toggle-wrapper.svelte-tgukdh>.svelte-tgukdh:nth-child(2){grid-area:label}.disabled.svelte-tgukdh.svelte-tgukdh{filter:contrast(50%);cursor:default}.right.svelte-tgukdh.svelte-tgukdh{grid-template-columns:min-content auto;grid-template-areas:\"symbol label\"\r\n        }.left.svelte-tgukdh.svelte-tgukdh{grid-template-columns:auto min-content;grid-template-areas:\"label symbol\"\r\n        }.top.svelte-tgukdh.svelte-tgukdh{grid-template-rows:auto min-content;grid-template-areas:\"label\"\r\n            \"symbol\"\r\n        }.bottom.svelte-tgukdh.svelte-tgukdh{grid-template-rows:min-content auto;grid-template-areas:\"symbol\"\r\n            \"label\"\r\n        }toggle-wrapper.top.svelte-tgukdh>.svelte-tgukdh,toggle-wrapper.bottom.svelte-tgukdh>.svelte-tgukdh{justify-content:center}toggle-label.svelte-tgukdh.svelte-tgukdh{display:grid;align-items:center}.labelToggle.svelte-tgukdh.svelte-tgukdh{cursor:pointer}";
     	append(document.head, style);
     }
 
@@ -1763,10 +1766,10 @@ var demo = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	const default_slot_template = /*#slots*/ ctx[11].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[10], null);
-    	const label_slot_template = /*#slots*/ ctx[11].label;
-    	const label_slot = create_slot(label_slot_template, ctx, /*$$scope*/ ctx[10], get_label_slot_context);
+    	const default_slot_template = /*#slots*/ ctx[10].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[9], null);
+    	const label_slot_template = /*#slots*/ ctx[10].label;
+    	const label_slot = create_slot(label_slot_template, ctx, /*$$scope*/ ctx[9], get_label_slot_context);
 
     	return {
     		c() {
@@ -1775,10 +1778,9 @@ var demo = (function () {
     			t = space();
     			toggle_label = element("toggle-label");
     			if (label_slot) label_slot.c();
-    			set_custom_element_data(toggle_label, "class", "svelte-1ioqmn9");
+    			set_custom_element_data(toggle_label, "class", "svelte-tgukdh");
     			toggle_class(toggle_label, "labelToggle", /*labelToggle*/ ctx[1]);
-    			set_custom_element_data(toggle_wrapper, "style", /*style*/ ctx[3]);
-    			set_custom_element_data(toggle_wrapper, "class", toggle_wrapper_class_value = "" + (/*labelPlacement*/ ctx[2] + " " + /*klass*/ ctx[4] + " svelte-1ioqmn9"));
+    			set_custom_element_data(toggle_wrapper, "class", toggle_wrapper_class_value = "" + (/*labelPlacement*/ ctx[2] + " " + /*klass*/ ctx[3] + " svelte-tgukdh"));
     			toggle_class(toggle_wrapper, "disabled", /*disabled*/ ctx[0]);
     		},
     		m(target, anchor) {
@@ -1795,24 +1797,24 @@ var demo = (function () {
     				label_slot.m(toggle_label, null);
     			}
 
-    			/*toggle_label_binding*/ ctx[12](toggle_label);
+    			/*toggle_label_binding*/ ctx[11](toggle_label);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen(toggle_wrapper, "click", /*boxClick*/ ctx[6]);
+    				dispose = listen(toggle_wrapper, "tap", /*boxTap*/ ctx[5]);
     				mounted = true;
     			}
     		},
     		p(ctx, [dirty]) {
     			if (default_slot) {
-    				if (default_slot.p && dirty & /*$$scope*/ 1024) {
-    					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[10], dirty, null, null);
+    				if (default_slot.p && dirty & /*$$scope*/ 512) {
+    					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[9], dirty, null, null);
     				}
     			}
 
     			if (label_slot) {
-    				if (label_slot.p && dirty & /*$$scope*/ 1024) {
-    					update_slot(label_slot, label_slot_template, ctx, /*$$scope*/ ctx[10], dirty, get_label_slot_changes, get_label_slot_context);
+    				if (label_slot.p && dirty & /*$$scope*/ 512) {
+    					update_slot(label_slot, label_slot_template, ctx, /*$$scope*/ ctx[9], dirty, get_label_slot_changes, get_label_slot_context);
     				}
     			}
 
@@ -1820,15 +1822,11 @@ var demo = (function () {
     				toggle_class(toggle_label, "labelToggle", /*labelToggle*/ ctx[1]);
     			}
 
-    			if (!current || dirty & /*style*/ 8) {
-    				set_custom_element_data(toggle_wrapper, "style", /*style*/ ctx[3]);
-    			}
-
-    			if (!current || dirty & /*labelPlacement, klass*/ 20 && toggle_wrapper_class_value !== (toggle_wrapper_class_value = "" + (/*labelPlacement*/ ctx[2] + " " + /*klass*/ ctx[4] + " svelte-1ioqmn9"))) {
+    			if (!current || dirty & /*labelPlacement, klass*/ 12 && toggle_wrapper_class_value !== (toggle_wrapper_class_value = "" + (/*labelPlacement*/ ctx[2] + " " + /*klass*/ ctx[3] + " svelte-tgukdh"))) {
     				set_custom_element_data(toggle_wrapper, "class", toggle_wrapper_class_value);
     			}
 
-    			if (dirty & /*labelPlacement, klass, disabled*/ 21) {
+    			if (dirty & /*labelPlacement, klass, disabled*/ 13) {
     				toggle_class(toggle_wrapper, "disabled", /*disabled*/ ctx[0]);
     			}
     		},
@@ -1847,7 +1845,7 @@ var demo = (function () {
     			if (detaching) detach(toggle_wrapper);
     			if (default_slot) default_slot.d(detaching);
     			if (label_slot) label_slot.d(detaching);
-    			/*toggle_label_binding*/ ctx[12](null);
+    			/*toggle_label_binding*/ ctx[11](null);
     			mounted = false;
     			dispose();
     		}
@@ -1862,11 +1860,10 @@ var demo = (function () {
     	let { color = "default" } = $$props;
     	let { labelToggle = true } = $$props;
     	let { labelPlacement = "right" } = $$props;
-    	let { style = "" } = $$props;
     	let { class: klass = "" } = $$props;
     	let labelElement;
 
-    	const boxClick = evt => {
+    	const boxTap = evt => {
     		if (disabled === true) {
     			return;
     		}
@@ -1881,34 +1878,32 @@ var demo = (function () {
     	function toggle_label_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			labelElement = $$value;
-    			$$invalidate(5, labelElement);
+    			$$invalidate(4, labelElement);
     		});
     	}
 
     	$$self.$$set = $$props => {
-    		if ("checked" in $$props) $$invalidate(7, checked = $$props.checked);
-    		if ("toggle" in $$props) $$invalidate(8, toggle = $$props.toggle);
+    		if ("checked" in $$props) $$invalidate(6, checked = $$props.checked);
+    		if ("toggle" in $$props) $$invalidate(7, toggle = $$props.toggle);
     		if ("disabled" in $$props) $$invalidate(0, disabled = $$props.disabled);
-    		if ("color" in $$props) $$invalidate(9, color = $$props.color);
+    		if ("color" in $$props) $$invalidate(8, color = $$props.color);
     		if ("labelToggle" in $$props) $$invalidate(1, labelToggle = $$props.labelToggle);
     		if ("labelPlacement" in $$props) $$invalidate(2, labelPlacement = $$props.labelPlacement);
-    		if ("style" in $$props) $$invalidate(3, style = $$props.style);
-    		if ("class" in $$props) $$invalidate(4, klass = $$props.class);
-    		if ("$$scope" in $$props) $$invalidate(10, $$scope = $$props.$$scope);
+    		if ("class" in $$props) $$invalidate(3, klass = $$props.class);
+    		if ("$$scope" in $$props) $$invalidate(9, $$scope = $$props.$$scope);
     	};
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*checked, color*/ 640) ;
+    		if ($$self.$$.dirty & /*checked, color*/ 320) ;
     	};
 
     	return [
     		disabled,
     		labelToggle,
     		labelPlacement,
-    		style,
     		klass,
     		labelElement,
-    		boxClick,
+    		boxTap,
     		checked,
     		toggle,
     		color,
@@ -1921,17 +1916,16 @@ var demo = (function () {
     class Base extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-1ioqmn9-style")) add_css$5();
+    		if (!document.getElementById("svelte-tgukdh-style")) add_css$5();
 
     		init(this, options, instance$5, create_fragment$6, safe_not_equal, {
-    			checked: 7,
-    			toggle: 8,
+    			checked: 6,
+    			toggle: 7,
     			disabled: 0,
-    			color: 9,
+    			color: 8,
     			labelToggle: 1,
     			labelPlacement: 2,
-    			style: 3,
-    			class: 4
+    			class: 3
     		});
     	}
     }
@@ -1940,57 +1934,57 @@ var demo = (function () {
 
     function add_css$6() {
     	var style = element("style");
-    	style.id = "svelte-lh4ed6-style";
-    	style.textContent = "icon.svelte-lh4ed6{font-size:var(--icon-font-size);margin:0px 4px}";
+    	style.id = "svelte-ckwsqd-style";
+    	style.textContent = "doric-icon.svelte-ckwsqd{margin:0px 4px}";
     	append(document.head, style);
     }
 
     function create_fragment$7(ctx) {
-    	let icon;
+    	let doric_icon;
     	let t;
+    	let doric_icon_class_value;
     	let vars_action;
     	let mounted;
     	let dispose;
 
     	return {
     		c() {
-    			icon = element("icon");
+    			doric_icon = element("doric-icon");
     			t = text(/*name*/ ctx[0]);
-    			attr(icon, "style", /*style*/ ctx[2]);
-    			attr(icon, "class", "svelte-lh4ed6");
-    			toggle_class(icon, "material-icons", !/*outlined*/ ctx[1]);
-    			toggle_class(icon, "material-icons-outlined", /*outlined*/ ctx[1]);
+    			set_custom_element_data(doric_icon, "class", doric_icon_class_value = "" + (null_to_empty(/*klass*/ ctx[2]) + " svelte-ckwsqd"));
+    			toggle_class(doric_icon, "material-icons", !/*outlined*/ ctx[1]);
+    			toggle_class(doric_icon, "material-icons-outlined", /*outlined*/ ctx[1]);
     		},
     		m(target, anchor) {
-    			insert(target, icon, anchor);
-    			append(icon, t);
+    			insert(target, doric_icon, anchor);
+    			append(doric_icon, t);
 
     			if (!mounted) {
-    				dispose = action_destroyer(vars_action = vars.call(null, icon, /*iconVars*/ ctx[3]));
+    				dispose = action_destroyer(vars_action = vars.call(null, doric_icon, /*iconVars*/ ctx[3]));
     				mounted = true;
     			}
     		},
     		p(ctx, [dirty]) {
     			if (dirty & /*name*/ 1) set_data(t, /*name*/ ctx[0]);
 
-    			if (dirty & /*style*/ 4) {
-    				attr(icon, "style", /*style*/ ctx[2]);
+    			if (dirty & /*klass*/ 4 && doric_icon_class_value !== (doric_icon_class_value = "" + (null_to_empty(/*klass*/ ctx[2]) + " svelte-ckwsqd"))) {
+    				set_custom_element_data(doric_icon, "class", doric_icon_class_value);
     			}
 
     			if (vars_action && is_function(vars_action.update) && dirty & /*iconVars*/ 8) vars_action.update.call(null, /*iconVars*/ ctx[3]);
 
-    			if (dirty & /*outlined*/ 2) {
-    				toggle_class(icon, "material-icons", !/*outlined*/ ctx[1]);
+    			if (dirty & /*klass, outlined*/ 6) {
+    				toggle_class(doric_icon, "material-icons", !/*outlined*/ ctx[1]);
     			}
 
-    			if (dirty & /*outlined*/ 2) {
-    				toggle_class(icon, "material-icons-outlined", /*outlined*/ ctx[1]);
+    			if (dirty & /*klass, outlined*/ 6) {
+    				toggle_class(doric_icon, "material-icons-outlined", /*outlined*/ ctx[1]);
     			}
     		},
     		i: noop,
     		o: noop,
     		d(detaching) {
-    			if (detaching) detach(icon);
+    			if (detaching) detach(doric_icon);
     			mounted = false;
     			dispose();
     		}
@@ -2001,13 +1995,13 @@ var demo = (function () {
     	let { name } = $$props;
     	let { outlined = false } = $$props;
     	let { size } = $$props;
-    	let { style = "" } = $$props;
+    	let { class: klass } = $$props;
 
     	$$self.$$set = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("outlined" in $$props) $$invalidate(1, outlined = $$props.outlined);
     		if ("size" in $$props) $$invalidate(4, size = $$props.size);
-    		if ("style" in $$props) $$invalidate(2, style = $$props.style);
+    		if ("class" in $$props) $$invalidate(2, klass = $$props.class);
     	};
 
     	let iconVars;
@@ -2018,14 +2012,14 @@ var demo = (function () {
     		}
     	};
 
-    	return [name, outlined, style, iconVars, size];
+    	return [name, outlined, klass, iconVars, size];
     }
 
     class Icon extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-lh4ed6-style")) add_css$6();
-    		init(this, options, instance$6, create_fragment$7, safe_not_equal, { name: 0, outlined: 1, size: 4, style: 2 });
+    		if (!document.getElementById("svelte-ckwsqd-style")) add_css$6();
+    		init(this, options, instance$6, create_fragment$7, safe_not_equal, { name: 0, outlined: 1, size: 4, class: 2 });
     	}
     }
 
@@ -2033,12 +2027,12 @@ var demo = (function () {
 
     function add_css$7() {
     	var style = element("style");
-    	style.id = "svelte-gylpn1-style";
-    	style.textContent = "checkbox-label.svelte-gylpn1{display:flex;align-items:center}checkbox-check.svelte-gylpn1{grid-area:symbol;align-self:center;justify-self:center}";
+    	style.id = "svelte-gvpcp9-style";
+    	style.textContent = "checkbox-label.svelte-gvpcp9{display:flex;align-items:center}checkbox-check.svelte-gvpcp9{grid-area:symbol;align-self:center;justify-self:center}";
     	append(document.head, style);
     }
 
-    // (63:8) <Button round="40px" color={buttonColor} {disabled} fab>
+    // (51:8) <Button round="40px" color={buttonColor} {disabled} fab>
     function create_default_slot_1(ctx) {
     	let icon_1;
     	let current;
@@ -2080,7 +2074,7 @@ var demo = (function () {
     	};
     }
 
-    // (67:4) <checkbox-label slot="label">
+    // (55:4) <checkbox-label slot="label">
     function create_label_slot(ctx) {
     	let checkbox_label;
     	let current;
@@ -2092,7 +2086,7 @@ var demo = (function () {
     			checkbox_label = element("checkbox-label");
     			if (default_slot) default_slot.c();
     			set_custom_element_data(checkbox_label, "slot", "label");
-    			set_custom_element_data(checkbox_label, "class", "svelte-gylpn1");
+    			set_custom_element_data(checkbox_label, "class", "svelte-gvpcp9");
     		},
     		m(target, anchor) {
     			insert(target, checkbox_label, anchor);
@@ -2126,7 +2120,7 @@ var demo = (function () {
     	};
     }
 
-    // (61:0) <ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement} {labelToggle}>
+    // (49:0) <ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement} {labelToggle}>
     function create_default_slot(ctx) {
     	let checkbox_check;
     	let button;
@@ -2149,7 +2143,7 @@ var demo = (function () {
     			checkbox_check = element("checkbox-check");
     			create_component(button.$$.fragment);
     			t = space();
-    			set_custom_element_data(checkbox_check, "class", "svelte-gylpn1");
+    			set_custom_element_data(checkbox_check, "class", "svelte-gvpcp9");
     		},
     		m(target, anchor) {
     			insert(target, checkbox_check, anchor);
@@ -2254,15 +2248,6 @@ var demo = (function () {
     	let { checkedIcon = "check_box" } = $$props;
     	let { uncheckedIcon = "check_box_outline_blank" } = $$props;
     	let { outlined } = $$props;
-
-    	// const dispatch = createEventDispatcher()
-    	// const toggle = () => {
-    	//     const next = !checked
-    	//     if (functional !== true) {
-    	//         checked = next
-    	//     }
-    	//     dispatch("change", next)
-    	// }
     	const toggle = () => $$invalidate(0, checked = !checked);
 
     	const updateGroup = checked => {
@@ -2332,7 +2317,7 @@ var demo = (function () {
     class Checkbox extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-gylpn1-style")) add_css$7();
+    		if (!document.getElementById("svelte-gvpcp9-style")) add_css$7();
 
     		init(this, options, instance$7, create_fragment$8, safe_not_equal, {
     			group: 9,
@@ -2349,9 +2334,180 @@ var demo = (function () {
     	}
     }
 
-    /* core\portal.svelte generated by Svelte v3.29.4 */
+    /* core\chip.svelte generated by Svelte v3.29.4 */
+
+    function add_css$8() {
+    	var style = element("style");
+    	style.id = "svelte-c8trs3-style";
+    	style.textContent = "chip.svelte-c8trs3{position:relative;overflow:hidden;vertical-align:text-bottom;display:inline-grid;grid-template-columns:minmax(12px, min-content) auto minmax(12px, min-content)\r\n        ;grid-template-areas:\"start-adornment content end-adornment\"\r\n        ;border-radius:16px;height:30px;user-select:none;margin:2px;--fill-color:var(--button-default-fill);--text-color:var(--text-invert);background-color:var(--fill-color);color:var(--text-color);font-weight:500;font-size:var(--text-size-info)}chip.clickable.svelte-c8trs3{cursor:pointer}chip.primary.svelte-c8trs3{--fill-color:var(--primary)}chip.secondary.svelte-c8trs3{--fill-color:var(--secondary)}chip.danger.svelte-c8trs3{--fill-color:var(--danger)}div.svelte-c8trs3{grid-area:content;display:flex;align-items:center}";
+    	append(document.head, style);
+    }
+
+    // (56:4) {#if clickable}
+    function create_if_block(ctx) {
+    	let ripple;
+    	let current;
+    	ripple = new Ripple({});
+
+    	return {
+    		c() {
+    			create_component(ripple.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			mount_component(ripple, target, anchor);
+    			current = true;
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(ripple.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(ripple.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(ripple, detaching);
+    		}
+    	};
+    }
 
     function create_fragment$9(ctx) {
+    	let chip;
+    	let t0;
+    	let t1;
+    	let div;
+    	let t2;
+    	let chip_class_value;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let if_block = /*clickable*/ ctx[2] && create_if_block();
+    	const default_slot_template = /*#slots*/ ctx[4].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
+
+    	return {
+    		c() {
+    			chip = element("chip");
+    			if (if_block) if_block.c();
+    			t0 = space();
+    			if (default_slot) default_slot.c();
+    			t1 = space();
+    			div = element("div");
+    			t2 = text(/*label*/ ctx[0]);
+    			attr(div, "class", "svelte-c8trs3");
+    			attr(chip, "class", chip_class_value = "" + (null_to_empty(/*color*/ ctx[1]) + " svelte-c8trs3"));
+    			toggle_class(chip, "clickable", /*clickable*/ ctx[2]);
+    		},
+    		m(target, anchor) {
+    			insert(target, chip, anchor);
+    			if (if_block) if_block.m(chip, null);
+    			append(chip, t0);
+
+    			if (default_slot) {
+    				default_slot.m(chip, null);
+    			}
+
+    			append(chip, t1);
+    			append(chip, div);
+    			append(div, t2);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen(chip, "tap", /*tap_handler*/ ctx[5]);
+    				mounted = true;
+    			}
+    		},
+    		p(ctx, [dirty]) {
+    			if (/*clickable*/ ctx[2]) {
+    				if (if_block) {
+    					if (dirty & /*clickable*/ 4) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block();
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(chip, t0);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (default_slot) {
+    				if (default_slot.p && dirty & /*$$scope*/ 8) {
+    					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[3], dirty, null, null);
+    				}
+    			}
+
+    			if (!current || dirty & /*label*/ 1) set_data(t2, /*label*/ ctx[0]);
+
+    			if (!current || dirty & /*color*/ 2 && chip_class_value !== (chip_class_value = "" + (null_to_empty(/*color*/ ctx[1]) + " svelte-c8trs3"))) {
+    				attr(chip, "class", chip_class_value);
+    			}
+
+    			if (dirty & /*color, clickable*/ 6) {
+    				toggle_class(chip, "clickable", /*clickable*/ ctx[2]);
+    			}
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(if_block);
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			if (detaching) detach(chip);
+    			if (if_block) if_block.d();
+    			if (default_slot) default_slot.d(detaching);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    function instance$8($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	let { label } = $$props;
+    	let { color } = $$props;
+    	let { clickable } = $$props;
+
+    	function tap_handler(event) {
+    		bubble($$self, event);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ("label" in $$props) $$invalidate(0, label = $$props.label);
+    		if ("color" in $$props) $$invalidate(1, color = $$props.color);
+    		if ("clickable" in $$props) $$invalidate(2, clickable = $$props.clickable);
+    		if ("$$scope" in $$props) $$invalidate(3, $$scope = $$props.$$scope);
+    	};
+
+    	return [label, color, clickable, $$scope, slots, tap_handler];
+    }
+
+    class Chip extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		if (!document.getElementById("svelte-c8trs3-style")) add_css$8();
+    		init(this, options, instance$8, create_fragment$9, safe_not_equal, { label: 0, color: 1, clickable: 2 });
+    	}
+    }
+
+    /* core\portal.svelte generated by Svelte v3.29.4 */
+
+    function create_fragment$a(ctx) {
     	let portal_element;
     	let current;
     	const default_slot_template = /*#slots*/ ctx[2].default;
@@ -2429,13 +2585,13 @@ var demo = (function () {
     class Portal extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance_1, create_fragment$9, safe_not_equal, {});
+    		init(this, options, instance_1, create_fragment$a, safe_not_equal, {});
     	}
     }
 
     /* core\modal.svelte generated by Svelte v3.29.4 */
 
-    function add_css$8() {
+    function add_css$9() {
     	var style = element("style");
     	style.id = "svelte-134cs7e-style";
     	style.textContent = "modal-wrapper.svelte-134cs7e{position:fixed;top:0px;left:0px;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.35);z-index:+100}";
@@ -2443,7 +2599,7 @@ var demo = (function () {
     }
 
     // (29:4) {#if open}
-    function create_if_block(ctx) {
+    function create_if_block$1(ctx) {
     	let modal_wrapper;
     	let div;
     	let modal_wrapper_transition;
@@ -2517,7 +2673,7 @@ var demo = (function () {
     function create_default_slot$1(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*open*/ ctx[0] && create_if_block(ctx);
+    	let if_block = /*open*/ ctx[0] && create_if_block$1(ctx);
 
     	return {
     		c() {
@@ -2538,7 +2694,7 @@ var demo = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block(ctx);
+    					if_block = create_if_block$1(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -2569,7 +2725,7 @@ var demo = (function () {
     	};
     }
 
-    function create_fragment$a(ctx) {
+    function create_fragment$b(ctx) {
     	let portal;
     	let current;
 
@@ -2612,7 +2768,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$8($$self, $$props, $$invalidate) {
+    function instance$9($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { open = false } = $$props;
     	const dispatch = createEventDispatcher();
@@ -2636,21 +2792,21 @@ var demo = (function () {
     class Modal extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-134cs7e-style")) add_css$8();
-    		init(this, options, instance$8, create_fragment$a, safe_not_equal, { open: 0 });
+    		if (!document.getElementById("svelte-134cs7e-style")) add_css$9();
+    		init(this, options, instance$9, create_fragment$b, safe_not_equal, { open: 0 });
     	}
     }
 
     /* core\text.svelte generated by Svelte v3.29.4 */
 
-    function add_css$9() {
+    function add_css$a() {
     	var style = element("style");
-    	style.id = "svelte-1x2vfn2-style";
-    	style.textContent = ".block.svelte-1x2vfn2{display:block}.title.svelte-1x2vfn2{display:block;font-size:var(--text-size-title);font-weight:400;margin:8px 0px}.header.svelte-1x2vfn2{display:block;font-size:var(--text-size-header);font-weight:400;margin:4px 0px}.varaint-secondary.svelte-1x2vfn2{color:var(--text-secondary);font-size:var(--text-size-secondary)}.primary.svelte-1x2vfn2{color:var(--primary)}.secondary.svelte-1x2vfn2{color:var(--secondary)}.danger.svelte-1x2vfn2{color:var(--danger)}";
+    	style.id = "svelte-tdi7la-style";
+    	style.textContent = ".block.svelte-tdi7la{display:block}.title.svelte-tdi7la{display:block;font-size:var(--text-size-title);font-weight:400;margin:8px 0px}.header.svelte-tdi7la{display:block;font-size:var(--text-size-header);font-weight:400;margin:4px 0px}.variant-secondary.svelte-tdi7la{color:var(--text-secondary);font-size:var(--text-size-secondary)}.primary.svelte-tdi7la{color:var(--primary)}.secondary.svelte-tdi7la{color:var(--secondary)}.danger.svelte-tdi7la{color:var(--danger)}";
     	append(document.head, style);
     }
 
-    function create_fragment$b(ctx) {
+    function create_fragment$c(ctx) {
     	let span;
     	let span_class_value;
     	let current;
@@ -2661,7 +2817,7 @@ var demo = (function () {
     		c() {
     			span = element("span");
     			if (default_slot) default_slot.c();
-    			attr(span, "class", span_class_value = "" + (/*variant*/ ctx[0] + " " + /*color*/ ctx[2] + " " + /*klass*/ ctx[3] + " svelte-1x2vfn2"));
+    			attr(span, "class", span_class_value = "" + (/*variant*/ ctx[0] + " " + /*color*/ ctx[2] + " " + /*klass*/ ctx[3] + " svelte-tdi7la"));
     			toggle_class(span, "block", /*block*/ ctx[1]);
     		},
     		m(target, anchor) {
@@ -2680,7 +2836,7 @@ var demo = (function () {
     				}
     			}
 
-    			if (!current || dirty & /*variant, color, klass*/ 13 && span_class_value !== (span_class_value = "" + (/*variant*/ ctx[0] + " " + /*color*/ ctx[2] + " " + /*klass*/ ctx[3] + " svelte-1x2vfn2"))) {
+    			if (!current || dirty & /*variant, color, klass*/ 13 && span_class_value !== (span_class_value = "" + (/*variant*/ ctx[0] + " " + /*color*/ ctx[2] + " " + /*klass*/ ctx[3] + " svelte-tdi7la"))) {
     				attr(span, "class", span_class_value);
     			}
 
@@ -2704,7 +2860,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$9($$self, $$props, $$invalidate) {
+    function instance$a($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { variant = "" } = $$props;
     	let { block = false } = $$props;
@@ -2729,14 +2885,14 @@ var demo = (function () {
     class Text extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-1x2vfn2-style")) add_css$9();
-    		init(this, options, instance$9, create_fragment$b, safe_not_equal, { variant: 0, block: 1, color: 2, class: 3 });
+    		if (!document.getElementById("svelte-tdi7la-style")) add_css$a();
+    		init(this, options, instance$a, create_fragment$c, safe_not_equal, { variant: 0, block: 1, color: 2, class: 3 });
     	}
     }
 
     /* core\drawer.svelte generated by Svelte v3.29.4 */
 
-    function add_css$a() {
+    function add_css$b() {
     	var style = element("style");
     	style.id = "svelte-1mk1kzg-style";
     	style.textContent = "drawer-wrapper.svelte-1mk1kzg{position:absolute;top:0px;left:0px;height:100vh;min-width:5vw;background-color:var(--card-background)}";
@@ -2798,7 +2954,7 @@ var demo = (function () {
     	};
     }
 
-    function create_fragment$c(ctx) {
+    function create_fragment$d(ctx) {
     	let modal;
     	let current;
 
@@ -2845,7 +3001,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$a($$self, $$props, $$invalidate) {
+    function instance$b($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { open = false } = $$props;
 
@@ -2875,14 +3031,14 @@ var demo = (function () {
     class Drawer extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-1mk1kzg-style")) add_css$a();
-    		init(this, options, instance$a, create_fragment$c, safe_not_equal, { open: 0 });
+    		if (!document.getElementById("svelte-1mk1kzg-style")) add_css$b();
+    		init(this, options, instance$b, create_fragment$d, safe_not_equal, { open: 0 });
     	}
     }
 
     /* core\list.svelte generated by Svelte v3.29.4 */
 
-    function add_css$b() {
+    function add_css$c() {
     	var style = element("style");
     	style.id = "svelte-ygl8ed-style";
     	style.textContent = "doric-list.svelte-ygl8ed{display:grid;grid-template-columns:1fr;overflow:auto;height:var(--list-height)}doric-list.svelte-ygl8ed>list-item, list-header{display:grid;position:relative;overflow:hidden;padding:12px 16px;color:var(--text-normal);grid-template-areas:\"start-adornment content end-adornment\"\r\n        ;grid-template-columns:auto 1fr auto}doric-list.svelte-ygl8ed>list-header > list-header-content{font-size:var(--text-size-header);font-weight:700}doric-list.svelte-ygl8ed>list-item > a{position:absolute;top:0px;left:0px;bottom:0px;right:0px;opacity:0}doric-list.svelte-ygl8ed>list-item[dividers]{border-top:1px solid var(--text-secondary);border-bottom:1px solid var(--text-secondary);margin-top:-1px}doric-list.svelte-ygl8ed>list-item > list-item-content, list-header > list-header-content{grid-area:content;display:flex;flex-direction:column;justify-content:center;align-items:stretch;grid-area:content}doric-list.svelte-ygl8ed>list-item[control]{padding:0px}list-item.svelte-ygl8ed{border:1px solid blue}";
@@ -2945,7 +3101,7 @@ var demo = (function () {
     }
 
     // (87:8) {#if item.header !== undefined}
-    function create_if_block$1(ctx) {
+    function create_if_block$2(ctx) {
     	let current;
     	const header_slot_template = /*#slots*/ ctx[5].header;
     	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[4], get_header_slot_context);
@@ -3057,7 +3213,7 @@ var demo = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$1, create_else_block];
+    	const if_block_creators = [create_if_block$2, create_else_block];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -3119,7 +3275,7 @@ var demo = (function () {
     	};
     }
 
-    function create_fragment$d(ctx) {
+    function create_fragment$e(ctx) {
     	let doric_list;
     	let doric_list_class_value;
     	let current;
@@ -3220,7 +3376,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$b($$self, $$props, $$invalidate) {
+    function instance$c($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { items = [] } = $$props;
     	let { height } = $$props;
@@ -3241,9 +3397,9 @@ var demo = (function () {
     class List extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-ygl8ed-style")) add_css$b();
+    		if (!document.getElementById("svelte-ygl8ed-style")) add_css$c();
 
-    		init(this, options, instance$b, create_fragment$d, safe_not_equal, {
+    		init(this, options, instance$c, create_fragment$e, safe_not_equal, {
     			items: 0,
     			height: 1,
     			compact: 2,
@@ -3316,7 +3472,7 @@ var demo = (function () {
 
     /* core\tabs.svelte generated by Svelte v3.29.4 */
 
-    function create_fragment$e(ctx) {
+    function create_fragment$f(ctx) {
     	let current;
     	const default_slot_template = /*#slots*/ ctx[2].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[1], null);
@@ -3356,7 +3512,7 @@ var demo = (function () {
 
     const tabContext = {};
 
-    function instance$c($$self, $$props, $$invalidate) {
+    function instance$d($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { selectedTab = null } = $$props;
     	const currentTab = writable(selectedTab);
@@ -3380,20 +3536,20 @@ var demo = (function () {
     class Tabs extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$c, create_fragment$e, safe_not_equal, { selectedTab: 0 });
+    		init(this, options, instance$d, create_fragment$f, safe_not_equal, { selectedTab: 0 });
     	}
     }
 
     /* core\tabs\panel.svelte generated by Svelte v3.29.4 */
 
-    function add_css$c() {
+    function add_css$d() {
     	var style = element("style");
-    	style.id = "svelte-1fcwp5r-style";
-    	style.textContent = "tab-panel.svelte-1fcwp5r{display:none;grid-area:panel}tab-panel.active.svelte-1fcwp5r{display:block}";
+    	style.id = "svelte-f2qpgf-style";
+    	style.textContent = "tab-panel.svelte-f2qpgf{display:none;grid-area:panel}tab-panel.active.svelte-f2qpgf{display:block}";
     	append(document.head, style);
     }
 
-    function create_fragment$f(ctx) {
+    function create_fragment$g(ctx) {
     	let tab_panel;
     	let current;
     	const default_slot_template = /*#slots*/ ctx[4].default;
@@ -3403,7 +3559,7 @@ var demo = (function () {
     		c() {
     			tab_panel = element("tab-panel");
     			if (default_slot) default_slot.c();
-    			set_custom_element_data(tab_panel, "class", "svelte-1fcwp5r");
+    			set_custom_element_data(tab_panel, "class", "svelte-f2qpgf");
     			toggle_class(tab_panel, "active", /*$currentTab*/ ctx[1] === /*value*/ ctx[0]);
     		},
     		m(target, anchor) {
@@ -3442,7 +3598,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$d($$self, $$props, $$invalidate) {
+    function instance$e($$self, $$props, $$invalidate) {
     	let $currentTab;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { value } = $$props;
@@ -3460,32 +3616,33 @@ var demo = (function () {
     class Panel extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-1fcwp5r-style")) add_css$c();
-    		init(this, options, instance$d, create_fragment$f, safe_not_equal, { value: 0 });
+    		if (!document.getElementById("svelte-f2qpgf-style")) add_css$d();
+    		init(this, options, instance$e, create_fragment$g, safe_not_equal, { value: 0 });
     	}
     }
 
     /* core\title-bar.svelte generated by Svelte v3.29.4 */
 
-    function add_css$d() {
+    function add_css$e() {
     	var style = element("style");
-    	style.id = "svelte-jxepe7-style";
-    	style.textContent = "doric-title-bar.svelte-jxepe7{position:relative;z-index:+0;height:56px;background-color:var(--title-bar-background);color:var(--title-bar-text);display:grid;grid-template-columns:min-content auto min-content;grid-template-areas:\"start-adornment title end-adornment\"\r\n        ;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.25);--text-normal:var(--title-bar-text);--ripple-color:var(--ripple-dark)}doric-title-bar.sticky.svelte-jxepe7{position:sticky;top:0px;left:0px;right:0px;z-index:+50}doric-title-bar.svelte-jxepe7>title-text{grid-area:title;font-size:var(--text-size-title);display:flex;align-items:center;padding:8px;font-weight:700;user-select:none}";
+    	style.id = "svelte-1rk9s8w-style";
+    	style.textContent = "doric-title-bar.svelte-1rk9s8w{position:relative;z-index:+0;height:56px;background-color:var(--title-bar-background);color:var(--title-bar-text);display:grid;grid-template-columns:min-content auto min-content;grid-template-areas:\"start-adornment title end-adornment\"\r\n        ;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.25);--text-normal:var(--title-bar-text);--ripple-color:var(--ripple-dark)}doric-title-bar.sticky.svelte-1rk9s8w{position:sticky;top:0px;left:0px;right:0px;z-index:+50}doric-title-bar.svelte-1rk9s8w>title-text{grid-area:title;font-size:var(--text-size-title);display:flex;align-items:center;padding:8px;font-weight:700;user-select:none}doric-title-bar.center.svelte-1rk9s8w>title-text{justify-content:center}";
     	append(document.head, style);
     }
 
-    function create_fragment$g(ctx) {
+    function create_fragment$h(ctx) {
     	let doric_title_bar;
     	let current;
-    	const default_slot_template = /*#slots*/ ctx[2].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[1], null);
+    	const default_slot_template = /*#slots*/ ctx[3].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[2], null);
 
     	return {
     		c() {
     			doric_title_bar = element("doric-title-bar");
     			if (default_slot) default_slot.c();
-    			set_custom_element_data(doric_title_bar, "class", "svelte-jxepe7");
+    			set_custom_element_data(doric_title_bar, "class", "svelte-1rk9s8w");
     			toggle_class(doric_title_bar, "sticky", /*sticky*/ ctx[0]);
+    			toggle_class(doric_title_bar, "center", /*center*/ ctx[1]);
     		},
     		m(target, anchor) {
     			insert(target, doric_title_bar, anchor);
@@ -3498,13 +3655,17 @@ var demo = (function () {
     		},
     		p(ctx, [dirty]) {
     			if (default_slot) {
-    				if (default_slot.p && dirty & /*$$scope*/ 2) {
-    					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[1], dirty, null, null);
+    				if (default_slot.p && dirty & /*$$scope*/ 4) {
+    					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[2], dirty, null, null);
     				}
     			}
 
     			if (dirty & /*sticky*/ 1) {
     				toggle_class(doric_title_bar, "sticky", /*sticky*/ ctx[0]);
+    			}
+
+    			if (dirty & /*center*/ 2) {
+    				toggle_class(doric_title_bar, "center", /*center*/ ctx[1]);
     			}
     		},
     		i(local) {
@@ -3523,29 +3684,31 @@ var demo = (function () {
     	};
     }
 
-    function instance$e($$self, $$props, $$invalidate) {
+    function instance$f($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { sticky } = $$props;
+    	let { center } = $$props;
 
     	$$self.$$set = $$props => {
     		if ("sticky" in $$props) $$invalidate(0, sticky = $$props.sticky);
-    		if ("$$scope" in $$props) $$invalidate(1, $$scope = $$props.$$scope);
+    		if ("center" in $$props) $$invalidate(1, center = $$props.center);
+    		if ("$$scope" in $$props) $$invalidate(2, $$scope = $$props.$$scope);
     	};
 
-    	return [sticky, $$scope, slots];
+    	return [sticky, center, $$scope, slots];
     }
 
     class Title_bar extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-jxepe7-style")) add_css$d();
-    		init(this, options, instance$e, create_fragment$g, safe_not_equal, { sticky: 0 });
+    		if (!document.getElementById("svelte-1rk9s8w-style")) add_css$e();
+    		init(this, options, instance$f, create_fragment$h, safe_not_equal, { sticky: 0, center: 1 });
     	}
     }
 
     /* core\theme\dark.svelte generated by Svelte v3.29.4 */
 
-    function create_fragment$h(ctx) {
+    function create_fragment$i(ctx) {
     	let html_tag;
     	let html_anchor;
 
@@ -3568,7 +3731,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$f($$self) {
+    function instance$g($$self) {
     	const theme = css`
         body {
             --font: Inconsolata;
@@ -3610,13 +3773,13 @@ var demo = (function () {
     class Dark extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$f, create_fragment$h, safe_not_equal, {});
+    		init(this, options, instance$g, create_fragment$i, safe_not_equal, {});
     	}
     }
 
     /* core\theme\light.svelte generated by Svelte v3.29.4 */
 
-    function create_fragment$i(ctx) {
+    function create_fragment$j(ctx) {
     	let html_tag;
     	let html_anchor;
 
@@ -3639,7 +3802,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$g($$self) {
+    function instance$h($$self) {
     	const theme = css`
         body {
             --font: Roboto;
@@ -3680,7 +3843,7 @@ var demo = (function () {
     class Light extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$g, create_fragment$i, safe_not_equal, {});
+    		init(this, options, instance$h, create_fragment$j, safe_not_equal, {});
     	}
     }
 
@@ -3712,7 +3875,7 @@ var demo = (function () {
 
     /* demo\src\components\button.svelte generated by Svelte v3.29.4 */
 
-    function add_css$e() {
+    function add_css$f() {
     	var style = element("style");
     	style.id = "svelte-qipcer-style";
     	style.textContent = "grid.svelte-qipcer{display:grid;grid-template-columns:repeat(4, 1fr);grid-gap:4px}";
@@ -4286,7 +4449,7 @@ var demo = (function () {
     	};
     }
 
-    function create_fragment$j(ctx) {
+    function create_fragment$k(ctx) {
     	let card;
     	let current;
 
@@ -4329,7 +4492,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$h($$self, $$props, $$invalidate) {
+    function instance$i($$self, $$props, $$invalidate) {
     	let clicked = [];
     	const buttonTypes = ["normal", "outline", "fill"];
     	const buttonColors = ["default", "primary", "secondary", "danger"];
@@ -4340,8 +4503,478 @@ var demo = (function () {
     class Button_1 extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document.getElementById("svelte-qipcer-style")) add_css$e();
-    		init(this, options, instance$h, create_fragment$j, safe_not_equal, {});
+    		if (!document.getElementById("svelte-qipcer-style")) add_css$f();
+    		init(this, options, instance$i, create_fragment$k, safe_not_equal, {});
+    	}
+    }
+
+    /* demo\src\components\chip.svelte generated by Svelte v3.29.4 */
+
+    function get_each_context$3(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[3] = list[i];
+    	return child_ctx;
+    }
+
+    // (20:4) <TitleBar>
+    function create_default_slot_5$1(ctx) {
+    	let title_text;
+
+    	return {
+    		c() {
+    			title_text = element("title-text");
+    			title_text.textContent = "Chips";
+    		},
+    		m(target, anchor) {
+    			insert(target, title_text, anchor);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(title_text);
+    		}
+    	};
+    }
+
+    // (31:20) <Adornment position="start">
+    function create_default_slot_4$1(ctx) {
+    	let icon;
+    	let current;
+    	icon = new Icon({ props: { name: "check" } });
+
+    	return {
+    		c() {
+    			create_component(icon.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			mount_component(icon, target, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i(local) {
+    			if (current) return;
+    			transition_in(icon.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(icon.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(icon, detaching);
+    		}
+    	};
+    }
+
+    // (30:16) <Chip label={color} {color} clickable on:tap={() => console.log(color)}>
+    function create_default_slot_3$1(ctx) {
+    	let adornment;
+    	let current;
+
+    	adornment = new Adornment({
+    			props: {
+    				position: "start",
+    				$$slots: { default: [create_default_slot_4$1] },
+    				$$scope: { ctx }
+    			}
+    		});
+
+    	return {
+    		c() {
+    			create_component(adornment.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			mount_component(adornment, target, anchor);
+    			current = true;
+    		},
+    		p(ctx, dirty) {
+    			const adornment_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				adornment_changes.$$scope = { dirty, ctx };
+    			}
+
+    			adornment.$set(adornment_changes);
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(adornment.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(adornment.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(adornment, detaching);
+    		}
+    	};
+    }
+
+    // (36:20) <Adornment position="end">
+    function create_default_slot_2$1(ctx) {
+    	let icon;
+    	let current;
+    	icon = new Icon({ props: { name: "close" } });
+
+    	return {
+    		c() {
+    			create_component(icon.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			mount_component(icon, target, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i(local) {
+    			if (current) return;
+    			transition_in(icon.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(icon.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(icon, detaching);
+    		}
+    	};
+    }
+
+    // (35:16) <Chip label={color} {color} clickable on:tap={() => console.log(color)}>
+    function create_default_slot_1$2(ctx) {
+    	let adornment;
+    	let current;
+
+    	adornment = new Adornment({
+    			props: {
+    				position: "end",
+    				$$slots: { default: [create_default_slot_2$1] },
+    				$$scope: { ctx }
+    			}
+    		});
+
+    	return {
+    		c() {
+    			create_component(adornment.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			mount_component(adornment, target, anchor);
+    			current = true;
+    		},
+    		p(ctx, dirty) {
+    			const adornment_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				adornment_changes.$$scope = { dirty, ctx };
+    			}
+
+    			adornment.$set(adornment_changes);
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(adornment.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(adornment.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(adornment, detaching);
+    		}
+    	};
+    }
+
+    // (26:8) {#each colors as color}
+    function create_each_block$3(ctx) {
+    	let div;
+    	let chip0;
+    	let t0;
+    	let chip1;
+    	let t1;
+    	let chip2;
+    	let t2;
+    	let chip3;
+    	let t3;
+    	let current;
+
+    	chip0 = new Chip({
+    			props: {
+    				label: /*color*/ ctx[3],
+    				color: /*color*/ ctx[3]
+    			}
+    		});
+
+    	chip1 = new Chip({
+    			props: {
+    				label: /*color*/ ctx[3],
+    				color: /*color*/ ctx[3],
+    				clickable: true
+    			}
+    		});
+
+    	function tap_handler(...args) {
+    		return /*tap_handler*/ ctx[1](/*color*/ ctx[3], ...args);
+    	}
+
+    	chip2 = new Chip({
+    			props: {
+    				label: /*color*/ ctx[3],
+    				color: /*color*/ ctx[3],
+    				clickable: true,
+    				$$slots: { default: [create_default_slot_3$1] },
+    				$$scope: { ctx }
+    			}
+    		});
+
+    	chip2.$on("tap", tap_handler);
+
+    	function tap_handler_1(...args) {
+    		return /*tap_handler_1*/ ctx[2](/*color*/ ctx[3], ...args);
+    	}
+
+    	chip3 = new Chip({
+    			props: {
+    				label: /*color*/ ctx[3],
+    				color: /*color*/ ctx[3],
+    				clickable: true,
+    				$$slots: { default: [create_default_slot_1$2] },
+    				$$scope: { ctx }
+    			}
+    		});
+
+    	chip3.$on("tap", tap_handler_1);
+
+    	return {
+    		c() {
+    			div = element("div");
+    			create_component(chip0.$$.fragment);
+    			t0 = space();
+    			create_component(chip1.$$.fragment);
+    			t1 = space();
+    			create_component(chip2.$$.fragment);
+    			t2 = space();
+    			create_component(chip3.$$.fragment);
+    			t3 = space();
+    		},
+    		m(target, anchor) {
+    			insert(target, div, anchor);
+    			mount_component(chip0, div, null);
+    			append(div, t0);
+    			mount_component(chip1, div, null);
+    			append(div, t1);
+    			mount_component(chip2, div, null);
+    			append(div, t2);
+    			mount_component(chip3, div, null);
+    			append(div, t3);
+    			current = true;
+    		},
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			const chip2_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				chip2_changes.$$scope = { dirty, ctx };
+    			}
+
+    			chip2.$set(chip2_changes);
+    			const chip3_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				chip3_changes.$$scope = { dirty, ctx };
+    			}
+
+    			chip3.$set(chip3_changes);
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(chip0.$$.fragment, local);
+    			transition_in(chip1.$$.fragment, local);
+    			transition_in(chip2.$$.fragment, local);
+    			transition_in(chip3.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(chip0.$$.fragment, local);
+    			transition_out(chip1.$$.fragment, local);
+    			transition_out(chip2.$$.fragment, local);
+    			transition_out(chip3.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			if (detaching) detach(div);
+    			destroy_component(chip0);
+    			destroy_component(chip1);
+    			destroy_component(chip2);
+    			destroy_component(chip3);
+    		}
+    	};
+    }
+
+    // (19:0) <Card>
+    function create_default_slot$4(ctx) {
+    	let titlebar;
+    	let t;
+    	let card_content;
+    	let current;
+
+    	titlebar = new Title_bar({
+    			props: {
+    				$$slots: { default: [create_default_slot_5$1] },
+    				$$scope: { ctx }
+    			}
+    		});
+
+    	let each_value = /*colors*/ ctx[0];
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	return {
+    		c() {
+    			create_component(titlebar.$$.fragment);
+    			t = space();
+    			card_content = element("card-content");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+    		},
+    		m(target, anchor) {
+    			mount_component(titlebar, target, anchor);
+    			insert(target, t, anchor);
+    			insert(target, card_content, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(card_content, null);
+    			}
+
+    			current = true;
+    		},
+    		p(ctx, dirty) {
+    			const titlebar_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				titlebar_changes.$$scope = { dirty, ctx };
+    			}
+
+    			titlebar.$set(titlebar_changes);
+
+    			if (dirty & /*colors, console*/ 1) {
+    				each_value = /*colors*/ ctx[0];
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$3(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$3(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(card_content, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(titlebar.$$.fragment, local);
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(titlebar.$$.fragment, local);
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(titlebar, detaching);
+    			if (detaching) detach(t);
+    			if (detaching) detach(card_content);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+    }
+
+    function create_fragment$l(ctx) {
+    	let card;
+    	let current;
+
+    	card = new Card({
+    			props: {
+    				$$slots: { default: [create_default_slot$4] },
+    				$$scope: { ctx }
+    			}
+    		});
+
+    	return {
+    		c() {
+    			create_component(card.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			mount_component(card, target, anchor);
+    			current = true;
+    		},
+    		p(ctx, [dirty]) {
+    			const card_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				card_changes.$$scope = { dirty, ctx };
+    			}
+
+    			card.$set(card_changes);
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(card.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(card.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(card, detaching);
+    		}
+    	};
+    }
+
+    function instance$j($$self) {
+    	const colors = ["normal", "primary", "secondary", "danger"];
+    	const tap_handler = color => console.log(color);
+    	const tap_handler_1 = color => console.log(color);
+    	return [colors, tap_handler, tap_handler_1];
+    }
+
+    class Chip_1 extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		init(this, options, instance$j, create_fragment$l, safe_not_equal, {});
     	}
     }
 
@@ -4349,21 +4982,21 @@ var demo = (function () {
 
     const { document: document_1 } = globals;
 
-    function add_css$f() {
+    function add_css$g() {
     	var style = element("style");
     	style.id = "svelte-1kt789m-style";
     	style.textContent = "page-layout.svelte-1kt789m{display:grid;grid-template-rows:min-content auto}demo-area.svelte-1kt789m{display:block;width:100%;max-width:1024px;margin:auto}";
     	append(document_1.head, style);
     }
 
-    function get_each_context$3(ctx, list, i) {
+    function get_each_context$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[13] = list[i][0];
     	child_ctx[14] = list[i][1];
     	return child_ctx;
     }
 
-    // (97:12) <Button on:click={openMenu} fab round="40px">
+    // (99:12) <Button on:tap={openMenu} fab round="40px">
     function create_default_slot_10(ctx) {
     	let icon;
     	let current;
@@ -4393,7 +5026,7 @@ var demo = (function () {
     	};
     }
 
-    // (96:8) <Adornment position="start">
+    // (98:8) <Adornment position="start">
     function create_default_slot_9(ctx) {
     	let button;
     	let current;
@@ -4407,7 +5040,7 @@ var demo = (function () {
     			}
     		});
 
-    	button.$on("click", /*openMenu*/ ctx[7]);
+    	button.$on("tap", /*openMenu*/ ctx[7]);
 
     	return {
     		c() {
@@ -4441,7 +5074,7 @@ var demo = (function () {
     	};
     }
 
-    // (102:8) <Adornment position="end">
+    // (104:8) <Adornment position="end">
     function create_default_slot_8(ctx) {
     	let checkbox;
     	let updating_checked;
@@ -4497,7 +5130,7 @@ var demo = (function () {
     	};
     }
 
-    // (91:4) <TitleBar sticky>
+    // (93:4) <TitleBar sticky>
     function create_default_slot_7(ctx) {
     	let title_text;
     	let t1;
@@ -4576,7 +5209,7 @@ var demo = (function () {
     	};
     }
 
-    // (114:12) <TitleBar>
+    // (116:12) <TitleBar>
     function create_default_slot_6(ctx) {
     	let title_text;
 
@@ -4594,8 +5227,8 @@ var demo = (function () {
     	};
     }
 
-    // (122:24) <Button on:click={nav(item)}>
-    function create_default_slot_5$1(ctx) {
+    // (124:24) <Button on:tap={nav(item)}>
+    function create_default_slot_5$2(ctx) {
     	let t_value = /*item*/ ctx[17].replace(/\b\w/g, func) + "";
     	let t;
 
@@ -4615,7 +5248,7 @@ var demo = (function () {
     	};
     }
 
-    // (120:16) <list-item let:item slot="item" dividers control>
+    // (122:16) <list-item let:item slot="item" dividers control>
     function create_item_slot(ctx) {
     	let list_item;
     	let list_item_content;
@@ -4624,12 +5257,12 @@ var demo = (function () {
 
     	button = new Button({
     			props: {
-    				$$slots: { default: [create_default_slot_5$1] },
+    				$$slots: { default: [create_default_slot_5$2] },
     				$$scope: { ctx }
     			}
     		});
 
-    	button.$on("click", function () {
+    	button.$on("tap", function () {
     		if (is_function(/*nav*/ ctx[6](/*item*/ ctx[17]))) /*nav*/ ctx[6](/*item*/ ctx[17]).apply(this, arguments);
     	});
 
@@ -4674,8 +5307,8 @@ var demo = (function () {
     	};
     }
 
-    // (112:8) <Drawer bind:open on:close={closeMenu}>
-    function create_default_slot_3$1(ctx) {
+    // (114:8) <Drawer bind:open on:close={closeMenu}>
+    function create_default_slot_3$2(ctx) {
     	let div;
     	let t0;
     	let titlebar;
@@ -4758,8 +5391,8 @@ var demo = (function () {
     	};
     }
 
-    // (131:12) <TabPanel value="">
-    function create_default_slot_2$1(ctx) {
+    // (133:12) <TabPanel value="">
+    function create_default_slot_2$2(ctx) {
     	let t;
 
     	return {
@@ -4775,8 +5408,8 @@ var demo = (function () {
     	};
     }
 
-    // (135:16) <TabPanel value="/{demo}">
-    function create_default_slot_1$2(ctx) {
+    // (137:16) <TabPanel value="/{demo}">
+    function create_default_slot_1$3(ctx) {
     	let switch_instance;
     	let t;
     	let current;
@@ -4842,15 +5475,15 @@ var demo = (function () {
     	};
     }
 
-    // (134:12) {#each Object.entries(demos) as [demo, component]}
-    function create_each_block$3(ctx) {
+    // (136:12) {#each Object.entries(demos) as [demo, component]}
+    function create_each_block$4(ctx) {
     	let tabpanel;
     	let current;
 
     	tabpanel = new Panel({
     			props: {
     				value: "/" + /*demo*/ ctx[13],
-    				$$slots: { default: [create_default_slot_1$2] },
+    				$$slots: { default: [create_default_slot_1$3] },
     				$$scope: { ctx }
     			}
     		});
@@ -4887,8 +5520,8 @@ var demo = (function () {
     	};
     }
 
-    // (111:4) <Tabs bind:selectedTab>
-    function create_default_slot$4(ctx) {
+    // (113:4) <Tabs bind:selectedTab>
+    function create_default_slot$5(ctx) {
     	let drawer;
     	let updating_open;
     	let t0;
@@ -4902,7 +5535,7 @@ var demo = (function () {
     	}
 
     	let drawer_props = {
-    		$$slots: { default: [create_default_slot_3$1] },
+    		$$slots: { default: [create_default_slot_3$2] },
     		$$scope: { ctx }
     	};
 
@@ -4917,7 +5550,7 @@ var demo = (function () {
     	tabpanel = new Panel({
     			props: {
     				value: "",
-    				$$slots: { default: [create_default_slot_2$1] },
+    				$$slots: { default: [create_default_slot_2$2] },
     				$$scope: { ctx }
     			}
     		});
@@ -4926,7 +5559,7 @@ var demo = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$4(get_each_context$4(ctx, each_value, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -4987,13 +5620,13 @@ var demo = (function () {
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$3(ctx, each_value, i);
+    					const child_ctx = get_each_context$4(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block$3(child_ctx);
+    						each_blocks[i] = create_each_block$4(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(demo_area, null);
@@ -5041,8 +5674,8 @@ var demo = (function () {
     	};
     }
 
-    function create_fragment$k(ctx) {
-    	let apptheme;
+    function create_fragment$m(ctx) {
+    	let appstyle;
     	let t0;
     	let page_layout;
     	let titlebar;
@@ -5051,7 +5684,7 @@ var demo = (function () {
     	let updating_selectedTab;
     	let current;
 
-    	apptheme = new App_theme({
+    	appstyle = new App_style({
     			props: { theme: /*theme*/ ctx[3], baseline: Baseline }
     		});
 
@@ -5068,7 +5701,7 @@ var demo = (function () {
     	}
 
     	let tabs_props = {
-    		$$slots: { default: [create_default_slot$4] },
+    		$$slots: { default: [create_default_slot$5] },
     		$$scope: { ctx }
     	};
 
@@ -5081,7 +5714,7 @@ var demo = (function () {
 
     	return {
     		c() {
-    			create_component(apptheme.$$.fragment);
+    			create_component(appstyle.$$.fragment);
     			t0 = space();
     			page_layout = element("page-layout");
     			create_component(titlebar.$$.fragment);
@@ -5090,7 +5723,7 @@ var demo = (function () {
     			set_custom_element_data(page_layout, "class", "svelte-1kt789m");
     		},
     		m(target, anchor) {
-    			mount_component(apptheme, target, anchor);
+    			mount_component(appstyle, target, anchor);
     			insert(target, t0, anchor);
     			insert(target, page_layout, anchor);
     			mount_component(titlebar, page_layout, null);
@@ -5099,9 +5732,9 @@ var demo = (function () {
     			current = true;
     		},
     		p(ctx, [dirty]) {
-    			const apptheme_changes = {};
-    			if (dirty & /*theme*/ 8) apptheme_changes.theme = /*theme*/ ctx[3];
-    			apptheme.$set(apptheme_changes);
+    			const appstyle_changes = {};
+    			if (dirty & /*theme*/ 8) appstyle_changes.theme = /*theme*/ ctx[3];
+    			appstyle.$set(appstyle_changes);
     			const titlebar_changes = {};
 
     			if (dirty & /*$$scope, checked*/ 262145) {
@@ -5125,19 +5758,19 @@ var demo = (function () {
     		},
     		i(local) {
     			if (current) return;
-    			transition_in(apptheme.$$.fragment, local);
+    			transition_in(appstyle.$$.fragment, local);
     			transition_in(titlebar.$$.fragment, local);
     			transition_in(tabs.$$.fragment, local);
     			current = true;
     		},
     		o(local) {
-    			transition_out(apptheme.$$.fragment, local);
+    			transition_out(appstyle.$$.fragment, local);
     			transition_out(titlebar.$$.fragment, local);
     			transition_out(tabs.$$.fragment, local);
     			current = false;
     		},
     		d(detaching) {
-    			destroy_component(apptheme, detaching);
+    			destroy_component(appstyle, detaching);
     			if (detaching) detach(t0);
     			if (detaching) detach(page_layout);
     			destroy_component(titlebar);
@@ -5148,19 +5781,19 @@ var demo = (function () {
 
     const func = s => s.toUpperCase();
 
-    function instance$i($$self, $$props, $$invalidate) {
+    function instance$k($$self, $$props, $$invalidate) {
     	let $hash;
     	component_subscribe($$self, hashStore, $$value => $$invalidate(12, $hash = $$value));
     	let checked = JSON.parse(localStorage.themeToggle ?? "false");
 
     	const demos = {
     		// "app-bar": TitleBarDemo,
-    		"button": Button_1
-    	}; // "chip": ChipDemo,
-    	// "list": ListDemo,
+    		"button": Button_1,
+    		"chip": Chip_1
+    	}; // "list": ListDemo,
     	// "textArea": TextAreaDemo,
-
     	// "textInput": TextInputDemo,
+
     	// table: TableDemo,
     	// checkbox: CheckboxDemo,
     	const demoList = Object.keys(demos).sort();
@@ -5190,7 +5823,6 @@ var demo = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*$hash*/ 4096) {
-    			// import ListDemo from "./components/list.svelte"
     			// import TableDemo from "./components/table.svelte"
     			// import TextAreaDemo from "./components/text-area.svelte"
     			// import TextInputDemo from "./components/text-input.svelte"
@@ -5238,8 +5870,8 @@ var demo = (function () {
     class App extends SvelteComponent {
     	constructor(options) {
     		super();
-    		if (!document_1.getElementById("svelte-1kt789m-style")) add_css$f();
-    		init(this, options, instance$i, create_fragment$k, safe_not_equal, {});
+    		if (!document_1.getElementById("svelte-1kt789m-style")) add_css$g();
+    		init(this, options, instance$k, create_fragment$m, safe_not_equal, {});
     	}
     }
 

@@ -1,5 +1,6 @@
 <script>
     export let sticky
+    export let center
 ;</script>
 
 <style>
@@ -36,8 +37,11 @@
         font-weight: 700;
         user-select: none;
     }
+    doric-title-bar.center > :global(title-text) {
+        justify-content: center;
+    }
 </style>
 
-<doric-title-bar class:sticky>
+<doric-title-bar class:sticky class:center>
     <slot />
 </doric-title-bar>

@@ -1,46 +1,36 @@
 <script>
-import {createEventDispatcher} from "svelte"
+    import ToggleBase from "./toggle/base.svelte"
+    import Button from "./button.svelte"
+    import Icon from "./icon.svelte"
 
-import ToggleBase from "./toggle/base.svelte"
-import Button from "./button.svelte"
-import Icon from "./icon.svelte"
+    export let disabled
+    export let color = "default"
+    export let labelPlacement
 
-export let disabled
-export let color = "default"
-// export let functional = false
-export let labelPlacement
+    export let checkedIcon = "radio_button_checked"
+    export let uncheckedIcon = "radio_button_unchecked"
+    export let outlined
 
-export let checkedIcon = "radio_button_checked"
-export let uncheckedIcon = "radio_button_unchecked"
-export let outlined
+    export let group = []
+    export let value
 
-export let group = []
-export let value
+    const toggle = () => group = value
 
-// const dispatch = createEventDispatcher()
-// const toggle = () => {
-//     if (functional !== true) {
-//         group = value
-//     }
-//     dispatch("change", value)
-// }
-const toggle = () => group = value
-
-;$: icon = checked ? checkedIcon : uncheckedIcon
-;$: buttonColor = checked ? color : "default"
-;$: checked = group === value
+    ;$: icon = checked ? checkedIcon : uncheckedIcon
+    ;$: buttonColor = checked ? color : "default"
+    ;$: checked = group === value
 ;</script>
 
 <style>
-radio-label {
-    display: flex;
-    align-items: center;
-}
-radio-check {
-    grid-area: symbol;
-    align-self: center;
-    justify-self: center;
-}
+    radio-label {
+        display: flex;
+        align-items: center;
+    }
+    radio-check {
+        grid-area: symbol;
+        align-self: center;
+        justify-self: center;
+    }
 </style>
 
 <ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement}>

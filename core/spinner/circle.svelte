@@ -1,48 +1,48 @@
 <script>
-export let size = 100
+    export let size = 100
 
-const dash = (radius, count) => {
-    const circ = Math.PI * 2 * radius
-    const parts = count * 2
-    const partSize = circ / parts
-    return [
-        0,
-        partSize / 2,
-        ...Array.from({length: parts}, () => partSize)
-    ].join(" ")
-}
+    const dash = (radius, count) => {
+        const circ = Math.PI * 2 * radius
+        const parts = count * 2
+        const partSize = circ / parts
+        return [
+            0,
+            partSize / 2,
+            ...Array.from({length: parts}, () => partSize)
+        ].join(" ")
+    }
 ;</script>
 
 <style>
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
-    100% {
-        transform: rotate(360deg);
+    circle {
+        stroke: var(--primary);
+
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-delay: 0s;
+        animation-timing-function: linear;
+        transform-origin: 50% 50%;
     }
-}
-circle {
-    stroke: var(--primary);
+    .outer {
+        animation-duration: 4s;
+    }
+    .middle {
+        stroke: var(--primary-light);
 
-    animation-name: rotate;
-    animation-iteration-count: infinite;
-    animation-delay: 0s;
-    animation-timing-function: linear;
-    transform-origin: 50% 50%;
-}
-.outer {
-    animation-duration: 4s;
-}
-.middle {
-    stroke: var(--primary-light);
-
-    animation-duration: 3s;
-    animation-direction: reverse;
-}
-.inner {
-    animation-duration: 2s;
-}
+        animation-duration: 3s;
+        animation-direction: reverse;
+    }
+    .inner {
+        animation-duration: 2s;
+    }
 </style>
 
 <svg width={size} height={size} viewbox="0 0 100 100">

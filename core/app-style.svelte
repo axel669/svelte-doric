@@ -1,3 +1,7 @@
+<script context="module">
+    import "./event/gestures.js"
+</script>
+
 <script>
     export let theme = null
     export let baseline = null

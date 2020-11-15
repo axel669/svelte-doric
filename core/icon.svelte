@@ -4,7 +4,8 @@
     export let name
     export let outlined = false
     export let size
-    export let style = ""
+    let klass
+    export {klass as class}
 
     ;$: iconVars = {
         "icon-font-size": size,
@@ -12,17 +13,16 @@
 ;</script>
 
 <style>
-icon {
-    font-size: var(--icon-font-size);
-    margin: 0px 4px;
-}
+    doric-icon {
+        margin: 0px 4px;
+    }
 </style>
 
-<icon
+<doric-icon
     use:vars={iconVars}
     class:material-icons={!outlined}
     class:material-icons-outlined={outlined}
-    {style}
+    class={klass}
 >
     {name}
-</icon>
+</doric-icon>
