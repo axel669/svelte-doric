@@ -1242,8 +1242,6 @@ var demo = (function () {
             ? {down: "touchstart", up: "touchend"}
             : {down: "mousedown", up: "mouseup"};
 
-        console.log(isMobile, sourceEvents);
-
         window.addEventListener(
             sourceEvents.down,
             evt => {
@@ -1545,7 +1543,7 @@ var demo = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen(doric_button, "click", /*handleTap*/ ctx[7]),
+    					listen(doric_button, "tap", /*handleTap*/ ctx[7]),
     					action_destroyer(vars_action = vars.call(null, doric_button, /*buttonVars*/ ctx[6]))
     				];
 
@@ -1617,7 +1615,8 @@ var demo = (function () {
     			return;
     		}
 
-    		dispatch("tap", evt);
+    		// Mobile browsers don't like dispatching events inside custom events
+    		setTimeout(() => dispatch("tap", evt), 0);
     	};
 
     	$$self.$$set = $$props => {
@@ -4996,7 +4995,7 @@ var demo = (function () {
     	return child_ctx;
     }
 
-    // (99:12) <Button on:tap={openMenu} fab round="40px">
+    // (96:12) <Button on:tap={openMenu} fab round="40px">
     function create_default_slot_10(ctx) {
     	let icon;
     	let current;
@@ -5026,7 +5025,7 @@ var demo = (function () {
     	};
     }
 
-    // (98:8) <Adornment position="start">
+    // (95:8) <Adornment position="start">
     function create_default_slot_9(ctx) {
     	let button;
     	let current;
@@ -5074,7 +5073,7 @@ var demo = (function () {
     	};
     }
 
-    // (104:8) <Adornment position="end">
+    // (101:8) <Adornment position="end">
     function create_default_slot_8(ctx) {
     	let checkbox;
     	let updating_checked;
@@ -5130,7 +5129,7 @@ var demo = (function () {
     	};
     }
 
-    // (93:4) <TitleBar sticky>
+    // (90:4) <TitleBar sticky>
     function create_default_slot_7(ctx) {
     	let title_text;
     	let t1;
@@ -5209,7 +5208,7 @@ var demo = (function () {
     	};
     }
 
-    // (116:12) <TitleBar>
+    // (113:12) <TitleBar>
     function create_default_slot_6(ctx) {
     	let title_text;
 
@@ -5227,7 +5226,7 @@ var demo = (function () {
     	};
     }
 
-    // (124:24) <Button on:tap={nav(item)}>
+    // (121:24) <Button on:tap={nav(item)}>
     function create_default_slot_5$2(ctx) {
     	let t_value = /*item*/ ctx[17].replace(/\b\w/g, func) + "";
     	let t;
@@ -5248,7 +5247,7 @@ var demo = (function () {
     	};
     }
 
-    // (122:16) <list-item let:item slot="item" dividers control>
+    // (119:16) <list-item let:item slot="item" dividers control>
     function create_item_slot(ctx) {
     	let list_item;
     	let list_item_content;
@@ -5307,7 +5306,7 @@ var demo = (function () {
     	};
     }
 
-    // (114:8) <Drawer bind:open on:close={closeMenu}>
+    // (111:8) <Drawer bind:open on:close={closeMenu}>
     function create_default_slot_3$2(ctx) {
     	let div;
     	let t0;
@@ -5391,7 +5390,7 @@ var demo = (function () {
     	};
     }
 
-    // (133:12) <TabPanel value="">
+    // (130:12) <TabPanel value="">
     function create_default_slot_2$2(ctx) {
     	let t;
 
@@ -5408,7 +5407,7 @@ var demo = (function () {
     	};
     }
 
-    // (137:16) <TabPanel value="/{demo}">
+    // (134:16) <TabPanel value="/{demo}">
     function create_default_slot_1$3(ctx) {
     	let switch_instance;
     	let t;
@@ -5475,7 +5474,7 @@ var demo = (function () {
     	};
     }
 
-    // (136:12) {#each Object.entries(demos) as [demo, component]}
+    // (133:12) {#each Object.entries(demos) as [demo, component]}
     function create_each_block$4(ctx) {
     	let tabpanel;
     	let current;
@@ -5520,7 +5519,7 @@ var demo = (function () {
     	};
     }
 
-    // (113:4) <Tabs bind:selectedTab>
+    // (110:4) <Tabs bind:selectedTab>
     function create_default_slot$5(ctx) {
     	let drawer;
     	let updating_open;

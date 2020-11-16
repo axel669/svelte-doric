@@ -44,7 +44,7 @@
         </card-content>
         <card-actions>
             <alert-actions>
-                <Button color="primary" on:click={okClose}>
+                <Button color="primary" on:tap={okClose}>
                     {okText}
                 </Button>
             </alert-actions>

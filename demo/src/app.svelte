@@ -10,7 +10,6 @@
         Button,
         Card,
         Checkbox,
-        Dialog,
         Drawer,
         Icon,
         Text,
@@ -21,8 +20,6 @@
         TabPanel,
 
         List,
-        Ripple,
-        Divider,
 
         hash,
     } from "#lib"

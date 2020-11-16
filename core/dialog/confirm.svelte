@@ -47,10 +47,10 @@
         </card-content>
         <card-actions>
             <confirm-actions>
-                <Button color="danger" on:click={cancelClose}>
+                <Button color="danger" on:tap={cancelClose}>
                     {cancelText}
                 </Button>
-                <Button color="primary" on:click={okClose}>
+                <Button color="primary" on:tap={okClose}>
                     {confirmText}
                 </Button>
             </confirm-actions>

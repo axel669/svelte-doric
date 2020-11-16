@@ -27,8 +27,8 @@ modal-wrapper {
 
 <Portal>
     {#if open}
-        <modal-wrapper on:click={wat} transition:fade={{duration: 250}}>
-            <div on:click|stopPropagation>
+        <modal-wrapper on:tap={wat} transition:fade={{duration: 250}}>
+            <div on:tap|stopPropagation>
                 <slot />
             </div>
         </modal-wrapper>

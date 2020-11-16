@@ -17,7 +17,11 @@
         if (disabled === true) {
             return
         }
-        dispatch("tap", evt)
+        // Mobile browsers don't like dispatching events inside custom events
+        setTimeout(
+            () => dispatch("tap", evt),
+            0
+        )
     }
 
     ;$: buttonVars = {
@@ -95,7 +99,7 @@
 </style>
 
 <doric-button
-    on:click={handleTap}
+    on:tap={handleTap}
     use:vars={buttonVars}
     class="{color} {variant} {klass}"
     class:disabled

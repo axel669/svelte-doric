@@ -10,8 +10,6 @@ if (typeof window !== "undefined") {
         ? {down: "touchstart", up: "touchend"}
         : {down: "mousedown", up: "mouseup"}
 
-    console.log(isMobile, sourceEvents)
-
     window.addEventListener(
         sourceEvents.down,
         evt => {
