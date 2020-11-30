@@ -1,5 +1,6 @@
 <script>
     export let position = ""
+    export let stretch
 ;</script>
 
 <style>
@@ -15,8 +16,11 @@
     adornment.end {
         grid-area: end-adornment;
     }
+    adornment.stretch {
+        align-items: stretch;
+    }
 </style>
 
-<adornment class={position}>
+<adornment class={position} class:stretch>
     <slot />
 </adornment>
