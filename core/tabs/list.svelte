@@ -1,6 +1,6 @@
 <script>
     export let vertical = false
-;</script>
+</script>
 
 <style>
     tab-list {

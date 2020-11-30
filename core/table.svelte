@@ -5,7 +5,7 @@
     export let rowID = i => i
     export let rowHeight = "min-content"
     export let scrollHeight
-;</script>
+</script>
 
 <style>
     doric-table {

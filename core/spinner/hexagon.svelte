@@ -22,7 +22,7 @@
             "Z",
         ].join(" ")
     }
-;</script>
+</script>
 
 <style>
     @keyframes rotate {

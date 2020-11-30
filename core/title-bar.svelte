@@ -1,7 +1,7 @@
 <script>
     export let sticky
     export let center
-;</script>
+</script>
 
 <style>
     doric-title-bar {

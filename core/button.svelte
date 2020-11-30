@@ -24,10 +24,10 @@
         )
     }
 
-    ;$: buttonVars = {
+    $: buttonVars = {
         "button-round-size": round,
     }
-;</script>
+</script>
 
 <style>
     doric-button {

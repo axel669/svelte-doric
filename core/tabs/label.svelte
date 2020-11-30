@@ -11,7 +11,7 @@
 
     const currentTab = getContext(tabContext)
     const changeTab = () => currentTab.set(value)
-;</script>
+</script>
 
 <style>
     tab-label {

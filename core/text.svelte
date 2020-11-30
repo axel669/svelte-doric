@@ -5,8 +5,8 @@
     let klass = ""
     export {klass as class}
 
-    ;$: variantClass = variant ? `variant-${variant}` : ""
-;</script>
+    $: variantClass = variant ? `variant-${variant}` : ""
+</script>
 
 <style>
     .block {

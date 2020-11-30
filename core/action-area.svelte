@@ -1,9 +1,9 @@
 <script>
-import Ripple from "./ripple.svelte"
+    import Ripple from "./ripple.svelte"
 
-let klass = ""
-export {klass as class}
-;</script>
+    let klass = ""
+    export {klass as class}
+</script>
 
 <style>
 action-area {

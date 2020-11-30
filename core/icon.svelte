@@ -7,10 +7,10 @@
     let klass
     export {klass as class}
 
-    ;$: iconVars = {
+    $: iconVars = {
         "icon-font-size": size,
     }
-;</script>
+</script>
 
 <style>
     doric-icon {

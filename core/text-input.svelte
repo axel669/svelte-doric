@@ -17,7 +17,7 @@
         inputElement.focus()
     }
 
-    ;$: controlProps = {
+    $: controlProps = {
         label,
         info,
         error,
@@ -25,7 +25,7 @@
         disabled,
         klass,
     }
-    ;$: inputProps = {
+    $: inputProps = {
         type,
         disabled,
         ...$$restProps,

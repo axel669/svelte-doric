@@ -16,10 +16,10 @@
 
     const toggle = () => group = value
 
-    ;$: icon = checked ? checkedIcon : uncheckedIcon
-    ;$: buttonColor = checked ? color : "default"
-    ;$: checked = group === value
-;</script>
+    $: icon = checked ? checkedIcon : uncheckedIcon
+    $: buttonColor = checked ? color : "default"
+    $: checked = group === value
+</script>
 
 <style>
     radio-label {

@@ -34,6 +34,6 @@
             --ripple-invert: var(--ripple-light);
         }
     `
-;</script>
+</script>
 
 {@html theme}

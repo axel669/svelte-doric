@@ -29,10 +29,10 @@
         }
     }
 
-    ;$: icon = checked ? checkedIcon : uncheckedIcon
-    ;$: buttonColor = checked ? color : "default"
-    ;$: updateGroup(checked)
-;</script>
+    $: icon = checked ? checkedIcon : uncheckedIcon
+    $: buttonColor = checked ? color : "default"
+    $: updateGroup(checked)
+</script>
 
 <style>
     checkbox-label {

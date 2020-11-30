@@ -9,7 +9,7 @@
     export let labelStyle = ""
     export let borderStyle = ""
     export let klass = ""
-;</script>
+</script>
 
 <style>
     control-component {

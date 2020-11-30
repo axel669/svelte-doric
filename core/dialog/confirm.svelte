@@ -14,11 +14,11 @@
     const cancelClose = () => close(false)
     const okClose = () => close(true)
 
-    ;$: positionVars = {
+    $: positionVars = {
         "confirm-top": position.y,
         "confirm-left": position.x
     }
-;</script>
+</script>
 
 <style>
     confirm-wrapper {

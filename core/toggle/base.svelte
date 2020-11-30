@@ -22,8 +22,8 @@
         toggle()
     }
 
-    ;$: buttonColor = checked ? color : "default"
-;</script>
+    $: buttonColor = checked ? color : "default"
+</script>
 
 <style>
     toggle-wrapper {

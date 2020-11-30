@@ -11,7 +11,7 @@
             ...Array.from({length: parts}, () => partSize)
         ].join(" ")
     }
-;</script>
+</script>
 
 <style>
     @keyframes rotate {

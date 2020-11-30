@@ -1,7 +1,7 @@
 <script>
     export let position = ""
     export let stretch
-;</script>
+</script>
 
 <style>
     adornment {

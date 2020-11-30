@@ -1,6 +1,6 @@
 <script context="module">
     import {tabContext} from "../tabs.svelte"
-;</script>
+</script>
 
 <script>
     import {getContext} from "svelte"
@@ -8,7 +8,7 @@
     export let value
 
     const currentTab = getContext(tabContext)
-;</script>
+</script>
 
 <style>
     tab-panel {

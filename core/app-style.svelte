@@ -5,7 +5,7 @@
 <script>
     export let theme = null
     export let baseline = null
-;</script>
+</script>
 
 <svelte:component this={theme} />
 <svelte:component this={baseline} />

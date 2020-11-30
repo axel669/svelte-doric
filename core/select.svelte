@@ -1,26 +1,25 @@
 <script>
-import Control from "./control.svelte"
-import Icon from "./icon.svelte"
+    import Control from "./control.svelte"
+    import Icon from "./icon.svelte"
 
-export let label = ""
-export let error = ""
-export let info = ""
-export let variant
-let klass = ""
-export {klass as class}
+    export let label = ""
+    export let error = ""
+    export let info = ""
+    export let variant
+    let klass = ""
+    export {klass as class}
 
-export let value = ""
-export let disabled = false
+    export let value = ""
+    export let disabled = false
 
-;$: controlProps = {
-    label,
-    info,
-    error,
-    variant,
-    klass,
-}
-
-;</script>
+    $: controlProps = {
+        label,
+        info,
+        error,
+        variant,
+        klass,
+    }
+</script>
 
 <style>
     select {

@@ -24,7 +24,7 @@
         }
         close(undefined)
     }
-;</script>
+</script>
 
 <Modal {open} on:close={closeOuter}>
     <slot {options} {close} />

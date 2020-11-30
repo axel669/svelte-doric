@@ -13,11 +13,11 @@
 
     const okClose = () => close(true)
 
-    ;$: positionVars = {
+    $: positionVars = {
         "alert-top": position.y,
         "alert-left": position.x
     }
-;</script>
+</script>
 
 <style>
     alert-wrapper {

@@ -1,20 +1,20 @@
 <script>
-import {vars} from "./style/css.js"
+    import {vars} from "./style/css.js"
 
-export let image
-export let alt
-export let height
-export let width
-export let fit = "contain"
+    export let image
+    export let alt
+    export let height
+    export let width
+    export let fit = "contain"
 
-;$: imageSize = {
-    "image-width": width,
-    "image-height": height,
-}
-;$: imageFit = {
-    "image-contain": fit,
-}
-;</script>
+    $: imageSize = {
+        "image-width": width,
+        "image-height": height,
+    }
+    $: imageFit = {
+        "image-contain": fit,
+    }
+</script>
 
 <style>
 img {

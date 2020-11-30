@@ -24,9 +24,9 @@
         }
     }
 
-    ;$: updateGroup(checked)
-    ;$: buttonColor = checked ? color : "default"
-;</script>
+    $: updateGroup(checked)
+    $: buttonColor = checked ? color : "default"
+</script>
 
 <style>
     switch-label {

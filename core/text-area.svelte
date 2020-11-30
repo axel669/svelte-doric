@@ -16,7 +16,7 @@
         inputElement.focus()
     }
 
-    ;$: controlProps = {
+    $: controlProps = {
         label,
         info,
         error,
@@ -24,11 +24,11 @@
         disabled,
         klass,
     }
-    ;$: inputProps = {
+    $: inputProps = {
         disabled,
         ...$$restProps,
     }
-;</script>
+</script>
 
 <style>
     textarea {

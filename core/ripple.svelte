@@ -22,7 +22,7 @@
             `)
         }
     }
-;</script>
+</script>
 
 <script>
     import {scale, fade} from "svelte/transition"

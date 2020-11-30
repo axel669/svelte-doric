@@ -1,33 +1,33 @@
 <script>
-import {createEventDispatcher} from "svelte"
-import {fade} from "svelte/transition"
+    import {createEventDispatcher} from "svelte"
+    import {fade} from "svelte/transition"
 
-import Portal from "./portal.svelte"
+    import Portal from "./portal.svelte"
 
-export let open = false
+    export let open = false
 
-const dispatch = createEventDispatcher()
+    const dispatch = createEventDispatcher()
 
-const wat = (evt) => {
-    dispatch("close")
-}
-;</script>
+    const close = (evt) => {
+        dispatch("close")
+    }
+</script>
 
 <style>
-modal-wrapper {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.35);
-    z-index: +100;
-}
+    modal-wrapper {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.35);
+        z-index: +100;
+    }
 </style>
 
 <Portal>
     {#if open}
-        <modal-wrapper on:tap={wat} transition:fade={{duration: 250}}>
+        <modal-wrapper on:tap={close} transition:fade={{duration: 250}}>
             <div on:tap|stopPropagation>
                 <slot />
             </div>

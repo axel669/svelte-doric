@@ -4,7 +4,7 @@
     export let label
     export let color
     export let clickable
-;</script>
+</script>
 
 <style>
     chip {

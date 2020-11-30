@@ -16,7 +16,7 @@
             next => selectedTab = next
         )
     )
-    ;$: currentTab.set(selectedTab)
-;</script>
+    $: currentTab.set(selectedTab)
+</script>
 
 <slot />

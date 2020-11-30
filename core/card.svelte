@@ -1,7 +1,7 @@
 <script>
     let klass = ""
     export {klass as class}
-;</script>
+</script>
 
 <style>
     doric-card {

@@ -6,7 +6,7 @@
     export let compact
     let klass = ""
     export {klass as class}
-;</script>
+</script>
 
 <style>
     doric-list {
