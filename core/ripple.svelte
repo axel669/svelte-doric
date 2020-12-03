@@ -39,12 +39,7 @@
         easing,
     }
     let ripples = []
-    let height = 0
-    let width = 0
-    let top = 0
-    let left = 0
-
-    ;$: size = Math.max(width, height) * 2
+    let container = null
 
     const addRipple = evt => {
         if (disabled === true) {
@@ -52,6 +47,13 @@
         }
         for (const touch of evt.changedTouches) {
             const {x, y} = calcOffset(touch)
+            const size = (
+                Math.max(
+                    container.offsetWidth,
+                    container.offsetHeight
+                )
+                * 2
+            )
 
             const ripple = {
                 id: Date.now(),
@@ -76,7 +78,7 @@
         "size": [info.size, "px"],
         "ripple-color": color
     })
-;</script>
+</script>
 
 <style>
     ripple-wrapper {
@@ -101,11 +103,7 @@
     }
 </style>
 
-<ripple-wrapper
-    on:pointer-start={addRipple}
-    bind:offsetHeight={height}
-    bind:offsetWidth={width}
->
+<ripple-wrapper on:pointer-start={addRipple} bind:this={container}>
     {#each ripples as info (info.id)}
         <ripple
             in:customAnimation
