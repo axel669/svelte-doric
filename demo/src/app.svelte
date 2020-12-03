@@ -4,6 +4,7 @@
         Baseline as baseline,
         DarkTheme,
         LightTheme,
+        TronTheme,
 
         Adornment,
         TitleBar,
@@ -20,6 +21,8 @@
         TabPanel,
 
         List,
+
+        Popover,
 
         hash,
     } from "#lib"
@@ -42,12 +45,15 @@
     //     dnd: "https://media.discordapp.net/attachments/511777706438950922/728027209377513582/3l5ovvzru9851.png",
     // }
     // const image = images.dnd
+    let visible = false
+    let visibleModal = false
 
-    ;$: selectedTab = $hash
+    $: selectedTab = $hash
 
     let checked = JSON.parse(localStorage.themeToggle ?? "false")
-    ;$: theme = (checked === true) ? DarkTheme : LightTheme
-    ;$: localStorage.themeToggle = JSON.stringify(checked)
+    // $: theme = (checked === true) ? DarkTheme : LightTheme
+    $: theme = (checked === true) ? DarkTheme : TronTheme
+    $: localStorage.themeToggle = JSON.stringify(checked)
 
     const demos = {
         // "app-bar": TitleBarDemo,
@@ -66,8 +72,8 @@
     let open = false
     const openMenu = () => open = true
     const closeMenu = () => open = false
-    ;$: closeMenu($hash)
-;</script>
+    $: closeMenu($hash)
+</script>
 
 <!-- <svelte:window on:pointer-start={console.log} /> -->
 
@@ -129,6 +135,29 @@
         <demo-area>
             <TabPanel value="">
                 Testing?
+                <Popover {visible} anchor={{left: "0px", top: "10px"}}>
+                    <Button on:tap={() => visible = true}>
+                        Regular
+                    </Button>
+                    <div slot="content">
+                        <Button color="secondary" variant="fill" on:tap={() => visible = false}>
+                            Please Work?
+                        </Button>
+                    </div>
+                </Popover>
+                <Popover visible={visibleModal} anchor={{right: "0px", top: "0px"}} modal>
+                    <Button on:tap={() => visibleModal = true}>
+                        Modal
+                    </Button>
+                    <div slot="content">
+                        <Button color="primary" variant="fill" on:tap={() => visibleModal = false}>
+                            Please Work?
+                        </Button>
+                    </div>
+                </Popover>
+                {#each Array.from({length: 100}, (_, i) => i) as i}
+                    <div>{i}</div>
+                {/each}
             </TabPanel>
             {#each Object.entries(demos) as [demo, component]}
                 <TabPanel value="/{demo}">
