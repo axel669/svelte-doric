@@ -2,7 +2,6 @@
     export let error = ""
     export let label = ""
     export let info = ""
-    export let type = "untyped"
     export let variant = "flat"
 
     export let style = ""
@@ -69,7 +68,7 @@
     }
 </style>
 
-<control-component {type} {style} class="{variant} {klass}">
+<control-component {style} class="{variant} {klass}">
     <control-content>
         <slot />
         <fieldset class:error style={borderStyle}>
