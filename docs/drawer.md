@@ -1,5 +1,21 @@
 # Drawer
 
+Component for showing drawers over content.
+
+May add directions soon.
+
+## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| open
+| `open` | _boolean_ | | If `true`, the drawer will be open
+
+## Usage
+```html
+<script>
+    let open = false
+</script>
+
+<Drawer {open}>
+    Drawer Content
+</Drawer>
+```
