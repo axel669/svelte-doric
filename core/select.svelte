@@ -1,6 +1,12 @@
 <script>
+    import {fade} from "svelte/transition"
+
+    import Button from "./button.svelte"
     import Control from "./control.svelte"
     import Icon from "./icon.svelte"
+    import List from "./list.svelte"
+    import Popover from "./popover.svelte"
+    import Ripple from "./ripple.svelte"
 
     export let label = ""
     export let error = ""
@@ -11,7 +17,31 @@
 
     export let value = ""
     export let disabled = false
+    export let options
+    export let origin = {}
 
+    let display = null
+    const focus = () => {
+        display.focus()
+    }
+
+    let visible = false
+    const openOptions = () => visible = true
+    const closeOptions = () => visible = false
+
+    const keep = (evt) => {
+        if (visible === true) {
+            evt.preventDefault()
+            evt.target.focus()
+        }
+    }
+
+    const size = {width: "100%"}
+
+    const update = item => {
+        value = item.value
+        closeOptions()
+    }
     $: controlProps = {
         label,
         info,
@@ -19,46 +49,77 @@
         variant,
         klass,
     }
+    $: selectedItem = options.find(item => item.value === value) ?? {label: ""}
 </script>
 
 <style>
-    select {
-        font: var(--font);
-        grid-area: control;
-        height: 40px;
-        box-sizing: border-box;
-        padding: 12px;
-        padding-right: 32px;
-        border-width: 0px;
-        background-color: transparent;
-        color: var(--text-normal);
-        cursor: pointer;
-        min-width: 32px;
-        -webkit-appearance: none;
+    arrow-icon {
+        grid-area: end-adornment;
+        display: flex;
+        align-items: center;
     }
-    select:focus {
+
+    tap-area {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        cursor: pointer;
+    }
+
+    options-display {
+        background-color: var(--background-layer);
+        display: inline-block;
+        max-height: 20vh;
+        min-width: 100%;
+        overflow-y: auto;
+    }
+
+    selected-item-display {
+        display: inline-block;
+        padding: 8px;
+        grid-area: control;
+        user-select: none;
+    }
+    selected-item-display:focus {
         outline: none;
     }
-    select :global(option), select :global(optgroup) {
-        font: var(--font);
-        background-color: var(--background-layer);
-        color: var(--text-normal);
-        padding: 8px;
+    list-item {
+        cursor: pointer;
     }
-    arrow-icon {
-        position: absolute;
-        bottom: calc(50% - 6px);
-        right: 0px;
-        transform: translateY(45%);
-        pointer-events: none;
+
+    list-item-content > :global(select-label) {
+        min-width: 100%;
     }
 </style>
 
-<Control {...controlProps}>
-    <select on:input bind:value {disabled}>
-        <slot />
-    </select>
-    <arrow-icon>
-        <Icon name="arrow_drop_down" size="28px" />
-    </arrow-icon>
-</Control>
+<Popover {visible} {origin} {size} modal on:cancel={closeOptions}>
+    <Control {...controlProps}>
+        <selected-item-display bind:this={display} tabindex="0" on:blur={keep}>
+            <slot name="selected">
+                {selectedItem.label}
+            </slot>
+        </selected-item-display>
+        <arrow-icon>
+            <Icon name="arrow_drop_down" size="28px" />
+        </arrow-icon>
+    </Control>
+    <tap-area on:tap={openOptions} on:focus={focus} tabindex="-1">
+        <Ripple {disabled} />
+    </tap-area>
+    <options-display slot="content" transition:fade={{duration: 250}}>
+        <List let:item items={options}>
+            <list-item on:tap={() => update(item)}>
+                <list-item-content>
+                    <slot {item}>
+                        <select-label>
+                            {item.label}
+                        </select-label>
+                    </slot>
+                </list-item-content>
+                <Ripple />
+            </list-item>
+        </List>
+    </options-display>
+</Popover>
