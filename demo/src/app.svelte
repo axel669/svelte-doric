@@ -23,6 +23,9 @@
         List,
 
         Popover,
+        TextInput,
+        Select,
+        Ripple,
 
         hash,
     } from "#lib"
@@ -48,7 +51,18 @@
     let visible = false
     let visibleModal = false
 
+    const options = Array.from(
+        {length: 4},
+        (_, i) => ({
+            label: `Item ${i}`,
+            value: i
+        })
+    )
+
     $: selectedTab = $hash
+
+    let test = 0
+    $: console.log(test)
 
     let checked = JSON.parse(localStorage.themeToggle ?? "false")
     // $: theme = (checked === true) ? DarkTheme : LightTheme
@@ -134,7 +148,20 @@
 
         <demo-area>
             <TabPanel value="">
-                Testing?
+                <Select {options} label="Testing" bind:value={test} />
+                <Select {options} label="Testing" bind:value={test} let:item origin={{x: "100%", tx: "-100%", y: "50%"}}>
+                    <div style="width: 200px;">
+                        {item.label} ({item.label})
+                    </div>
+                </Select>
+                <List items={options} let:item>
+                    <list-item>
+                        {item.label}
+                        <Ripple />
+                    </list-item>
+                </List>
+                <!-- <TextInput bind:valueAsNumber={test} type="date" /> -->
+                <!-- Testing?
                 <Popover {visible} anchor={{left: "0px", top: "10px"}}>
                     <Button on:tap={() => visible = true}>
                         Regular
@@ -145,7 +172,7 @@
                         </Button>
                     </div>
                 </Popover>
-                <Popover visible={visibleModal} anchor={{right: "0px", top: "0px"}} modal>
+                <Popover visible={visibleModal} anchor={{right: "0px", top: "0px"}} modal on:cancel={() => visibleModal = false}>
                     <Button on:tap={() => visibleModal = true}>
                         Modal
                     </Button>
@@ -157,7 +184,7 @@
                 </Popover>
                 {#each Array.from({length: 100}, (_, i) => i) as i}
                     <div>{i}</div>
-                {/each}
+                {/each} -->
             </TabPanel>
             {#each Object.entries(demos) as [demo, component]}
                 <TabPanel value="/{demo}">
