@@ -10,10 +10,11 @@
 
 <style>
     doric-list {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
         overflow: auto;
         height: var(--list-height);
+        user-select: none;
+        flex-direction: column;
     }
 
     doric-list > :global(list-item, list-header) {
