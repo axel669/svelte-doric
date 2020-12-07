@@ -148,43 +148,7 @@
 
         <demo-area>
             <TabPanel value="">
-                <Select {options} label="Testing" bind:value={test} />
-                <Select {options} label="Testing" bind:value={test} let:item origin={{x: "100%", tx: "-100%", y: "50%"}}>
-                    <div style="width: 200px;">
-                        {item.label} ({item.label})
-                    </div>
-                </Select>
-                <List items={options} let:item>
-                    <list-item>
-                        {item.label}
-                        <Ripple />
-                    </list-item>
-                </List>
-                <!-- <TextInput bind:valueAsNumber={test} type="date" /> -->
-                <!-- Testing?
-                <Popover {visible} anchor={{left: "0px", top: "10px"}}>
-                    <Button on:tap={() => visible = true}>
-                        Regular
-                    </Button>
-                    <div slot="content">
-                        <Button color="secondary" variant="fill" on:tap={() => visible = false}>
-                            Please Work?
-                        </Button>
-                    </div>
-                </Popover>
-                <Popover visible={visibleModal} anchor={{right: "0px", top: "0px"}} modal on:cancel={() => visibleModal = false}>
-                    <Button on:tap={() => visibleModal = true}>
-                        Modal
-                    </Button>
-                    <div slot="content">
-                        <Button color="primary" variant="fill" on:tap={() => visibleModal = false}>
-                            Please Work?
-                        </Button>
-                    </div>
-                </Popover>
-                {#each Array.from({length: 100}, (_, i) => i) as i}
-                    <div>{i}</div>
-                {/each} -->
+                Doric is a library of svelte components.
             </TabPanel>
             {#each Object.entries(demos) as [demo, component]}
                 <TabPanel value="/{demo}">

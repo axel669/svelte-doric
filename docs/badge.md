@@ -1,5 +1,8 @@
 # Badge
 
+Component for adding badges to other components and content.
+
+## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | anchor | _object_ | | The anchor point to place the badge at. Use the `top` and `left` properties and include CSS units. |

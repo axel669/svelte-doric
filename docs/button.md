@@ -2,10 +2,9 @@
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| color | _string_ | `"default"` |
-| variant | _string_ | | `"normal"` `"outline"` `"fill"`
-| style | _string_ |
-| class | _string_ |
-| disabled | _boolean_ |
-| round | _string_ | | CSS string
-| fab | _boolean_ |
+| color | _string_ | `"default"` | The coloration of the button. Valid options are `"default"`, `"primary"`, `"secondary"`, and `"danger"`
+| variant | _string_ | `"normal"` | Button style variation. Valid options are `"normal"` `"outline"` `"fill"`
+| class | _string_ | | Additional CSS classes to apply to the button
+| disabled | _boolean_ | | If true, button will not react to user interaction
+| round | _string_ | | Makes the corners of the button more or less round. Include CSS units for size
+| fab | _boolean_ | | Shrinks the button down to fit with the size specified with `round` so that it is circular in shape
