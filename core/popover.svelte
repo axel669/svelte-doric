@@ -4,11 +4,14 @@
     import {vars} from "./style/css.js"
     import Modal from "./modal.svelte"
 
-    export let anchor = {}
+    export let origin = {}
+    export let size = {}
     export let visible = false
     export let modal = false
 
     const dispatch = createEventDispatcher()
+
+    $: displayVars = {...origin, ...size}
 </script>
 
 <style>
@@ -17,16 +20,25 @@
         display: inline-grid;
     }
     doric-popover {
-        display: none;
         position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        overflow: visible;
         z-index: +150;
-        left: var(--left);
-        right: var(--right);
-        top: var(--top);
-        bottom: var(--bottom);
     }
-    doric-popover.visible {
-        display: block;
+    popover-content {
+        display: inline-block;
+        position: relative;
+        top: var(--y);
+        left: var(--x);
+        transform: translate(
+            var(--tx, 0%),
+            var(--ty, 0%)
+        );
+        min-width: var(--width);
+        min-height: var(--height);
     }
 </style>
 
@@ -35,7 +47,11 @@
     {#if modal}
         <Modal open={visible} clear on:close={() => dispatch("cancel")} />
     {/if}
-    <doric-popover class:visible use:vars={anchor}>
-        <slot name="content" />
-    </doric-popover>
+    {#if visible}
+        <doric-popover use:vars={displayVars}>
+            <popover-content>
+                <slot name="content" />
+            </popover-content>
+        </doric-popover>
+    {/if}
 </popover-wrapper>
