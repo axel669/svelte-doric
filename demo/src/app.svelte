@@ -38,16 +38,6 @@
     // import TextAreaDemo from "./components/text-area.svelte"
     // import TextInputDemo from "./components/text-input.svelte"
     // import CheckboxDemo from "./components/checkbox.svelte"
-
-    // import NewControl from "./test/new-control.svelte"
-
-    // const images = {
-    //     tifa: "https://media.discordapp.net/attachments/641431274916937738/726691343111553065/tifa_bikini_alt_by_nopeys_ddyq6fp-fullview.png?width=606&height=937",
-    //     camilla: "https://media.discordapp.net/attachments/641431274916937738/726691793801838642/dcqeyjp-bba7f4f5-a6f0-4b2f-8f15-13967385a3f7.png?width=571&height=937",
-    //     samus: "https://i.etsystatic.com/17439113/r/il/9346c1/2039257844/il_570xN.2039257844_jh20.jpg",
-    //     dnd: "https://media.discordapp.net/attachments/511777706438950922/728027209377513582/3l5ovvzru9851.png",
-    // }
-    // const image = images.dnd
     let visible = false
     let visibleModal = false
 
