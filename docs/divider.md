@@ -2,8 +2,8 @@
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vertical` | _boolean_ | `false` | If true, `Divider` will show vertically instead of horizontally
 | `class` | _string_ | | Additional CSS classes
+| `vertical` | _boolean_ | `false` | If true, `Divider` will show vertically instead of horizontally
 
 ## Usage
 ```html
