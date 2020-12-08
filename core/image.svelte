@@ -1,7 +1,7 @@
 <script>
     import {vars} from "./style/css.js"
 
-    export let image
+    export let source
     export let alt
     export let height
     export let width
@@ -30,5 +30,5 @@ image-container {
 </style>
 
 <image-container use:vars={imageSize}>
-    <img src={image} {alt} use:vars={imageFit} />
+    <img src={source} {alt} use:vars={imageFit} />
 </image-container>
