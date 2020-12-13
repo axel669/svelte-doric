@@ -43,6 +43,7 @@
         border-width: 0px;
         background-color: transparent;
         color: var(--text-normal);
+        min-width: 24px;
     }
     input:focus {
         outline: none;
