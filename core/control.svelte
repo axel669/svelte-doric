@@ -14,7 +14,7 @@
     control-component {
         display: inline-grid;
         position: relative;
-        z-index: +0;
+        overflow: visible;
     }
     control-content {
         position: relative;

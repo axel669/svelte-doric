@@ -26,7 +26,7 @@
         top: 0px;
         bottom: 0px;
         overflow: visible;
-        z-index: +150;
+        z-index: 150;
     }
     popover-content {
         display: inline-block;

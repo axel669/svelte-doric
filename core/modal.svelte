@@ -25,7 +25,7 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.35);
-        z-index: +100;
+        z-index: 100;
     }
     modal-wrapper.clear {
         background-color: transparent;

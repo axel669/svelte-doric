@@ -11,7 +11,6 @@
         background-color: var(--card-background);
         border: var(--card-border);
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-        overflow: hidden;
     }
 
     doric-card > :global(card-content) {
