@@ -17,7 +17,7 @@
 
     export let value = ""
     export let disabled = false
-    export let options
+    export let options = []
     export let origin = {}
 
     let display = null
