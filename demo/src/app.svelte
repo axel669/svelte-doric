@@ -30,6 +30,8 @@
         hash,
     } from "#lib"
 
+    import Calendar from "./calendar.svelte"
+
     // import TitleBarDemo from "./components/app-bar.svelte"
     import ButtonDemo from "./components/button.svelte"
     import ChipDemo from "./components/chip.svelte"
@@ -41,23 +43,41 @@
     let visible = false
     let visibleModal = false
 
-    const options = Array.from(
-        {length: 4},
-        (_, i) => ({
-            label: `Item ${i}`,
-            value: i
-        })
-    )
+    // const options = Array.from(
+    //     {length: 4},
+    //     (_, i) => ({
+    //         label: `Item ${i}`,
+    //         value: i
+    //     })
+    // )
 
     $: selectedTab = $hash
 
-    let test = 0
-    $: console.log(test)
-
     let checked = JSON.parse(localStorage.themeToggle ?? "false")
+    let themeName = JSON.parse(localStorage.theme ?? `"light"`)
+    const themeOptions = [
+        {label: "Light", value: "light"},
+        {label: "Dark", value: "dark"},
+        {label: "Tron", value: "tron"},
+    ]
+    const themeMap = {
+        light: LightTheme,
+        dark: DarkTheme,
+        tron: TronTheme,
+    }
+    $: theme = themeMap[themeName]
+    $: localStorage.theme = JSON.stringify(themeName)
     // $: theme = (checked === true) ? DarkTheme : LightTheme
-    $: theme = (checked === true) ? DarkTheme : TronTheme
-    $: localStorage.themeToggle = JSON.stringify(checked)
+    // $: theme = (checked === true) ? DarkTheme : TronTheme
+    // $: localStorage.themeToggle = JSON.stringify(checked)
+
+    const options = Array.from(
+        {length: 4},
+        (_, i) => ({
+            label: `Shoe #${i}`,
+            value: i
+        })
+    )
 
     const demos = {
         // "app-bar": TitleBarDemo,
@@ -77,6 +97,10 @@
     const openMenu = () => open = true
     const closeMenu = () => open = false
     $: closeMenu($hash)
+
+    let dateOpen = false
+    let date = new Date()
+    $: console.log(date)
 </script>
 
 <!-- <svelte:window on:pointer-start={console.log} /> -->
@@ -109,11 +133,11 @@
         </Adornment>
 
         <Adornment position="end">
-            <Checkbox
-                bind:checked
-                uncheckedIcon="brightness_high"
-                checkedIcon="brightness_low"
-            />
+            <Select bind:value={themeName} options={themeOptions} variant="flat" let:selectedItem>
+                <div slot="selected" style="white-space: nowrap;">
+                    Theme: {selectedItem.label}
+                </div>
+            </Select>
         </Adornment>
     </TitleBar>
 
@@ -125,8 +149,8 @@
                     Components
                 </title-text>
             </TitleBar>
-            <List items={demoList}>
-                <list-item let:item slot="item" dividers control>
+            <List items={demoList} let:item>
+                <list-item dividers control>
                     <list-item-content>
                         <Button on:tap={nav(item)}>
                             {item.replace(/\b\w/g, s => s.toUpperCase())}
@@ -139,6 +163,21 @@
         <demo-area>
             <TabPanel value="">
                 Doric is a library of svelte components.
+                <TextInput label="testing" />
+                <TextInput label="testing" variant="outline" />
+                <Card>
+                    <TextInput label="wat">
+                        <Adornment position="end">
+                            <Select {options} />
+                        </Adornment>
+                    </TextInput>
+                </Card>
+                <Select {options} />
+                <div>
+                    {#each Array.from({length: 100}) as _, i}
+                        <div>{i}</div>
+                    {/each}
+                </div>
             </TabPanel>
             {#each Object.entries(demos) as [demo, component]}
                 <TabPanel value="/{demo}">
