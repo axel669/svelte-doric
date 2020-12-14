@@ -97,7 +97,7 @@
 <Popover {visible} {origin} {size} modal on:cancel={closeOptions}>
     <Control {...controlProps}>
         <selected-item-display bind:this={display} tabindex="0" on:blur={keep}>
-            <slot name="selected">
+            <slot name="selected" {selectedItem}>
                 {selectedItem.label}
             </slot>
         </selected-item-display>
@@ -110,7 +110,7 @@
     </tap-area>
     <options-display slot="content" transition:fade={{duration: 250}}>
         <List let:item items={options}>
-            <list-item on:tap={() => update(item)}>
+            <list-item on:tap={() => update(item)} dividers>
                 <list-item-content>
                     <slot {item}>
                         <select-label>
