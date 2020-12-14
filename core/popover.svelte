@@ -1,17 +1,34 @@
+<script context="module">
+    const recalc = (wrapper, visible) => {
+        if (visible === false) {
+            return {}
+        }
+        const {left, top, width, height} = wrapper.getBoundingClientRect()
+        return {
+            left: [left, "px"],
+            top: [top, "px"],
+            width: [width, "px"],
+            height: [height, "px"],
+        }
+    }
+</script>
 <script>
     import {createEventDispatcher} from "svelte"
 
     import {vars} from "./style/css.js"
     import Modal from "./modal.svelte"
+    import Portal from "./portal.svelte"
 
     export let origin = {}
     export let size = {}
     export let visible = false
-    export let modal = false
 
     const dispatch = createEventDispatcher()
+    const cancel = () => dispatch("cancel")
+    let wrapper = null
 
-    $: displayVars = {...origin, ...size}
+    $: position = recalc(wrapper, visible)
+    $: displayVars = {...origin, ...size, ...position}
 </script>
 
 <style>
@@ -21,10 +38,10 @@
     }
     doric-popover {
         position: absolute;
-        left: 0px;
-        right: 0px;
-        top: 0px;
-        bottom: 0px;
+        left: var(--left);
+        right: var(--right);
+        top: var(--top);
+        bottom: var(--bottom);
         overflow: visible;
         z-index: 150;
     }
@@ -42,16 +59,15 @@
     }
 </style>
 
-<popover-wrapper>
+<popover-wrapper bind:this={wrapper}>
     <slot />
-    {#if modal}
-        <Modal open={visible} clear on:close={() => dispatch("cancel")} />
-    {/if}
     {#if visible}
-        <doric-popover use:vars={displayVars}>
-            <popover-content>
-                <slot name="content" />
-            </popover-content>
-        </doric-popover>
+        <Modal open clear on:close={cancel}>
+            <doric-popover use:vars={displayVars}>
+                <popover-content>
+                    <slot name="content" />
+                </popover-content>
+            </doric-popover>
+        </Modal>
     {/if}
 </popover-wrapper>
