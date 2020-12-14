@@ -2,7 +2,7 @@
     export let error = ""
     export let label = ""
     export let info = ""
-    export let variant = "flat"
+    export let variant = "normal"
 
     export let style = ""
     export let labelStyle = ""
@@ -15,6 +15,7 @@
         display: inline-grid;
         position: relative;
         overflow: visible;
+        z-index: 0;
     }
     control-content {
         position: relative;
@@ -33,7 +34,7 @@
         bottom: 0px;
         z-index: -1;
     }
-    .flat fieldset {
+    .normal fieldset {
         border-radius: 0px;
         border-width: 0px;
         border-bottom: 2px solid var(--control-border);
@@ -41,6 +42,9 @@
     .outline fieldset {
         border: 1px solid var(--control-border);
         border-radius: 4px;
+    }
+    .flat fieldset {
+        border-width: 0px;
     }
     legend {
         font-size: 12px;
