@@ -27,33 +27,17 @@
         Select,
         Ripple,
 
+        HexagonSpinner,
+        CircleSpinner,
+
         hash,
     } from "#lib"
 
-    import Calendar from "./calendar.svelte"
+    import Expandable from "./test/expandable.svelte"
 
-    // import TitleBarDemo from "./components/app-bar.svelte"
     import ButtonDemo from "./components/button.svelte"
     import ChipDemo from "./components/chip.svelte"
-    // import ListDemo from "./components/list.svelte"
-    // import TableDemo from "./components/table.svelte"
-    // import TextAreaDemo from "./components/text-area.svelte"
-    // import TextInputDemo from "./components/text-input.svelte"
-    // import CheckboxDemo from "./components/checkbox.svelte"
-    let visible = false
-    let visibleModal = false
 
-    // const options = Array.from(
-    //     {length: 4},
-    //     (_, i) => ({
-    //         label: `Item ${i}`,
-    //         value: i
-    //     })
-    // )
-
-    $: selectedTab = $hash
-
-    let checked = JSON.parse(localStorage.themeToggle ?? "false")
     let themeName = JSON.parse(localStorage.theme ?? `"light"`)
     const themeOptions = [
         {label: "Light", value: "light"},
@@ -67,17 +51,13 @@
     }
     $: theme = themeMap[themeName]
     $: localStorage.theme = JSON.stringify(themeName)
-    // $: theme = (checked === true) ? DarkTheme : LightTheme
-    // $: theme = (checked === true) ? DarkTheme : TronTheme
-    // $: localStorage.themeToggle = JSON.stringify(checked)
 
-    const options = Array.from(
-        {length: 4},
-        (_, i) => ({
-            label: `Shoe #${i}`,
-            value: i
-        })
-    )
+    const componentList = [
+        // ["adornment", "Adornment", AdornmentDemo],
+        ["button", "Button", ButtonDemo],
+    ]
+
+    console.log(componentList)
 
     const demos = {
         // "app-bar": TitleBarDemo,
@@ -97,13 +77,7 @@
     const openMenu = () => open = true
     const closeMenu = () => open = false
     $: closeMenu($hash)
-
-    let dateOpen = false
-    let date = new Date()
-    $: console.log(date)
 </script>
-
-<!-- <svelte:window on:pointer-start={console.log} /> -->
 
 <style>
     page-layout {
@@ -141,8 +115,8 @@
         </Adornment>
     </TitleBar>
 
-    <Tabs bind:selectedTab>
-        <Drawer bind:open on:close={closeMenu}>
+    <!-- <Tabs bind:selectedTab> -->
+        <!-- <Drawer bind:open on:close={closeMenu}>
             <div style="width: 15vw;" />
             <TitleBar>
                 <title-text>
@@ -158,10 +132,16 @@
                     </list-item-content>
                 </list-item>
             </List>
-        </Drawer>
+        </Drawer> -->
 
         <demo-area>
-            <TabPanel value="">
+            Doric Components?
+            <CircleSpinner />
+            <HexagonSpinner />
+            <!-- {#each componentList as [id, title, component] (id)}
+                <Expandable {id} {title} {component} />
+            {/each} -->
+            <!-- <TabPanel value="">
                 Doric is a library of svelte components.
                 <TextInput label="testing" />
                 <TextInput label="testing" variant="outline" />
@@ -178,12 +158,12 @@
                         <div>{i}</div>
                     {/each}
                 </div>
-            </TabPanel>
-            {#each Object.entries(demos) as [demo, component]}
+            </TabPanel> -->
+            <!-- {#each Object.entries(demos) as [demo, component]}
                 <TabPanel value="/{demo}">
                     <svelte:component this={component} />
                 </TabPanel>
-            {/each}
+            {/each} -->
         </demo-area>
-    </Tabs>
+    <!-- </Tabs> -->
 </page-layout>

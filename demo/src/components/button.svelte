@@ -1,27 +1,25 @@
 <script>
-import {
-    Button,
-    Card,
-    // CardContent,
-    Text,
-} from "#lib"
+    import {
+        Button,
+        Card,
+        Text,
+    } from "#lib"
 
-let clicked = []
+    let clicked = []
 
-const buttonTypes = ["normal", "outline", "fill"]
-const buttonColors = ["default", "primary", "secondary", "danger"]
+    const buttonTypes = ["normal", "outline", "fill"]
+    const buttonColors = ["default", "primary", "secondary", "danger"]
 
-const showClick = (variant, color) =>
-    evt => clicked = [variant, color]
-
-;</script>
+    const showClick = (variant, color) =>
+        evt => clicked = [variant, color]
+</script>
 
 <style>
-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 4px;
-}
+    button-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 4px;
+    }
 </style>
 
 <Card>
@@ -36,11 +34,11 @@ grid {
                 <Text variant="header">
                     Button Variant: {variant}
                 </Text>
-                <grid>
+                <button-grid>
                     {#each buttonColors as color}
                         <Button
                             {variant} {color}
-                            on:click={showClick(variant, color)}
+                            on:tap={showClick(variant, color)}
                         >
                             {variant} / {color}
                         </Button>
@@ -49,12 +47,12 @@ grid {
                         <Button
                             {variant} {color}
                             disabled
-                            on:click={showClick(variant, color)}
+                            on:tap={showClick(variant, color)}
                         >
                             disabled - {variant} / {color}
                         </Button>
                     {/each}
-                </grid>
+                </button-grid>
             </card-content>
         </Card>
     {/each}
