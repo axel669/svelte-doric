@@ -51,7 +51,7 @@
         --button-filled-ripple: var(--ripple-invert);
 
         --card-background: var(--background-layer);
-        --card-border: var(--layer-border-width) solid var(--text-normal);
+        --card-border: var(--layer-border-width) solid var(--layer-border-color);
 
         --control-border: var(--text-secondary);
         --control-border-focus: var(--primary);

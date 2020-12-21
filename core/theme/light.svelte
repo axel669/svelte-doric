@@ -6,7 +6,8 @@
             --font: Roboto;
             --background: #e9e9e9;
             --background-layer: #ffffff;
-            --layer-border-width: 0px;
+            --layer-border-width: 1px;
+            --layer-border-color: #eeeeee;
 
             --ripple-dark: #00000060;
             --ripple-light: #FFFFFF60;
@@ -14,6 +15,7 @@
             --text-dark: black;
 
             --primary: #1d62d5;
+            --primary-light: #79c0f7;
             --primary-ripple: #1d62d560;
             --secondary: #128f12;
             --secondary-ripple: #128f1260;

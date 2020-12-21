@@ -6,8 +6,8 @@
             --font: Inconsolata;
             --background: #161616;
             --background-layer: #333333;
-            --background-highlight: #171717;
             --layer-border-width: 1px;
+            --layer-border-color: var(--text-normal);
 
             --ripple-dark: #00000060;
             --ripple-light: #FFFFFF60;
@@ -15,6 +15,7 @@
             --text-dark: black;
 
             --primary: #00aaff;
+            --primary-light: #79c0f7;
             --primary-ripple: #00aaff60;
             --secondary: #2fbc2f;
             --secondary-ripple: #2fbc2f60;
