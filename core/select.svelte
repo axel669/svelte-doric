@@ -2,6 +2,7 @@
     import {fade} from "svelte/transition"
 
     import Button from "./button.svelte"
+    import Card from "./card.svelte"
     import Control from "./control.svelte"
     import Icon from "./icon.svelte"
     import List from "./list.svelte"
@@ -69,11 +70,14 @@
     }
 
     options-display {
-        background-color: var(--background-layer);
         display: inline-block;
-        max-height: 20vh;
         min-width: 100%;
         overflow-y: auto;
+        overflow: visible;
+    }
+    item-area {
+        max-height: 40vh;
+        overflow: auto;
     }
 
     selected-item-display {
@@ -109,17 +113,21 @@
         <Ripple {disabled} />
     </tap-area>
     <options-display slot="content" transition:fade={{duration: 250}}>
-        <List let:item items={options}>
-            <list-item on:tap={() => update(item)} dividers>
-                <list-item-content>
-                    <slot {item}>
-                        <select-label>
-                            {item.label}
-                        </select-label>
-                    </slot>
-                </list-item-content>
-                <Ripple />
-            </list-item>
-        </List>
+        <Card>
+            <item-area>
+                <List let:item items={options}>
+                    <list-item on:tap={() => update(item)} dividers>
+                        <list-item-content>
+                            <slot {item}>
+                                <select-label>
+                                    {item.label}
+                                </select-label>
+                            </slot>
+                        </list-item-content>
+                        <Ripple />
+                    </list-item>
+                </List>
+            </item-area>
+        </Card>
     </options-display>
 </Popover>
