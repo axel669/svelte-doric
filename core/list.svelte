@@ -40,7 +40,7 @@
         right: 0px;
         opacity: 0;
     }
-    doric-list > :global(list-item[dividers]) {
+    doric-list > :global(list-item[dividers]:not(:last-child)) {
         border-top: 1px solid var(--text-secondary);
         border-bottom: 1px solid var(--text-secondary);
         margin-top: -1px;
