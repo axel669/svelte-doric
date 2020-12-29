@@ -49,6 +49,7 @@
     legend {
         font-size: 12px;
         height: 13px;
+        color: var(--control-border);
     }
     legend:empty {
         padding: 0px;

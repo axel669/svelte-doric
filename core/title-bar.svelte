@@ -7,7 +7,7 @@
     doric-title-bar {
         position: relative;
         z-index: +0;
-        height: 56px;
+        grid-template-rows: 56px min-content;
         background-color: var(--title-bar-background);
         color: var(--title-bar-text);
 
@@ -21,6 +21,8 @@
 
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);
+        --control-border: var(--title-bar-text);
+        --control-border-focus: var(--title-bar-text);
     }
     doric-title-bar.sticky {
         position: sticky;
