@@ -26,7 +26,6 @@
         margin: 4px 0px;
     }
     .variant-secondary {
-        color: var(--text-secondary);
         font-size: var(--text-size-secondary);
     }
 
@@ -41,6 +40,6 @@
     }
 </style>
 
-<span class:block class="{variant} {color} {klass}">
+<span class:block class="{variantClass} {color} {klass}">
     <slot />
 </span>

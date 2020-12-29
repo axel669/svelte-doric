@@ -15,6 +15,7 @@
         grid-template-columns: min-content auto min-content;
         grid-template-areas:
             "start-adornment title end-adornment"
+            "bottom-adornment bottom-adornment bottom-adornment"
         ;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 
