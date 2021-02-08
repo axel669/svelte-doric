@@ -1,6 +1,6 @@
 # Chip
-
-Component for displaying small bits of information.
+Used to display dynamic information and interaction in contrast with buttons
+that remain largely static in position.
 
 ## Props
 | Name | Type | Default | Description |

@@ -1,5 +1,4 @@
 # Checkbox
-
 Basic checkbox component.
 
 ## Props

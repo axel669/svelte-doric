@@ -1,12 +1,11 @@
 # Card
-
 Container component for displaying information that should be contained
 separately from the surrounding content.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `class` | _string_ | | Additional CSS classes to apply to the `Card`
+| `class` | _string_ | | Additional CSS classes to apply to the component
 
 ## Child Tags
 | Tag Name | Description |

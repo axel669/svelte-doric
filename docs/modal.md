@@ -1,10 +1,11 @@
 # Modal
+Base component to display modal content on screen.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| clear | _boolean_ | | If true, the modal will be transparent
-| open | _boolean_ | | Controls if the modal is displayed or not
+| `clear` | _boolean_ | | If true, the modal will be transparent
+| `open` | _boolean_ | | Controls if the modal is displayed or not
 
 ## Events
 - close

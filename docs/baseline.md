@@ -1,5 +1,4 @@
 # Baseline
-
 Baseline CSS for an application.
 
 Instead of taking in props, a baseline component renders style tags

@@ -1,6 +1,8 @@
 # Icon
-
-Component for displaying [Material Icons](https://material.io/resources/icons/?style=baseline).
+Displays a regular or outlined icon from the Material Icons library.
+> [Material Icons](https://material.io/resources/icons/?style=baseline)
+>
+> [Outlined Material Icons](https://material.io/resources/icons/?style=outline)
 
 ## Props
 | Name | Type | Default | Description |

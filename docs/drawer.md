@@ -1,6 +1,5 @@
 # Drawer
-
-Component for showing drawers over content.
+Shows a drawer that slides in and out from the right side of the screen.
 
 May add directions soon.
 
