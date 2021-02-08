@@ -29,7 +29,7 @@
         margin: 0px;
         padding: 0px;
         width: 100%;
-        min-height: 100%;
+        height: 100%;
         -webkit-tap-highlight-color: transparent;
 
         font-family: var(--font);
