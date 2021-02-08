@@ -7,7 +7,7 @@ Basic checkbox component.
 | `checked` | _boolean_ | |
 | `group` | _Array_ | | Svelte `bind:group`
 | `value` | _any_ | | The value for use in Svelte `bind:group`
-|
+| |
 | `checkedIcon` | _string_ | `"check_box"` | Name of the Material Icon to display when the `Checkbox` is checked
 | `color` | _string_ | `"default"` | The theme color to use for the `Checkbox` checkmark. See the colors section of [theme](./theme.md) for details.
 | `disabled` | _boolean_ | |

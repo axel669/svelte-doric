@@ -5,7 +5,7 @@
 | --- | --- | --- | --- |
 | `group` | `Array` | | Svelte `bind:group`
 | `value` | any | | The value for use in Svelte `bind:group`
-|
+| |
 | `checkedIcon` | `string` | `"radio_button_checked"` | Name of the Material Icon to display when the `Radio` is selected
 | `disabled` | `boolean` | |
 | `color` | `string` | | The theme color to use for the `Radio` icon. See the colors section of [theme](./theme.md) for details

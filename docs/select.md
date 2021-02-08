@@ -13,7 +13,7 @@ Fancier looking `select` component.
 | `origin` | _object_ | | The origin for the select options display. See [`Popover`](./popover.md) origin prop for details
 | `value` | any | | The value of the selected item in the options. If no item matching the given value is found, a fallback is displayed
 | `variant` | _string_ | | `Select` style variation. Valid options are: `"normal"`, `"outline"`
-|
+| |
 | `let:item` | | | Used by the unnamed slot to customize the display of options
 | `let:selectedItem` | | | Used by the named slot `selected` to customize the content of the `Select`
 
