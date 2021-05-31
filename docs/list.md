@@ -8,7 +8,6 @@ Component for displaying lists of items that may or may not have interactions.
 | `compact` | _boolean_ | | If true, rows will be more compact in size
 | `height` | _string_ | | Set the height of the list, will allow for scrolling if set. Include CSS units
 | `items` | _array_ | | The items to display in the list. Items with a `header` property exists on the item, it will be rendered as a list header
-|
 | `let:item` | | | Item or header element being rendered
 
 ## Child Tags

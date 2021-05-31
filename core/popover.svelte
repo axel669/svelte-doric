@@ -1,4 +1,14 @@
-<script context="module">
+<script>
+    import {createEventDispatcher} from "svelte"
+
+    import vars from "./util/vars.js"
+    import Modal from "./modal.svelte"
+    import Portal from "./portal.svelte"
+
+    export let origin = {}
+    export let size = {}
+    export let visible = false
+
     const recalc = (wrapper, visible) => {
         if (visible === false) {
             return {}
@@ -11,17 +21,6 @@
             height: [height, "px"],
         }
     }
-</script>
-<script>
-    import {createEventDispatcher} from "svelte"
-
-    import {vars} from "./style/css.js"
-    import Modal from "./modal.svelte"
-    import Portal from "./portal.svelte"
-
-    export let origin = {}
-    export let size = {}
-    export let visible = false
 
     const dispatch = createEventDispatcher()
     const cancel = () => dispatch("cancel")

@@ -1,6 +1,11 @@
-import {readable} from "svelte/store"
+const {readable} = require("svelte/store")
 
-const readHash = () => document.location.hash.toString().slice(1)
+const readHash = () => {
+    if (typeof document !== "undefined") {
+        return document.location.hash.toString().slice(1)
+    }
+    return ""
+}
 const hashStore = readable(
     readHash(),
     set => {
@@ -12,18 +17,4 @@ const hashStore = readable(
     }
 )
 
-export default hashStore
-// let currentHash = readHash()
-// setInterval(
-//     () => {
-//         const hash = readHash()
-//         if (hash !== currentHash) {
-//             const evt = new CustomEvent("hashupdate")
-//             evt.oldHash = currentHash
-//             evt.newHash = hash
-//             currentHash = hash
-//             window.dispatchEvent(evt)
-//         }
-//     },
-//     30
-// )
+module.exports = hashStore

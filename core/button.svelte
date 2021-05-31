@@ -1,7 +1,7 @@
 <script>
     import {createEventDispatcher} from "svelte";
     import Ripple from "./ripple.svelte"
-    import {vars} from "./style/css.js"
+    import vars from "./util/vars.js"
 
     export let color = "default"
     export let variant = "normal"

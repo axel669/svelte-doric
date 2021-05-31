@@ -3,7 +3,7 @@
     import Card from "../card.svelte"
     import Divider from "../divider.svelte"
     import Text from "../text.svelte"
-    import {vars} from "../style/css.js"
+    import vars from "../util/vars.js"
 
 
     export let options

@@ -1,44 +1,53 @@
 <script>
-    import {
-        AppStyle,
-        Baseline as baseline,
-        DarkTheme,
-        LightTheme,
-        TronTheme,
+    import AppStyle from "../../core/app-style.svelte"
+    import baseline from "../../core/baseline.svelte"
+    import LightTheme from "../../core/theme/light.svelte"
+    import DarkTheme from "../../core/theme/dark.svelte"
+    import TronTheme from "../../core/theme/tron.svelte"
 
-        Adornment,
-        TitleBar,
-        Button,
-        Card,
-        Checkbox,
-        Drawer,
-        Icon,
-        Text,
+    import Adornment from "../../core/adornment.svelte"
+    import Button from "../../core/button.svelte"
+    import Icon from "../../core/icon.svelte"
+    import Select from "../../core/select.svelte"
+    import TitleBar from "../../core/title-bar.svelte"
 
-        Tabs,
-        TabLabel,
-        TabList,
-        TabPanel,
+    import CircleSpinner from "../../core/circle-spinner.svelte"
+    import HexagonSpinner from "../../core/hexagon-spinner.svelte"
 
-        List,
+    import hash from "../../core/browser/hash.js"
 
-        Popover,
-        TextInput,
-        Select,
-        Ripple,
+    // import Expandable from "./test/expandable.svelte"
 
-        HexagonSpinner,
-        CircleSpinner,
+    // import ButtonDemo from "./components/button.svelte"
+    // import ChipDemo from "./components/chip.svelte"
 
-        hash,
-    } from "#lib"
+    const onPage = (typeof document !== "undefined")
+    const ssrStorage = {
+        read: (name) => {
+            if (onPage === false) {
+                return null
+            }
 
-    import Expandable from "./test/expandable.svelte"
+            const stored = localStorage.getItem(name)
+            if (stored === null) {
+                return null
+            }
+            return JSON.parse(stored)
+        },
+        write: (name, value) => {
+            if (onPage === false) {
+                return
+            }
 
-    import ButtonDemo from "./components/button.svelte"
-    import ChipDemo from "./components/chip.svelte"
+            localStorage.setItem(
+                name,
+                JSON.stringify(value)
+            )
+        }
+    }
 
-    let themeName = JSON.parse(localStorage.theme ?? `"light"`)
+    // let themeName = JSON.parse(localStorage.theme ?? `"light"`)
+    let themeName = ssrStorage.read("theme") ?? "light"
     const themeOptions = [
         {label: "Light", value: "light"},
         {label: "Dark", value: "dark"},
@@ -50,28 +59,29 @@
         tron: TronTheme,
     }
     $: theme = themeMap[themeName]
-    $: localStorage.theme = JSON.stringify(themeName)
+    // $: localStorage.theme = JSON.stringify(themeName)
+    $: ssrStorage.write("theme", themeName)
 
-    const componentList = [
-        // ["adornment", "Adornment", AdornmentDemo],
-        ["button", "Button", ButtonDemo],
-    ]
+    // const componentList = [
+    //     // ["adornment", "Adornment", AdornmentDemo],
+    //     ["button", "Button", ButtonDemo],
+    // ]
 
-    console.log(componentList)
+    // console.log(componentList)
 
-    const demos = {
-        // "app-bar": TitleBarDemo,
-        "button": ButtonDemo,
-        "chip": ChipDemo,
-        // "list": ListDemo,
-        // "textArea": TextAreaDemo,
-        // "textInput": TextInputDemo,
-        // table: TableDemo,
-        // checkbox: CheckboxDemo,
-    }
-    const demoList = Object.keys(demos).sort()
-    const nav = location =>
-        () => document.location.hash = `/${location}`
+    // const demos = {
+    //     // "app-bar": TitleBarDemo,
+    //     "button": ButtonDemo,
+    //     "chip": ChipDemo,
+    //     // "list": ListDemo,
+    //     // "textArea": TextAreaDemo,
+    //     // "textInput": TextInputDemo,
+    //     // table: TableDemo,
+    //     // checkbox: CheckboxDemo,
+    // }
+    // const demoList = Object.keys(demos).sort()
+    // const nav = location =>
+    //     () => document.location.hash = `/${location}`
 
     let open = false
     const openMenu = () => open = true

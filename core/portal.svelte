@@ -1,7 +1,8 @@
 <script context="module">
-    const portalRoot = document.createElement("portal-root")
+    let portalRoot = null
 
     if (typeof document !== "undefined") {
+        portalRoot = document.createElement("portal-root")
         document.body.appendChild(portalRoot)
     }
 </script>
@@ -13,7 +14,7 @@
 
     onMount(
         () => {
-            portalRoot.appendChild(instance)
+            portalRoot?.appendChild(instance)
         }
     )
 </script>

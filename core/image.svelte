@@ -1,5 +1,5 @@
 <script>
-    import {vars} from "./style/css.js"
+    import vars from "./util/vars.js"
 
     export let source
     export let alt

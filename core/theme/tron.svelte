@@ -1,5 +1,5 @@
 <script>
-    import {css} from "../style/css.js"
+    import css from "../util/css.js"
 
     const theme = css`
         body {

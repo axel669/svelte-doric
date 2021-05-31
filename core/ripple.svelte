@@ -28,7 +28,7 @@
     import {scale, fade} from "svelte/transition"
     import {linear as easing} from "svelte/easing"
 
-    import {vars} from "./style/css.js"
+    import vars from "./util/vars.js"
 
     export let color = null
     export let disabled = false
