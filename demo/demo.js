@@ -3183,7 +3183,7 @@ var demo = (function () {
     const get_default_slot_changes = dirty => ({ item: dirty & /*item*/ 8388608 });
     const get_default_slot_context = ctx => ({ item: /*item*/ ctx[23] });
 
-    // (105:49)                   
+    // (104:49)                   
     function fallback_block_1(ctx) {
     	let t_value = /*selectedItem*/ ctx[6].label + "";
     	let t;
@@ -3204,7 +3204,7 @@ var demo = (function () {
     	};
     }
 
-    // (103:4) <Control {...controlProps}>
+    // (102:4) <Control {...controlProps}>
     function create_default_slot_3$1(ctx) {
     	let selected_item_display;
     	let t;
@@ -3285,7 +3285,7 @@ var demo = (function () {
     	};
     }
 
-    // (102:0) <Popover {visible} {origin} {size} modal on:cancel={closeOptions}>
+    // (101:0) <Popover {visible} {origin} {size} modal on:cancel={closeOptions}>
     function create_default_slot_2$1(ctx) {
     	let control;
     	let t;
@@ -3369,7 +3369,7 @@ var demo = (function () {
     	};
     }
 
-    // (122:41)                                   
+    // (121:41)                                   
     function fallback_block(ctx) {
     	let select_label;
     	let t_value = /*item*/ ctx[23].label + "";
@@ -3393,7 +3393,7 @@ var demo = (function () {
     	};
     }
 
-    // (119:16) <List let:item items={options}>
+    // (118:16) <List let:item items={options}>
     function create_default_slot_1$1(ctx) {
     	let list_item;
     	let list_item_content;
@@ -3473,7 +3473,7 @@ var demo = (function () {
     	};
     }
 
-    // (117:8) <Card>
+    // (116:8) <Card>
     function create_default_slot$1(ctx) {
     	let item_area;
     	let list;
@@ -3530,7 +3530,7 @@ var demo = (function () {
     	};
     }
 
-    // (116:4) 
+    // (115:4) 
     function create_content_slot(ctx) {
     	let options_display;
     	let card;
@@ -3677,7 +3677,6 @@ var demo = (function () {
     	const size = { width: "100%" };
 
     	const update = item => {
-    		console.log(item);
     		$$invalidate(13, value = item.value);
     		closeOptions();
     	};
@@ -6045,7 +6044,6 @@ var demo = (function () {
     exports.writable = writable;
     }(store));
 
-    // import {readable} from "svelte/store"
     const {readable} = store;
 
     const readHash = () => {

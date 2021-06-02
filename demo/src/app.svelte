@@ -1,20 +1,20 @@
 <script>
-    import AppStyle from "../../core/app-style.svelte"
-    import baseline from "../../core/baseline.svelte"
-    import LightTheme from "../../core/theme/light.svelte"
-    import DarkTheme from "../../core/theme/dark.svelte"
-    import TronTheme from "../../core/theme/tron.svelte"
+    import AppStyle from "../../core/app-style"
+    import baseline from "../../core/baseline"
+    import LightTheme from "../../core/theme/light"
+    import DarkTheme from "../../core/theme/dark"
+    import TronTheme from "../../core/theme/tron"
 
-    import Adornment from "../../core/adornment.svelte"
-    import Button from "../../core/button.svelte"
-    import Icon from "../../core/icon.svelte"
-    import Select from "../../core/select.svelte"
-    import TitleBar from "../../core/title-bar.svelte"
+    import Adornment from "../../core/adornment"
+    import Button from "../../core/button"
+    import Icon from "../../core/icon"
+    import Select from "../../core/select"
+    import TitleBar from "../../core/title-bar"
 
-    import CircleSpinner from "../../core/circle-spinner.svelte"
-    import HexagonSpinner from "../../core/hexagon-spinner.svelte"
+    import CircleSpinner from "../../core/circle-spinner"
+    import HexagonSpinner from "../../core/hexagon-spinner"
 
-    import hash from "../../core/browser/hash.js"
+    import hash from "../../core/browser/hash"
 
     // import Expandable from "./test/expandable.svelte"
 
