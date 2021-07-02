@@ -55,7 +55,6 @@
         {...inputProps}
         bind:this={inputElement}
         bind:value
-        on:input
         on:focus
         on:blur
     />
