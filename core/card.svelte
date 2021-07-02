@@ -1,4 +1,5 @@
 <script>
+    export let color = "default"
     let klass = ""
     export {klass as class}
 </script>
@@ -7,22 +8,38 @@
     doric-card {
         display: grid;
         border-radius: 4px;
-        background-color: var(--card-background);
-        border: var(--card-border);
+        border-style: solid;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        grid-template-rows: min-content auto;
         overflow: hidden;
+
+        background-color: var(--card-background);
+        border-color: var(--border-color, var(--layer-border-color));
+        border-width: var(--layer-border-width);
     }
 
-    doric-card > :global(card-content) {
-        display: block;
-        padding: 16px;
+    card-title {
+        display: flex;
+        align-items: center;
+        user-select: none;
+
+        min-height: 28px;
+        padding: 4px;
+
+        font-size: var(--text-size-header);
+        border-bottom: 1px solid var(--border-color, var(--layer-border-color));
     }
-    doric-card > :global(card-actions) {
-        display: block;
-        padding: 8px;
+    card-title:empty {
+        border-width: 0px;
+        height: 0px;
+        min-height: 0px;
+        padding: 0px;
     }
 </style>
 
-<doric-card class={klass}>
+<doric-card class={klass} style="--border-color: var(--{color});">
+    <card-title>
+        <slot name="title" />
+    </card-title>
     <slot />
 </doric-card>
