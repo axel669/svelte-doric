@@ -1,59 +1,43 @@
 <script>
+    import ActionLayout from "../layout/action.svelte"
+    import FlexLayout from "../layout/flex.svelte"
+    import GridLayout from "../layout/grid.svelte"
+
     import Button from "../button.svelte"
     import Card from "../card.svelte"
-    import Divider from "../divider.svelte"
-    import Text from "../text.svelte"
-    import vars from "../util/vars.js"
+    import DialogContent from "./content.svelte"
 
-    export let options
     export let close
-    export let position = {}
-    export let confirmText = "OK"
-    export let cancelText = "Cancel"
+    export let options
 
-    const cancelClose = () => close(false)
-    const okClose = () => close(true)
+    $: ({
+        title = "Confirm",
+        message,
+        okText = "OK",
+        cancelText = "Cancel",
+    } = options)
 
-    $: positionVars = {
-        "confirm-top": position.y,
-        "confirm-left": position.x
-    }
+    const ok = () => close(true)
+    const cancel = () => close(false)
 </script>
 
-<style>
-    confirm-wrapper {
-        position: absolute;
-        top: var(--confirm-top, 50%);
-        left: var(--confirm-left, 50%);
-        transform: translate(-50%, -50%);
-        width: 70vw;
-        max-width: 320px;
-    }
-    confirm-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 4px;
-    }
-</style>
-
-<confirm-wrapper use:vars={positionVars}>
+<DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
     <Card>
-        <card-content>
-            <Text variant="header">
-                {options.title || "Confirm"}
-            </Text>
-            <Divider />
-            {options.message || ""}
-        </card-content>
-        <card-actions>
-            <confirm-actions>
-                <Button color="danger" on:tap={cancelClose}>
+        <svelte:fragment slot="title">
+            {title ?? ""}
+        </svelte:fragment>
+        <ActionLayout>
+            <FlexLayout>
+                {message}
+            </FlexLayout>
+            <GridLayout cols={2}>
+                <Button color="danger" on:tap={cancel}>
                     {cancelText}
                 </Button>
-                <Button color="primary" on:tap={okClose}>
-                    {confirmText}
+                <Button color="secondary" on:tap={ok}>
+                    {okText}
                 </Button>
-            </confirm-actions>
-        </card-actions>
+            </GridLayout>
+        </ActionLayout>
     </Card>
-</confirm-wrapper>
+</DialogContent>

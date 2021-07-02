@@ -1,7 +1,8 @@
 <script>
     import Modal from "./modal.svelte"
 
-    export let forceInteraction
+    export let persistent
+    export let component
 
     let open = false
     let options = {}
@@ -19,13 +20,13 @@
         resolver(value)
     }
     const closeOuter = () => {
-        if (forceInteraction === true) {
+        if (persistent === true) {
             return
         }
         close(undefined)
     }
 </script>
 
-<Modal {open} on:close={closeOuter}>
-    <slot {options} {close} />
+<Modal {open} {persistent} on:close={closeOuter}>
+    <svelte:component this={component} {options} {close} />
 </Modal>

@@ -1,53 +1,38 @@
 <script>
+    import ActionLayout from "../layout/action.svelte"
+    import FlexLayout from "../layout/flex.svelte"
+    import GridLayout from "../layout/grid.svelte"
+
     import Button from "../button.svelte"
     import Card from "../card.svelte"
-    import Divider from "../divider.svelte"
-    import Text from "../text.svelte"
-    import vars from "../util/vars.js"
+    import DialogContent from "./content.svelte"
 
-
-    export let options
     export let close
-    export let position = {}
-    export let okText = "OK"
+    export let options
 
-    const okClose = () => close(true)
+    $: ({
+        title = "Alert",
+        message,
+        okText = "OK",
+    } = options)
 
-    $: positionVars = {
-        "alert-top": position.y,
-        "alert-left": position.x
-    }
+    const ok = () => close(true)
 </script>
 
-<style>
-    alert-wrapper {
-        position: absolute;
-        top: var(--alert-top, 50%);
-        left: var(--alert-left, 50%);
-        transform: translate(-50%, -50%);
-        width: 70vw;
-        max-width: 320px;
-    }
-    alert-actions {
-        display: grid;
-    }
-</style>
-
-<alert-wrapper use:vars={positionVars}>
+<DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
     <Card>
-        <card-content>
-            <Text variant="header">
-                {options.title || "Alert"}
-            </Text>
-            <Divider />
-            {options.message || ""}
-        </card-content>
-        <card-actions>
-            <alert-actions>
-                <Button color="primary" on:tap={okClose}>
+        <svelte:fragment slot="title">
+            {title ?? ""}
+        </svelte:fragment>
+        <ActionLayout>
+            <FlexLayout>
+                {message}
+            </FlexLayout>
+            <GridLayout>
+                <Button color="secondary" on:tap={ok}>
                     {okText}
                 </Button>
-            </alert-actions>
-        </card-actions>
+            </GridLayout>
+        </ActionLayout>
     </Card>
-</alert-wrapper>
+</DialogContent>
