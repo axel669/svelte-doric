@@ -7,12 +7,23 @@
 
     import Adornment from "../../core/adornment"
     import Button from "../../core/button"
+    import Card from "../../core/card"
+    import ActionLayout from "../../core/layout/action"
+    import FlexLayout from "../../core/layout/flex"
+    import GridLayout from "../../core/layout/grid"
     import Icon from "../../core/icon"
+    import Image from "../../core/image"
     import Select from "../../core/select"
     import TitleBar from "../../core/title-bar"
+    import Text from "../../core/text"
 
     import CircleSpinner from "../../core/circle-spinner"
     import HexagonSpinner from "../../core/hexagon-spinner"
+
+    import Dialog from "../../core/dialog"
+    import Alert from "../../core/dialog/alert"
+    import Confirm from "../../core/dialog/confirm"
+    import Prompt from "../../core/dialog/prompt"
 
     import hash from "../../core/browser/hash"
 
@@ -62,6 +73,16 @@
     // $: localStorage.theme = JSON.stringify(themeName)
     $: ssrStorage.write("theme", themeName)
 
+    let wat = null
+    let wat2 = null
+    const openMenu = async () => console.log(
+        await wat2.show({
+            title: "Test",
+            message: "Nope?",
+            placeholder: "Some Example"
+        })
+    )
+
     // const componentList = [
     //     // ["adornment", "Adornment", AdornmentDemo],
     //     ["button", "Button", ButtonDemo],
@@ -84,7 +105,7 @@
     //     () => document.location.hash = `/${location}`
 
     let open = false
-    const openMenu = () => open = true
+    // const openMenu = () => open = true
     const closeMenu = () => open = false
     $: closeMenu($hash)
 </script>
@@ -103,6 +124,9 @@
 </style>
 
 <AppStyle {theme} {baseline} />
+
+<Dialog component={Alert} bind:this={wat} persistent />
+<Dialog component={Prompt} bind:this={wat2} persistent />
 
 <page-layout>
     <TitleBar sticky>
@@ -145,6 +169,70 @@
         </Drawer> -->
 
         <demo-area>
+            <FlexLayout gap="4px" itemFill>
+                <Card>
+                    <FlexLayout direction="column">
+                        Some content
+                        <div>hi</div>
+                        <span>Line 3?</span>
+                        <span>Line 4?</span>
+                    </FlexLayout>
+                </Card>
+                <Card color="primary">
+                    <svelte:fragment slot="title">
+                        Title Text
+                    </svelte:fragment>
+                    <FlexLayout direction="column">
+                        Some content
+                        <div>hi</div>
+                        <span>Line 3?</span>
+                        <span>Line 4?</span>
+                    </FlexLayout>
+                </Card>
+
+                <flex-break />
+
+                <Card color="secondary">
+                    <svelte:fragment slot="title">
+                        Title Text
+                    </svelte:fragment>
+                    <ActionLayout>
+                        <FlexLayout direction="column">
+                            Some content
+                            <div>hi</div>
+                            <span>Line 3?</span>
+                            <span>Line 4?</span>
+                        </FlexLayout>
+
+                        <FlexLayout direction="column" itemFill>
+                            <Button color="primary">Maybe</Button>
+                            <Button color="danger">Nope</Button>
+                            <flex-break />
+                            <Button color="secondary">Sure</Button>
+                        </FlexLayout>
+                    </ActionLayout>
+                </Card>
+                <Card color="danger">
+                    <svelte:fragment slot="title">
+                        Title Text
+                    </svelte:fragment>
+                    <ActionLayout>
+                        <FlexLayout direction="column">
+                            Some content
+                            <div>hi</div>
+                            <span>Line 3?</span>
+                            <span>Line 4?</span>
+                        </FlexLayout>
+
+                        <GridLayout rows={2} direction="column">
+                            <Button color="primary">Maybe</Button>
+                            <Button color="danger">Nope</Button>
+                            <Button color="secondary">Sure</Button>
+                        </GridLayout>
+                    </ActionLayout>
+                </Card>
+            </FlexLayout>
+
             Doric Components?
             <CircleSpinner />
             <HexagonSpinner />
