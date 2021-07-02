@@ -7,20 +7,25 @@ separately from the surrounding content.
 | --- | --- | --- | --- |
 | `class` | _string_ | | Additional CSS classes to apply to the component
 
-## Child Tags
-| Tag Name | Description |
+## Slots
+| Name | Description |
 | --- | --- |
-| `card-actions` | An area for putting components to allow the user to interact with the card
-| `card-content` | Adds some padding for content that shouldn't be flush with the edges of the card
+| `title` | Title of the card. If not specified or empty, no title will be shown
 
 ## Usage
 ```html
 <Card class>
-    <card-content>
-        Content
-    </card-content>
-    <card-actions>
-        Action components
-    </card-actions>
+    <svelte:fragment slot="title">
+        Card Title
+    </svelte:fragment>
+    <ActionLayout>
+        <div>
+            Content
+        </div>
+
+        <GridLayout>
+            ...actions
+        </GridLayout>
+    </ActionLayout>
 </Card>
 ```

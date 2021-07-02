@@ -1,5 +1,5 @@
 # Alert
-Shows an alert box using the [`Dialog`](./dialog.md) component.
+Shows a prmmpt box using the [`Dialog`](./dialog.md) component.
 
 ## Props
 | Name | Type | Default | Description |
@@ -10,6 +10,8 @@ Shows an alert box using the [`Dialog`](./dialog.md) component.
 ### Options
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `cancelText` | _string_ | `"Cancel"` | The text to show for the cancel button
 | `message` | _string_ | | The message to show in the alert
-| `okText` | _string_ | `"OK"` | The text to show for the alert button
+| `okText` | _string_ | `"OK"` | The text to show for the confirm button
+| `placeholder` | _string_ | | Placeholder text for the text input
 | `title` | _string_ | `"Alert"` | The title to show in the alert. Passing null will hide the title
