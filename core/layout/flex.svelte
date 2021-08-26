@@ -34,6 +34,6 @@
     }
 </style>
 
-<flex-layout use:vars={flexVars} class:item-fill={itemFill} {direction}>
+<flex-layout use:vars={flexVars} class:item-fill={itemFill}>
     <slot />
 </flex-layout>
