@@ -5,7 +5,7 @@ styles applied.
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `direction` | _string_ | `"column"` | The direction the elements should be laid out. See flexbox direction for values
+| `direction` | _string_ | `"row"` | The direction the elements should be laid out. See flexbox direction for values
 | `gap` | _string_ | `"2px"` | Gap between elements. Include CSS units
 | `padding` | _string_ | `"8px"` | Padding between the container edge and the elements. Include CSS units
 
