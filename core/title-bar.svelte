@@ -14,11 +14,12 @@
         display: grid;
         grid-template-columns: min-content auto min-content;
         grid-template-areas:
-            "start-adornment title end-adornment"
-            "bottom-adornment bottom-adornment bottom-adornment"
+            "menu-adornment title action-adornment"
+            "extension-adornment extension-adornment extension-adornment"
         ;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-
+    }
+    doric-title-bar :global(doric-adornment > *:not([ignore-titlebar-reskin])) {
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);
         --control-border: var(--title-bar-text);
@@ -31,7 +32,7 @@
         right: 0px;
         z-index: +50;
     }
-    doric-title-bar > :global(title-text) {
+    doric-title-bar > title-text {
         grid-area: title;
         font-size: var(--text-size-title);
         display: flex;
@@ -40,11 +41,14 @@
         font-weight: 700;
         user-select: none;
     }
-    doric-title-bar.center > :global(title-text) {
+    doric-title-bar.center > title-text {
         justify-content: center;
     }
 </style>
 
 <doric-title-bar class:sticky class:center>
-    <slot />
+    <title-text>
+        <slot />
+    </title-text>
+    <slot name="adornments" />
 </doric-title-bar>

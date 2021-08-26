@@ -11,28 +11,32 @@ controls around the title text.
 | `center` | _boolean_ | `false` | If `false` the `TitleBar` text will be left-aligned by default. If `true` the text will be centered
 | `sticky` | _boolean_ | `false` | If `true` the `TitleBar` will use sticky positioning at the top. Leave false for titles within elements like `Card`s
 
-## Child Tags
+## Slots
 | Name | Description |
 | --- | --- |
-| `title-text` | Element that holds the text for the `TitleBar`
+| _default_ | Default slot contains the title to show
+| `adornments` | Any adornments to put in the `Titlebar`
+
+## Supported Adornment Positions
+- menu
+- action
+- extension
 
 ## Usage
 ```html
 <TitleBar sticky center>
-    <title-text>
-        App Title
-    </title-text>
+    App Title
 
-    <Adornment position="end">
-        Some Controls
-    </Adornment>
+    <svelte:fragment slot="adornments">
+        <Adornment position="end">
+            Some Controls
+        </Adornment>
+    </svelte:fragment>
 </TitleBar>
 
 <Card>
     <TitleBar>
-        <title-text>
-            Section Title
-        </title-text>
+        Section Title
     </TitleBar>
 
     ...
