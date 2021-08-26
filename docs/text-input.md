@@ -16,6 +16,10 @@ icons & controls related to the input.
 | `value` | _any_ | | Value to use with Svelte `:bind`. See binding values on `<input>` tags for more detail
 | `variant` | _string_ | | `TextInput` style variation. Valid options are: `"normal"`, `"outline"`
 
+## Supported Adornment Positions
+- start
+- end
+
 ## Events
 - blur
 - focus
