@@ -1,13 +1,6 @@
-<script context="module">
-    import {tabContext} from "../tabs.svelte"
-</script>
-
 <script>
-    import {getContext} from "svelte"
-
+    export let tabGroup
     export let value
-
-    const currentTab = getContext(tabContext)
 </script>
 
 <style>
@@ -20,6 +13,6 @@
     }
 </style>
 
-<tab-panel class:active={$currentTab === value}>
+<tab-panel class:active={tabGroup === value}>
     <slot />
 </tab-panel>
