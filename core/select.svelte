@@ -9,7 +9,8 @@
     import Popover from "./popover.svelte"
     import Ripple from "./ripple.svelte"
 
-    export let label = ""
+    export let label
+    export let optionLabel
     export let error = ""
     export let info = ""
     export let variant
@@ -114,6 +115,9 @@
     </tap-area>
     <options-display slot="content" transition:fade={{duration: 250}}>
         <Card>
+            <svelte:fragment slot="title">
+                {label ?? optionLabel}
+            </svelte:fragment>
             <item-area>
                 <List let:item items={options}>
                     <list-item on:tap={() => update(item)} dividers>

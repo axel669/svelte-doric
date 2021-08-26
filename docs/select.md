@@ -10,6 +10,7 @@ Fancier looking `select` component.
 | `label` | _string_ | | Label for the `Select`
 | `info` | _string_ | | Informational text to show at the bottom of the `Select`
 | `options` | _Array[object]_ | | An array of items to show as the options for the `Select`. Items must have a `label` and `value` property for the default display
+| `optionLabel` | _string_ | | Label to show when the select is open. Defaults to using the `label` value if specified
 | `origin` | _object_ | | The origin for the select options display. See [`Popover`](./popover.md) origin prop for details
 | `value` | any | | The value of the selected item in the options. If no item matching the given value is found, a fallback is displayed
 | `variant` | _string_ | | `Select` style variation. Valid options are: `"normal"`, `"outline"`
