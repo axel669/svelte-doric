@@ -16,6 +16,7 @@
     import Select from "../../core/select"
     import TitleBar from "../../core/title-bar"
     import Text from "../../core/text"
+    import TextInput from "../../core/text-input"
 
     import CircleSpinner from "../../core/circle-spinner"
     import HexagonSpinner from "../../core/hexagon-spinner"
@@ -24,6 +25,10 @@
     import Alert from "../../core/dialog/alert"
     import Confirm from "../../core/dialog/confirm"
     import Prompt from "../../core/dialog/prompt"
+
+    import Tabs from "../../core/tabs"
+    import TabPanel from "../../core/tab-panel"
+    import Drawer from "../../core/drawer"
 
     import hash from "../../core/browser/hash"
 
@@ -75,13 +80,13 @@
 
     let wat = null
     let wat2 = null
-    const openMenu = async () => console.log(
-        await wat2.show({
-            title: "Test",
-            message: "Nope?",
-            placeholder: "Some Example"
-        })
-    )
+    // const openMenu = async () => console.log(
+    //     await wat2.show({
+    //         title: "Test",
+    //         message: "Nope?",
+    //         placeholder: "Some Example"
+    //     })
+    // )
 
     // const componentList = [
     //     // ["adornment", "Adornment", AdornmentDemo],
@@ -105,9 +110,16 @@
     //     () => document.location.hash = `/${location}`
 
     let open = false
-    // const openMenu = () => open = true
+    const openMenu = () => open = true
     const closeMenu = () => open = false
     $: closeMenu($hash)
+
+    let tab = "test"
+    const tabOptions = [
+        {label: "test", value: "test", icon: "add"},
+        {label: "test2", value: "test2", icon: "remove"},
+        {label: "test3", value: "test3", icon: "science"},
+    ]
 </script>
 
 <style>
@@ -130,45 +142,57 @@
 
 <page-layout>
     <TitleBar sticky>
-        <title-text>
-            Svelte Doric Components
-        </title-text>
+        Svelte Doric Components
 
-        <Adornment position="start">
-            <Button on:tap={openMenu} fab round="40px">
-                <Icon name="menu" size="22px" />
-            </Button>
-        </Adornment>
+        <svelte:fragment slot="adornments">
+            <Adornment position="menu">
+                <Button on:tap={openMenu}>
+                    <Icon name="menu" size="22px" />
+                </Button>
+            </Adornment>
 
-        <Adornment position="end">
-            <Select bind:value={themeName} options={themeOptions} variant="flat" let:selectedItem>
-                <div slot="selected" style="white-space: nowrap;">
-                    Theme: {selectedItem.label}
-                </div>
-            </Select>
-        </Adornment>
+            <Adornment position="action">
+                <Select
+                bind:value={themeName}
+                options={themeOptions}
+                variant="flat"
+                let:selectedItem
+                optionLabel="Theme"
+                >
+                    <div slot="selected" style="white-space: nowrap;">
+                        Theme: {selectedItem.label}
+                    </div>
+                </Select>
+            </Adornment>
+
+            <Adornment position="extension">
+                <Tabs bind:tabGroup={tab} options={tabOptions} />
+            </Adornment>
+        </svelte:fragment>
     </TitleBar>
 
     <!-- <Tabs bind:selectedTab> -->
-        <!-- <Drawer bind:open on:close={closeMenu}>
+        <Drawer bind:open on:close={closeMenu}>
             <div style="width: 15vw;" />
             <TitleBar>
                 <title-text>
                     Components
                 </title-text>
             </TitleBar>
-            <List items={demoList} let:item>
-                <list-item dividers control>
-                    <list-item-content>
-                        <Button on:tap={nav(item)}>
-                            {item.replace(/\b\w/g, s => s.toUpperCase())}
-                        </Button>
-                    </list-item-content>
-                </list-item>
-            </List>
-        </Drawer> -->
+            <Tabs bind:tabGroup={tab} options={tabOptions} vertical />
+        </Drawer>
 
         <demo-area>
+            <Tabs bind:tabGroup={tab} options={tabOptions} />
+            <TabPanel value="test" tabGroup={tab}>
+                Test 1
+            </TabPanel>
+            <TabPanel value="test2" tabGroup={tab}>
+                Test 2
+            </TabPanel>
+            <TabPanel value="test3" tabGroup={tab}>
+                Test 3
+            </TabPanel>
             <FlexLayout gap="4px" itemFill>
                 <Card>
                     <FlexLayout direction="column">
@@ -231,6 +255,23 @@
                         </GridLayout>
                     </ActionLayout>
                 </Card>
+                <TextInput variant="outline" label="Testing" />
+
+                <flex-break />
+
+                <TextInput error="Empty" />
+                <TextInput variant="outline">
+                    <Adornment position="start">
+                        <Button variant="outline">
+                            Start
+                        </Button>
+                    </Adornment>
+                    <Adornment position="end">
+                        <Button variant="outline">
+                            End
+                        </Button>
+                    </Adornment>
+                </TextInput>
             </FlexLayout>
 
             Doric Components?
