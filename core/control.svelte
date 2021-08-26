@@ -16,6 +16,7 @@
         position: relative;
         overflow: visible;
         z-index: 0;
+        grid-template-rows: min-content auto;
     }
     control-content {
         position: relative;
