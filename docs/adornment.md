@@ -12,7 +12,7 @@ Supported in:
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `position` | _string_ | `""` | Position to put the adornment in. Accepted values: `start`,  `end`
+| `position` | _string_ | `""` | Position to put the adornment in. See supporting elements for possible positions
 | `stretch` | _boolean_ | `false` | If true, apply `align-items: stretch` style
 
 ## Usage

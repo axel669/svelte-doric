@@ -1,26 +1,20 @@
 <script>
+    import vars from "./util/vars"
+
     export let position = ""
-    export let stretch
+
+    $: positionVars = {
+        position: `${position}-adornment`
+    }
 </script>
 
 <style>
-    adornment {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        padding: 4px;
-    }
-    adornment.start {
-        grid-area: start-adornment;
-    }
-    adornment.end {
-        grid-area: end-adornment;
-    }
-    adornment.stretch {
-        align-items: stretch;
+    doric-adornment {
+        display: grid;
+        grid-area: var(--position);
     }
 </style>
 
-<adornment class={position} class:stretch>
+<doric-adornment use:vars={positionVars}>
     <slot />
-</adornment>
+</doric-adornment>
