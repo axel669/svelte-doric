@@ -3,7 +3,7 @@ Functions that can be imported alongside any of the components in the library.
 
 ## vars
 Function for managing CSS variables on html elements.
-For use with Svelte `:use`.
+For use with Svelte `use:`.
 
 Takes an object with variable names as the object keys and the information to create
 the css values as the object values. Values that are non-arrays are passed in as
