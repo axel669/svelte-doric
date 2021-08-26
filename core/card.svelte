@@ -1,7 +1,13 @@
 <script>
+    import vars from "./util/vars"
+
     export let color = "default"
     let klass = ""
     export {klass as class}
+
+    $: cardColor = {
+        "border-color": `var(--${color})`
+    }
 </script>
 
 <style>
@@ -29,17 +35,13 @@
         font-size: var(--text-size-header);
         border-bottom: 1px solid var(--border-color, var(--layer-border-color));
     }
-    card-title:empty {
-        border-width: 0px;
-        height: 0px;
-        min-height: 0px;
-        padding: 0px;
-    }
 </style>
 
-<doric-card class={klass} style="--border-color: var(--{color});">
-    <card-title>
-        <slot name="title" />
-    </card-title>
+<doric-card class={klass} use:vars={cardColor}>
+    {#if $$slots.title}
+        <card-title>
+            <slot name="title" />
+        </card-title>
+    {/if}
     <slot />
 </doric-card>
