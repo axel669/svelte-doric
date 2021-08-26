@@ -37,7 +37,7 @@
         font-family: var(--font);
         font-size: var(--text-size);
         grid-area: control;
-        height: 40px;
+        height: 36px;
         box-sizing: border-box;
         padding: 8px 4px;
         border-width: 0px;
