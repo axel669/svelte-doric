@@ -24,10 +24,10 @@
     }
     flex-layout.item-fill > :global(*) {
         flex-grow: 1;
-        /* flex-basis: 0; */
     }
 
-    flex-layout > :global(flex-break), flex-layout.item-fill > :global(flex-break) {
+    flex-layout > :global(flex-break),
+    flex-layout.item-fill > :global(flex-break) {
         flex-basis: 100%;
         height: 0;
         width: 0;
