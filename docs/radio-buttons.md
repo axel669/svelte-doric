@@ -1,5 +1,5 @@
 # Radio
-> svelte-doric/core/radio
+> svelte-doric/core/radio/buttons
 
 ## Props
 | Name | Type | Default | Description |

@@ -1,45 +1,102 @@
 <script>
-    import ToggleBase from "./toggle/base.svelte"
-    import Button from "./button.svelte"
-    import Icon from "./icon.svelte"
+    import Button from "./button"
+    import Icon from "./icon"
+    import vars from "./util/vars"
 
-    export let disabled
-    export let color = "default"
-    export let labelPlacement
-
+    export let options
+    export let value
     export let checkedIcon = "radio_button_checked"
     export let uncheckedIcon = "radio_button_unchecked"
-    export let outlined
+    export let labelPosition = "right"
+    export let cols = 1
+    export let labelToggle = true
 
-    export let group = []
-    export let value
+    const icon = (checked) => checked ? checkedIcon : uncheckedIcon
+    const update = (newValue, isLabel = false) => {
+        if (labelToggle === false && isLabel === true) {
+            return
+        }
+        value = newValue
+    }
 
-    const toggle = () => group = value
-
-    $: icon = checked ? checkedIcon : uncheckedIcon
-    $: buttonColor = checked ? color : "default"
-    $: checked = group === value
+    $: radioCols = { cols }
 </script>
 
 <style>
+    doric-radio {
+        display: grid;
+        grid-template-columns: repeat(var(--cols), 1fr);
+        gap: 2px;
+    }
+
+    radio-item {
+        display: grid;
+    }
+    radio-item.right {
+        grid-template-columns: 48px auto;
+        grid-template-areas:
+            "check label"
+        ;
+    }
+    radio-item.left {
+        grid-template-columns: auto 48px;
+        grid-template-areas:
+            "label check"
+        ;
+    }
+    radio-item.top {
+        grid-template-rows: auto 48px;
+        grid-template-areas:
+            "label"
+            "check"
+        ;
+    }
+    radio-item.bottom {
+        grid-template-rows: 48px auto;
+        grid-template-areas:
+            "check"
+            "label"
+        ;
+    }
+
+    radio-check {
+        align-self: center;
+        justify-self: center;
+        grid-area: check;
+    }
+
     radio-label {
+        cursor: pointer;
+        display: grid;
+        user-select: none;
+        grid-area: label;
+    }
+    center-text {
         display: flex;
         align-items: center;
     }
-    radio-check {
-        grid-area: symbol;
-        align-self: center;
-        justify-self: center;
+    .bottom center-text, .top center-text {
+        justify-content: center;
     }
 </style>
 
-<ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement}>
-    <radio-check>
-        <Button round="48px" color={buttonColor} {disabled}>
-            <Icon name={icon} size="24px" {outlined} />
-        </Button>
-    </radio-check>
-    <radio-label slot="label">
-        <slot />
-    </radio-label>
-</ToggleBase>
+<doric-radio use:vars={radioCols}>
+    {#each options as option (option)}
+        <radio-item class={labelPosition}>
+            <radio-check on:tap={() => update(option.value)}>
+                <Button round="48px"
+                color={option.color}
+                disabled={option.disabled}>
+                    <Icon name={icon(value === option.value)} size="24px" />
+                </Button>
+            </radio-check>
+            <radio-label on:tap={() => update(option.value, true)}>
+                <slot name="label" {option}>
+                    <center-text>
+                        {option.label}
+                    </center-text>
+                </slot>
+            </radio-label>
+        </radio-item>
+    {/each}
+</doric-radio>
