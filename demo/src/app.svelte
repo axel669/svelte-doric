@@ -29,6 +29,8 @@
     import Tabs from "../../core/tabs"
     import TabPanel from "../../core/tab-panel"
     import Drawer from "../../core/drawer"
+    import Radio from "../../core/radio"
+    import RadioButtons from "../../core/radio/buttons"
 
     import hash from "../../core/browser/hash"
 
@@ -117,8 +119,8 @@
     let tab = "test"
     const tabOptions = [
         {label: "test", value: "test", icon: "add"},
-        {label: "test2", value: "test2", icon: "remove"},
-        {label: "test3", value: "test3", icon: "science"},
+        {label: "test2", value: "test2", icon: "remove", color: "primary"},
+        {label: "test3", value: "test3", icon: "science", color: "secondary"},
     ]
 </script>
 
@@ -193,6 +195,11 @@
             <TabPanel value="test3" tabGroup={tab}>
                 Test 3
             </TabPanel>
+
+            <Radio options={tabOptions} bind:value={tab} cols={3} />
+            <RadioButtons options={tabOptions} bind:value={tab} />
+            <RadioButtons options={tabOptions} bind:value={tab} variant="fill" />
+
             <FlexLayout gap="4px" itemFill>
                 <Card>
                     <FlexLayout direction="column">
