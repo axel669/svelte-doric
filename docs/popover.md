@@ -1,4 +1,6 @@
 # Popover
+> svelte-doric/core/popover
+
 Displays content over other items but isn't a full dialog window.
 
 ## Props

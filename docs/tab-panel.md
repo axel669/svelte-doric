@@ -1,4 +1,6 @@
 # TabPanel
+> svelte-doric/core/tab-panel
+
 Component for displaying content with [Tabs](./tabs.md).
 
 ## Props

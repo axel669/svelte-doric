@@ -1,4 +1,6 @@
 # TitleBar
+> svelte-doric/core/title-bar
+
 Component for making title bars either at the top of apps or within elements on
 the page.
 

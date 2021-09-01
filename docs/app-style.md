@@ -1,4 +1,5 @@
 # AppStyle
+> svelte-doric/core/app-style
 
 Sets up the style for the app.
 

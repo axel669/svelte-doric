@@ -1,4 +1,6 @@
 # Chip
+> svelte-doric/core/chip
+
 Used to display dynamic information and interaction in contrast with buttons
 that remain largely static in position.
 

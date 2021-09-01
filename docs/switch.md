@@ -1,4 +1,6 @@
 # Switch
+> svelte-doric/core/switch
+
 Basic switch toggle component.
 
 ## Props

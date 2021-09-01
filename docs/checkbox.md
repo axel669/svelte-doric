@@ -1,4 +1,6 @@
 # Checkbox
+> svelte-doric/core/checkbox
+
 Basic checkbox component.
 
 ## Props

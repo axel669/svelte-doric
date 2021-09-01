@@ -1,4 +1,6 @@
 # Text
+> svelte-doric/core/text
+
 Displays text with some predefined styles. Not required to show text, just a
 handy way to use the shorthands defined in the library.
 

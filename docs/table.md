@@ -1,4 +1,6 @@
 # Table
+> svelte-doric/core/table
+
 Component for showing data tables.
 
 ## Props

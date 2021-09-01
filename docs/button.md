@@ -1,4 +1,6 @@
 # Button
+> svelte-doric/core/button
+
 Elements intended to direct user interaction in many places within an
 application.
 

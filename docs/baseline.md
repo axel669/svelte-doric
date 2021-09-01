@@ -1,4 +1,6 @@
 # Baseline
+> svelte-doric/core/baseline
+
 Baseline CSS for an application.
 
 Instead of taking in props, a baseline component renders style tags and adding

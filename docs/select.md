@@ -1,4 +1,6 @@
 # Select
+> svelte-doric/core/select
+
 Fancier looking `select` component.
 
 ## Props

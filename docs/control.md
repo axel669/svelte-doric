@@ -1,4 +1,6 @@
 # Control
+> svelte-doric/core/control
+
 Base component for building up controls. Intended to be used within components
 instead of as a standalone component.
 

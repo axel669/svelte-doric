@@ -1,4 +1,6 @@
 # CircleSpinner
+> svelte-doric/core/circle-spinner
+
 Shows a circular load spinner.
 
 ## Props

@@ -1,4 +1,6 @@
 # DialogContent
+> svelte-doric/core/dialog/content
+
 Container for displaying dialog boxes with simple positioning controls.
 
 ## Props

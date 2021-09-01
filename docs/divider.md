@@ -1,4 +1,6 @@
 # Divider
+> svelte-doric/core/divider
+
 Simple horizontal or vertical divider to separate content areas.
 
 ## Props

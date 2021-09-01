@@ -1,4 +1,6 @@
 # List
+> svelte-doric/core/list
+
 Component for displaying lists of items that may or may not have interactions.
 
 ## Props

@@ -2,6 +2,8 @@
 Functions that can be imported alongside any of the components in the library.
 
 ## vars
+> svelte-doric/core/util/vars
+
 Function for managing CSS variables on html elements.
 For use with Svelte `use:`.
 

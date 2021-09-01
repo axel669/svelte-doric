@@ -1,4 +1,6 @@
 # Icon
+> svelte-doric/core/icon
+
 Displays a regular or outlined icon from the Material Icons library.
 > [Material Icons](https://material.io/resources/icons/?style=baseline)
 >

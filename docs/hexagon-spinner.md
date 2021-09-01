@@ -1,4 +1,6 @@
 # HexagonSpinner
+> svelte-doric/core/hexagon-spinner
+
 Shows a hexagonal load spinner.
 
 ## Props

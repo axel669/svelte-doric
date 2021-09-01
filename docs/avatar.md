@@ -1,4 +1,6 @@
 # Avatar
+> svelte-doric/core/avatar
+
 Small icon-like component that supports images and text as content.
 
 ## Props

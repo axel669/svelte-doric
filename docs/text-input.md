@@ -1,4 +1,6 @@
 # TextInput
+> svelte-doric/core/text-input
+
 Fancier looking single line text input.
 
 Use [`Adornment`](./adornment.md) with `"start"` and `"end"` positions to add

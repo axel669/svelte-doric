@@ -1,4 +1,6 @@
 # Ripple
+> svelte-doric/core/ripple
+
 Adds a ripple effect to an element.
 
 ## Props

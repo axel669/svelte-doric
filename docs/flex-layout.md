@@ -1,4 +1,6 @@
 # FlexLayout
+> svelte-doric/core/layout/flex
+
 Layout that uses flexbox under the hood to layout items with a few common
 styles applied.
 

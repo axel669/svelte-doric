@@ -1,4 +1,5 @@
 # Adornment
+> svelte-doric/core/adornment
 
 Used to add small pieces of information or interaction to other components.
 

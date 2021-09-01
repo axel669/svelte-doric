@@ -1,4 +1,6 @@
 # Card
+> svelte-doric/core/card
+
 Container component for displaying information that should be contained
 separately from the surrounding content.
 

@@ -1,4 +1,6 @@
 # ActionLayout
+> svelte-doric/core/layout/action
+
 Layout that has 2 spaces: 1 for content, 1 for actions (usually buttons).
 If the container is larger than the content + actions, the elements are snapped
 to opposite sides of the container (top-bottom or left-right).
