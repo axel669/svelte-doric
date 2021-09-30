@@ -35,4 +35,4 @@ const vars = (node, vars) => {
     }
 }
 
-module.exports = vars
+export default vars

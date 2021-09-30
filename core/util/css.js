@@ -13,6 +13,5 @@ const css = (parts, ...values) => {
         .join("")
     return `<style>\n${css}\n</style>`
 }
-css.default = css
 
-module.exports = css
+export default css
