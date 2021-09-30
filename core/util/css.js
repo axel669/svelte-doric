@@ -1,10 +1,12 @@
+import nvalue from "./nvalue"
+
 const css = (parts, ...values) => {
     const css = parts
         .reduce(
             (cssParts, part, index) => [
                 ...cssParts,
                 part,
-                values[index] ?? ""
+                nvalue(values[index], "")
             ],
             []
         )

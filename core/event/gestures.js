@@ -1,3 +1,5 @@
+import nvalue from "../util/nvalue"
+
 const touchState = {}
 
 if (typeof window !== "undefined") {
@@ -17,7 +19,7 @@ if (typeof window !== "undefined") {
                 return
             }
             const customEvent = new CustomEvent(pointerStart, evtOptions)
-            evt.identifier = evt.identifier ?? -1
+            evt.identifier = nvalue(evt.identifier, -1)
             customEvent.changedTouches = isMobile ? evt.changedTouches : [evt]
             evt.target.dispatchEvent(customEvent)
         },
@@ -30,7 +32,7 @@ if (typeof window !== "undefined") {
                 return
             }
             const customEvent = new CustomEvent(pointerEnd, evtOptions)
-            evt.identifier = evt.identifier ?? -1
+            evt.identifier = nvalue(evt.identifier, -1)
             customEvent.changedTouches = isMobile ? evt.changedTouches : [evt]
             evt.target.dispatchEvent(customEvent)
         },
