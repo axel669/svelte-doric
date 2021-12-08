@@ -3,7 +3,7 @@
 
     const theme = css`
         body {
-            --font: Inconsolata;
+            --font: Orbitron;
             --background: #030303;
             --background-layer: #080808;
             --layer-border-width: 2px;
