@@ -17,7 +17,7 @@
         flex-direction: column;
     }
 
-    doric-list > :global(list-item, list-header) {
+    doric-list > :global(list-item), doric-list > :global(list-header) {
         display: grid;
         position: relative;
         overflow: hidden;
@@ -28,7 +28,7 @@
         ;
         grid-template-columns: auto 1fr auto;
     }
-    doric-list > :global(list-header > list-header-content) {
+    doric-list > :global(list-header) > :global(list-header-content) {
         font-size: var(--text-size-header);
         font-weight: 700;
     }
@@ -46,7 +46,8 @@
         margin-top: -1px;
     }
 
-    doric-list > :global(list-item > list-item-content, list-header > list-header-content) {
+    doric-list > :global(list-item) > :global(list-header-content),
+    doric-list > :global(list-header) > :global(list-header-content) {
         grid-area: content;
         display: flex;
         flex-direction: column;
