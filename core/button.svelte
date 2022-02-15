@@ -7,7 +7,8 @@
     export let variant = "normal"
     export let disabled = false
     export let round
-    export let fab
+    export let action
+    export let adorn
 
     let klass = ""
     export {klass as class}
@@ -59,9 +60,13 @@
         padding: 8px;
         border-radius: var(--button-round-size);
     }
-    .fab {
+    .action {
         width: var(--button-round-size);
         padding: 0px;
+    }
+    .adorn {
+        padding-top: 2px;
+        padding-bottom: 2px;
     }
 
     .disabled {
@@ -104,7 +109,8 @@
     class="{color} {variant} {klass}"
     class:disabled
     class:round
-    class:fab
+    class:action
+    class:adorn
 >
     <slot />
     <Ripple {disabled} />

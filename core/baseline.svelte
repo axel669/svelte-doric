@@ -9,10 +9,14 @@
         rel="stylesheet"
         type="text/css"
     />
-    <link
+    <!-- <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
         rel="stylesheet"
-    />
+    /> -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    >
 </svelte:head>
 
 <style>

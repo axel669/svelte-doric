@@ -8,7 +8,7 @@
 <style>
     action-area {
         --ripple-color: var(--ripple-normal);
-        display: block;
+        display: grid;
         overflow: hidden;
         position: relative;
         cursor: pointer;

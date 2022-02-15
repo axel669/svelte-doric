@@ -1,12 +1,12 @@
 <script>
-    import Button from "./button"
-    import Icon from "./icon"
+    import Button from "./button.svelte"
+    import Icon from "./icon.svelte"
     import vars from "./util/vars"
 
     export let options
     export let value
-    export let checkedIcon = "radio_button_checked"
-    export let uncheckedIcon = "radio_button_unchecked"
+    export let checkedIcon = "check-circle"
+    export let uncheckedIcon = "circle"
     export let labelPosition = "right"
     export let cols = 1
     export let labelToggle = true
@@ -27,32 +27,34 @@
         display: grid;
         grid-template-columns: repeat(var(--cols), 1fr);
         gap: 2px;
+
+        --radio-size: 40px;
     }
 
     radio-item {
         display: grid;
     }
     radio-item.right {
-        grid-template-columns: 48px auto;
+        grid-template-columns: var(--radio-size) auto;
         grid-template-areas:
             "check label"
         ;
     }
     radio-item.left {
-        grid-template-columns: auto 48px;
+        grid-template-columns: auto var(--radio-size);
         grid-template-areas:
             "label check"
         ;
     }
     radio-item.top {
-        grid-template-rows: auto 48px;
+        grid-template-rows: auto var(--radio-size);
         grid-template-areas:
             "label"
             "check"
         ;
     }
     radio-item.bottom {
-        grid-template-rows: 48px auto;
+        grid-template-rows: var(--radio-size) auto;
         grid-template-areas:
             "check"
             "label"
@@ -84,10 +86,10 @@
     {#each options as option (option)}
         <radio-item class={labelPosition}>
             <radio-check on:tap={() => update(option.value)}>
-                <Button round="48px"
+                <Button round="40px"
                 color={option.color}
                 disabled={option.disabled}>
-                    <Icon name={icon(value === option.value)} size="24px" />
+                    <Icon name={icon(value === option.value)} size="16px" />
                 </Button>
             </radio-check>
             <radio-label on:tap={() => update(option.value, true)}>

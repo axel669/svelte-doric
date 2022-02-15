@@ -12,7 +12,7 @@
         color: var(--title-bar-text);
 
         display: grid;
-        grid-template-columns: min-content auto min-content;
+        grid-template-columns: max-content auto max-content;
         grid-template-areas:
             "menu-adornment title action-adornment"
             "extension-adornment extension-adornment extension-adornment"

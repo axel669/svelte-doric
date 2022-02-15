@@ -1,6 +1,8 @@
 <script>
     export let variant = ""
     export let block = false
+    export let align = "left"
+    export let adorn
     export let color
     let klass = ""
     export {klass as class}
@@ -38,8 +40,24 @@
     .danger {
         color: var(--danger);
     }
+
+    .left {
+        text-align: left;
+    }
+    .right {
+        text-align: right;
+    }
+    .center {
+        text-align: center;
+    }
+
+    .adorn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 
-<span class:block class="{variantClass} {color} {klass}">
+<span class:block class:adorn class="{variantClass} {color} {klass} {align}">
     <slot />
 </span>

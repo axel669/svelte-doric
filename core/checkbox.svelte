@@ -12,8 +12,8 @@
     export let labelPlacement
     export let labelToggle = true
 
-    export let checkedIcon = "check_box"
-    export let uncheckedIcon = "check_box_outline_blank"
+    export let checkedIcon = "check-square"
+    export let uncheckedIcon = "square"
     export let outlined
 
     const toggle = () => checked = !checked
@@ -49,7 +49,7 @@
 <ToggleBase {checked} {disabled} {toggle} {color} {labelPlacement} {labelToggle}>
     <checkbox-check>
         <Button round="40px" color={buttonColor} {disabled} fab>
-            <Icon name={icon} size="22px" {outlined} />
+            <Icon name={icon} size="16px" {outlined} />
         </Button>
     </checkbox-check>
     <checkbox-label slot="label">

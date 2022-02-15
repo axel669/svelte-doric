@@ -1,12 +1,13 @@
 <script>
-    import ActionArea from "./action-area"
-    import Icon from "./icon"
+    import ActionArea from "./action-area.svelte"
+    import Icon from "./icon.svelte"
 
     import vars from "./util/vars"
 
     export let tabGroup
     export let options
     export let vertical
+    export let iconTop = false
 
     const change = (value) =>
         () => tabGroup = value
@@ -47,8 +48,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 12px;
+        padding: 8px 12px;
         font-size: var(--text-sixe-header);
+    }
+    tab-label.vertical {
+        flex-direction: column;
     }
 </style>
 
@@ -56,11 +60,13 @@
     {#each options as option (option.value)}
         <tab-item class:selected={option.value === tabGroup}>
             <ActionArea on:tap={change(option.value)}>
-                <tab-label>
+                <tab-label class:vertical={iconTop}>
                     {#if option.icon}
                         <Icon name={option.icon} />
                     {/if}
-                    {option.label}
+                    <span>
+                        {option.label}
+                    </span>
                 </tab-label>
             </ActionArea>
         </tab-item>

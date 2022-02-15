@@ -1,17 +1,17 @@
 <script>
-    import Button from "../button"
-    import Icon from "../icon"
+    import Button from "../button.svelte"
+    import Icon from "../icon.svelte"
     import vars from "../util/vars"
 
-    export let options
+    export let options = []
     export let value
     export let checkedIcon = "done"
-    export let variant = "outline"
+    export let cols = options.length
 
     const set = (newValue) =>
         () => value = newValue
 
-    $: radioCols = { cols: options.length }
+    $: radioCols = { cols }
 </script>
 
 <style>
@@ -32,7 +32,7 @@
 
 <doric-radio-buttons use:vars={radioCols}>
     {#each options as option (option)}
-        <Button on:tap={set(option.value)} color={option.color} {variant}>
+        <Button on:tap={set(option.value)} color={option.color} action>
             {#if option.value === value}
                 <Icon name={checkedIcon} size="24px" />
             {/if}

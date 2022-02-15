@@ -12,6 +12,7 @@
     doric-adornment {
         display: grid;
         grid-area: var(--position);
+        padding: 4px;
     }
 </style>
 

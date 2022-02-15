@@ -1,7 +1,6 @@
 <script>
     import ToggleBase from "./toggle/base.svelte"
     import Button from "./button.svelte"
-    import Icon from "./icon.svelte"
 
     export let group = []
     export let value

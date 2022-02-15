@@ -16,12 +16,12 @@
         position: relative;
         overflow: visible;
         z-index: 0;
-        grid-template-rows: min-content auto;
+        grid-template-rows: max-content auto;
     }
     control-content {
         position: relative;
         display: grid;
-        grid-template-columns: min-content auto min-content;
+        grid-template-columns: max-content auto max-content;
         grid-template-areas:
             "start-adornment control end-adornment"
         ;

@@ -4,7 +4,7 @@
     export let label = ""
     export let error = ""
     export let info = ""
-    export let variant
+    export let variant = "outline"
     let klass = ""
     export {klass as class}
 
