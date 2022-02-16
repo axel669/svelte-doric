@@ -1,11 +1,12 @@
 <script>
     import vars from "./util/vars"
 
+    export let border
+    export let card
     export let center
-    export let width
     export let footer
     export let square
-    export let border
+    export let width
 
     $: variables = {
         width,
@@ -27,6 +28,10 @@
         border-color: var(--border-color, var(--layer-border-color));
     }
 
+    doric-paper.card {
+        border-width: var(--layer-border-width);
+    }
+
     doric-paper.square {
         border-radius: 0px;
     }
@@ -44,7 +49,7 @@
 
 <doric-paper
 use:vars={variables}
-class:center class:footer class:square class:border
+class:center class:footer class:square class:border class:card
 >
     <slot />
 </doric-paper>

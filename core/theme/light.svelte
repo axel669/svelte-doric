@@ -7,7 +7,7 @@
             --background: #e9e9e9;
             --background-layer: #ffffff;
             --layer-border-width: 1px;
-            --layer-border-color: #eeeeee;
+            --layer-border-color: #aaaaaa;
 
             --ripple-dark: #00000060;
             --ripple-light: #FFFFFF60;

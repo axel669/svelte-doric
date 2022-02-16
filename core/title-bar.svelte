@@ -1,6 +1,7 @@
 <script>
     export let sticky
     export let center
+    export let compact
 </script>
 
 <style>
@@ -12,14 +13,10 @@
         color: var(--title-bar-text);
 
         display: grid;
-        grid-template-columns: max-content auto max-content;
-        grid-template-areas:
-            "menu-adornment title action-adornment"
-            "extension-adornment extension-adornment extension-adornment"
-        ;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     }
-    doric-title-bar :global(doric-adornment > *:not([ignore-titlebar-reskin])) {
+    doric-title-bar:not(.compact)
+    :global(doric-adornment > *:not([ignore-titlebar-reskin])) {
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);
         --control-border: var(--title-bar-text);
@@ -32,8 +29,19 @@
         right: 0px;
         z-index: +50;
     }
-    doric-title-bar > title-text {
-        grid-area: title;
+    doric-title-bar.compact {
+        grid-template-rows: 32px min-content;
+        background-color: var(--background-layer);
+        box-shadow: none;
+        --title-bar-text: var(--text-normal);
+    }
+
+    title-area {
+        display: grid;
+        grid-template-columns: max-content auto max-content;
+    }
+
+    title-text {
         font-size: var(--text-size-title);
         display: flex;
         align-items: center;
@@ -41,14 +49,25 @@
         font-weight: 700;
         user-select: none;
     }
-    doric-title-bar.center > title-text {
+    title-text.center {
         justify-content: center;
+    }
+    title-text.compact {
+        font-size: var(--text-size-header);
     }
 </style>
 
-<doric-title-bar class:sticky class:center>
-    <title-text>
-        <slot />
-    </title-text>
-    <slot name="adornments" />
+<doric-title-bar class:sticky class:compact>
+    <title-area>
+        <slot name="menu">
+            <div />
+        </slot>
+        <title-text class:center class:compact>
+            <slot />
+        </title-text>
+        <slot name="action">
+            <div />
+        </slot>
+    </title-area>
+    <slot name="extension" />
 </doric-title-bar>

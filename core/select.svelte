@@ -56,7 +56,6 @@
 
 <style>
     arrow-icon {
-        grid-area: end-adornment;
         display: flex;
         align-items: center;
     }
@@ -84,7 +83,6 @@
     selected-item-display {
         display: inline-block;
         padding: 8px;
-        grid-area: control;
         user-select: none;
     }
     selected-item-display:focus {
@@ -106,7 +104,7 @@
                 {selectedItem.label}
             </slot>
         </selected-item-display>
-        <arrow-icon>
+        <arrow-icon slot="end">
             <Icon name="caret-down-fill" size="16px" />
         </arrow-icon>
     </Control>

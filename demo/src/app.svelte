@@ -5,6 +5,7 @@
 
         Adornment,
         Button,
+        Card,
         Checkbox,
         Footer,
         Icon,
@@ -42,19 +43,21 @@
 
 <AppStyle {baseline} {theme} />
 
+<TitleBar sticky>
+    Doric Components Testing
+
+    <Adornment slot="action">
+        <Button>
+            <Icon name="box-arrow-right" size="16px" />
+        </Button>
+    </Adornment>
+
+    <Adornment slot="extension" flush>
+        <Tabs bind:tabGroup={currentTheme} {options} />
+    </Adornment>
+</TitleBar>
+
 <Paper center footer square width="min(640px, 100%)">
-    <TitleBar sticky>
-        Doric Components Testing
-
-        <svelte:fragment slot="adornments">
-            <Adornment position="action">
-                <Button>
-                    <Icon name="box-arrow-right" size="16px" />
-                </Button>
-            </Adornment>
-        </svelte:fragment>
-    </TitleBar>
-
     <Flex direction="column">
         <Text>
             <i class="bi-alarm" />
@@ -70,6 +73,8 @@
             <Radio {options} bind:value={theme} />
         </div> -->
 
+        <Select label="Theme" {options} value={currentTheme} />
+
         <Checkbox bind:checked>
             Active
         </Checkbox>
@@ -79,10 +84,29 @@
         </Switch>
 
         <TextInput label="Cost">
-            <Adornment position="start">
+            <Adornment slot="start">
                 <Text adorn>$</Text>
             </Adornment>
         </TextInput>
+
+        <Paper card>
+            <TitleBar>
+                Test Card?
+            </TitleBar>
+
+            <Text>
+                Content!
+            </Text>
+        </Paper>
+        <Paper card>
+            <TitleBar compact>
+                Test Card?
+            </TitleBar>
+
+            <Text>
+                Content!
+            </Text>
+        </Paper>
     </Flex>
 
     <Footer>

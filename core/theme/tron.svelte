@@ -6,7 +6,7 @@
             --font: Orbitron;
             --background: #030303;
             --background-layer: #080808;
-            --layer-border-width: 2px;
+            --layer-border-width: 1px;
             --layer-border-color: var(--text-normal);
 
             --ripple-dark: #00000060;

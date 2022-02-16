@@ -36,7 +36,6 @@
     input {
         font-family: var(--font);
         font-size: var(--text-size);
-        grid-area: control;
         height: 36px;
         box-sizing: border-box;
         padding: 8px 4px;
@@ -51,6 +50,7 @@
 </style>
 
 <Control type="text-input" {...controlProps}>
+    <slot slot="start" name="start" />
     <input
         {...inputProps}
         bind:this={inputElement}
@@ -58,5 +58,5 @@
         on:focus
         on:blur
     />
-    <slot />
+    <slot slot="end" name="end" />
 </Control>

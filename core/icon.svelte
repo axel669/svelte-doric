@@ -11,6 +11,7 @@
 
 <style>
     doric-icon {
+        margin: 0px 4px;
         font-size: var(--icon-font-size);
     }
 </style>

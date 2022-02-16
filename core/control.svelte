@@ -22,9 +22,6 @@
         position: relative;
         display: grid;
         grid-template-columns: max-content auto max-content;
-        grid-template-areas:
-            "start-adornment control end-adornment"
-        ;
         padding: 13px 4px 4px 4px;
     }
     fieldset {
@@ -76,7 +73,13 @@
 
 <control-component {style} class="{variant} {klass}">
     <control-content>
+        <slot name="start">
+            <div />
+        </slot>
         <slot />
+        <slot name="end">
+            <div />
+        </slot>
         <fieldset class:error style={borderStyle}>
             <legend style={labelStyle}>
                 {label}

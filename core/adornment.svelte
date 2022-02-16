@@ -1,21 +1,17 @@
 <script>
-    import vars from "./util/vars"
-
-    export let position = ""
-
-    $: positionVars = {
-        position: `${position}-adornment`
-    }
+    export let flush
 </script>
 
 <style>
     doric-adornment {
         display: grid;
-        grid-area: var(--position);
         padding: 4px;
+    }
+    doric-adornment.flush {
+        padding: 0px;
     }
 </style>
 
-<doric-adornment use:vars={positionVars}>
+<doric-adornment class:flush>
     <slot />
 </doric-adornment>
