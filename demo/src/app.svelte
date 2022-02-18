@@ -7,10 +7,12 @@
         Button,
         Card,
         Checkbox,
+        ControlDrawer,
         Drawer,
         Footer,
         Icon,
         Radio,
+        OptionList,
         Paper,
         Select,
         Switch,
@@ -20,15 +22,31 @@
         TitleBar,
     } from "@core"
     import { Flex } from "@layout"
+    import { Dialog } from "@dialog"
 
     import ThemePicker from "./test/theme-picker.svelte"
-    import NewText from "./test/new-text.svelte"
+    import SelectDialog from "./test/select-dialog.svelte"
 
     let theme = null
 
-    let value = "all your money"
-
     let open = false
+
+    let value = 1
+    const options = [
+        { label: "test", value: 0},
+        { label: "test 2", value: 1},
+        { label: "test 3", value: 2},
+    ]
+
+    let dialog = null
+    const openDialog = async () => {
+        console.log(
+            await dialog.show({
+                title: "Testing",
+                message: "Select?"
+            })
+        )
+    }
 </script>
 
 <AppStyle {baseline} {theme} />
@@ -49,51 +67,27 @@
     </Adornment>
 </TitleBar>
 
-<Drawer {open} on:close={() => open = false}>
+<Drawer bind:open>
     <ThemePicker bind:theme vertical />
+    <Button on:tap={() => open = false}>
+        Close
+    </Button>
 </Drawer>
 
+<Dialog let:options let:close bind:this={dialog} component={SelectDialog} />
 <Paper center footer square flat width="min(640px, 100%)">
     <Flex direction="column" gap="4px">
-        <TextInput label="Taxes" bind:value error>
-            <Adornment slot="start">
-                <Text adorn>$</Text>
-            </Adornment>
-        </TextInput>
-        <TextInput label="Taxes" bind:value error />
-        <TextInput bind:value extra="additional info?">
-            <Adornment slot="start">
-                <Text adorn>$</Text>
-            </Adornment>
-        </TextInput>
-        <TextInput flat bind:value>
-            <Adornment slot="start">
-                <Text adorn>$</Text>
-            </Adornment>
-        </TextInput>
-        <TextInput label="Taxes" flat bind:value extra="not enough" error />
-
-        <Paper card>
-            <TitleBar>
-                Test Card?
-            </TitleBar>
-
-            <Text>
-                Content!
+        <Select {options} bind:value label="Test Label" persistent let:selected>
+            <Text slot="selected">
+                Current Item: {selected.label}
             </Text>
-        </Paper>
-        <Paper card>
-            <TitleBar compact>
-                Test Card?
-            </TitleBar>
+        </Select>
+        <Select {options} bind:value label="Test Label" let:info>
+            <OptionList {info} square={false} slot="options" />
+        </Select>
 
-            <Text>
-                Content!
-            </Text>
-        </Paper>
-
-        <Button>
-            Button?
+        <Button color="primary" on:tap={openDialog}>
+            Dialog Test
         </Button>
     </Flex>
 

@@ -1,135 +1,64 @@
 <script>
-    import {fade} from "svelte/transition"
-
     import Button from "./button.svelte"
-    import Card from "./card.svelte"
-    import Control from "./control.svelte"
+    import ControlDrawer from "./control-drawer.svelte"
     import Icon from "./icon.svelte"
-    import List from "./list.svelte"
-    import Popover from "./popover.svelte"
-    import Ripple from "./ripple.svelte"
+    import Text from "./text.svelte"
+    import TitleBar from "./title-bar.svelte"
 
-    export let label
-    export let optionLabel
-    export let error = ""
-    export let info = ""
-    export let variant = "outline"
-    let klass = ""
-    export {klass as class}
+    import OptionList from "./select/option-list.svelte"
 
-    export let value = ""
-    export let disabled = false
-    export let options = []
-    export let origin = {}
+    export let options
+    export let value
+    export let label = ""
+    export let persistent = false
+    export let icon = "caret-right-fill"
 
-    let display = null
-    const focus = () => {
-        display.focus()
+    let open = false
+    const select = (newValue) => {
+        open = false
+        value = newValue
     }
 
-    let visible = false
-    const openOptions = () => visible = true
-    const closeOptions = () => visible = false
-
-    const keep = (evt) => {
-        if (visible === true) {
-            evt.preventDefault()
-            evt.target.focus()
-        }
+    $: info = {
+        select,
+        options,
+        currentValue: value,
     }
-
-    const size = {width: "100%"}
-
-    const update = item => {
-        value = item.value
-        closeOptions()
-    }
-    $: controlProps = {
-        label,
-        info,
-        error,
-        variant,
-        klass,
-    }
-    $: selectedItem = options.find(item => item.value === value) ?? {label: ""}
+    $: selected = options.find(
+        option => option.value === value
+    )
 </script>
 
 <style>
-    arrow-icon {
-        display: flex;
-        align-items: center;
-    }
-
-    tap-area {
+    select-arrow {
+        display: grid;
         position: absolute;
         top: 0px;
-        left: 0px;
         right: 0px;
         bottom: 0px;
-        cursor: pointer;
-    }
-
-    options-display {
-        display: inline-block;
-        min-width: 100%;
-        overflow-y: auto;
-        overflow: visible;
-    }
-    item-area {
-        max-height: 40vh;
-        overflow: auto;
-    }
-
-    selected-item-display {
-        display: inline-block;
         padding: 8px;
-        user-select: none;
-    }
-    selected-item-display:focus {
-        outline: none;
-    }
-    list-item {
-        cursor: pointer;
-    }
-
-    list-item-content > :global(select-label) {
-        min-width: 100%;
     }
 </style>
 
-<Popover {visible} {origin} {size} modal on:cancel={closeOptions}>
-    <Control {...controlProps}>
-        <selected-item-display bind:this={display} tabindex="0" on:blur={keep}>
-            <slot name="selected" {selectedItem}>
-                {selectedItem.label}
-            </slot>
-        </selected-item-display>
-        <arrow-icon slot="end">
-            <Icon name="caret-down-fill" size="16px" />
-        </arrow-icon>
-    </Control>
-    <tap-area on:tap={openOptions} on:focus={focus} tabindex="-1">
-        <Ripple {disabled} />
-    </tap-area>
-    <options-display slot="content" transition:fade={{duration: 250}}>
-        <Card>
-            <svelte:fragment slot="title">
-                {label ?? optionLabel}
-            </svelte:fragment>
-            <item-area>
-                <List let:item items={options}>
-                    <list-item on:tap={() => update(item)} dividers>
-                        <list-item-content>
-                            <slot {item}>
-                                <select-label>
-                                    {item.label}
-                                </select-label>
-                            </slot>
-                        </list-item-content>
-                        <Ripple />
-                    </list-item>
-                </List>
-            </item-area>
-        </Card>
-    </options-display>
-</Popover>
+<ControlDrawer bind:open {persistent}>
+    {#if label}
+        <TitleBar compact>
+            {label}
+        </TitleBar>
+    {/if}
+    <slot name="options" {info}>
+        <OptionList {info} />
+    </slot>
+</ControlDrawer>
+
+<Button variant="outline" {...$$props} on:tap={() => open = true}>
+    <slot name="selected" {selected}>
+        {label}: {selected.label}
+    </slot>
+
+    <select-arrow>
+        <Text adorn>
+            <Icon name={icon} />
+        </Text>
+    </select-arrow>
+</Button>
