@@ -6,6 +6,7 @@
 
     export let open = false
     export let clear
+    export let persistent = false
 
     const dispatch = createEventDispatcher()
     const anim = {
@@ -13,6 +14,10 @@
     }
 
     const close = (evt) => {
+        if (persistent === true) {
+            return
+        }
+        open = false
         dispatch("close")
     }
 </script>
@@ -25,7 +30,7 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.35);
-        z-index: 100;
+        z-index: 500;
     }
     modal-wrapper.clear {
         background-color: transparent;

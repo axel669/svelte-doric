@@ -6,7 +6,7 @@
     const drawerSlide = (node, options) => {
         return {
             delay: 0,
-            duration: 200,
+            duration: 250,
             css: (t, u) => `
                 transform: translateX(-${u * 100}%);
                 opacity: ${t};
@@ -26,7 +26,7 @@
     }
 </style>
 
-<Modal {open} on:close>
+<Modal bind:open on:close>
     <drawer-wrapper transition:drawerSlide>
         <slot />
     </drawer-wrapper>
