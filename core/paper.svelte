@@ -7,6 +7,7 @@
     export let footer
     export let square
     export let width
+    export let flat
 
     $: variables = {
         width,
@@ -45,11 +46,14 @@
     doric-paper.border {
         border-width: var(--layer-border-width);
     }
+    doric-paper.flat {
+        box-shadow: none;
+    }
 </style>
 
 <doric-paper
 use:vars={variables}
-class:center class:footer class:square class:border class:card
+class:center class:footer class:square class:border class:card class:flat
 >
     <slot />
 </doric-paper>

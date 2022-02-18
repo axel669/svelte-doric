@@ -7,6 +7,7 @@
         Button,
         Card,
         Checkbox,
+        Drawer,
         Footer,
         Icon,
         Radio,
@@ -18,27 +19,16 @@
         TextInput,
         TitleBar,
     } from "@core"
-    import { LightTheme, DarkTheme, TronTheme } from "@theme"
     import { Flex } from "@layout"
 
     import ThemePicker from "./test/theme-picker.svelte"
+    import NewText from "./test/new-text.svelte"
 
-    const options = [
-        { label: "Light Theme", value: "light", icon: "sun" },
-        { label: "Dark Theme", value: "dark", icon: "moon" },
-        { label: "Tron Theme", value: "tron", icon: "laptop" },
-    ]
-    const themeMap = {
-        light: LightTheme,
-        dark: DarkTheme,
-        tron: TronTheme,
-    }
-    let currentTheme = localStorage.theme ?? "light"
+    let theme = null
 
-    $: theme = themeMap[currentTheme]
-    $: localStorage.theme = currentTheme
+    let value = "all your money"
 
-    let checked = false
+    let open = false
 </script>
 
 <AppStyle {baseline} {theme} />
@@ -46,48 +36,42 @@
 <TitleBar sticky>
     Doric Components Testing
 
+    <Adornment slot="menu">
+        <Button on:tap={() => open = true}>
+            <Icon name="list" size="16px" />
+        </Button>
+    </Adornment>
+
     <Adornment slot="action">
         <Button>
             <Icon name="box-arrow-right" size="16px" />
         </Button>
     </Adornment>
-
-    <Adornment slot="extension" flush>
-        <Tabs bind:tabGroup={currentTheme} {options} />
-    </Adornment>
 </TitleBar>
 
-<Paper center footer square width="min(640px, 100%)">
-    <Flex direction="column">
-        <Text>
-            <i class="bi-alarm" />
-            <Icon name="alarm" />
-        </Text>
+<Drawer {open} on:close={() => open = false}>
+    <ThemePicker bind:theme vertical />
+</Drawer>
 
-        <Button on:tap={console.log}>
-            <Icon name="wifi" />
-            Test
-        </Button>
-
-        <!-- <div>
-            <Radio {options} bind:value={theme} />
-        </div> -->
-
-        <Select label="Theme" {options} value={currentTheme} />
-
-        <Checkbox bind:checked>
-            Active
-        </Checkbox>
-
-        <Switch bind:checked>
-            More Active
-        </Switch>
-
-        <TextInput label="Cost">
+<Paper center footer square flat width="min(640px, 100%)">
+    <Flex direction="column" gap="4px">
+        <TextInput label="Taxes" bind:value error>
             <Adornment slot="start">
                 <Text adorn>$</Text>
             </Adornment>
         </TextInput>
+        <TextInput label="Taxes" bind:value error />
+        <TextInput bind:value extra="additional info?">
+            <Adornment slot="start">
+                <Text adorn>$</Text>
+            </Adornment>
+        </TextInput>
+        <TextInput flat bind:value>
+            <Adornment slot="start">
+                <Text adorn>$</Text>
+            </Adornment>
+        </TextInput>
+        <TextInput label="Taxes" flat bind:value extra="not enough" error />
 
         <Paper card>
             <TitleBar>
@@ -107,11 +91,13 @@
                 Content!
             </Text>
         </Paper>
+
+        <Button>
+            Button?
+        </Button>
     </Flex>
 
     <Footer>
-        <svelte:fragment slot="middle">
-            <Tabs bind:tabGroup={currentTheme} {options} iconTop />
-        </svelte:fragment>
+        <ThemePicker bind:theme slot="middle" />
     </Footer>
 </Paper>
