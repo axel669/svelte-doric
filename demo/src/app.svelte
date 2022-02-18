@@ -5,7 +5,6 @@
 
         Adornment,
         Button,
-        Card,
         Checkbox,
         ControlDrawer,
         Drawer,
@@ -22,7 +21,7 @@
         TitleBar,
     } from "@core"
     import { Flex } from "@layout"
-    import { Dialog } from "@dialog"
+    import { Dialog, Alert } from "@dialog"
 
     import ThemePicker from "./test/theme-picker.svelte"
     import SelectDialog from "./test/select-dialog.svelte"
@@ -74,7 +73,8 @@
     </Button>
 </Drawer>
 
-<Dialog let:options let:close bind:this={dialog} component={SelectDialog} />
+<!-- <Dialog let:options let:close bind:this={dialog} component={SelectDialog} /> -->
+<Dialog let:options let:close bind:this={dialog} component={Alert} />
 <Paper center footer square flat width="min(640px, 100%)">
     <Flex direction="column" gap="4px">
         <Select {options} bind:value label="Test Label" persistent let:selected>

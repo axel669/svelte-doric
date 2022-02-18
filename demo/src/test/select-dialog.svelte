@@ -1,10 +1,12 @@
 <script>
     import {
         Button,
-        Card,
+        Icon,
+        Paper,
         Select,
+        TitleBar,
     } from "@core"
-    import {Action, Flex, Grid} from "@layout"
+    import { Action, Flex, Grid } from "@layout"
     import { DialogContent } from "@dialog"
 
     export let close
@@ -14,6 +16,7 @@
         title = "Alert",
         message,
         okText = "OK",
+        icon,
     } = options)
     let value = 0
     const items = [
@@ -27,10 +30,15 @@
 </script>
 
 <DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
-    <Card>
-        <svelte:fragment slot="title">
-            {title ?? ""}
-        </svelte:fragment>
+    <Paper card>
+        {#if title}
+            <TitleBar compact>
+                {#if icon}
+                    <Icon name={icon} />
+                {/if}
+                {title}
+            </TitleBar>
+        {/if}
         <Action>
             <Flex>
                 {message}
@@ -42,5 +50,5 @@
                 </Button>
             </Grid>
         </Action>
-    </Card>
+    </Paper>
 </DialogContent>

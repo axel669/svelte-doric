@@ -1,11 +1,13 @@
 <script>
-    import ActionLayout from "../layout/action.svelte"
-    import FlexLayout from "../layout/flex.svelte"
-    import GridLayout from "../layout/grid.svelte"
+    import Action from "../layout/action.svelte"
+    import Flex from "../layout/flex.svelte"
+    import Grid from "../layout/grid.svelte"
 
     import Button from "../button.svelte"
-    import Card from "../card.svelte"
+    import Icon from "../icon.svelte"
+    import Paper from "../paper.svelte"
     import TextInput from "../text-input.svelte"
+    import TitleBar from "../title-bar.svelte"
 
     import DialogContent from "./content.svelte"
 
@@ -18,6 +20,7 @@
         placeholder = "",
         okText = "OK",
         cancelText = "Cancel",
+        icon,
     } = options)
 
     const ok = () => close(value)
@@ -43,12 +46,17 @@
 </style>
 
 <DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
-    <Card>
-        <svelte:fragment slot="title">
-            {title ?? ""}
-        </svelte:fragment>
-        <ActionLayout>
-            <FlexLayout direction="column">
+    <Paper card>
+        {#if title}
+            <TitleBar compact>
+                {#if icon}
+                    <Icon name={icon} />
+                {/if}
+                {title}
+            </TitleBar>
+        {/if}
+        <Action>
+            <Flex direction="column">
                 {message}
                 <form on:submit={submitOK}>
                     <TextInput
@@ -59,15 +67,15 @@
                         variant="outline"
                     />
                 </form>
-            </FlexLayout>
-            <GridLayout cols={2}>
+            </Flex>
+            <Grid cols={2}>
                 <Button color="danger" on:tap={cancel}>
                     {cancelText}
                 </Button>
                 <Button color="secondary" on:tap={ok}>
                     {okText}
                 </Button>
-            </GridLayout>
-        </ActionLayout>
-    </Card>
+            </Grid>
+        </Action>
+    </Paper>
 </DialogContent>

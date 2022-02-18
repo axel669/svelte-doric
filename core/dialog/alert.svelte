@@ -4,7 +4,10 @@
     import GridLayout from "../layout/grid.svelte"
 
     import Button from "../button.svelte"
-    import Card from "../card.svelte"
+    import Icon from "../icon.svelte"
+    import Paper from "../paper.svelte"
+    import TitleBar from "../title-bar.svelte"
+
     import DialogContent from "./content.svelte"
 
     export let close
@@ -14,16 +17,22 @@
         title = "Alert",
         message,
         okText = "OK",
+        icon,
     } = options)
 
     const ok = () => close(true)
 </script>
 
 <DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
-    <Card>
-        <svelte:fragment slot="title">
-            {title ?? ""}
-        </svelte:fragment>
+    <Paper card>
+        {#if title}
+            <TitleBar compact>
+                {#if icon}
+                    <Icon name={icon} />
+                {/if}
+                {title}
+            </TitleBar>
+        {/if}
         <ActionLayout>
             <FlexLayout>
                 {message}
@@ -34,5 +43,5 @@
                 </Button>
             </GridLayout>
         </ActionLayout>
-    </Card>
+    </Paper>
 </DialogContent>
