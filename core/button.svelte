@@ -9,6 +9,7 @@
     export let round
     export let action
     export let adorn
+    export let square
 
     let klass = ""
     export {klass as class}
@@ -95,11 +96,14 @@
     .fill {
         --ripple-color: var(--button-filled-ripple);
         background-color: var(--fill-color);
-        color: var(--text-color);
+        color: var(--button-filled-text-color);
     }
     .outline {
         border: 1px solid var(--button-color);
         color: var(--button-color);
+    }
+    .square {
+        border-radius: 0px;
     }
 </style>
 
@@ -111,6 +115,7 @@
     class:round
     class:action
     class:adorn
+    class:square
 >
     <slot />
     <Ripple {disabled} />

@@ -21,6 +21,7 @@
             --secondary-ripple: #2fbc2f60;
             --danger: #df5348;
             --danger-ripple: #df534860;
+            --button-filled-text-color: var(--text-normal);
 
             --text-normal: var(--text-light);
             --text-secondary: #a0a0a0;
