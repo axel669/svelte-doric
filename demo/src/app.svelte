@@ -32,7 +32,7 @@
 
     let value = 1
     const options = [
-        { label: "test", value: 0},
+        { label: "Some Longer Employee Name", value: 0},
         { label: "test 2", value: 1},
         { label: "test 3", value: 2},
     ]
@@ -50,11 +50,18 @@
 
 <AppStyle {baseline} {theme} />
 
+<Drawer bind:open>
+    <ThemePicker bind:theme vertical />
+    <Button on:tap={() => open = false}>
+        Close
+    </Button>
+</Drawer>
+
 <TitleBar sticky>
     Doric Components Testing
 
-    <Adornment slot="menu">
-        <Button on:tap={() => open = true}>
+    <Adornment slot="menu" flush>
+        <Button on:tap={() => open = true} compact>
             <Icon name="list" size="16px" />
         </Button>
     </Adornment>
@@ -66,23 +73,17 @@
     </Adornment>
 </TitleBar>
 
-<Drawer bind:open>
-    <ThemePicker bind:theme vertical />
-    <Button on:tap={() => open = false}>
-        Close
-    </Button>
-</Drawer>
-
-<!-- <Dialog let:options let:close bind:this={dialog} component={SelectDialog} /> -->
-<Dialog let:options let:close bind:this={dialog} component={Alert} />
+<Dialog let:options let:close bind:this={dialog} component={SelectDialog} />
+<!-- <Dialog let:options let:close bind:this={dialog} component={Alert} /> -->
 <Paper center footer square flat width="min(640px, 100%)">
     <Flex direction="column" gap="4px">
-        <Select {options} bind:value label="Test Label" persistent let:selected>
+        <Select {options} bind:value label="Test Label" persistent let:selected let:info>
             <Text slot="selected">
                 Current Item: {selected.label}
             </Text>
+            <OptionList {info} variant="fill" color="secondary" slot="options" />
         </Select>
-        <Select {options} bind:value label="Test Label" let:info>
+        <Select {options} bind:value label="Test Label" let:info icon="calendar">
             <OptionList {info} square={false} slot="options" />
         </Select>
 

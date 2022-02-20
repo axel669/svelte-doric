@@ -30,13 +30,10 @@
 </script>
 
 <style>
-    select-arrow {
+    select-layout {
         display: grid;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        padding: 8px;
+        flex-grow: 1;
+        grid-template-columns: auto max-content;
     }
 </style>
 
@@ -52,13 +49,14 @@
 </ControlDrawer>
 
 <Button variant="outline" {...$$props} on:tap={() => open = true}>
-    <slot name="selected" {selected}>
-        {label}: {selected.label}
-    </slot>
-
-    <select-arrow>
+    <select-layout>
+        <Text adorn>
+            <slot name="selected" {selected}>
+                {label}: {selected.label}
+            </slot>
+        </Text>
         <Text adorn>
             <Icon name={icon} />
         </Text>
-    </select-arrow>
+    </select-layout>
 </Button>
