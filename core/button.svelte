@@ -7,7 +7,7 @@
     export let variant = "normal"
     export let disabled = false
     export let round
-    export let action
+    export let compact
     export let adorn
     export let square
 
@@ -61,9 +61,9 @@
         padding: 8px;
         border-radius: var(--button-round-size);
     }
-    .action {
+    .compact {
         width: var(--button-round-size);
-        padding: 0px;
+        padding: 4px 8px;
     }
     .adorn {
         padding-top: 2px;
@@ -113,7 +113,7 @@
     class="{color} {variant} {klass}"
     class:disabled
     class:round
-    class:action
+    class:compact
     class:adorn
     class:square
 >
