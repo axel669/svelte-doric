@@ -5,6 +5,7 @@
     export let extra = ""
     export let flat
     export let error
+    export let disabled
 
     let input = null
     const passFocus = () => {
@@ -105,12 +106,24 @@
     }
 </style>
 
-<doric-text-input tabindex="-1" on:focus={passFocus} class:flat class:error>
+<doric-text-input
+tabindex="-1"
+class:flat class:error class:disabled
+on:focus={passFocus}
+>
     <input-area>
         <slot name="start">
             <div />
         </slot>
-        <input {...$$props} {...cheat} bind:value bind:this={input} />
+        <input
+            {...$$props}
+            {...cheat}
+            {disabled}
+            bind:value
+            bind:this={input}
+            on:blur
+            on:focus
+        />
         <slot name="end">
             <div />
         </slot>

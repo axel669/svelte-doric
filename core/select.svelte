@@ -11,7 +11,8 @@
     export let value
     export let label = ""
     export let persistent = false
-    export let icon = "caret-right-fill"
+    export let icon = "caret-right"
+    export let disabled
 
     let open = false
     const select = (newValue) => {
@@ -48,7 +49,7 @@
     </slot>
 </ControlDrawer>
 
-<Button variant="outline" {...$$props} on:tap={() => open = true}>
+<Button variant="outline" {...$$props} on:tap={() => open = true} {disabled}>
     <select-layout>
         <Text adorn>
             <slot name="selected" {selected}>
