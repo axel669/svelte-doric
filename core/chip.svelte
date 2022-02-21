@@ -15,14 +15,10 @@
         grid-template-columns:
             minmax(12px, min-content) auto minmax(12px, min-content)
         ;
-        grid-template-areas:
-            "start-adornment content end-adornment"
-        ;
 
         border-radius: 16px;
         height: 30px;
         user-select: none;
-        margin: 2px;
 
         --fill-color: var(--button-default-fill);
         --text-color: var(--text-invert);
@@ -56,8 +52,9 @@
     {#if clickable}
         <Ripple />
     {/if}
-    <slot />
+    <slot name="start" />
     <div>
         {label}
     </div>
+    <slot name="end" />
 </chip>
