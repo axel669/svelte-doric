@@ -1,5 +1,5 @@
 # ActionLayout
-> svelte-doric/core/layout/action
+> svelte-doric/layout
 
 Layout that has 2 spaces: 1 for content, 1 for actions (usually buttons).
 If the container is larger than the content + actions, the elements are snapped
@@ -13,14 +13,14 @@ to opposite sides of the container (top-bottom or left-right).
 ## Usage
 ```html
 <Card>
-    <ActionLayout {direction}>
-        <FlexLayout>
+    <Action {direction}>
+        <Flex>
             ...content
-        </FlexLayout>
+        </Flex>
 
-        <GridLayout>
+        <Grid>
             ...actions
-        </GridLayout>
-    </ActionLayout>
+        </Grid>
+    </Action>
 </Card>
 ```

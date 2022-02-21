@@ -1,5 +1,5 @@
 # List
-> svelte-doric/core/list
+> svelte-doric
 
 Component for displaying lists of items that may or may not have interactions.
 

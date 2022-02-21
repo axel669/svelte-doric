@@ -1,5 +1,5 @@
 # ActionArea
-> svelte-doric/core/action-area
+> svelte-doric
 
 A container that allows button-like interaction with content without
 a lot of the button overhead and styling.

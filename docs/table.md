@@ -1,5 +1,5 @@
 # Table
-> svelte-doric/core/table
+> svelte-doric
 
 Component for showing data tables.
 

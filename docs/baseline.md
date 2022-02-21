@@ -1,5 +1,5 @@
 # Baseline
-> svelte-doric/core/baseline
+> svelte-doric
 
 Baseline CSS for an application.
 

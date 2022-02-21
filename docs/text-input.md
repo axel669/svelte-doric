@@ -1,24 +1,21 @@
 # TextInput
-> svelte-doric/core/text-input
+> svelte-doric
 
 Fancier looking single line text input.
-
-Use [`Adornment`](./adornment.md) with `"start"` and `"end"` positions to add
-icons & controls related to the input.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `class` | _string_ | | Additional CSS classes to apply to the component
 | `disabled` | _boolean_ | `false` | If true, disables interaction with the `TextInput`
-| `error` | _string_ | | Error text to show under the `TextInput`
+| `error` | _string_ | | Changes the color of the input border/label to red
+| `extra` | _string_ | | Extra text to show at the bottom of the `TextInput`
+| `flat` | _boolean_ | | Changes the text input border style to the regular material style
 | `label` | _string_ | | Label for the `TextInput`
-| `info` | _string_ | | Informational text to show at the bottom of the `TextInput`
 | `type` | _string_ | `"text"` | Input type. Primarily used to affect the keyboard display on mobile devices. Only tested with `"text"`, `"password"`, `"number"`
 | `value` | _any_ | | Value to use with Svelte `:bind`. See binding values on `<input>` tags for more detail
-| `variant` | _string_ | | `TextInput` style variation. Valid options are: `"normal"`, `"outline"`
 
-## Supported Adornment Positions
+## Supported Adornment Slots
 - start
 - end
 
@@ -36,12 +33,12 @@ icons & controls related to the input.
 <TextInput bind:value variant="outline" />
 
 <TextInput>
-    <Adornment position="start">
+    <Adornment slot="start">
         <Icon name="search" />
     </Adornment>
 </TextInput>
 <TextInput label="Currency">
-    <Adornment position="start">
+    <Adornment slot="start">
         $
     </Adornment>
 </TextInput>

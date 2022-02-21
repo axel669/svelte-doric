@@ -1560,12 +1560,14 @@ var demo = (function () {
     	let link0;
     	let link1;
     	let link2;
+    	let link3;
 
     	return {
     		c() {
     			link0 = element("link");
     			link1 = element("link");
     			link2 = element("link");
+    			link3 = element("link");
     			attr(link0, "href", "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
     			attr(link0, "rel", "stylesheet");
     			attr(link0, "type", "text/css");
@@ -1574,11 +1576,14 @@ var demo = (function () {
     			attr(link1, "type", "text/css");
     			attr(link2, "rel", "stylesheet");
     			attr(link2, "href", "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+    			attr(link3, "rel", "stylesheet");
+    			attr(link3, "href", "https://ka-f.fontawesome.com/releases/v6.0.0/css/free.min.css?token=0011e611c6");
     		},
     		m(target, anchor) {
     			append(document.head, link0);
     			append(document.head, link1);
     			append(document.head, link2);
+    			append(document.head, link3);
     		},
     		p: noop,
     		i: noop,
@@ -1587,6 +1592,7 @@ var demo = (function () {
     			detach(link0);
     			detach(link1);
     			detach(link2);
+    			detach(link3);
     		}
     	};
     }
@@ -1615,7 +1621,7 @@ var demo = (function () {
     	let dispose;
     	const default_slot_template = /*#slots*/ ctx[11].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[10], null);
-    	ripple = new Ripple({ props: { disabled: /*disabled*/ ctx[2] } });
+    	ripple = new Ripple({ props: { disabled: /*disabled*/ ctx[1] } });
 
     	return {
     		c() {
@@ -1623,11 +1629,11 @@ var demo = (function () {
     			if (default_slot) default_slot.c();
     			t = space();
     			create_component(ripple.$$.fragment);
-    			set_custom_element_data(doric_button, "class", doric_button_class_value = "" + (/*color*/ ctx[0] + " " + /*variant*/ ctx[1] + " " + /*klass*/ ctx[7] + " svelte-1g7kk0c"));
-    			toggle_class(doric_button, "disabled", /*disabled*/ ctx[2]);
-    			toggle_class(doric_button, "round", /*round*/ ctx[3]);
+    			set_custom_element_data(doric_button, "class", doric_button_class_value = "" + (/*color*/ ctx[0] + " " + /*variant*/ ctx[2] + " " + /*klass*/ ctx[7] + " svelte-1g7kk0c"));
+    			toggle_class(doric_button, "disabled", /*disabled*/ ctx[1]);
+    			toggle_class(doric_button, "round", /*round*/ ctx[5]);
     			toggle_class(doric_button, "compact", /*compact*/ ctx[4]);
-    			toggle_class(doric_button, "adorn", /*adorn*/ ctx[5]);
+    			toggle_class(doric_button, "adorn", /*adorn*/ ctx[3]);
     			toggle_class(doric_button, "square", /*square*/ ctx[6]);
     		},
     		m(target, anchor) {
@@ -1667,32 +1673,32 @@ var demo = (function () {
     			}
 
     			const ripple_changes = {};
-    			if (dirty & /*disabled*/ 4) ripple_changes.disabled = /*disabled*/ ctx[2];
+    			if (dirty & /*disabled*/ 2) ripple_changes.disabled = /*disabled*/ ctx[1];
     			ripple.$set(ripple_changes);
 
-    			if (!current || dirty & /*color, variant, klass*/ 131 && doric_button_class_value !== (doric_button_class_value = "" + (/*color*/ ctx[0] + " " + /*variant*/ ctx[1] + " " + /*klass*/ ctx[7] + " svelte-1g7kk0c"))) {
+    			if (!current || dirty & /*color, variant, klass*/ 133 && doric_button_class_value !== (doric_button_class_value = "" + (/*color*/ ctx[0] + " " + /*variant*/ ctx[2] + " " + /*klass*/ ctx[7] + " svelte-1g7kk0c"))) {
     				set_custom_element_data(doric_button, "class", doric_button_class_value);
     			}
 
     			if (vars_action && is_function(vars_action.update) && dirty & /*buttonVars*/ 256) vars_action.update.call(null, /*buttonVars*/ ctx[8]);
 
     			if (dirty & /*color, variant, klass, disabled*/ 135) {
-    				toggle_class(doric_button, "disabled", /*disabled*/ ctx[2]);
+    				toggle_class(doric_button, "disabled", /*disabled*/ ctx[1]);
     			}
 
-    			if (dirty & /*color, variant, klass, round*/ 139) {
-    				toggle_class(doric_button, "round", /*round*/ ctx[3]);
+    			if (dirty & /*color, variant, klass, round*/ 165) {
+    				toggle_class(doric_button, "round", /*round*/ ctx[5]);
     			}
 
-    			if (dirty & /*color, variant, klass, compact*/ 147) {
+    			if (dirty & /*color, variant, klass, compact*/ 149) {
     				toggle_class(doric_button, "compact", /*compact*/ ctx[4]);
     			}
 
-    			if (dirty & /*color, variant, klass, adorn*/ 163) {
-    				toggle_class(doric_button, "adorn", /*adorn*/ ctx[5]);
+    			if (dirty & /*color, variant, klass, adorn*/ 141) {
+    				toggle_class(doric_button, "adorn", /*adorn*/ ctx[3]);
     			}
 
-    			if (dirty & /*color, variant, klass, square*/ 195) {
+    			if (dirty & /*color, variant, klass, square*/ 197) {
     				toggle_class(doric_button, "square", /*square*/ ctx[6]);
     			}
     		},
@@ -1721,11 +1727,11 @@ var demo = (function () {
     	let buttonVars;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { color = "default" } = $$props;
-    	let { variant = "normal" } = $$props;
     	let { disabled = false } = $$props;
-    	let { round } = $$props;
-    	let { compact } = $$props;
+    	let { variant = "normal" } = $$props;
     	let { adorn } = $$props;
+    	let { compact } = $$props;
+    	let { round } = $$props;
     	let { square } = $$props;
     	let { class: klass = "" } = $$props;
     	const dispatch = createEventDispatcher();
@@ -1741,29 +1747,29 @@ var demo = (function () {
 
     	$$self.$$set = $$props => {
     		if ('color' in $$props) $$invalidate(0, color = $$props.color);
-    		if ('variant' in $$props) $$invalidate(1, variant = $$props.variant);
-    		if ('disabled' in $$props) $$invalidate(2, disabled = $$props.disabled);
-    		if ('round' in $$props) $$invalidate(3, round = $$props.round);
+    		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
+    		if ('variant' in $$props) $$invalidate(2, variant = $$props.variant);
+    		if ('adorn' in $$props) $$invalidate(3, adorn = $$props.adorn);
     		if ('compact' in $$props) $$invalidate(4, compact = $$props.compact);
-    		if ('adorn' in $$props) $$invalidate(5, adorn = $$props.adorn);
+    		if ('round' in $$props) $$invalidate(5, round = $$props.round);
     		if ('square' in $$props) $$invalidate(6, square = $$props.square);
     		if ('class' in $$props) $$invalidate(7, klass = $$props.class);
     		if ('$$scope' in $$props) $$invalidate(10, $$scope = $$props.$$scope);
     	};
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*round*/ 8) {
+    		if ($$self.$$.dirty & /*round*/ 32) {
     			$$invalidate(8, buttonVars = { "button-round-size": round });
     		}
     	};
 
     	return [
     		color,
-    		variant,
     		disabled,
-    		round,
-    		compact,
+    		variant,
     		adorn,
+    		compact,
+    		round,
     		square,
     		klass,
     		buttonVars,
@@ -1785,11 +1791,11 @@ var demo = (function () {
     			safe_not_equal,
     			{
     				color: 0,
-    				variant: 1,
-    				disabled: 2,
-    				round: 3,
+    				disabled: 1,
+    				variant: 2,
+    				adorn: 3,
     				compact: 4,
-    				adorn: 5,
+    				round: 5,
     				square: 6,
     				class: 7
     			},
@@ -1814,22 +1820,22 @@ var demo = (function () {
     	return {
     		c() {
     			doric_icon = element("doric-icon");
-    			set_custom_element_data(doric_icon, "class", doric_icon_class_value = "bi-" + /*name*/ ctx[0] + " svelte-od4xq0");
+    			set_custom_element_data(doric_icon, "class", doric_icon_class_value = "fa-" + /*base*/ ctx[0] + " fa-" + /*icon*/ ctx[1] + " svelte-od4xq0");
     		},
     		m(target, anchor) {
     			insert(target, doric_icon, anchor);
 
     			if (!mounted) {
-    				dispose = action_destroyer(vars_action = vars.call(null, doric_icon, /*iconVars*/ ctx[1]));
+    				dispose = action_destroyer(vars_action = vars.call(null, doric_icon, /*iconVars*/ ctx[2]));
     				mounted = true;
     			}
     		},
     		p(ctx, [dirty]) {
-    			if (dirty & /*name*/ 1 && doric_icon_class_value !== (doric_icon_class_value = "bi-" + /*name*/ ctx[0] + " svelte-od4xq0")) {
+    			if (dirty & /*base, icon*/ 3 && doric_icon_class_value !== (doric_icon_class_value = "fa-" + /*base*/ ctx[0] + " fa-" + /*icon*/ ctx[1] + " svelte-od4xq0")) {
     				set_custom_element_data(doric_icon, "class", doric_icon_class_value);
     			}
 
-    			if (vars_action && is_function(vars_action.update) && dirty & /*iconVars*/ 2) vars_action.update.call(null, /*iconVars*/ ctx[1]);
+    			if (vars_action && is_function(vars_action.update) && dirty & /*iconVars*/ 4) vars_action.update.call(null, /*iconVars*/ ctx[2]);
     		},
     		i: noop,
     		o: noop,
@@ -1843,27 +1849,33 @@ var demo = (function () {
 
     function instance$l($$self, $$props, $$invalidate) {
     	let iconVars;
+    	let icon;
+    	let base;
     	let { name } = $$props;
     	let { size } = $$props;
 
     	$$self.$$set = $$props => {
-    		if ('name' in $$props) $$invalidate(0, name = $$props.name);
-    		if ('size' in $$props) $$invalidate(2, size = $$props.size);
+    		if ('name' in $$props) $$invalidate(3, name = $$props.name);
+    		if ('size' in $$props) $$invalidate(4, size = $$props.size);
     	};
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*size*/ 4) {
-    			$$invalidate(1, iconVars = { "icon-font-size": size });
+    		if ($$self.$$.dirty & /*size*/ 16) {
+    			$$invalidate(2, iconVars = { "icon-font-size": size });
+    		}
+
+    		if ($$self.$$.dirty & /*name*/ 8) {
+    			$$invalidate(1, [icon, base = "solid"] = (name || "").split(":"), icon, ($$invalidate(0, base), $$invalidate(3, name)));
     		}
     	};
 
-    	return [name, iconVars, size];
+    	return [base, icon, iconVars, name, size];
     }
 
     class Icon extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$l, create_fragment$m, safe_not_equal, { name: 0, size: 2 }, add_css$e);
+    		init(this, options, instance$l, create_fragment$m, safe_not_equal, { name: 3, size: 4 }, add_css$e);
     	}
     }
 
@@ -2859,7 +2871,7 @@ var demo = (function () {
     	let current;
 
     	icon = new Icon({
-    			props: { name: "check-circle-fill", size: "20px" }
+    			props: { name: "circle-check", size: "20px" }
     		});
 
     	return {
@@ -3558,12 +3570,12 @@ var demo = (function () {
     	append_styles(target, "svelte-11rnerv", "select-layout.svelte-11rnerv{display:grid;flex-grow:1;grid-template-columns:auto max-content}");
     }
 
-    const get_selected_slot_changes = dirty => ({ selected: dirty & /*selected*/ 16 });
-    const get_selected_slot_context = ctx => ({ selected: /*selected*/ ctx[4] });
-    const get_options_slot_changes = dirty => ({ info: dirty & /*info*/ 32 });
-    const get_options_slot_context = ctx => ({ info: /*info*/ ctx[5] });
+    const get_selected_slot_changes = dirty => ({ selected: dirty & /*selected*/ 32 });
+    const get_selected_slot_context = ctx => ({ selected: /*selected*/ ctx[5] });
+    const get_options_slot_changes = dirty => ({ info: dirty & /*info*/ 64 });
+    const get_options_slot_context = ctx => ({ info: /*info*/ ctx[6] });
 
-    // (41:4) {#if label}
+    // (42:4) {#if label}
     function create_if_block$2(ctx) {
     	let titlebar;
     	let current;
@@ -3587,7 +3599,7 @@ var demo = (function () {
     		p(ctx, dirty) {
     			const titlebar_changes = {};
 
-    			if (dirty & /*$$scope, label*/ 4097) {
+    			if (dirty & /*$$scope, label*/ 8193) {
     				titlebar_changes.$$scope = { dirty, ctx };
     			}
 
@@ -3608,7 +3620,7 @@ var demo = (function () {
     	};
     }
 
-    // (42:8) <TitleBar compact>
+    // (43:8) <TitleBar compact>
     function create_default_slot_4$2(ctx) {
     	let t;
 
@@ -3628,11 +3640,11 @@ var demo = (function () {
     	};
     }
 
-    // (46:32)           
+    // (47:32)           
     function fallback_block_1(ctx) {
     	let optionlist;
     	let current;
-    	optionlist = new Option_list({ props: { info: /*info*/ ctx[5] } });
+    	optionlist = new Option_list({ props: { info: /*info*/ ctx[6] } });
 
     	return {
     		c() {
@@ -3644,7 +3656,7 @@ var demo = (function () {
     		},
     		p(ctx, dirty) {
     			const optionlist_changes = {};
-    			if (dirty & /*info*/ 32) optionlist_changes.info = /*info*/ ctx[5];
+    			if (dirty & /*info*/ 64) optionlist_changes.info = /*info*/ ctx[6];
     			optionlist.$set(optionlist_changes);
     		},
     		i(local) {
@@ -3662,13 +3674,13 @@ var demo = (function () {
     	};
     }
 
-    // (40:0) <ControlDrawer bind:open {persistent}>
+    // (41:0) <ControlDrawer bind:open {persistent}>
     function create_default_slot_3$2(ctx) {
     	let t;
     	let current;
     	let if_block = /*label*/ ctx[0] && create_if_block$2(ctx);
-    	const options_slot_template = /*#slots*/ ctx[9].options;
-    	const options_slot = create_slot(options_slot_template, ctx, /*$$scope*/ ctx[12], get_options_slot_context);
+    	const options_slot_template = /*#slots*/ ctx[10].options;
+    	const options_slot = create_slot(options_slot_template, ctx, /*$$scope*/ ctx[13], get_options_slot_context);
     	const options_slot_or_fallback = options_slot || fallback_block_1(ctx);
 
     	return {
@@ -3712,20 +3724,20 @@ var demo = (function () {
     			}
 
     			if (options_slot) {
-    				if (options_slot.p && (!current || dirty & /*$$scope, info*/ 4128)) {
+    				if (options_slot.p && (!current || dirty & /*$$scope, info*/ 8256)) {
     					update_slot_base(
     						options_slot,
     						options_slot_template,
     						ctx,
-    						/*$$scope*/ ctx[12],
+    						/*$$scope*/ ctx[13],
     						!current
-    						? get_all_dirty_from_scope(/*$$scope*/ ctx[12])
-    						: get_slot_changes(options_slot_template, /*$$scope*/ ctx[12], dirty, get_options_slot_changes),
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[13])
+    						: get_slot_changes(options_slot_template, /*$$scope*/ ctx[13], dirty, get_options_slot_changes),
     						get_options_slot_context
     					);
     				}
     			} else {
-    				if (options_slot_or_fallback && options_slot_or_fallback.p && (!current || dirty & /*info*/ 32)) {
+    				if (options_slot_or_fallback && options_slot_or_fallback.p && (!current || dirty & /*info*/ 64)) {
     					options_slot_or_fallback.p(ctx, !current ? -1 : dirty);
     				}
     			}
@@ -3749,11 +3761,11 @@ var demo = (function () {
     	};
     }
 
-    // (54:45)                   
+    // (55:45)                   
     function fallback_block(ctx) {
     	let t0;
     	let t1;
-    	let t2_value = /*selected*/ ctx[4].label + "";
+    	let t2_value = /*selected*/ ctx[5].label + "";
     	let t2;
 
     	return {
@@ -3769,7 +3781,7 @@ var demo = (function () {
     		},
     		p(ctx, dirty) {
     			if (dirty & /*label*/ 1) set_data(t0, /*label*/ ctx[0]);
-    			if (dirty & /*selected*/ 16 && t2_value !== (t2_value = /*selected*/ ctx[4].label + "")) set_data(t2, t2_value);
+    			if (dirty & /*selected*/ 32 && t2_value !== (t2_value = /*selected*/ ctx[5].label + "")) set_data(t2, t2_value);
     		},
     		d(detaching) {
     			if (detaching) detach(t0);
@@ -3779,11 +3791,11 @@ var demo = (function () {
     	};
     }
 
-    // (53:8) <Text adorn>
+    // (54:8) <Text adorn>
     function create_default_slot_2$2(ctx) {
     	let current;
-    	const selected_slot_template = /*#slots*/ ctx[9].selected;
-    	const selected_slot = create_slot(selected_slot_template, ctx, /*$$scope*/ ctx[12], get_selected_slot_context);
+    	const selected_slot_template = /*#slots*/ ctx[10].selected;
+    	const selected_slot = create_slot(selected_slot_template, ctx, /*$$scope*/ ctx[13], get_selected_slot_context);
     	const selected_slot_or_fallback = selected_slot || fallback_block(ctx);
 
     	return {
@@ -3799,20 +3811,20 @@ var demo = (function () {
     		},
     		p(ctx, dirty) {
     			if (selected_slot) {
-    				if (selected_slot.p && (!current || dirty & /*$$scope, selected*/ 4112)) {
+    				if (selected_slot.p && (!current || dirty & /*$$scope, selected*/ 8224)) {
     					update_slot_base(
     						selected_slot,
     						selected_slot_template,
     						ctx,
-    						/*$$scope*/ ctx[12],
+    						/*$$scope*/ ctx[13],
     						!current
-    						? get_all_dirty_from_scope(/*$$scope*/ ctx[12])
-    						: get_slot_changes(selected_slot_template, /*$$scope*/ ctx[12], dirty, get_selected_slot_changes),
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[13])
+    						: get_slot_changes(selected_slot_template, /*$$scope*/ ctx[13], dirty, get_selected_slot_changes),
     						get_selected_slot_context
     					);
     				}
     			} else {
-    				if (selected_slot_or_fallback && selected_slot_or_fallback.p && (!current || dirty & /*selected, label*/ 17)) {
+    				if (selected_slot_or_fallback && selected_slot_or_fallback.p && (!current || dirty & /*selected, label*/ 33)) {
     					selected_slot_or_fallback.p(ctx, !current ? -1 : dirty);
     				}
     			}
@@ -3832,7 +3844,7 @@ var demo = (function () {
     	};
     }
 
-    // (58:8) <Text adorn>
+    // (59:8) <Text adorn>
     function create_default_slot_1$2(ctx) {
     	let icon_1;
     	let current;
@@ -3866,7 +3878,7 @@ var demo = (function () {
     	};
     }
 
-    // (51:0) <Button variant="outline" {...$$props} on:tap={() => open = true}>
+    // (52:0) <Button variant="outline" {...$$props} on:tap={() => open = true} {disabled}>
     function create_default_slot$4(ctx) {
     	let select_layout;
     	let text0;
@@ -3908,14 +3920,14 @@ var demo = (function () {
     		p(ctx, dirty) {
     			const text0_changes = {};
 
-    			if (dirty & /*$$scope, selected, label*/ 4113) {
+    			if (dirty & /*$$scope, selected, label*/ 8225) {
     				text0_changes.$$scope = { dirty, ctx };
     			}
 
     			text0.$set(text0_changes);
     			const text1_changes = {};
 
-    			if (dirty & /*$$scope, icon*/ 4100) {
+    			if (dirty & /*$$scope, icon*/ 8196) {
     				text1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -3948,7 +3960,7 @@ var demo = (function () {
     	let current;
 
     	function controldrawer_open_binding(value) {
-    		/*controldrawer_open_binding*/ ctx[10](value);
+    		/*controldrawer_open_binding*/ ctx[11](value);
     	}
 
     	let controldrawer_props = {
@@ -3957,13 +3969,13 @@ var demo = (function () {
     		$$scope: { ctx }
     	};
 
-    	if (/*open*/ ctx[3] !== void 0) {
-    		controldrawer_props.open = /*open*/ ctx[3];
+    	if (/*open*/ ctx[4] !== void 0) {
+    		controldrawer_props.open = /*open*/ ctx[4];
     	}
 
     	controldrawer = new Control_drawer({ props: controldrawer_props });
     	binding_callbacks.push(() => bind(controldrawer, 'open', controldrawer_open_binding));
-    	const button_spread_levels = [{ variant: "outline" }, /*$$props*/ ctx[6]];
+    	const button_spread_levels = [{ variant: "outline" }, /*$$props*/ ctx[7], { disabled: /*disabled*/ ctx[3] }];
 
     	let button_props = {
     		$$slots: { default: [create_default_slot$4] },
@@ -3975,7 +3987,7 @@ var demo = (function () {
     	}
 
     	button = new Button({ props: button_props });
-    	button.$on("tap", /*tap_handler*/ ctx[11]);
+    	button.$on("tap", /*tap_handler*/ ctx[12]);
 
     	return {
     		c() {
@@ -3993,23 +4005,27 @@ var demo = (function () {
     			const controldrawer_changes = {};
     			if (dirty & /*persistent*/ 2) controldrawer_changes.persistent = /*persistent*/ ctx[1];
 
-    			if (dirty & /*$$scope, info, label*/ 4129) {
+    			if (dirty & /*$$scope, info, label*/ 8257) {
     				controldrawer_changes.$$scope = { dirty, ctx };
     			}
 
-    			if (!updating_open && dirty & /*open*/ 8) {
+    			if (!updating_open && dirty & /*open*/ 16) {
     				updating_open = true;
-    				controldrawer_changes.open = /*open*/ ctx[3];
+    				controldrawer_changes.open = /*open*/ ctx[4];
     				add_flush_callback(() => updating_open = false);
     			}
 
     			controldrawer.$set(controldrawer_changes);
 
-    			const button_changes = (dirty & /*$$props*/ 64)
-    			? get_spread_update(button_spread_levels, [button_spread_levels[0], get_spread_object(/*$$props*/ ctx[6])])
+    			const button_changes = (dirty & /*$$props, disabled*/ 136)
+    			? get_spread_update(button_spread_levels, [
+    					button_spread_levels[0],
+    					dirty & /*$$props*/ 128 && get_spread_object(/*$$props*/ ctx[7]),
+    					dirty & /*disabled*/ 8 && { disabled: /*disabled*/ ctx[3] }
+    				])
     			: {};
 
-    			if (dirty & /*$$scope, icon, selected, label*/ 4117) {
+    			if (dirty & /*$$scope, icon, selected, label*/ 8229) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -4042,38 +4058,40 @@ var demo = (function () {
     	let { value } = $$props;
     	let { label = "" } = $$props;
     	let { persistent = false } = $$props;
-    	let { icon = "caret-right-fill" } = $$props;
+    	let { icon = "caret-right" } = $$props;
+    	let { disabled } = $$props;
     	let open = false;
 
     	const select = newValue => {
-    		$$invalidate(3, open = false);
-    		$$invalidate(7, value = newValue);
+    		$$invalidate(4, open = false);
+    		$$invalidate(8, value = newValue);
     	};
 
     	function controldrawer_open_binding(value) {
     		open = value;
-    		$$invalidate(3, open);
+    		$$invalidate(4, open);
     	}
 
-    	const tap_handler = () => $$invalidate(3, open = true);
+    	const tap_handler = () => $$invalidate(4, open = true);
 
     	$$self.$$set = $$new_props => {
-    		$$invalidate(6, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-    		if ('options' in $$new_props) $$invalidate(8, options = $$new_props.options);
-    		if ('value' in $$new_props) $$invalidate(7, value = $$new_props.value);
+    		$$invalidate(7, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+    		if ('options' in $$new_props) $$invalidate(9, options = $$new_props.options);
+    		if ('value' in $$new_props) $$invalidate(8, value = $$new_props.value);
     		if ('label' in $$new_props) $$invalidate(0, label = $$new_props.label);
     		if ('persistent' in $$new_props) $$invalidate(1, persistent = $$new_props.persistent);
     		if ('icon' in $$new_props) $$invalidate(2, icon = $$new_props.icon);
-    		if ('$$scope' in $$new_props) $$invalidate(12, $$scope = $$new_props.$$scope);
+    		if ('disabled' in $$new_props) $$invalidate(3, disabled = $$new_props.disabled);
+    		if ('$$scope' in $$new_props) $$invalidate(13, $$scope = $$new_props.$$scope);
     	};
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*options, value*/ 384) {
-    			$$invalidate(5, info = { select, options, currentValue: value });
+    		if ($$self.$$.dirty & /*options, value*/ 768) {
+    			$$invalidate(6, info = { select, options, currentValue: value });
     		}
 
-    		if ($$self.$$.dirty & /*options, value*/ 384) {
-    			$$invalidate(4, selected = options.find(option => option.value === value));
+    		if ($$self.$$.dirty & /*options, value*/ 768) {
+    			$$invalidate(5, selected = options.find(option => option.value === value));
     		}
     	};
 
@@ -4083,6 +4101,7 @@ var demo = (function () {
     		label,
     		persistent,
     		icon,
+    		disabled,
     		open,
     		selected,
     		info,
@@ -4107,11 +4126,12 @@ var demo = (function () {
     			create_fragment$c,
     			safe_not_equal,
     			{
-    				options: 8,
-    				value: 7,
+    				options: 9,
+    				value: 8,
     				label: 0,
     				persistent: 1,
-    				icon: 2
+    				icon: 2,
+    				disabled: 3
     			},
     			add_css$5
     		);
@@ -8483,7 +8503,7 @@ var demo = (function () {
     function create_default_slot_7(ctx) {
     	let icon;
     	let current;
-    	icon = new Icon({ props: { name: "list", size: "16px" } });
+    	icon = new Icon({ props: { name: "bars", size: "16px" } });
 
     	return {
     		c() {
@@ -8608,7 +8628,10 @@ var demo = (function () {
     	let current;
 
     	icon = new Icon({
-    			props: { name: "box-arrow-right", size: "16px" }
+    			props: {
+    				name: "arrow-right-from-bracket",
+    				size: "16px"
+    			}
     		});
 
     	return {

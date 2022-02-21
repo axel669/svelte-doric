@@ -62,13 +62,13 @@
 
     <Adornment slot="menu" flush>
         <Button on:tap={() => open = true} compact>
-            <Icon name="list" size="16px" />
+            <Icon name="bars" size="16px" />
         </Button>
     </Adornment>
 
     <Adornment slot="action">
         <Button>
-            <Icon name="box-arrow-right" size="16px" />
+            <Icon name="arrow-right-from-bracket" size="16px" />
         </Button>
     </Adornment>
 </TitleBar>

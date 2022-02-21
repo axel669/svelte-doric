@@ -1,5 +1,5 @@
 # Badge
-> svelte-doric/core/badge
+> svelte-doric
 
 Creates a small badge over come content or element(s).
 

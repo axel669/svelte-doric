@@ -11,7 +11,7 @@ Default Themes:
 - `TronTheme`
 
 ## LightTheme
-> svelte-doric/core/theme/light
+> svelte-doric/theme
 
 Basic theme with lighter colors.
 ```css
@@ -52,7 +52,7 @@ Basic theme with lighter colors.
 ```
 
 ## DarkTheme
-> svelte-doric/core/theme/dark
+> svelte-doric/theme
 
 Darker colors to reduce power usage on screens.
 ```css
@@ -93,7 +93,7 @@ Darker colors to reduce power usage on screens.
 ```
 
 ## TronTheme
-> svelte-doric/core/theme/tron
+> svelte-doric/theme
 
 Dark color, high contrast theme reminiscent of the _TRON: Legacy_ movie.
 ```css

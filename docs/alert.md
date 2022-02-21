@@ -1,5 +1,5 @@
 # Alert
-> svelte-doric/core/dialog/alert
+> svelte-doric/dialog
 
 Shows an alert box using the [`Dialog`](./dialog.md) component.
 

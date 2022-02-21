@@ -1,5 +1,5 @@
 # Prompt
-> svelte-doric/core/dialog/prompt
+> svelte-doric/dialog
 
 Shows a prmmpt box using the [`Dialog`](./dialog.md) component.
 

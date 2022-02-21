@@ -1,5 +1,5 @@
 # Alert
-> svelte-doric/core/dialog/confirm
+> svelte-doric/dialog
 
 Shows a confirm box using the [`Dialog`](./dialog.md) component.
 

@@ -1,5 +1,5 @@
 # Dialog
-> svelte-doric/core/dialog
+> svelte-doric/dialog
 
 Automatically displays content as modal and includes a background for the modal
 content to visually separate it from the content it overlays.

@@ -1,24 +1,20 @@
 # Select
-> svelte-doric/core/select
+> svelte-doric
 
-Fancier looking `select` component.
+Complete replacement to the html select element using what I hope will be a
+better way to handle the interaction without losing fucntionality.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `class` | _string_ | | Additional CSS classes to apply to the component
 | `disabled` | _boolean_ | `false` | If true, disables interaction with the `Select`
-| `error` | _string_ | | Error text to show under the `Select`
 | `label` | _string_ | | Label for the `Select`
-| `info` | _string_ | | Informational text to show at the bottom of the `Select`
 | `options` | _Array[object]_ | | An array of items to show as the options for the `Select`. Items must have a `label` and `value` property for the default display
-| `optionLabel` | _string_ | | Label to show when the select is open. Defaults to using the `label` value if specified
-| `origin` | _object_ | | The origin for the select options display. See [`Popover`](./popover.md) origin prop for details
 | `value` | any | | The value of the selected item in the options. If no item matching the given value is found, a fallback is displayed
-| `variant` | _string_ | | `Select` style variation. Valid options are: `"normal"`, `"outline"`
-| |
-| `let:item` | | | Used by the unnamed slot to customize the display of options
-| `let:selectedItem` | | | Used by the named slot `selected` to customize the content of the `Select`
+| `variant` | _string_ | | `Select` style variation. See `Button` variants
+| `let:info` | | | Used by the named slot `options` to customize the items in the open `Select`. Will be an object of `{currentValue, options, select}`, where `select` is a function to change the current value
+| `let:selected` | | | Used by the named slot `selected` to customize the content of the `Select`
 
 ## Named Slots
 - selected
@@ -30,18 +26,15 @@ Fancier looking `select` component.
 
 ## Usage
 The named slot `selected` is used to customize the content of the `Select` outside of the options.
-
-Unnamed slots are used to customize the look of the options list when the `Select` is open.
+The named slot `options` is used to customize the look of the items in the `Select` list.
 
 ```html
 <Select {disabled} />
 <Select {info} {error} {label} {options} bind:value />
 <Select {class} {label} {options} {origin} {variant} bind:value />
 
-<Select let:item>
-    <select-label>
-        Option: {item.label}
-    </select-label>
+<Select let:info>
+    <OptionList {info} slot="options" />
 </Select>
 <Select let:selectedItem>
     <div slot="selected">

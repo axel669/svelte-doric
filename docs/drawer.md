@@ -1,5 +1,5 @@
 # Drawer
-> svelte-doric/core/drawer
+> svelte-doric
 
 Shows a drawer that slides in and out from the right side of the screen.
 
@@ -16,7 +16,7 @@ May add directions soon.
     let open = false
 </script>
 
-<Drawer {open}>
+<Drawer bind:open>
     Drawer Content
 </Drawer>
 ```

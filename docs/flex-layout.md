@@ -1,5 +1,5 @@
 # FlexLayout
-> svelte-doric/core/layout/flex
+> svelte-doric/layout
 
 Layout that uses flexbox under the hood to layout items with a few common
 styles applied.
@@ -14,14 +14,14 @@ styles applied.
 ## Usage
 ```html
 <Card>
-    <ActionLayout>
-        <FlexLayout {direciton} {gap} {padding}>
+    <Action>
+        <Flex {direciton} {gap} {padding}>
             ...content
-        </FlexLayout>
+        </Flex>
 
-        <GridLayout>
+        <Grid>
             ...actions
-        </GridLayout>
-    </ActionLayout>
+        </Grid>
+    </Action>
 </Card>
 ```

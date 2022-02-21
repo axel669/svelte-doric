@@ -1,5 +1,5 @@
 # Switch
-> svelte-doric/core/switch
+> svelte-doric
 
 Basic switch toggle component.
 

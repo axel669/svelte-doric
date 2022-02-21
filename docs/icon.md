@@ -1,20 +1,16 @@
 # Icon
-> svelte-doric/core/icon
+> svelte-doric
 
-Displays a regular or outlined icon from the Material Icons library.
-> [Material Icons](https://material.io/resources/icons/?style=baseline)
->
-> [Outlined Material Icons](https://material.io/resources/icons/?style=outline)
+Displays an icon from the Free Font Awesome icons.
+> [Font Awesome Icons](https://fontawesome.com/search?m=free)
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `class` | _string_ | | Additional CSS classes
-| `name` | _string_ | | Name of the icon. See link above for icon names
-| `outlined` | _boolean_ | `false` | If true, uses the outlined icons
+| `name` | _string_ | | Name of the icon. See link above for icon names. Free version supports solid and brand icons, use with `"icon:type"`, solid is assumed if the `:type` is omitted
 | `size` | _string_ | | Size of the icons, uses CSS font sizes
 
 ## Usage
 ```html
-<Icon name size outlined class />
+<Icon name size />
 ```
