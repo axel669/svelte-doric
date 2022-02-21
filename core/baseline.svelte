@@ -11,7 +11,7 @@
     />
     <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+        href="https://ka-f.fontawesome.com/releases/v6.0.0/css/free.min.css?token=0011e611c6"
     >
 </svelte:head>
 

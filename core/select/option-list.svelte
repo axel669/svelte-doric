@@ -25,7 +25,7 @@
     {#each options as {label, value, icon}}
         <Text adorn {color}>
             {#if value === currentValue}
-                <Icon name="check-circle-fill" size="20px" />
+                <Icon name="circle-check" size="20px" />
             {/if}
         </Text>
         <Button on:tap={() => select(value)} {variant} {color} {square}>

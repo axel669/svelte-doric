@@ -7,6 +7,7 @@
     $: iconVars = {
         "icon-font-size": size,
     }
+    $: [icon, base = "solid"] = (name || "").split(":")
 </script>
 
 <style>
@@ -16,4 +17,5 @@
     }
 </style>
 
-<doric-icon use:vars={iconVars} class="bi-{name}" />
+<!-- <doric-icon use:vars={iconVars} class="bi-{name}" /> -->
+<doric-icon use:vars={iconVars} class="fa-{base} fa-{icon}" />
