@@ -4,11 +4,11 @@
     import vars from "./util/vars.js"
 
     export let color = "default"
-    export let variant = "normal"
     export let disabled = false
-    export let round
-    export let compact
+    export let variant = "normal"
     export let adorn
+    export let compact
+    export let round
     export let square
 
     let klass = ""
