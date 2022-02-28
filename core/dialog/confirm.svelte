@@ -1,5 +1,4 @@
 <script>
-    import Action from "../layout/action.svelte"
     import Flex from "../layout/flex.svelte"
     import Grid from "../layout/grid.svelte"
 
@@ -27,26 +26,26 @@
 
 <DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
     <Paper card>
-        {#if title}
-            <TitleBar compact>
-                {#if icon}
-                    <Icon name={icon} />
-                {/if}
-                {title}
-            </TitleBar>
-        {/if}
-        <Action>
-            <Flex>
-                {message}
-            </Flex>
-            <Grid cols={2}>
-                <Button color="danger" on:tap={cancel}>
-                    {cancelText}
-                </Button>
-                <Button color="secondary" on:tap={ok}>
-                    {okText}
-                </Button>
-            </Grid>
-        </Action>
+        <svelte:fragment slot="title">
+            {#if title}
+                <TitleBar compact>
+                    {#if icon}
+                        <Icon name={icon} />
+                    {/if}
+                    {title}
+                </TitleBar>
+            {/if}
+        </svelte:fragment>
+        <Flex>
+            {message}
+        </Flex>
+        <Grid cols={2} slot="action">
+            <Button color="danger" on:tap={cancel}>
+                {cancelText}
+            </Button>
+            <Button color="secondary" on:tap={ok}>
+                {okText}
+            </Button>
+        </Grid>
     </Paper>
 </DialogContent>

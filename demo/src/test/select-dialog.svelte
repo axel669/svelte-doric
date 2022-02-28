@@ -4,9 +4,10 @@
         Icon,
         Paper,
         Select,
+        Text,
         TitleBar,
     } from "@core"
-    import { Action, Flex, Grid } from "@layout"
+    import { Flex, Grid } from "@layout"
     import { DialogContent } from "@dialog"
 
     export let close
@@ -31,24 +32,28 @@
 
 <DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">
     <Paper card>
-        {#if title}
-            <TitleBar compact>
-                {#if icon}
-                    <Icon name={icon} />
-                {/if}
-                {title}
-            </TitleBar>
-        {/if}
-        <Action>
-            <Flex>
-                {message}
+        <svelte:fragment slot="title">
+            {#if title}
+                <TitleBar compact>
+                    {#if icon}
+                        <Icon name={icon} />
+                    {/if}
+                    {title}
+                </TitleBar>
+            {/if}
+        </svelte:fragment>
+        <Paper flat scrollable>
+            <Flex direction="column">
+                <Text>
+                    {message}
+                </Text>
             </Flex>
-            <Grid>
-                <Select label="Test" options={items} bind:value />
-                <Button color="secondary" on:tap={ok}>
-                    {okText}
-                </Button>
-            </Grid>
-        </Action>
+        </Paper>
+        <Grid slot="action">
+            <Select label="Test" options={items} bind:value />
+            <Button color="secondary" on:tap={ok}>
+                {okText}
+            </Button>
+        </Grid>
     </Paper>
 </DialogContent>

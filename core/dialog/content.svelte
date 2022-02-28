@@ -20,7 +20,7 @@
 
 <style>
     dialog-content {
-        display: block;
+        display: grid;
         position: absolute;
 
         top: var(--top);
