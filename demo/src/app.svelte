@@ -31,11 +31,18 @@
     let open = false
 
     let value = 1
-    const options = [
-        { label: "Some Longer Employee Name", value: 0},
-        { label: "test 2", value: 1},
-        { label: "test 3", value: 2},
-    ]
+    const options = Array.from(
+        { length: 50 },
+        (_, i) => ({
+            label: `Option #${i}`,
+            value: i,
+        })
+    )
+    // const options = [
+    //     { label: "Some Longer Employee Name", value: 0},
+    //     { label: "test 2", value: 1},
+    //     { label: "test 3", value: 2},
+    // ]
 
     let dialog = null
     const openDialog = async () => {

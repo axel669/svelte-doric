@@ -40,7 +40,7 @@
 
 <ControlDrawer bind:open {persistent}>
     {#if label}
-        <TitleBar compact>
+        <TitleBar compact sticky>
             {label}
         </TitleBar>
     {/if}

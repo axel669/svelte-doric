@@ -24,6 +24,7 @@
         height: 100vh;
         min-width: 25vw;
         background-color: var(--card-background);
+        overflow-y: auto;
     }
 </style>
 
