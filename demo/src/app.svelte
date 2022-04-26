@@ -90,7 +90,7 @@
             </Text>
             <OptionList {info} variant="fill" color="secondary" slot="options" />
         </Select>
-        <Select {options} bind:value label="Test Label" let:info icon="calendar">
+        <Select {options} bind:value label="Test Label" let:info icon="calendar" searchable>
             <OptionList {info} square={false} slot="options" />
         </Select>
 

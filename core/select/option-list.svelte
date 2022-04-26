@@ -8,7 +8,7 @@
     export let square = true
     export let info
 
-    const {select, currentValue, options} = info
+    $: ({select, currentValue, options} = info)
 </script>
 
 <style>
