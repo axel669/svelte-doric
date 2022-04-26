@@ -21,7 +21,7 @@
         TitleBar,
     } from "@core"
     import { Flex } from "@layout"
-    import { Dialog, Alert } from "@dialog"
+    import { Dialog, Alert, Prompt } from "@dialog"
 
     import ThemePicker from "./test/theme-picker.svelte"
     import SelectDialog from "./test/select-dialog.svelte"
@@ -80,8 +80,8 @@
     </Adornment>
 </TitleBar>
 
-<Dialog let:options let:close bind:this={dialog} component={SelectDialog} />
-<!-- <Dialog let:options let:close bind:this={dialog} component={Alert} /> -->
+<!-- <Dialog let:options let:close bind:this={dialog} component={SelectDialog} /> -->
+<Dialog let:options let:close bind:this={dialog} component={Prompt} />
 <Paper center footer square flat width="min(640px, 100%)">
     <Flex direction="column" gap="4px">
         <Select {options} bind:value label="Test Label" persistent let:selected let:info>

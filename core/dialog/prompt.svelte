@@ -28,7 +28,7 @@
         evt.stopPropagation()
         ok()
     }
-    const cancel = () => close(null)
+    const cancel = () => close(false)
 
     let value = ""
     let textInput = null

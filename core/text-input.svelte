@@ -8,7 +8,7 @@
     export let disabled
 
     let input = null
-    const passFocus = () => {
+    export function focus() {
         input.focus()
     }
 
@@ -109,7 +109,7 @@
 <doric-text-input
 tabindex="-1"
 class:flat class:error class:disabled
-on:focus={passFocus}
+on:focus={focus}
 >
     <input-area>
         <slot name="start">
