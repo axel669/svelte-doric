@@ -3,7 +3,7 @@
 
     const theme = css`
         body {
-            --font: Inconsolata;
+            --font: Roboto;
             --background: #161616;
             --background-layer: #333333;
             --layer-border-width: 1px;
