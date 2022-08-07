@@ -29,8 +29,14 @@
     footer-area {
         display: grid;
     }
+
+    doric-footer-flow {
+        display: block;
+        height: 56px;
+    }
 </style>
 
+<doric-footer-flow />
 <doric-footer use:vars={variables}>
     <footer-area>
         <slot name="left" />

@@ -8,19 +8,12 @@
     doric-title-bar {
         position: relative;
         z-index: +0;
-        grid-template-rows: 56px min-content;
-        background-color: var(--title-bar-background);
-        color: var(--title-bar-text);
+        grid-template-rows: 48px min-content;
+        background-color: var(--background-layer);
 
         display: grid;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    }
-    doric-title-bar:not(.compact)
-    :global(doric-adornment > *:not([ignore-titlebar-reskin])) {
-        --text-normal: var(--title-bar-text);
-        --ripple-color: var(--ripple-dark);
-        --control-border: var(--title-bar-text);
-        --control-border-focus: var(--title-bar-text);
+        border-bottom: 2px solid var(--text-normal);
     }
     doric-title-bar.sticky {
         position: sticky;
@@ -31,9 +24,7 @@
     }
     doric-title-bar.compact {
         grid-template-rows: 32px min-content;
-        background-color: var(--background-layer);
         box-shadow: none;
-        --title-bar-text: var(--text-normal);
     }
 
     title-area {

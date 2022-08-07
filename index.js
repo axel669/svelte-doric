@@ -1,5 +1,6 @@
 export { default as ActionArea } from "./core/action-area.svelte"
 export { default as Adornment } from "./core/adornment.svelte"
+export { default as AppBar } from "./core/app-bar.svelte"
 export { default as AppStyle } from "./core/app-style.svelte"
 export { default as Avatar } from "./core/avatar.svelte"
 export { default as Badge } from "./core/badge.svelte"

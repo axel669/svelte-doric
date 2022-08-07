@@ -10,7 +10,22 @@
 
     import DialogContent from "./content.svelte"
 
+    /*/
+    Function that closes the dialog and passes back a value
+    shape: Function(Any)
+    /*/
     export let close
+    /*/
+    Options for the prompt
+    shape: {
+        title: String?
+        message: String
+        placeholder: String?
+        okText: String?
+        cancelText: String?
+        icon: String?
+    }
+    /*/
     export let options
 
     $: ({
