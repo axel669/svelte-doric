@@ -6,18 +6,21 @@
     export let gap = "4px"
 
     export let cols = null
-    export let colWidth = "1fr"
     export let rows = null
-    export let rowHeight = "1fr"
+
+    export let autoRow = null
+    export let autoCol = null
+
+    export let scrollable = false
 
     $: flowVars = {
         direction,
         padding,
         gap,
-        col: cols ? `repeat(${cols}, ${colWidth})` : null,
-        row: rows ? `repeat(${rows}, ${rowHeight})` : null,
-        autoCol: colWidth,
-        autoRow: rowHeight,
+        cols,
+        rows,
+        autoCol,
+        autoRow,
     }
 </script>
 
@@ -28,14 +31,20 @@
         gap: var(--gap);
         grid-auto-flow: var(--direction);
 
-        grid-template-columns: var(--col);
-        grid-template-rows: var(--row);
+        grid-template-columns: var(--cols);
+        grid-template-rows: var(--rows);
 
         grid-auto-columns: var(--autoCol);
         grid-auto-rows: var(--autoRow);
     }
+    .scrollable {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+        scroll-behavior: auto;
+    }
 </style>
 
-<grid-layout use:vars={flowVars}>
+<grid-layout use:vars={flowVars} class:scrollable>
     <slot />
 </grid-layout>
