@@ -1,6 +1,5 @@
 <script>
-    import { setContext, getContext } from "svelte"
-    import { Flex } from "@layout"
+    import Flex from "./layout/flex.svelte"
 
     export let full = false
     export let title = "narrow"
