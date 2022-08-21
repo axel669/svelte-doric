@@ -26,9 +26,13 @@
     } from "@core"
     import { Dialog, Alert, Confirm, Prompt } from "@dialog"
     import { Flex, Grid } from "@layout"
+    // import { TronTheme as theme } from "@theme"
 
     import ThemePicker from "./test/theme-picker.svelte"
     import SelectDialog from "./test/select-dialog.svelte"
+
+    import Screen from "./test/screen.svelte"
+    import Subscreen from "./test/subscreen.svelte"
 
     let theme = null
 
@@ -57,9 +61,59 @@
             })
         )
     }
+
+    let stack = false
 </script>
 
+<style>
+    area-view {
+        display: block;
+        background-color: teal;
+        border: 1px solid white;
+        min-height: 54px;
+    }
+</style>
+
 <AppStyle {baseline} {theme} />
+
+<Screen title="full" footer="full" {stack} let:stackNum>
+    <AppBar fixed slot="title">
+        Doric Components Testing
+
+        <Adornment slot="menu" flush>
+            <Button on:tap={() => open = true} compact>
+                <Icon name="bars" size="16px" />
+            </Button>
+        </Adornment>
+
+        <Adornment slot="action">
+            <Button>
+                <Icon name="arrow-right-from-bracket" size="16px" />
+            </Button>
+        </Adornment>
+
+        <Adornment slot="extension" flush>
+            <ThemePicker bind:theme />
+        </Adornment>
+    </AppBar>
+
+    <Paper square>
+        <Flex scrollable>
+            <Button on:tap={() => stack = true}>
+                Open
+            </Button>
+            {#each Array.from({ length: 20 }) as _, index}
+                <area-view style="position: sticky; top: 0px;">
+                    {index}
+                </area-view>
+            {/each}
+        </Flex>
+    </Paper>
+
+    <ThemePicker bind:theme slot="footer" />
+
+    <Subscreen bind:stack {stackNum} slot="stack" />
+</Screen>
 
 <Drawer bind:open>
     <ThemePicker bind:theme vertical />
@@ -69,7 +123,7 @@
 </Drawer>
 
 <!-- <Dialog let:options let:close bind:this={dialog} component={SelectDialog} /> -->
-<Dialog let:options let:close bind:this={dialog} component={Prompt} />
+<!-- <Dialog let:options let:close bind:this={dialog} component={Prompt} />
 <AppBar fixed slot="title">
     Doric Components Testing
 
@@ -86,11 +140,8 @@
     </Adornment>
 </AppBar>
 <Paper center square flat width="min(640px, 100%)">
-    <!-- <TitleBar sticky>
-        Testing Nested
-    </TitleBar> -->
     <Flex direction="column" gap="4px">
-        <!-- <Select {options} bind:value label="Test Label" persistent let:selected let:info>
+        <Select {options} bind:value label="Test Label" persistent let:selected let:info>
             <Text slot="selected">
                 Current Item: {selected.label}
             </Text>
@@ -99,7 +150,7 @@
         <Select {options} bind:value label="Test Label" let:info icon="calendar" searchable>
             <OptionList {info} square={false} slot="options" />
         </Select>
-        -->
+
         <Button color="primary" on:tap={openDialog}>
             Dialog Test
         </Button>
@@ -192,4 +243,4 @@
     <Footer>
         <ThemePicker bind:theme slot="middle" />
     </Footer>
-</Paper>
+</Paper> -->

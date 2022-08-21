@@ -1,5 +1,4 @@
 <script>
-    export let fixed
     export let center
 </script>
 
@@ -21,14 +20,6 @@
         --control-border: var(--title-bar-text);
         --control-border-focus: var(--title-bar-text);
     }
-    doric-app-bar.fixed {
-        position: fixed;
-        width: inherit;
-        top: 0px;
-        left: 50%;
-        transform: translate(-50%);
-        z-index: +50;
-    }
 
     title-area {
         display: grid;
@@ -46,18 +37,9 @@
     title-text.center {
         justify-content: center;
     }
-
-    doric-app-bar-pseudo {
-        position: relative;
-        display: block;
-        height: 56px;
-    }
 </style>
 
-{#if fixed}
-    <doric-app-bar-pseudo />
-{/if}
-<doric-app-bar class:fixed>
+<doric-app-bar>
     <title-area>
         <slot name="menu">
             <div />
@@ -69,4 +51,5 @@
             <div />
         </slot>
     </title-area>
+    <slot name="extension" />
 </doric-app-bar>

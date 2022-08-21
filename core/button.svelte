@@ -45,7 +45,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        z-index: +1;
+        z-index: +0;
         font-weight: 500;
 
         --button-color: var(--text-normal);

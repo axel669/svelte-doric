@@ -2,8 +2,8 @@
     import vars from "../util/vars"
 
     export let direction = "row"
-    export let padding = "8px"
-    export let gap = "2px"
+    export let padding = "4px"
+    export let gap = "4px"
 
     export let cols = null
     export let colWidth = "1fr"

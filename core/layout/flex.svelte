@@ -1,10 +1,12 @@
 <script>
     import vars from "../util/vars"
 
-    export let direction = "row"
-    export let padding = "8px"
-    export let gap = "2px"
+    export let direction = "column"
+    export let padding = "4px"
+    export let gap = "4px"
     export let itemFill = false
+    export let scrollable = false
+    export let wrap = false
 
     $: flexVars = {
         direction,
@@ -16,7 +18,7 @@
 <style>
     flex-layout {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
 
         flex-direction: var(--direction);
         padding: var(--padding);
@@ -24,6 +26,15 @@
     }
     flex-layout.item-fill > :global(*) {
         flex-grow: 1;
+    }
+    .scrollable {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+        scroll-behavior: auto;
+    }
+    .wrap {
+        flex-wrap: wrap;
     }
 
     flex-layout > :global(flex-break),
@@ -34,6 +45,11 @@
     }
 </style>
 
-<flex-layout use:vars={flexVars} class:item-fill={itemFill}>
+<flex-layout
+use:vars={flexVars}
+class:item-fill={itemFill}
+class:scrollable
+class:wrap
+>
     <slot />
 </flex-layout>
