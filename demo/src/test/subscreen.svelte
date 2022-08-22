@@ -18,12 +18,12 @@
     const open = () => scr.openStack(Subscreen2)
 </script>
 
-<Screen bind:this={scr} fullTitle>
+<Screen bind:this={scr}>
     <AppBar slot="title">
         Testing - #{value}
     </AppBar>
     <Paper square card>
-        <Flex scrollable>
+        <Flex scrollable center>
             <Button on:tap={open}>
                 Next
             </Button>
@@ -32,13 +32,13 @@
                     {index}
                 </area-view>
             {/each}
-            <Button on:tap={() => scr.close()}>
+            <Button on:tap={() => scr.close(new Date().toLocaleString())}>
                 Close
             </Button>
         </Flex>
     </Paper>
 
-    <Footer slot="footer">
+    <Footer slot="footer" bordered>
         Some kind of footery stuff
     </Footer>
 </Screen>

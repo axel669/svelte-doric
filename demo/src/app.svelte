@@ -76,7 +76,7 @@
         mainScreen.openStack(
             Subscreen,
             { value }
-        )
+        ).then(console.log)
     }
     $: openThing(value)
 </script>
@@ -92,7 +92,7 @@
 
 <AppStyle {baseline} {theme} />
 
-<Screen bind:this={mainScreen} full>
+<Screen bind:this={mainScreen}>
     <AppBar fixed slot="title">
         Doric Components Testing
 
@@ -115,16 +115,26 @@
 
     <Paper square>
         <Flex scrollable>
+            <div style="display: grid; height: 100px;">
+                <Flex center>
+                    <Text>wat</Text>
+                    <Text>woah</Text>
+                    <Text>nope</Text>
+                </Flex>
+            </div>
             <Button on:tap={turnOn}>
                 Open
             </Button>
-                <Select {options} bind:value label="Test Label" persistent let:selected let:info>
+            <Button on:tap={openDialog}>
+                dialog
+            </Button>
+            <Select {options} bind:value label="Test Label" persistent let:selected let:info>
                 <Text slot="selected">
                     Current Item: {selected.label}
                 </Text>
                 <OptionList {info} variant="fill" color="secondary" slot="options" />
             </Select>
-            <Grid cols="repeat(3, 1fr)" autoRow="60px" scrollable>
+            <Grid cols="repeat(3, 1fr)" autoRow="60px">
                 {#each Array.from({ length: 60 }) as _, index}
                     <area-view style="position: sticky; top: 0px;">
                         {index}
@@ -147,8 +157,8 @@
 </Drawer>
 
 <!-- <Dialog let:options let:close bind:this={dialog} component={SelectDialog} /> -->
-<!-- <Dialog let:options let:close bind:this={dialog} component={Prompt} />
-<AppBar fixed slot="title">
+<Dialog let:options let:close bind:this={dialog} component={Prompt} />
+<!-- <AppBar fixed slot="title">
     Doric Components Testing
 
     <Adornment slot="menu" flush>
