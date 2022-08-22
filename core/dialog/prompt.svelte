@@ -71,7 +71,7 @@
                 </TitleBar>
             {/if}
         </svelte:fragment>
-        <Flex direction="column">
+        <Flex>
             {message}
             <form on:submit={submitOK}>
                 <TextInput
@@ -83,7 +83,7 @@
                 />
             </form>
         </Flex>
-        <Grid cols={2} slot="action">
+        <Grid cols="1fr 1fr" slot="action">
             <Button color="danger" on:tap={cancel}>
                 {cancelText}
             </Button>

@@ -37,7 +37,7 @@
         <FlexLayout>
             {message}
         </FlexLayout>
-        <GridLayout slot="action">
+        <GridLayout slot="action" cols="1fr">
             <Button color="secondary" on:tap={ok}>
                 {okText}
             </Button>
