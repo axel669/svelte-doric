@@ -1,21 +1,48 @@
+<script context="module">
+    const stackContext = Symbol("Stack Context")
+    const levelContext = Symbol("Level Context")
+</script>
+
 <script>
-    import Flex from "./layout/flex.svelte"
+    import { getContext, setContext } from "svelte"
+    import { writable } from "svelte/store"
+
+    import { fly } from "svelte/transition"
 
     export let full = false
-    export let title = "narrow"
-    export let content = "narrow"
-    export let footer = "narrow"
+    export let fullTitle = false
+    export let fullContent = false
+    export let fullFooter = false
     export let width = "min(720px, 100%)"
 
-    export let stack = false
-    export let stackNum = 0
+    const stack = getContext(stackContext) ?? writable(null)
+    const level = getContext(levelContext) ?? 0
+
+    const stackComp = writable(false)
+    const duration = 350
+
+    setContext(stackContext, stackComp)
+    setContext(levelContext, level + 1)
+
+    let stackProps = {}
+    export const openStack = (component, props = {}) => {
+        $stackComp = component
+        stackProps = props
+    }
+    export const closeStack = () => {
+        $stackComp = null
+        stackprops = {}
+    }
+    export const close = () => {
+        $stack = null
+    }
 </script>
 
 <style>
     doric-screen {
         display: grid;
         width: 100%;
-        height: 100%;
+        height: calc(100% - 1px);
         overflow: hidden;
         position: absolute;
         background-color: rgba(0, 0, 0, 0.2);
@@ -28,15 +55,16 @@
             var(--footer-row, ". footer .")
         ;
         padding: calc(8px * var(--stack));
+        padding-bottom: 0px;
     }
 
-    .t-full, .full {
+    .full-title, .full {
         --title-row: "title title title";
     }
-    .c-full, .full {
+    .full-content, .full {
         --content-row: "content content content";
     }
-    .f-full, .full {
+    .full-footer, .full {
         --footer-row: "footer footer footer";
     }
 
@@ -58,24 +86,24 @@
 
 <doric-screen
 class:full
-class="t-{title} c-{content} f-{footer}"
-style="--screen-width: {width}; --stack: {stackNum};"
+class:full-title={fullTitle}
+class:full-content={fullContent}
+class:full-footer={fullFooter}
+style="--screen-width: {width}; --stack: {level};"
 >
     {#if $$slots.title}
-        <title-area>
+        <title-area transition:fly={{ y: window.innerHeight, duration }}>
             <slot name="title" />
         </title-area>
     {/if}
-    <content-area>
+    <content-area transition:fly={{ y: window.innerHeight, duration }}>
         <slot />
     </content-area>
     {#if $$slots.footer}
-        <footer-area>
+        <footer-area transition:fly={{ y: window.innerHeight, duration }}>
             <slot name="footer" />
         </footer-area>
     {/if}
 </doric-screen>
 
-{#if stack === true}
-    <slot name="stack" stackNum={stackNum + 1} />
-{/if}
+<svelte:component this={$stackComp} {...stackProps} />

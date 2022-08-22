@@ -2,16 +2,15 @@
     import {
         Button,
         Paper,
+        Screen,
     } from "@core"
     import { Flex } from "@layout"
 
-    import Screen from "./screen.svelte"
-
-    export let stack = false
-    export let stackNum
+    let scr = null
+    const close = () => scr.close()
 </script>
 
-<Screen {stackNum}>
+<Screen bind:this={scr}>
     <Paper square card>
         <Flex scrollable>
             {#each Array.from({ length: 20 }) as _, index}
@@ -19,7 +18,7 @@
                     {index}
                 </area-view>
             {/each}
-            <Button on:tap={() => stack = false}>
+            <Button on:tap={close}>
                 Close
             </Button>
         </Flex>

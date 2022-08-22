@@ -17,6 +17,7 @@
         Radio,
         OptionList,
         Paper,
+        Screen,
         Select,
         Switch,
         Tabs,
@@ -31,7 +32,6 @@
     import ThemePicker from "./test/theme-picker.svelte"
     import SelectDialog from "./test/select-dialog.svelte"
 
-    import Screen from "./test/screen.svelte"
     import Subscreen from "./test/subscreen.svelte"
 
     let theme = null
@@ -62,7 +62,23 @@
         )
     }
 
-    let stack = false
+    let mainScreen = null
+    const turnOn = () => mainScreen.openStack(
+        Subscreen,
+        { now: new Date().toLocaleString() }
+    )
+
+    const openThing = (value) => {
+        if (mainScreen === null) {
+            return
+        }
+
+        mainScreen.openStack(
+            Subscreen,
+            { value }
+        )
+    }
+    $: openThing(value)
 </script>
 
 <style>
@@ -76,7 +92,7 @@
 
 <AppStyle {baseline} {theme} />
 
-<Screen title="full" footer="full" {stack} let:stackNum>
+<Screen bind:this={mainScreen} full>
     <AppBar fixed slot="title">
         Doric Components Testing
 
@@ -99,20 +115,28 @@
 
     <Paper square>
         <Flex scrollable>
-            <Button on:tap={() => stack = true}>
+            <Button on:tap={turnOn}>
                 Open
             </Button>
-            {#each Array.from({ length: 20 }) as _, index}
-                <area-view style="position: sticky; top: 0px;">
-                    {index}
-                </area-view>
-            {/each}
+                <Select {options} bind:value label="Test Label" persistent let:selected let:info>
+                <Text slot="selected">
+                    Current Item: {selected.label}
+                </Text>
+                <OptionList {info} variant="fill" color="secondary" slot="options" />
+            </Select>
+            <Grid cols="repeat(3, 1fr)" autoRow="60px" scrollable>
+                {#each Array.from({ length: 60 }) as _, index}
+                    <area-view style="position: sticky; top: 0px;">
+                        {index}
+                    </area-view>
+                {/each}
+            </Grid>
         </Flex>
     </Paper>
 
-    <ThemePicker bind:theme slot="footer" />
-
-    <Subscreen bind:stack {stackNum} slot="stack" />
+    <Footer slot="footer">
+        <ThemePicker bind:theme />
+    </Footer>
 </Screen>
 
 <Drawer bind:open>

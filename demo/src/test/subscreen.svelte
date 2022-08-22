@@ -1,23 +1,30 @@
 <script>
     import {
+        AppBar,
         Button,
+        Footer,
         Paper,
+        Screen,
     } from "@core"
     import { Flex } from "@layout"
 
-    import Screen from "./screen.svelte"
+    import { getContext } from "svelte"
+
     import Subscreen2 from "./subscreen2.svelte"
 
-    export let stack = false
-    export let stackNum
+    export let value
 
-    let substack = false
+    let scr = null
+    const open = () => scr.openStack(Subscreen2)
 </script>
 
-<Screen {stackNum} stack={substack} let:stackNum>
+<Screen bind:this={scr} fullTitle>
+    <AppBar slot="title">
+        Testing - #{value}
+    </AppBar>
     <Paper square card>
         <Flex scrollable>
-            <Button on:tap={() => substack = true}>
+            <Button on:tap={open}>
                 Next
             </Button>
             {#each Array.from({ length: 20 }) as _, index}
@@ -25,11 +32,13 @@
                     {index}
                 </area-view>
             {/each}
-            <Button on:tap={() => stack = false}>
+            <Button on:tap={() => scr.close()}>
                 Close
             </Button>
         </Flex>
     </Paper>
 
-    <Subscreen2 bind:stack={substack} {stackNum} slot="stack" />
+    <Footer slot="footer">
+        Some kind of footery stuff
+    </Footer>
 </Screen>
