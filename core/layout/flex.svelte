@@ -7,11 +7,19 @@
     export let itemFill = false
     export let scrollable = false
     export let wrap = false
+    export let itemAlign = "flex-start"
+    export let itemJustify = "flex-start"
+    export let contentAlign = "flex-start"
+
+    export let center = false
 
     $: flexVars = {
         direction,
         padding,
         gap,
+        itemAlign,
+        itemJustify,
+        contentAlign,
     }
 </script>
 
@@ -23,18 +31,26 @@
         flex-direction: var(--direction);
         padding: var(--padding);
         gap: var(--gap);
+
+        align-items: var(--item-align);
+        justify-content: var(--item-justify);
+        align-content: var(--content-align);
     }
     flex-layout.item-fill > :global(*) {
         flex-grow: 1;
     }
-    .scrollable {
+    flex-layout.scrollable {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         height: 100%;
         scroll-behavior: auto;
     }
-    .wrap {
+    flex-layout.wrap {
         flex-wrap: wrap;
+    }
+    flex-layout.center {
+        align-items: center;
+        justify-content: center;
     }
 
     flex-layout > :global(flex-break),
@@ -50,6 +66,7 @@ use:vars={flexVars}
 class:item-fill={itemFill}
 class:scrollable
 class:wrap
+class:center
 >
     <slot />
 </flex-layout>
