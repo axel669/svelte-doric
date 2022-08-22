@@ -1,5 +1,5 @@
 <script context="module">
-    const stackContext = Symbol("Stack Context")
+    const closeContext = Symbol("Close Context")
     const levelContext = Symbol("Level Context")
 </script>
 
@@ -15,26 +15,37 @@
     export let fullFooter = false
     export let width = "min(720px, 100%)"
 
-    const stack = getContext(stackContext) ?? writable(null)
     const level = getContext(levelContext) ?? 0
+    const finish = getContext(closeContext) ?? writable(null)
 
-    const stackComp = writable(false)
+    let stackComp = null
     const duration = 350
+    const finishFunc = writable(null)
 
-    setContext(stackContext, stackComp)
     setContext(levelContext, level + 1)
+    setContext(closeContext, finishFunc)
 
     let stackProps = {}
-    export const openStack = (component, props = {}) => {
-        $stackComp = component
-        stackProps = props
-    }
+    export const openStack = (component, props = {}) => new Promise(
+        (resolve) => {
+            $finishFunc = (value) => {
+                closeStack()
+                resolve(value)
+            }
+            stackComp = component
+            stackProps = props
+        }
+    )
     export const closeStack = () => {
-        $stackComp = null
-        stackprops = {}
+        stackComp = null
+        stackProps = {}
     }
-    export const close = () => {
-        $stack = null
+    export const close = (value) => {
+        if ($finish === null) {
+            return
+        }
+
+        $finish(value)
     }
 </script>
 
@@ -106,4 +117,4 @@ style="--screen-width: {width}; --stack: {level};"
     {/if}
 </doric-screen>
 
-<svelte:component this={$stackComp} {...stackProps} />
+<svelte:component this={stackComp} {...stackProps} />
