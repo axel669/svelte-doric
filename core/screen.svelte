@@ -56,7 +56,7 @@
         height: calc(100% - 1px);
         overflow: hidden;
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.4);
 
         grid-template-columns: auto var(--screen-width) auto;
         grid-template-rows: min-content auto min-content;
@@ -67,6 +67,9 @@
         ;
         padding: calc(8px * var(--stack));
         padding-bottom: 0px;
+    }
+    doric-screen.main {
+        background-color: transparent;
     }
 
     .full-title, .full {
@@ -100,6 +103,7 @@ class:full
 class:full-title={fullTitle}
 class:full-content={fullContent}
 class:full-footer={fullFooter}
+class:main={level === 0}
 style="--screen-width: {width}; --stack: {level};"
 >
     {#if $$slots.title}

@@ -4,8 +4,8 @@
     const theme = css`
         body {
             --font: Orbitron;
-            --background: #060606;
-            --background-layer: #0a0a0a;
+            --background: #030303;
+            --background-layer: #080808;
             --layer-border-width: 1px;
             --layer-border-color: var(--text-normal);
 
