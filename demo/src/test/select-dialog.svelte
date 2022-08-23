@@ -6,19 +6,19 @@
         Select,
         Text,
         TitleBar,
+
+        DialogContent,
+
+        Flex,
+        Grid,
     } from "@core"
-    import { Flex, Grid } from "@layout"
-    import { DialogContent } from "@dialog"
 
     export let close
-    export let options
+    export let title = "Alert"
+    export let message
+    export let okText = "OK"
+    export let icon
 
-    $: ({
-        title = "Alert",
-        message,
-        okText = "OK",
-        icon,
-    } = options)
     let value = 0
     const items = [
         { label: "First", value: 0 },
@@ -27,7 +27,6 @@
     ]
 
     const ok = () => close(true)
-    console.log("wat")
 </script>
 
 <DialogContent top="25%" left="50%" originX="50%" width="min(70vw, 320px)">

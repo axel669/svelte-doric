@@ -1,6 +1,7 @@
 <script context="module">
     const closeContext = Symbol("Close Context")
     const levelContext = Symbol("Level Context")
+    const widthContext = Symbol("Width Context")
 </script>
 
 <script>
@@ -8,6 +9,8 @@
     import { writable } from "svelte/store"
 
     import { fly } from "svelte/transition"
+
+    import vars from "./util/vars.js"
 
     export let full = false
     export let fullTitle = false
@@ -17,6 +20,7 @@
 
     const level = getContext(levelContext) ?? 0
     const finish = getContext(closeContext) ?? writable(null)
+    const parentWidth = getContext(widthContext) ?? "100%"
 
     let stackComp = null
     const duration = 350
@@ -24,6 +28,7 @@
 
     setContext(levelContext, level + 1)
     setContext(closeContext, finishFunc)
+    setContext(widthContext, width)
 
     let stackProps = {}
     export const openStack = (component, props = {}) => new Promise(
@@ -47,6 +52,12 @@
 
         $finish(value)
     }
+
+    $: screenVars = {
+        "parent-width": parentWidth,
+        "screen-width": width,
+        "stack": level,
+    }
 </script>
 
 <style>
@@ -56,16 +67,25 @@
         height: calc(100% - 1px);
         overflow: hidden;
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.5);
 
-        grid-template-columns: auto var(--screen-width) auto;
+        grid-template-columns:
+            auto
+            min(
+                calc(
+                    var(--parent-width) - calc(16px * var(--stack))
+                ),
+                var(--screen-width)
+            )
+            auto
+        ;
         grid-template-rows: min-content auto min-content;
         grid-template-areas:
             var(--title-row, ". title .")
             var(--content-row, ". content .")
             var(--footer-row, ". footer .")
         ;
-        padding: calc(8px * var(--stack));
+        padding-top: calc(8px * var(--stack));
         padding-bottom: 0px;
     }
     doric-screen.main {
@@ -104,7 +124,7 @@ class:full-title={fullTitle}
 class:full-content={fullContent}
 class:full-footer={fullFooter}
 class:main={level === 0}
-style="--screen-width: {width}; --stack: {level};"
+use:vars={screenVars}
 >
     {#if $$slots.title}
         <title-area transition:fly={{ y: window.innerHeight, duration }}>

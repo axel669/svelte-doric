@@ -5,8 +5,9 @@
         Footer,
         Paper,
         Screen,
+
+        Flex,
     } from "@core"
-    import { Flex } from "@layout"
 
     import { getContext } from "svelte"
 

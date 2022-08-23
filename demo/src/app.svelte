@@ -11,7 +11,6 @@
         Checkbox,
         Chip,
         ControlDrawer,
-        // Drawer,
         Footer,
         Icon,
         Radio,
@@ -62,7 +61,7 @@
     const openDialog = async () => {
         console.log(
             await dialog.show(
-                Prompt,
+                SelectDialog,
                 {
                     title: "Testing",
                     message: "Select?",
@@ -150,7 +149,7 @@
                 </Text>
                 <OptionList {info} variant="fill" color="secondary" slot="options" />
             </Select>
-            <Grid cols="repeat(3, 1fr)" autoRow="60px">
+            <Grid cols="repeat(3, 1fr)" autoRow="60px" scrollable>
                 {#each Array.from({ length: 60 }) as _, index}
                     <area-view style="position: sticky; top: 0px;">
                         {index}
