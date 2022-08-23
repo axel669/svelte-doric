@@ -11,7 +11,7 @@
         Checkbox,
         Chip,
         ControlDrawer,
-        Drawer,
+        // Drawer,
         Footer,
         Icon,
         Radio,
@@ -24,17 +24,24 @@
         Text,
         TextInput,
         TitleBar,
-    } from "@core"
-    import { Dialog, Alert, Confirm, Prompt } from "@dialog"
-    import { Flex, Grid } from "@layout"
-    // import { TronTheme as theme } from "@theme"
 
-    import ThemePicker from "./test/theme-picker.svelte"
+        Flex,
+        Grid,
+
+        Alert,
+        Confirm,
+        Prompt,
+
+        dialog,
+        drawer,
+        portal,
+    } from "@core"
+
+    import ThemePicker, { theme } from "./test/theme-picker.svelte"
     import SelectDialog from "./test/select-dialog.svelte"
+    import AppMenu from "./app-menu.svelte"
 
     import Subscreen from "./test/subscreen.svelte"
-
-    let theme = null
 
     let open = false
 
@@ -52,20 +59,23 @@
     //     { label: "test 3", value: 2},
     // ]
 
-    let dialog = null
     const openDialog = async () => {
         console.log(
-            await dialog.show({
-                title: "Testing",
-                message: "Select?"
-            })
+            await dialog.show(
+                Prompt,
+                {
+                    title: "Testing",
+                    message: "Select?",
+                    persistent: true,
+                }
+            )
         )
     }
 
     let mainScreen = null
     const turnOn = () => mainScreen.openStack(
         Subscreen,
-        { now: new Date().toLocaleString() }
+        { value: new Date().toLocaleString() }
     )
 
     const openThing = (value) => {
@@ -79,6 +89,12 @@
         ).then(console.log)
     }
     $: openThing(value)
+
+    const openMenu = async () => {
+        console.log(
+            await drawer.open(AppMenu, { theme })
+        )
+    }
 </script>
 
 <style>
@@ -90,15 +106,15 @@
     }
 </style>
 
-<AppStyle {baseline} {theme} />
+<AppStyle {baseline} theme={$theme} />
 
 <Screen bind:this={mainScreen}>
     <AppBar fixed slot="title">
         Doric Components Testing
 
         <Adornment slot="menu" flush>
-            <Button on:tap={() => open = true} compact>
-                <Icon name="bars" size="16px" />
+            <Button on:tap={openMenu} compact>
+                <Icon name="burger" size="20px" />
             </Button>
         </Adornment>
 
@@ -109,7 +125,7 @@
         </Adornment>
 
         <Adornment slot="extension" flush>
-            <ThemePicker bind:theme />
+            <ThemePicker />
         </Adornment>
     </AppBar>
 
@@ -128,7 +144,7 @@
             <Button on:tap={openDialog}>
                 dialog
             </Button>
-            <Select {options} bind:value label="Test Label" persistent let:selected let:info>
+            <Select {options} bind:value label="Test Label" persistent let:selected let:info searchable>
                 <Text slot="selected">
                     Current Item: {selected.label}
                 </Text>
@@ -145,19 +161,11 @@
     </Paper>
 
     <Footer slot="footer">
-        <ThemePicker bind:theme />
+        <ThemePicker />
     </Footer>
 </Screen>
 
-<Drawer bind:open>
-    <ThemePicker bind:theme vertical />
-    <Button on:tap={() => open = false}>
-        Close
-    </Button>
-</Drawer>
-
 <!-- <Dialog let:options let:close bind:this={dialog} component={SelectDialog} /> -->
-<Dialog let:options let:close bind:this={dialog} component={Prompt} />
 <!-- <AppBar fixed slot="title">
     Doric Components Testing
 

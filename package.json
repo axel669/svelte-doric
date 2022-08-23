@@ -19,10 +19,7 @@
   },
   "files": [
     "core/",
-    "index.js",
-    "dialog.js",
-    "layout.js",
-    "theme.js"
+    "index.js"
   ],
   "dependencies": {}
 }

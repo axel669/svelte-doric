@@ -1,28 +1,44 @@
-<script>
-    import { Tabs } from "@core"
+<script context="module">
+    import { writable, derived } from "svelte/store"
+
     import {
         LightTheme,
         DarkTheme,
         TronTheme,
-    } from "@theme"
+    } from "@core"
 
-    export let theme
-    export let vertical
-
+    const currentTheme = writable(localStorage.theme ?? "light")
     const themeMap = {
         light: LightTheme,
         dark: DarkTheme,
         tron: TronTheme,
     }
+
+    const theme = derived(
+        currentTheme,
+        (current) => themeMap[current]
+    )
+
+    currentTheme.subscribe(
+        themeName => localStorage.theme = themeName
+    )
+
+    export {
+        currentTheme,
+        theme
+    }
+</script>
+
+<script>
+    import { Tabs } from "@core"
+
+    export let vertical
+
     const themes = [
         { label: "Light", icon: "sun", value: "light" },
         { label: "Dark", icon: "moon", value: "dark" },
         { label: "Tron", icon: "laptop", value: "tron" },
     ]
-    let currentTheme = localStorage.theme ?? "light"
-
-    $: theme = themeMap[currentTheme]
-    $: localStorage.theme = currentTheme
 </script>
 
-<Tabs bind:tabGroup={currentTheme} options={themes} {vertical} />
+<Tabs bind:tabGroup={$currentTheme} options={themes} {vertical} />
