@@ -1,24 +1,9 @@
 <script context="module">
     let portalRoot = null
-
-    if (typeof document !== "undefined") {
-        portalRoot = document.createElement("portal-root")
-        document.body.appendChild(portalRoot)
+    const initPortal = (node) => portalRoot = node
+    export const portal = (node) => {
+        portalRoot.appendChild(node)
     }
 </script>
 
-<script>
-    import {onMount} from "svelte"
-
-    let instance
-
-    onMount(
-        () => {
-            portalRoot?.appendChild(instance)
-        }
-    )
-</script>
-
-<portal-element bind:this={instance}>
-    <slot />
-</portal-element>
+<portal-root use:initPortal />

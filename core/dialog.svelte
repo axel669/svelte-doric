@@ -1,32 +1,48 @@
+<script context="module">
+    let show
+    export const showDialog = (...args) => show(...args)
+</script>
+
 <script>
     import Modal from "./modal.svelte"
 
-    export let persistent
-    export let component
+    let dialogs = []
 
-    let open = false
-    let options = {}
-    let resolver
+    const add = (dialog) => {
+        dialogs = [...dialogs, dialog]
+    }
+    const remove = (id) => {
+        dialogs = dialogs.filter(
+            (dialog) => dialog.id !== id
+        )
+    }
 
-    export const show = opts => new Promise(
+    show = (component, opts) => new Promise(
         (resolve) => {
-            resolver = resolve
-            options = opts
-            open = true
+            const id = `${Date.now()}:${Math.random().toString(16)}`
+            const close = (value) => {
+                remove(id)
+                resolve(value)
+            }
+
+            const dialog = {
+                id,
+                component,
+                persistent: opts.persistent,
+                props: {
+                    ...opts,
+                    close,
+                },
+                modalClose: () => close(undefined),
+            }
+
+            add(dialog)
         }
     )
-    const close = value => {
-        open = false
-        resolver(value)
-    }
-    const closeOuter = () => {
-        if (persistent === true) {
-            return
-        }
-        close(undefined)
-    }
 </script>
 
-<Modal {open} {persistent} on:close={closeOuter}>
-    <svelte:component this={component} {options} {close} />
-</Modal>
+{#each dialogs as {component, modalClose, persistent, props}}
+    <Modal {persistent} on:close={modalClose}>
+        <svelte:component this={component} {...props} />
+    </Modal>
+{/each}

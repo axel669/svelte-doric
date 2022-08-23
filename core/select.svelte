@@ -17,16 +17,14 @@
     export let disabled
     export let searchable = false
 
-    let open = false
+    let drawer = null
     const select = (newValue) => {
-        open = false
+        drawer.close()
+        filter = ""
         value = newValue
     }
 
     let filter = ""
-    $: if (open === false) {
-        filter = ""
-    }
 
     $: shown = options.filter(
         opt => opt.label.toLowerCase().includes(filter.toLowerCase())
@@ -49,7 +47,7 @@
     }
 </style>
 
-<ControlDrawer bind:open {persistent}>
+<ControlDrawer {persistent} bind:this={drawer}>
     {#if label}
         <TitleBar compact sticky>
             {label}
@@ -65,7 +63,7 @@
     </slot>
 </ControlDrawer>
 
-<Button variant="outline" {...$$props} on:tap={() => open = true} {disabled}>
+<Button variant="outline" {...$$props} on:tap={() => drawer.open()} {disabled}>
     <select-layout>
         <Text adorn>
             <slot name="selected" {selected}>

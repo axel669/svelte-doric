@@ -10,15 +10,11 @@
     import DialogContent from "./content.svelte"
 
     export let close
-    export let options
-
-    $: ({
-        title = "Confirm",
-        message,
-        okText = "OK",
-        cancelText = "Cancel",
-        icon,
-    } = options)
+    export let title = "Confirm"
+    export let message
+    export let okText = "OK"
+    export let cancelText = "Cancel"
+    export let icon
 
     const ok = () => close(true)
     const cancel = () => close(false)

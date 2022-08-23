@@ -2,9 +2,8 @@
     import {createEventDispatcher} from "svelte"
     import {fade} from "svelte/transition"
 
-    import Portal from "./portal.svelte"
+    import { portal } from "./portal.svelte"
 
-    export let open = false
     export let clear
     export let persistent = false
 
@@ -17,7 +16,7 @@
         if (persistent === true) {
             return
         }
-        open = false
+
         dispatch("close")
     }
 </script>
@@ -37,12 +36,8 @@
     }
 </style>
 
-<Portal>
-    {#if open}
-        <modal-wrapper on:tap={close} transition:fade={anim} class:clear>
-            <div on:tap|stopPropagation>
-                <slot />
-            </div>
-        </modal-wrapper>
-    {/if}
-</Portal>
+<modal-wrapper use:portal on:tap={close} transition:fade={anim} class:clear>
+    <div on:tap|stopPropagation>
+        <slot />
+    </div>
+</modal-wrapper>

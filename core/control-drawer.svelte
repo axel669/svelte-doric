@@ -1,9 +1,4 @@
-<script>
-    import Modal from "./modal.svelte"
-
-    export let open = false
-    export let persistent = false
-
+<script context="module">
     const drawerSlide = (node, options) => {
         return {
             delay: 0,
@@ -14,6 +9,16 @@
             `
         }
     }
+</script>
+
+<script>
+    import Modal from "./modal.svelte"
+
+    export let persistent = false
+
+    let show = false
+    export const open = () => show = true
+    export const close = () => show = false
 </script>
 
 <style>
@@ -28,8 +33,10 @@
     }
 </style>
 
-<Modal bind:open on:close {persistent}>
-    <control-drawer transition:drawerSlide>
-        <slot />
-    </control-drawer>
-</Modal>
+{#if show}
+    <Modal on:close={close} {persistent}>
+        <control-drawer transition:drawerSlide>
+            <slot />
+        </control-drawer>
+    </Modal>
+{/if}
