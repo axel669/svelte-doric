@@ -128,7 +128,7 @@
         </Adornment>
     </AppBar>
 
-    <Paper square>
+    <Paper square card>
         <Flex scrollable>
             <div style="display: grid; height: 100px;">
                 <Flex center>

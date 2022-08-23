@@ -1109,7 +1109,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$v($$self, $$props, $$invalidate) {
+    function instance$w($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { clear } = $$props;
     	let { persistent = false } = $$props;
@@ -1140,7 +1140,7 @@ var demo = (function () {
     class Modal extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$v, create_fragment$w, safe_not_equal, { clear: 0, persistent: 3 }, add_css$m);
+    		init(this, options, instance$w, create_fragment$w, safe_not_equal, { clear: 0, persistent: 3 }, add_css$m);
     	}
     }
 
@@ -1357,7 +1357,7 @@ var demo = (function () {
     let show$1;
     const openDrawer = (...args) => show$1(...args);
 
-    function instance$u($$self, $$props, $$invalidate) {
+    function instance$v($$self, $$props, $$invalidate) {
     	let current = null;
     	let props = {};
     	let close = null;
@@ -1385,7 +1385,7 @@ var demo = (function () {
     class Drawer extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$u, create_fragment$v, safe_not_equal, {}, add_css$l);
+    		init(this, options, instance$v, create_fragment$v, safe_not_equal, {}, add_css$l);
     	}
     }
 
@@ -1617,7 +1617,7 @@ var demo = (function () {
     let show;
     const showDialog = (...args) => show(...args);
 
-    function instance$t($$self, $$props, $$invalidate) {
+    function instance$u($$self, $$props, $$invalidate) {
     	let dialogs = [];
 
     	const add = dialog => {
@@ -1653,7 +1653,7 @@ var demo = (function () {
     class Dialog extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$t, create_fragment$u, safe_not_equal, {});
+    		init(this, options, instance$u, create_fragment$u, safe_not_equal, {});
     	}
     }
 
@@ -1837,7 +1837,7 @@ var demo = (function () {
 
     const duration$1 = 500;
 
-    function instance$s($$self, $$props, $$invalidate) {
+    function instance$t($$self, $$props, $$invalidate) {
     	let { color = null } = $$props;
     	let { disabled = false } = $$props;
     	let ripples = [];
@@ -1890,7 +1890,7 @@ var demo = (function () {
     class Ripple extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$s, create_fragment$t, safe_not_equal, { color: 0, disabled: 5 }, add_css$k);
+    		init(this, options, instance$t, create_fragment$t, safe_not_equal, { color: 0, disabled: 5 }, add_css$k);
     	}
     }
 
@@ -1977,7 +1977,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$r($$self, $$props, $$invalidate) {
+    function instance$s($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { class: klass = "" } = $$props;
 
@@ -1996,7 +1996,7 @@ var demo = (function () {
     class Action_area extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$r, create_fragment$s, safe_not_equal, { class: 0 }, add_css$j);
+    		init(this, options, instance$s, create_fragment$s, safe_not_equal, { class: 0 }, add_css$j);
     	}
     }
 
@@ -2064,7 +2064,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$q($$self, $$props, $$invalidate) {
+    function instance$r($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { flush } = $$props;
 
@@ -2079,7 +2079,7 @@ var demo = (function () {
     class Adornment extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$q, create_fragment$r, safe_not_equal, { flush: 0 }, add_css$i);
+    		init(this, options, instance$r, create_fragment$r, safe_not_equal, { flush: 0 }, add_css$i);
     	}
     }
 
@@ -2285,7 +2285,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$p($$self, $$props, $$invalidate) {
+    function instance$q($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	let { center } = $$props;
 
@@ -2300,7 +2300,7 @@ var demo = (function () {
     class App_bar extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$p, create_fragment$q, safe_not_equal, { center: 0 }, add_css$h);
+    		init(this, options, instance$q, create_fragment$q, safe_not_equal, { center: 0 }, add_css$h);
     	}
     }
 
@@ -2537,7 +2537,7 @@ var demo = (function () {
     	};
     }
 
-    function instance$o($$self, $$props, $$invalidate) {
+    function instance$p($$self, $$props, $$invalidate) {
     	let { theme = null } = $$props;
     	let { baseline = null } = $$props;
 
@@ -2552,9 +2552,23 @@ var demo = (function () {
     class App_style extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$o, create_fragment$p, safe_not_equal, { theme: 0, baseline: 1 });
+    		init(this, options, instance$p, create_fragment$p, safe_not_equal, { theme: 0, baseline: 1 });
     	}
     }
+
+    const css = (parts, ...values) => {
+        const css = parts
+            .reduce(
+                (cssParts, part, index) => [
+                    ...cssParts,
+                    part,
+                    nvalue(values[index], "")
+                ],
+                []
+            )
+            .join("");
+        return `<style>\n${css}\n</style>`
+    };
 
     /* core\baseline.svelte generated by Svelte v3.44.2 */
 
@@ -2566,12 +2580,18 @@ var demo = (function () {
     	let link0;
     	let link1;
     	let link2;
+    	let t;
+    	let html_tag;
+    	let html_anchor;
 
     	return {
     		c() {
     			link0 = element("link");
     			link1 = element("link");
     			link2 = element("link");
+    			t = space();
+    			html_tag = new HtmlTag();
+    			html_anchor = empty();
     			attr(link0, "href", "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
     			attr(link0, "rel", "stylesheet");
     			attr(link0, "type", "text/css");
@@ -2580,11 +2600,15 @@ var demo = (function () {
     			attr(link1, "type", "text/css");
     			attr(link2, "rel", "stylesheet");
     			attr(link2, "href", "https://ka-f.fontawesome.com/releases/v6.0.0/css/free.min.css?token=0011e611c6");
+    			html_tag.a = html_anchor;
     		},
     		m(target, anchor) {
     			append(document.head, link0);
     			append(document.head, link1);
     			append(document.head, link2);
+    			insert(target, t, anchor);
+    			html_tag.m(/*subPixelFix*/ ctx[0], target, anchor);
+    			insert(target, html_anchor, anchor);
     		},
     		p: noop,
     		i: noop,
@@ -2593,14 +2617,30 @@ var demo = (function () {
     			detach(link0);
     			detach(link1);
     			detach(link2);
+    			if (detaching) detach(t);
+    			if (detaching) detach(html_anchor);
+    			if (detaching) html_tag.d();
     		}
     	};
+    }
+
+    function instance$o($$self) {
+    	const lastDigit = Math.ceil(screen.width * devicePixelRatio * 10) % 10;
+    	const roundDown = lastDigit >= 5;
+
+    	const subPixelFix = css`
+        body {
+            --sub-pixel-offset: ${roundDown ? 1 : 0}px;
+        }
+    `;
+
+    	return [subPixelFix];
     }
 
     class Baseline extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, null, create_fragment$o, safe_not_equal, {}, add_css$g);
+    		init(this, options, instance$o, create_fragment$o, safe_not_equal, {}, add_css$g);
     	}
     }
 
@@ -4077,7 +4117,7 @@ var demo = (function () {
     /* core\screen.svelte generated by Svelte v3.44.2 */
 
     function add_css$8(target) {
-    	append_styles(target, "svelte-ooaip8", "doric-screen.svelte-ooaip8{display:grid;width:100%;height:calc(100% - 1px);overflow:hidden;position:absolute;background-color:rgba(0, 0, 0, 0.5);grid-template-columns:auto\n            min(\n                calc(\n                    var(--parent-width) - calc(16px * var(--stack))\n                ),\n                var(--screen-width)\n            )\n            auto\n        ;grid-template-rows:min-content auto min-content;grid-template-areas:var(--title-row, \". title .\")\n            var(--content-row, \". content .\")\n            var(--footer-row, \". footer .\")\n        ;padding-top:calc(8px * var(--stack));padding-bottom:0px}doric-screen.main.svelte-ooaip8{background-color:transparent}.full-title.svelte-ooaip8,.full.svelte-ooaip8{--title-row:\"title title title\"}.full-content.svelte-ooaip8,.full.svelte-ooaip8{--content-row:\"content content content\"}.full-footer.svelte-ooaip8,.full.svelte-ooaip8{--footer-row:\"footer footer footer\"}title-area.svelte-ooaip8{display:grid;grid-area:title}footer-area.svelte-ooaip8{display:grid;grid-area:footer}content-area.svelte-ooaip8{display:grid;grid-area:content;height:100%;overflow:hidden}");
+    	append_styles(target, "svelte-vxf966", "doric-screen.svelte-vxf966{display:grid;width:calc(100% - var(--sub-pixel-offset));height:calc(100% - 1px);overflow:hidden;position:absolute;background-color:rgba(0, 0, 0, 0.5);grid-template-columns:auto\n            min(\n                calc(\n                    var(--parent-width) - calc(16px * var(--stack))\n                ),\n                var(--screen-width)\n            )\n            auto\n        ;grid-template-rows:min-content auto min-content;grid-template-areas:var(--title-row, \". title .\")\n            var(--content-row, \". content .\")\n            var(--footer-row, \". footer .\")\n        ;padding-top:calc(8px * var(--stack));padding-bottom:0px}doric-screen.main.svelte-vxf966{background-color:transparent}.full-title.svelte-vxf966,.full.svelte-vxf966{--title-row:\"title title title\"}.full-content.svelte-vxf966,.full.svelte-vxf966{--content-row:\"content content content\"}.full-footer.svelte-vxf966,.full.svelte-vxf966{--footer-row:\"footer footer footer\"}title-area.svelte-vxf966{display:grid;grid-area:title}footer-area.svelte-vxf966{display:grid;grid-area:footer}content-area.svelte-vxf966{display:grid;grid-area:content;height:100%;overflow:hidden}");
     }
 
     const get_footer_slot_changes = dirty => ({});
@@ -4097,7 +4137,7 @@ var demo = (function () {
     		c() {
     			title_area = element("title-area");
     			if (title_slot) title_slot.c();
-    			set_custom_element_data(title_area, "class", "svelte-ooaip8");
+    			set_custom_element_data(title_area, "class", "svelte-vxf966");
     		},
     		m(target, anchor) {
     			insert(target, title_area, anchor);
@@ -4163,7 +4203,7 @@ var demo = (function () {
     		c() {
     			footer_area = element("footer-area");
     			if (footer_slot) footer_slot.c();
-    			set_custom_element_data(footer_area, "class", "svelte-ooaip8");
+    			set_custom_element_data(footer_area, "class", "svelte-vxf966");
     		},
     		m(target, anchor) {
     			insert(target, footer_area, anchor);
@@ -4263,8 +4303,8 @@ var demo = (function () {
     			t2 = space();
     			if (switch_instance) create_component(switch_instance.$$.fragment);
     			switch_instance_anchor = empty();
-    			set_custom_element_data(content_area, "class", "svelte-ooaip8");
-    			set_custom_element_data(doric_screen, "class", "svelte-ooaip8");
+    			set_custom_element_data(content_area, "class", "svelte-vxf966");
+    			set_custom_element_data(doric_screen, "class", "svelte-vxf966");
     			toggle_class(doric_screen, "full", /*full*/ ctx[0]);
     			toggle_class(doric_screen, "full-title", /*fullTitle*/ ctx[1]);
     			toggle_class(doric_screen, "full-content", /*fullContent*/ ctx[2]);
@@ -6671,20 +6711,6 @@ var demo = (function () {
     		);
     	}
     }
-
-    const css = (parts, ...values) => {
-        const css = parts
-            .reduce(
-                (cssParts, part, index) => [
-                    ...cssParts,
-                    part,
-                    nvalue(values[index], "")
-                ],
-                []
-            )
-            .join("");
-        return `<style>\n${css}\n</style>`
-    };
 
     /* core\theme\light.svelte generated by Svelte v3.44.2 */
 
@@ -10340,7 +10366,7 @@ var demo = (function () {
     	};
     }
 
-    // (15:4) <Flex>
+    // (15:4) <Flex padding="0px">
     function create_default_slot_1$2(ctx) {
     	let paper;
     	let current;
@@ -10393,6 +10419,7 @@ var demo = (function () {
 
     	flex = new Flex({
     			props: {
+    				padding: "0px",
     				$$slots: { default: [create_default_slot_1$2] },
     				$$scope: { ctx }
     			}
@@ -11502,7 +11529,7 @@ var demo = (function () {
     	};
     }
 
-    // (131:4) <Paper square>
+    // (131:4) <Paper square card>
     function create_default_slot_8(ctx) {
     	let flex;
     	let current;
@@ -11555,6 +11582,7 @@ var demo = (function () {
     	paper = new Paper({
     			props: {
     				square: true,
+    				card: true,
     				$$slots: { default: [create_default_slot_8] },
     				$$scope: { ctx }
     			}

@@ -15,6 +15,19 @@
     >
 </svelte:head>
 
+<script>
+    import css from "./util/css.js"
+
+    const lastDigit = Math.ceil(screen.width * devicePixelRatio * 10) % 10
+
+    const roundDown = lastDigit >= 5
+    const subPixelFix = css`
+        body {
+            --sub-pixel-offset: ${roundDown ? 1 : 0}px;
+        }
+    `
+</script>
+
 <style>
     :global(*) {
         box-sizing: border-box;
@@ -65,3 +78,5 @@
         --title-bar-text: var(--text-invert);
     }
 </style>
+
+{@html subPixelFix}

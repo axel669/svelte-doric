@@ -63,7 +63,7 @@
 <style>
     doric-screen {
         display: grid;
-        width: 100%;
+        width: calc(100% - var(--sub-pixel-offset));
         height: calc(100% - 1px);
         overflow: hidden;
         position: absolute;
