@@ -1,5 +1,12 @@
 <script>
+    import vars from "./util/vars.js"
+
     export let bordered = false
+    export let borderColor = null
+
+    $: footerOpts = {
+        "border-color": borderColor,
+    }
 </script>
 
 <style>
@@ -12,9 +19,11 @@
         padding: 2px;
 
         background-color: var(--card-background);
+
+        --border-color: var(--text-normal);
     }
     doric-footer.bordered {
-        border: 1px solid var(--text-normal);
+        border: 1px solid var(--border-color);
     }
 
     footer-area {
@@ -22,7 +31,7 @@
     }
 </style>
 
-<doric-footer class:bordered>
+<doric-footer class:bordered use:vars={footerOpts}>
     <footer-area>
         <slot name="left" />
     </footer-area>

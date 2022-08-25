@@ -128,7 +128,7 @@
         </Adornment>
     </AppBar>
 
-    <Paper square card>
+    <Paper square card borderColor="cyan">
         <Flex scrollable>
             <div style="display: grid; height: 100px;">
                 <Flex center>
@@ -159,7 +159,7 @@
         </Flex>
     </Paper>
 
-    <Footer slot="footer">
+    <Footer slot="footer" bordered borderColor="pink">
         <ThemePicker />
     </Footer>
 </Screen>

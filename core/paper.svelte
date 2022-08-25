@@ -6,10 +6,10 @@
     export let flat
     export let scrollable
     export let square
-    export let width
+    export let borderColor = null
 
     $: variables = {
-        width,
+        "border-color": borderColor,
     }
 </script>
 
@@ -23,8 +23,6 @@
         overflow: hidden;
         grid-template-columns: 1fr;
         grid-template-rows: min-content auto min-content;
-
-        width: var(--width);
 
         background-color: var(--card-background);
         border-color: var(--border-color, var(--layer-border-color));
