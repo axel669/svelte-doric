@@ -17,9 +17,9 @@
         direction,
         padding,
         gap,
-        itemAlign,
-        itemJustify,
-        contentAlign,
+        "item-align": itemAlign,
+        "item-justify": itemJustify,
+        "content-align": contentAlign,
     }
 </script>
 
