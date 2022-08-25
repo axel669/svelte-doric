@@ -10,9 +10,7 @@
     export let compact
     export let round
     export let square
-
-    let klass = ""
-    export {klass as class}
+    export let buttonColor = null
 
     const dispatch = createEventDispatcher()
     const handleTap = evt => {
@@ -28,6 +26,7 @@
 
     $: buttonVars = {
         "button-round-size": round,
+        "button-color": buttonColor,
     }
 </script>
 
@@ -110,7 +109,7 @@
 <doric-button
     on:tap={handleTap}
     use:vars={buttonVars}
-    class="{color} {variant} {klass}"
+    class="{color} {variant}"
     class:disabled
     class:round
     class:compact

@@ -134,10 +134,10 @@
                 <Flex center>
                     <Text>wat</Text>
                     <Text>woah</Text>
-                    <Text>nope</Text>
+                    <Text textColor="teal">nope</Text>
                 </Flex>
             </div>
-            <Button on:tap={turnOn}>
+            <Button on:tap={turnOn} variant="outline" buttonColor="gold">
                 Open
             </Button>
             <Button on:tap={openDialog}>

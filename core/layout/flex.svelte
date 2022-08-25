@@ -7,9 +7,9 @@
     export let itemFill = false
     export let scrollable = false
     export let wrap = false
-    export let itemAlign = "flex-start"
-    export let itemJustify = "flex-start"
-    export let contentAlign = "flex-start"
+    export let itemAlign = null
+    export let itemJustify = null
+    export let contentAlign = null
 
     export let center = false
 

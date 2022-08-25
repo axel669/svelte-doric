@@ -1,33 +1,31 @@
 <script>
-    export let variant = ""
+    import vars from "./util/vars.js"
+
+    export let secondary = false
     export let block = false
     export let align = "left"
     export let adorn
-    export let color
-    let klass = ""
-    export {klass as class}
+    export let color = ""
+    export let textColor = null
+    export let textSize = null
 
-    $: variantClass = variant ? `variant-${variant}` : ""
+    $: textOpts = {
+        "typography-color": textColor,
+        "typography-size": textSize,
+    }
 </script>
 
 <style>
+    span {
+        color: var(--typography-color);
+        font-size: var(--typography-size);
+    }
+
     .block {
         display: block;
     }
 
-    .title {
-        display: block;
-        font-size: var(--text-size-title);
-        font-weight: 400;
-        margin: 8px 0px;
-    }
-    .header {
-        display: block;
-        font-size: var(--text-size-header);
-        font-weight: 400;
-        margin: 4px 0px;
-    }
-    .variant-secondary {
+    .secondary {
         font-size: var(--text-size-secondary);
     }
 
@@ -58,6 +56,12 @@
     }
 </style>
 
-<span class:block class:adorn class="{variantClass} {color} {klass} {align}">
+<span
+class:block
+class:adorn
+class:secondary
+class="{color} {align}"
+use:vars={textOpts}
+>
     <slot />
 </span>
