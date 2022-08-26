@@ -1,7 +1,7 @@
 <script>
     import vars from "./util/vars.js"
 
-    export let secondary = false
+    export let subtitle = false
     export let block = false
     export let align = "left"
     export let adorn
@@ -25,8 +25,8 @@
         display: block;
     }
 
-    .secondary {
-        font-size: var(--text-size-secondary);
+    .subtitle {
+        font-size: var(--text-size-subtitle);
     }
 
     .primary {
@@ -59,7 +59,7 @@
 <span
 class:block
 class:adorn
-class:secondary
+class:subtitle
 class="{color} {align}"
 use:vars={textOpts}
 >
