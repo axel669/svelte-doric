@@ -76,6 +76,8 @@
 
         --title-bar-background: var(--primary);
         --title-bar-text: var(--text-invert);
+
+        --shadow-color: rgba(0, 0, 0, 0.25);
     }
 </style>
 

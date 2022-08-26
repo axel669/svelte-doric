@@ -128,8 +128,55 @@
         </Adornment>
     </AppBar>
 
-    <Paper square card borderColor="cyan">
-        <Flex scrollable>
+    <Paper square card>
+        <Flex>
+            <Grid cols="repeat(4, 1fr)">
+                <Button>Normal</Button>
+                <Button color="primary">Normal</Button>
+                <Button color="secondary">Normal</Button>
+                <Button color="danger">Normal</Button>
+
+                <Button variant="outline">Normal</Button>
+                <Button variant="outline" color="primary">Normal</Button>
+                <Button variant="outline" color="secondary">Normal</Button>
+                <Button variant="outline" color="danger">Normal</Button>
+
+                <Button variant="fill">Normal</Button>
+                <Button variant="fill" color="primary">Normal</Button>
+                <Button variant="fill" color="secondary">Normal</Button>
+                <Button variant="fill" color="danger">Normal</Button>
+            </Grid>
+
+            <Paper>
+                <Flex>
+                    <Text>
+                        Testing
+                    </Text>
+                </Flex>
+            </Paper>
+            <Paper>
+                <Flex>
+                    <Text>
+                        Testing
+                    </Text>
+                </Flex>
+            </Paper>
+            <Paper card>
+                <Flex>
+                    <Text>
+                        Testing
+                    </Text>
+                </Flex>
+            </Paper>
+            <Paper card>
+                <Flex>
+                    <Text>
+                        Testing
+                    </Text>
+                </Flex>
+            </Paper>
+        </Flex>
+        <!-- <Flex scrollable>
             <div style="display: grid; height: 100px;">
                 <Flex center>
                     <Text>wat</Text>
@@ -156,10 +203,10 @@
                     </area-view>
                 {/each}
             </Grid>
-        </Flex>
+        </Flex> -->
     </Paper>
 
-    <Footer slot="footer" bordered borderColor="pink">
+    <Footer slot="footer" bordered>
         <ThemePicker />
     </Footer>
 </Screen>

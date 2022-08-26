@@ -13,14 +13,14 @@
     doric-footer {
         display: grid;
         grid-template-columns: max-content auto max-content;
-        box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px -2px 4px var(--shadow-color);
         height: 56px;
         gap: 2px;
         padding: 2px;
 
         background-color: var(--card-background);
 
-        --border-color: var(--text-normal);
+        --border-color: var(--layer-border-color);
     }
     doric-footer.bordered {
         border: 1px solid var(--border-color);

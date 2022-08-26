@@ -5,9 +5,10 @@
         body {
             --font: Orbitron;
             --background: #030303;
-            --background-layer: #080808;
+            --background-layer: #04080C;
             --layer-border-width: 1px;
-            --layer-border-color: var(--text-normal);
+            --layer-border-color: #00EEEE;
+            --title-bar-background: #00EEEE;
 
             --ripple-dark: #00000060;
             --ripple-light: #FFFFFF60;
@@ -35,6 +36,7 @@
 
             --ripple-normal: var(--ripple-light);
             --ripple-invert: var(--ripple-dark);
+            --shadow-color: rgb(255, 255, 255, 0.25);
         }
     `
 </script>

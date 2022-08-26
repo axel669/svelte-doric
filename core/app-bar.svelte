@@ -11,7 +11,7 @@
         color: var(--title-bar-text);
 
         display: grid;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 2px 2px var(--shadow-color);
     }
     doric-app-bar:not(.compact)
     :global(doric-adornment > *:not([ignore-titlebar-reskin])) {
