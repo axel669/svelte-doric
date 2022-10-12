@@ -2,6 +2,8 @@
     const closeContext = Symbol("Close Context")
     const levelContext = Symbol("Level Context")
     const widthContext = Symbol("Width Context")
+
+    let top = null
 </script>
 
 <script>
@@ -30,6 +32,9 @@
     setContext(closeContext, finishFunc)
     setContext(widthContext, width)
 
+    const id = Math.random().toString()
+
+    top = id
     let stackProps = {}
     export const openStack = (component, props = {}) => new Promise(
         (resolve) => {
@@ -41,9 +46,8 @@
             stackProps = props
         }
     )
-    export const closeStack = () => {
-        stackComp = null
-        stackProps = {}
+    export const closeStack = (value = null) => {
+        $finishFunc(value)
     }
     export const close = (value) => {
         if ($finish === null) {

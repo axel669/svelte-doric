@@ -31,6 +31,7 @@
 <style>
     :global(*) {
         box-sizing: border-box;
+        flex-shrink: 0;
     }
     :global(html) {
         margin: 0px;

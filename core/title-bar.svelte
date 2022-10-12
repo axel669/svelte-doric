@@ -12,8 +12,6 @@
         background-color: var(--background-layer);
 
         display: grid;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-        border-bottom: 2px solid var(--text-normal);
     }
     doric-title-bar.sticky {
         position: sticky;

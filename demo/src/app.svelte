@@ -130,6 +130,12 @@
 
     <Paper square card>
         <Flex>
+            <Select {options} bind:value label="Test Label" persistent let:selected let:info searchable>
+                <Text slot="selected">
+                    Current Item: {selected.label}
+                </Text>
+                <OptionList {info} variant="fill" color="secondary" slot="options" />
+            </Select>
             <Grid cols="repeat(4, 1fr)">
                 <Button>Normal</Button>
                 <Button color="primary">Normal</Button>
