@@ -15,9 +15,9 @@
     import vars from "./util/vars.js"
 
     export let full = false
-    export let fullTitle = false
     export let fullContent = false
     export let fullFooter = false
+    export let fullTitle = false
     export let width = "min(720px, 100%)"
 
     const level = getContext(levelContext) ?? 0

@@ -1,11 +1,11 @@
 <script>
     import vars from "./util/vars.js"
 
-    export let subtitle = false
-    export let block = false
-    export let align = "left"
     export let adorn
+    export let align = "left"
+    export let block = false
     export let color = ""
+    export let subtitle = false
     export let textColor = null
     export let textSize = null
 

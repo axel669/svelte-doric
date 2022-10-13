@@ -1,17 +1,16 @@
 <script>
     import vars from "../util/vars"
 
+    export let center = false
+    export let contentAlign = null
     export let direction = "column"
-    export let padding = "4px"
     export let gap = "4px"
+    export let itemAlign = null
     export let itemFill = false
+    export let itemJustify = null
+    export let padding = "4px"
     export let scrollable = false
     export let wrap = false
-    export let itemAlign = null
-    export let itemJustify = null
-    export let contentAlign = null
-
-    export let center = false
 
     $: flexVars = {
         direction,

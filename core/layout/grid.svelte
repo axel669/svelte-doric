@@ -1,16 +1,13 @@
 <script>
     import vars from "../util/vars"
 
-    export let direction = "row"
-    export let padding = "4px"
-    export let gap = "4px"
-
-    export let cols = null
-    export let rows = null
-
-    export let autoRow = null
     export let autoCol = null
-
+    export let autoRow = null
+    export let cols = null
+    export let direction = "row"
+    export let gap = "4px"
+    export let padding = "4px"
+    export let rows = null
     export let scrollable = false
 
     $: flowVars = {

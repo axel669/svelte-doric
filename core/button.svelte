@@ -3,14 +3,14 @@
     import Ripple from "./ripple.svelte"
     import vars from "./util/vars.js"
 
-    export let color = "default"
-    export let disabled = false
-    export let variant = "normal"
     export let adorn
+    export let buttonColor = null
+    export let color = "default"
     export let compact
+    export let disabled = false
     export let round
     export let square
-    export let buttonColor = null
+    export let variant = "normal"
 
     const dispatch = createEventDispatcher()
     const handleTap = evt => {
