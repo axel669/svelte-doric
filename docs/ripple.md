@@ -1,5 +1,4 @@
 # Ripple
-> svelte-doric
 
 Adds a ripple effect to an element.
 

@@ -1,5 +1,4 @@
 # Checkbox
-> svelte-doric
 
 Basic checkbox component.
 

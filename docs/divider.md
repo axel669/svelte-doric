@@ -1,5 +1,4 @@
 # Divider
-> svelte-doric
 
 Simple horizontal or vertical divider to separate content areas.
 

@@ -1,5 +1,4 @@
 # Tabs
-> svelte-doric
 
 This component doesn't render any tabs.
 Instead it creates a context that tabs and tab lists can use to know what to

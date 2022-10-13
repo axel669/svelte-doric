@@ -1,5 +1,4 @@
 # Baseline
-> svelte-doric
 
 Baseline CSS for an application.
 
@@ -23,26 +22,31 @@ Within a `svelte:head`
     type="text/css"
 />
 <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
     rel="stylesheet"
-/>
+    href="https://ka-f.fontawesome.com/releases/v6.0.0/css/free.min.css"
+>
 ```
 CSS render in a `<style>` tag
 ```css
 :global(*) {
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 :global(html) {
     margin: 0px;
     padding: 0px;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 :global(body) {
+    position: fixed;
     margin: 0px;
     padding: 0px;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+
     -webkit-tap-highlight-color: transparent;
 
     font-family: var(--font);
@@ -72,5 +76,7 @@ CSS render in a `<style>` tag
 
     --title-bar-background: var(--primary);
     --title-bar-text: var(--text-invert);
+
+    --shadow-color: rgba(0, 0, 0, 0.25);
 }
 ```

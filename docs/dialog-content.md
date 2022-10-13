@@ -1,5 +1,4 @@
 # DialogContent
-> svelte-doric/dialog
 
 Container for displaying dialog boxes with simple positioning controls.
 

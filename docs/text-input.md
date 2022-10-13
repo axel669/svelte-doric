@@ -1,5 +1,4 @@
 # TextInput
-> svelte-doric
 
 Fancier looking single line text input.
 

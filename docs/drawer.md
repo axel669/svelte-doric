@@ -1,9 +1,6 @@
 # Drawer
-> svelte-doric
 
-Shows a drawer that slides in and out from the right side of the screen.
-
-May add directions soon.
+Shows a drawer that slides in and out from the left side of the screen.
 
 ## Props
 | Name | Type | Default | Description |
@@ -13,10 +10,11 @@ May add directions soon.
 ## Usage
 ```html
 <script>
-    let open = false
-</script>
+    import { drawer } from "svelte-doric"
 
-<Drawer bind:open>
-    Drawer Content
-</Drawer>
+    drawer.open(
+        DrawerContent,
+        {...options}
+    )
+</script>
 ```

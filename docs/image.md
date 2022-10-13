@@ -1,5 +1,4 @@
 # Image
-> svelte-doric
 
 Component for showing images within defined areas using fit functions.
 

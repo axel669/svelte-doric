@@ -1,15 +1,13 @@
 # Prompt
-> svelte-doric/dialog
 
-Shows a prmmpt box using the [`Dialog`](./dialog.md) component.
+Shows a prmmpt box using [`dialog.show()`](./dialog.md).
 
-## Props
+## Props from dialog
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `close` | _function_ | | Function that will close the dialog and pass the given value back up to the calling code
-| `options` | _object_ | | The options that were passed into the `Dialog.show` function
 
-### Options
+## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `cancelText` | _string_ | `"Cancel"` | The text to show for the cancel button

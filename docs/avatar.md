@@ -1,5 +1,4 @@
 # Avatar
-> svelte-doric
 
 Small icon-like component that supports images and text as content.
 

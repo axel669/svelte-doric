@@ -1,5 +1,4 @@
 # Radio
-> svelte-doric
 
 ## Props
 | Name | Type | Default | Description |

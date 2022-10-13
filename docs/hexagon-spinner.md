@@ -1,5 +1,4 @@
 # HexagonSpinner
-> svelte-doric
 
 Shows a hexagonal load spinner.
 

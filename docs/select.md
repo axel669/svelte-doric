@@ -1,5 +1,4 @@
 # Select
-> svelte-doric
 
 Complete replacement to the html select element using what I hope will be a
 better way to handle the interaction without losing fucntionality.

@@ -4,6 +4,7 @@
 Used to add small pieces of information or interaction to other components.
 
 Supported in:
+- `AppBar`
 - `Chip`
 - `TextInput`
 - `TitleBar`

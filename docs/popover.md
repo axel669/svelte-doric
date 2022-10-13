@@ -1,5 +1,4 @@
 # Popover
-> svelte-doric
 
 Displays content over other items but isn't a full dialog window.
 

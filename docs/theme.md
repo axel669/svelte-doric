@@ -11,7 +11,6 @@ Default Themes:
 - `TronTheme`
 
 ## LightTheme
-> svelte-doric/theme
 
 Basic theme with lighter colors.
 ```css
@@ -21,7 +20,7 @@ Basic theme with lighter colors.
     --background: #e9e9e9;
     --background-layer: #ffffff;
     --layer-border-width: 1px;
-    --layer-border-color: #eeeeee;
+    --layer-border-color: #aaaaaa;
 
     --ripple-dark: #00000060;
     --ripple-light: #FFFFFF60;
@@ -35,6 +34,7 @@ Basic theme with lighter colors.
     --secondary-ripple: #128f1260;
     --danger: #F44336;
     --danger-ripple: #F4433660;
+    --button-filled-text-color: var(--text-invert);
 
     --text-normal: var(--text-dark);
     --text-secondary: #505050;
@@ -44,7 +44,7 @@ Basic theme with lighter colors.
     --text-size-title: 18px;
     --text-size-header: 16px;
     --text-size-info: 13px;
-    --text-size-secondary: 12px;
+    --text-size-subtitle: 12px;
 
     --ripple-normal: var(--ripple-dark);
     --ripple-invert: var(--ripple-light);
@@ -52,13 +52,12 @@ Basic theme with lighter colors.
 ```
 
 ## DarkTheme
-> svelte-doric/theme
 
 Darker colors to reduce power usage on screens.
 ```css
 /* Variables */
 {
-    --font: Inconsolata;
+    --font: Roboto;
     --background: #161616;
     --background-layer: #333333;
     --layer-border-width: 1px;
@@ -76,6 +75,7 @@ Darker colors to reduce power usage on screens.
     --secondary-ripple: #2fbc2f60;
     --danger: #df5348;
     --danger-ripple: #df534860;
+    --button-filled-text-color: var(--text-normal);
 
     --text-normal: var(--text-light);
     --text-secondary: #a0a0a0;
@@ -85,7 +85,7 @@ Darker colors to reduce power usage on screens.
     --text-size-title: 18px;
     --text-size-header: 16px;
     --text-size-info: 13px;
-    --text-size-secondary: 12px;
+    --text-size-subtitle: 12px;
 
     --ripple-normal: var(--ripple-light);
     --ripple-invert: var(--ripple-dark);
@@ -93,17 +93,17 @@ Darker colors to reduce power usage on screens.
 ```
 
 ## TronTheme
-> svelte-doric/theme
 
 Dark color, high contrast theme reminiscent of the _TRON: Legacy_ movie.
 ```css
 /* Variables */
 {
-    --font: Inconsolata;
+    --font: Orbitron;
     --background: #030303;
-    --background-layer: #080808;
+    --background-layer: #04080C;
     --layer-border-width: 1px;
-    --layer-border-color: var(--text-normal);
+    --layer-border-color: #00EEEE;
+    --title-bar-background: #00EEEE;
 
     --ripple-dark: #00000060;
     --ripple-light: #FFFFFF60;
@@ -117,6 +117,7 @@ Dark color, high contrast theme reminiscent of the _TRON: Legacy_ movie.
     --secondary-ripple: #2fbc2f60;
     --danger: #df5348;
     --danger-ripple: #df534860;
+    --button-filled-text-color: var(--text-normal);
 
     --text-normal: var(--text-light);
     --text-secondary: #a0a0a0;
@@ -126,9 +127,10 @@ Dark color, high contrast theme reminiscent of the _TRON: Legacy_ movie.
     --text-size-title: 18px;
     --text-size-header: 16px;
     --text-size-info: 13px;
-    --text-size-secondary: 12px;
+    --text-size-subtitle: 12px;
 
     --ripple-normal: var(--ripple-light);
     --ripple-invert: var(--ripple-dark);
+    --shadow-color: rgb(255, 255, 255, 0.25);
 }
 ```

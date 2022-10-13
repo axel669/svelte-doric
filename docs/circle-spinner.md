@@ -1,5 +1,4 @@
 # CircleSpinner
-> svelte-doric
 
 Shows a circular load spinner.
 

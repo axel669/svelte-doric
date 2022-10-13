@@ -1,5 +1,4 @@
 # Modal
-> svelte-doric
 
 Base component to display modal content on screen.
 

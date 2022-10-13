@@ -1,5 +1,4 @@
 # Icon
-> svelte-doric
 
 Displays an icon from the Free Font Awesome icons.
 > [Font Awesome Icons](https://fontawesome.com/search?m=free)

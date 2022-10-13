@@ -1,15 +1,13 @@
 # Alert
-> svelte-doric/dialog
 
-Shows an alert box using the [`Dialog`](./dialog.md) component.
+Shows an alert box using [`dialog.show()`](./dialog.md).
 
-## Props
+## Props from Dialog
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `close` | _function_ | | Function that will close the dialog and pass the given value back up to the calling code
-| `options` | _object_ | | The options that were passed into the `Dialog.show` function
 
-### Options
+### Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `message` | _string_ | | The message to show in the alert

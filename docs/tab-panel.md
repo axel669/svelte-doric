@@ -1,5 +1,4 @@
 # TabPanel
-> svelte-doric
 
 Component for displaying content with [Tabs](./tabs.md).
 
