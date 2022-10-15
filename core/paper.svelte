@@ -1,12 +1,24 @@
 <script>
+    import Flex from "./layout/flex.svelte"
     import vars from "./util/vars"
 
     export let card
     export let center
     export let flat
+    export let layout = Flex
     export let scrollable
     export let square
     export let borderColor = null
+
+    const layoutProps = Object.fromEntries(
+        Object.entries($$props)
+            .filter(
+                ([key]) => key.startsWith("l") && key !== "layout"
+            )
+            .map(
+                ([key, value]) => [key.slice(1), value]
+            )
+    )
 
     $: variables = {
         "border-color": borderColor,
@@ -47,6 +59,11 @@
         max-height: 100%;
         overflow: auto;
     }
+
+    content-wrapper {
+        display: grid;
+        overflow: hidden;
+    }
 </style>
 
 <doric-paper
@@ -60,7 +77,11 @@ class:scrollable
     <slot name="title">
         <div />
     </slot>
-    <slot />
+    <content-wrapper>
+        <svelte:component this={layout} {...layoutProps}>
+            <slot />
+        </svelte:component>
+    </content-wrapper>
     <slot name="action">
         <div />
     </slot>
