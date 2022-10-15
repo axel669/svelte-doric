@@ -81,6 +81,7 @@
         border-width: 0px;
         height: 32px;
         padding: 4px;
+        min-width: 24px;
     }
     input:focus {
         outline: none;
