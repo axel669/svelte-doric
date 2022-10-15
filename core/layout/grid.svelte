@@ -24,6 +24,7 @@
 <style>
     grid-layout {
         display: grid;
+        overflow: hidden;
         padding: var(--padding);
         gap: var(--gap);
         grid-auto-flow: var(--direction);

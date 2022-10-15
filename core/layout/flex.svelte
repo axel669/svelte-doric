@@ -26,6 +26,7 @@
     flex-layout {
         display: flex;
         flex-wrap: nowrap;
+        overflow: hidden;
 
         flex-direction: var(--direction);
         padding: var(--padding);
