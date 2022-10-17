@@ -1,8 +1,3 @@
-# Button
-
-Elements intended to direct user interaction in many places within an
-application.
-
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -20,10 +15,13 @@ application.
 
 ## Usage
 ```html
-<Button color compact disabled round variant on:tap>
+<Button>
     Button Content
 </Button>
-<Button adorn color disabled square variant on:tap>
-    Square Button
+
+<Button>
+    <Flex>
+        Flex Content
+    </Flex>
 </Button>
 ```
