@@ -14,6 +14,9 @@
 
     export let page = 0
     export let pageSize = null
+
+    export let flat = false
+    export let square = false
 </script>
 
 <style>
@@ -24,9 +27,15 @@
         border: 1px solid var(--layer-border-color);
         border-radius: 4px;
     }
+    doric-list.flat {
+        border-width: 0px;
+    }
+    doric-list.square {
+        border-radius: 0px;
+    }
 </style>
 
-<doric-list>
+<doric-list class:flat class:square>
     <svelte:component this={header} {title} {cols} {data} />
     <svelte:component
         this={body}

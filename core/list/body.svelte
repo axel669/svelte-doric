@@ -46,7 +46,7 @@
 
 {#each items as item}
     <doric-list-item on:tap={() => itemTap(item)} class:clickable>
-        {item?.text ?? ""}
+        {item?.label ?? ""}
         {#if clickable === true}
             <Ripple />
         {/if}

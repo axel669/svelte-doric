@@ -70,7 +70,7 @@
     }
 
     .disabled {
-        filter: contrast(50%);
+        opacity: 0.5;
     }
 
     .primary {
