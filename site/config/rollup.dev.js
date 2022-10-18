@@ -54,7 +54,9 @@ const libShortcut = {
         const code = files.map(
             (name) => {
                 const fullName = JSON.stringify(path.resolve(dir, name))
-                const exportName = path.basename(name, path.extname(name))
+                const exportName =
+                    path.basename(name, path.extname(name))
+                    .replace(/\-(\w)/g, (_, s) => s.toUpperCase())
 
                 if (name.endsWith(".svelte") === true) {
                     // const exp = `${exportName.charAt(0).toUpperCase()}${exportName.slice(1)}`
