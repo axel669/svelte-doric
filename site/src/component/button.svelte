@@ -4,9 +4,10 @@
         Flex,
         Grid,
         Text,
+        TitleBar,
     } from "@core"
 
-    import Markdown from "svelte-markdown"
+    import Markdown from "../app/markdown.svelte"
     import docs from "@docs"
 
     const buttonTypes = ["normal", "outline", "fill"]
@@ -14,6 +15,9 @@
 </script>
 
 <div>
+    <TitleBar>
+        Button
+    </TitleBar>
     <Grid cols="1fr 1fr 1fr 1fr">
         {#each buttonTypes as variant}
             {#each buttonColors as color}
@@ -36,5 +40,5 @@
         {/each}
     </Grid>
 
-    <Markdown source={docs} />
+    <Markdown {docs} />
 </div>
