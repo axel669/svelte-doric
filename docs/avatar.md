@@ -1,5 +1,3 @@
-# Avatar
-
 Small icon-like component that supports images and text as content.
 
 ## Props
@@ -12,7 +10,7 @@ Small icon-like component that supports images and text as content.
 | `textColor` | _string_ | | Text color if the avatar is showing text
 
 ## Usage
-```html
+```svelte
 <Avatar size background textColor>
     Avatar Text
 </Avatar>

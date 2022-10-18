@@ -14,7 +14,7 @@
 - tap
 
 ## Usage
-```html
+```svelte
 <Button>
     Button Content
 </Button>

@@ -1,7 +1,3 @@
-# Alert
-
-Shows an alert box using [`dialog.show()`](./dialog.md).
-
 ## Props from Dialog
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |

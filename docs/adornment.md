@@ -1,9 +1,6 @@
-# Adornment
-> svelte-doric
+Component to add small pieces of information or interaction to other components.
 
-Used to add small pieces of information or interaction to other components.
-
-Supported in:
+## Supported Components
 - `AppBar`
 - `Chip`
 - `TextInput`
@@ -15,7 +12,7 @@ Supported in:
 | `flush` | _boolean_ | | If `true`, remove adornment padding
 
 ## Usage
-```html
+```svelte
 <component>
     <Adornment slot="" flush>
         Adornment Content

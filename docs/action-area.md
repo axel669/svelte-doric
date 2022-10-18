@@ -1,5 +1,3 @@
-# ActionArea
-
 A container that allows button-like interaction with content without
 a lot of the button overhead and styling.
 
@@ -12,7 +10,7 @@ a lot of the button overhead and styling.
 - tap
 
 ## Usage
-```html
+```svelte
 <ActionArea on:tap class>
     Content
 </ActionArea>
