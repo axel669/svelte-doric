@@ -30,9 +30,11 @@
         background-color: var(--avatar-background, var(--button-default-fill));
         color: var(--avatar-text, var(--button-default-text));
         font-size: var(--text-size-header);
+        user-select: none;
     }
 </style>
 
 <avatar use:vars={avatarVars}>
+    &#8203;
     <slot />
 </avatar>
