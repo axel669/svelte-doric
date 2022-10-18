@@ -1,5 +1,7 @@
 <script>
     import {
+        Button,
+        Icon,
         List,
         Tabs,
         TitleBar,
@@ -7,6 +9,8 @@
 
     import { themeValue } from "./theme.mjs"
     import { currentView, components } from "./view.mjs"
+
+    export let close
 
     const themes = [
         { label: "Light", value: "light" },
@@ -22,9 +26,33 @@
             })
         )
     ]
+
+    let a = null
+    const viewGithub = () => a.click()
+
+    const t = $themeValue
+    const c = $currentView
+    $: if (t !== $themeValue || c !== $currentView) {
+        close()
+    }
 </script>
 
-<div style="width: 15vw;" />
+<style>
+    a {
+        display: none;
+    }
+</style>
+
+<div style="width: 12.5vw;" />
+<a href="https://github.com/axel669/svelte-doric" target="_blank" bind:this={a}>
+    Github
+</a>
+
+<Button on:tap={viewGithub}>
+    <Icon name="brands:github" />
+    &nbsp;
+    View on Github
+</Button>
 
 <TitleBar>
     Theme
