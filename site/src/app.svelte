@@ -32,11 +32,33 @@
         border: 1px solid var(--primary);
         padding: 4px;
     }
+    :global(blockquote) {
+        margin-left: 0px;
+        padding-left: 28px;
+        border-left: 2px solid var(--primary);
+    }
+    :global(pre) {
+        overflow: auto;
+        padding: 4px;
+    }
+
+    site-content {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        gap: 4px;
+        max-width: 720px;
+    }
+    @media screen and (min-width: 640px) {
+        site-content {
+            padding-left: 5vw;
+        }
+    }
 </style>
 
 <AppStyle {baseline} theme={$theme} />
 
-<Screen>
+<Screen full>
     <AppBar slot="title">
         Svelte Doric Components
 
@@ -48,6 +70,8 @@
     </AppBar>
 
     <Paper lscrollable square>
-        <svelte:component this={$view} />
+        <site-content>
+            <svelte:component this={$view} />
+        </site-content>
     </Paper>
 </Screen>
