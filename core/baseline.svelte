@@ -80,6 +80,13 @@
 
         --shadow-color: rgba(0, 0, 0, 0.25);
     }
+
+    :global(a, a:visited) {
+        color: var(--primary);
+    }
+    :global(a:hover) {
+        color: var(--secondary);
+    }
 </style>
 
 {@html subPixelFix}
