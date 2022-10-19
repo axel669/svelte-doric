@@ -4,10 +4,11 @@
 
     import vars from "./util/vars"
 
-    export let tabGroup
-    export let options
-    export let vertical
+    export let fillSelected = false
     export let iconTop = false
+    export let options
+    export let tabGroup
+    export let vertical
 
     const change = (value) =>
         () => tabGroup = value
@@ -35,10 +36,15 @@
         border-bottom-width: 2px;
         border-style: solid;
         border-color: transparent;
+        user-select: none;
     }
     tab-item.selected {
         color: var(--primary);
         border-color: var(--primary);
+    }
+    .fill-selected tab-item.selected {
+        color: var(--text-invert);
+        background-color: var(--primary);
     }
     .vertical tab-item {
         border-bottom-width: 0px;
@@ -56,7 +62,12 @@
     }
 </style>
 
-<doric-tabs class:vertical use:vars={tabCount} ignore-titlebar-reskin>
+<doric-tabs
+class:vertical
+class:fill-selected={fillSelected}
+use:vars={tabCount}
+ignore-titlebar-reskin
+>
     {#each options as option (option.value)}
         <tab-item class:selected={option.value === tabGroup}>
             <ActionArea on:tap={change(option.value)}>
