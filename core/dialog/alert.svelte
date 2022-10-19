@@ -1,10 +1,11 @@
 <script>
-    import FlexLayout from "../layout/flex.svelte"
-    import GridLayout from "../layout/grid.svelte"
+    import Flex from "../layout/flex.svelte"
+    import Grid from "../layout/grid.svelte"
 
     import Button from "../button.svelte"
     import Icon from "../icon.svelte"
     import Paper from "../paper.svelte"
+    import Text from "../text.svelte"
     import TitleBar from "../title-bar.svelte"
 
     import DialogContent from "./content.svelte"
@@ -30,13 +31,13 @@
                 </TitleBar>
             {/if}
         </svelte:fragment>
-        <FlexLayout>
+        <Text>
             {message}
-        </FlexLayout>
-        <GridLayout slot="action" cols="1fr">
+        </Text>
+        <Grid slot="action" cols="1fr">
             <Button color="secondary" on:tap={ok}>
                 {okText}
             </Button>
-        </GridLayout>
+        </Grid>
     </Paper>
 </DialogContent>

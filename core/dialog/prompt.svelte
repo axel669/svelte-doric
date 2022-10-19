@@ -5,13 +5,14 @@
     import Button from "../button.svelte"
     import Icon from "../icon.svelte"
     import Paper from "../paper.svelte"
+    import Text from "../text.svelte"
     import TextInput from "../text-input.svelte"
     import TitleBar from "../title-bar.svelte"
 
     import DialogContent from "./content.svelte"
 
     export let close
-    export let title = "Confirm"
+    export let title = "Prompt"
     export let message
     export let placeholder = ""
     export let okText = "OK"
@@ -52,18 +53,18 @@
                 </TitleBar>
             {/if}
         </svelte:fragment>
-        <Flex>
+        <Text>
             {message}
-            <form on:submit={submitOK}>
-                <TextInput
-                    bind:value
-                    bind:this={textInput}
-                    {placeholder}
-                    type="text"
-                    variant="outline"
-                />
-            </form>
-        </Flex>
+        </Text>
+        <form on:submit={submitOK}>
+            <TextInput
+                bind:value
+                bind:this={textInput}
+                {placeholder}
+                type="text"
+                variant="outline"
+            />
+        </form>
         <Grid cols="1fr 1fr" slot="action">
             <Button color="danger" on:tap={cancel}>
                 {cancelText}

@@ -5,6 +5,7 @@
     import Button from "../button.svelte"
     import Icon from "../icon.svelte"
     import Paper from "../paper.svelte"
+    import Text from "../text.svelte"
     import TitleBar from "../title-bar.svelte"
 
     import DialogContent from "./content.svelte"
@@ -32,9 +33,9 @@
                 </TitleBar>
             {/if}
         </svelte:fragment>
-        <Flex>
+        <Text>
             {message}
-        </Flex>
+        </Text>
         <Grid cols="1fr 1fr" slot="action">
             <Button color="danger" on:tap={cancel}>
                 {cancelText}
