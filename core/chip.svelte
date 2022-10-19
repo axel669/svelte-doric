@@ -21,10 +21,10 @@
         user-select: none;
 
         --fill-color: var(--button-default-fill);
-        --text-color: var(--text-invert);
+        --text-normal: var(--text-invert);
 
         background-color: var(--fill-color);
-        color: var(--text-color);
+        color: var(--text-invert);
         font-weight: 500;
         font-size: var(--text-size-info);
     }
@@ -42,19 +42,22 @@
     }
 
     div {
-        grid-area: content;
         display: flex;
         align-items: center;
     }
 </style>
 
 <chip class="{color}" on:tap class:clickable>
-    {#if clickable}
-        <Ripple />
-    {/if}
-    <slot name="start" />
+    <slot name="start">
+        <div />
+    </slot>
     <div>
         {label}
     </div>
-    <slot name="end" />
+    <slot name="end">
+        <div />
+    </slot>
+    {#if clickable}
+        <Ripple />
+    {/if}
 </chip>
