@@ -2,13 +2,11 @@
     import Flex from "./layout/flex.svelte"
     import vars from "./util/vars"
 
+    export let borderColor = null
     export let card
-    export let center
     export let flat
     export let layout = Flex
-    export let scrollable
     export let square
-    export let borderColor = null
 
     const layoutProps = Object.fromEntries(
         Object.entries($$props)
@@ -48,16 +46,8 @@
         border-radius: 0px;
     }
 
-    doric-paper.center {
-        margin: auto;
-    }
     doric-paper.flat {
         box-shadow: none;
-    }
-
-    doric-paper.scrollable {
-        max-height: 100%;
-        overflow: auto;
     }
 
     content-wrapper {
@@ -69,10 +59,8 @@
 <doric-paper
 use:vars={variables}
 class:card
-class:center
 class:flat
 class:square
-class:scrollable
 >
     <slot name="title">
         <div />
