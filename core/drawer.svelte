@@ -50,6 +50,7 @@
         height: 100vh;
         min-width: 10vw;
         background-color: var(--card-background);
+        overflow: auto;
     }
 </style>
 
