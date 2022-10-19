@@ -8,9 +8,9 @@
     import docs from "@docs"
 </script>
 
-<TitleBar>
+<h1>
     Avatar
-</TitleBar>
+</h1>
 
 <div>
     <Avatar>SD</Avatar>

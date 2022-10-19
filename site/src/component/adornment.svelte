@@ -1,6 +1,6 @@
 <script>
     import {
-        Badge,
+        Avatar,
         TitleBar,
     } from "@core"
 
@@ -9,14 +9,7 @@
 </script>
 
 <h1>
-    Badge
+    Adornment
 </h1>
-
-<div>
-    <Badge>
-        <div>Some Content</div>
-        <div slot="content">5</div>
-    </Badge>
-</div>
 
 <Markdown {docs} />

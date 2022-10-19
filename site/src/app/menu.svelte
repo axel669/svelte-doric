@@ -57,9 +57,9 @@
 <TitleBar>
     Theme
 </TitleBar>
-<Tabs bind:tabGroup={$themeValue} options={themes} vertical />
+<Tabs bind:tabGroup={$themeValue} options={themes} vertical fillSelected />
 
 <TitleBar>
     Components
 </TitleBar>
-<Tabs bind:tabGroup={$currentView} options={componentList} vertical />
+<Tabs bind:tabGroup={$currentView} options={componentList} vertical fillSelected />

@@ -1,6 +1,6 @@
 <script>
     import {
-        Badge,
+        HexagonSpinner,
         TitleBar,
     } from "@core"
 
@@ -9,14 +9,12 @@
 </script>
 
 <h1>
-    Badge
+    HexagonSpinner
 </h1>
-
 <div>
-    <Badge>
-        <div>Some Content</div>
-        <div slot="content">5</div>
-    </Badge>
+    <HexagonSpinner />
+    <HexagonSpinner size={40} />
+    <HexagonSpinner size={250} />
 </div>
 
 <Markdown {docs} />

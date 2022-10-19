@@ -1,6 +1,7 @@
 <script>
     import {
-        Badge,
+        ActionArea,
+        Paper,
         TitleBar,
     } from "@core"
 
@@ -9,14 +10,13 @@
 </script>
 
 <h1>
-    Badge
+    ActionArea
 </h1>
 
-<div>
-    <Badge>
-        <div>Some Content</div>
-        <div slot="content">5</div>
-    </Badge>
-</div>
+<Paper card>
+    <ActionArea>
+        Some Content
+    </ActionArea>
+</Paper>
 
 <Markdown {docs} />

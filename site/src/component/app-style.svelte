@@ -8,8 +8,8 @@
     import docs from "@docs"
 </script>
 
-<TitleBar>
+<h1>
     AppStyle
-</TitleBar>
+</h1>
 
 <Markdown {docs} />
