@@ -7,7 +7,7 @@ logically grouped but not forced into the same area of the DOM.
 This component doesn't take in any props.
 
 ## Usage
-```html
+```svelte
 <Portal>
     Portal Content
 </Portal>

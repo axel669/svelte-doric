@@ -1,5 +1,3 @@
-# List
-
 Component for displaying lists of items that may or may not have interactions.
 
 ## Props
@@ -26,7 +24,7 @@ Component for displaying lists of items that may or may not have interactions.
 | `list-item[dividers]` | _boolean_ | | If true, items will be rendered with dividers
 
 ## Usage
-```html
+```svelte
 <List {class} {compact} {height} {items} compact />
 
 <List let:item>

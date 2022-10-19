@@ -1,18 +1,21 @@
-# Tabs
-
-This component doesn't render any tabs.
-Instead it creates a context that tabs and tab lists can use to know what to
-show.
-
-Used in conjunction with [TabLabel](./tab-label.md) and
-[TabPanel](./tab-panel.md).
+Component for creating tabs that can be used to switch between options or views.
+The `Tabs` component only renders tabs and binds the currently selected tab,
+while the `TabPanel` actually renders content based on the current tab value.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `fillSelected` | _boolean_ | | If true, the selected tab will be filled with the primary color instead of just the border
 | `tabGroup` | _any_ | | The value for the currently selected tab
 | `options` | _Array_ | List of tabs to display. See below for tab option details
 | `vertical` | _boolean_ | `false` | If true, display tabs vertically
+
+## TabPabel Props
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `area` | _boolean_ | | If true, the panel will have the `grid-area: panel` css property set
+| `tabGroup` | _any_ | | The selected tab value
+| `value` | _any_ | | The value representing the tab option
 
 ### Tab Option Properties
 ```javascript
@@ -24,15 +27,25 @@ Used in conjunction with [TabLabel](./tab-label.md) and
 ```
 
 ## Usage
-```html
+```svelte
 <script>
     let tab = "first"
     const tabOptions = [
         {label: "First", value: "first"},
         {label: "Second", value: "second"},
-        {label: "Numeric", value: 0, icon: "science"},
+        {label: "Numeric", value: 0, icon: "flask"},
     ]
 </script>
 
 <Tabs bind:tabGroup={tab} options={tabOptions} vertical />
+
+<TabPanel value="first" tabGroup={tab} area>
+    First Tab Content
+</TabPanel>
+<TabPanel value="Second" tabGroup={tab} area>
+    Second Tab Content
+</TabPanel>
+<TabPanel value={0} tabGroup={tab} area>
+    Number Tab Content
+</TabPanel>
 ```

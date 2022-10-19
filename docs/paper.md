@@ -1,34 +1,38 @@
-# Modal
-
 Container component for displaying and grouping elements with some style.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `borderColor` | _string_ | | Overrides the border color of a `Paper` with the `card` prop set to true
 | `card` | _boolean_ | | If true, the paper will have a border to appear like a card element
-| `center` | _boolean_ | | Center the paper element in the regular html layout
 | `flat` | _boolean_ | | If true, removes the box shadow
-| `scrollable` | _boolean_ | | If true, adds a max-height css property and allows overflow to scroll the area
+| `layout` | _Component_ | `Flex` | A layout component that wll determine how content is laid out in the `Paper`
 | `square` | _boolean_ | | If true, removes the border radius
+
+> To pass props into the layout component, use the prop name with "l" in front
+> (ex: lscrollable, lcols, ldirection, etc.)
 
 ## Slots
 - title
 - action
 
 ## Usage
-```html
-<Paper card flat scrollable square>
-    Content
+```svelte
+<Paper card flat square lscrollable>
+    <div>
+        Content
+    </div>
 
     <Button slot="action">
         Do Something
     </Button>
 </Paper>
 
-<Paper center>
+<Paper center layout={Grid}>
     <TitleBar slot="title">
         Title
     </TitleBar>
-    Content
+
+    ...grid items
 </Paper>
 ```

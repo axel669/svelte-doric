@@ -1,5 +1,3 @@
-# Radio
-
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -12,9 +10,7 @@
 | `cols` | `number` | `1` | Number of columns to use when displaying the options
 
 ## Slots
-| Name | Description |
-| --- | --- |
-| `label` | Customize the label of each item. Can use custom option properties to extend display options
+- label
 
 ## Radio Option Properties
 ```javascript
@@ -23,11 +19,12 @@
     color: Optional(String),
     label: String,
     value: Object,
+    disabled: Boolean,
 }
 ```
 
 ## Usage
-```html
+```svelte
 <script>
     let value = "first"
     const radioOptions = [

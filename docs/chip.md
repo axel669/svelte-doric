@@ -1,5 +1,3 @@
-# Chip
-
 Used to display dynamic information and interaction in contrast with buttons
 that remain largely static in position.
 
@@ -14,7 +12,10 @@ that remain largely static in position.
 - start
 - end
 
+## Events
+- tap
+
 ## Usage
-```html
-<Chip label color clickable />
+```svelte
+<Chip label color clickable on:tap />
 ```

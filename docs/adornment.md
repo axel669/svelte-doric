@@ -13,9 +13,17 @@ Component to add small pieces of information or interaction to other components.
 
 ## Usage
 ```svelte
-<component>
-    <Adornment slot="" flush>
-        Adornment Content
+<AppBar>
+    <Adornment slot="menu">
+        <Button on:tap={openMenu}>
+            <Icon name="menu" />
+        </Button>
     </Adornment>
-</component>
+</AppBar>
+
+<TextInput label="Cost">
+    <Adornment slot="start">
+        $
+    </Adornment>
+</TextInput>
 ```

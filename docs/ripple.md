@@ -6,8 +6,10 @@ Adds a ripple effect to an element.
 This component takes no props.
 
 ## Usage
-The element that should have the `Ripple` effect must be `position: relative` in CSS.
-```html
+The element that should have the `Ripple` effect must be `position: relative`
+or `position: absolute` in CSS.
+
+```svelte
 <style>
     container-element {
         position: relative;

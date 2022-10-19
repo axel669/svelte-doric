@@ -1,5 +1,3 @@
-# DialogContent
-
 Container for displaying dialog boxes with simple positioning controls.
 
 ## Props
@@ -14,7 +12,7 @@ Container for displaying dialog boxes with simple positioning controls.
 
 
 ## Usage
-```html
+```svelte
 <DialogContent {top} {left} {originX} {originY} {width} {height}>
     ...content
 </DialogContent>

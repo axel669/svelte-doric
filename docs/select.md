@@ -1,5 +1,3 @@
-# Select
-
 Complete replacement to the html select element using what I hope will be a
 better way to handle the interaction without losing fucntionality.
 
@@ -17,6 +15,7 @@ better way to handle the interaction without losing fucntionality.
 
 ## Named Slots
 - selected
+- options
 
 ## Child Tags
 | Tag Name | Description |
@@ -24,10 +23,15 @@ better way to handle the interaction without losing fucntionality.
 | `select-label` | Provides some default padding and alignment for the labels of items.
 
 ## Usage
-The named slot `selected` is used to customize the content of the `Select` outside of the options.
-The named slot `options` is used to customize the look of the items in the `Select` list.
+The named slot `selected` is used to customize the content of the `Select`
+outside of the options.
+The named slot `options` is used to customize the look of the items in the
+`Select` list.
 
-```html
+> If no item matching the value provided is found, the select will throw an
+> error
+
+```svelte
 <Select {disabled} />
 <Select {info} {error} {label} {options} bind:value />
 <Select {class} {label} {options} {origin} {variant} bind:value />

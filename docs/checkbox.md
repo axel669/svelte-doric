@@ -1,5 +1,3 @@
-# Checkbox
-
 Basic checkbox component.
 
 ## Props
@@ -18,7 +16,7 @@ Basic checkbox component.
 | `uncheckedIcon` | _string_ | `"check_box_outline_blank"` | Name of the Material Icon to display when the `Checkbox` is unchecked
 
 ## Usage
-```html
+```svelte
 <script>
     let group = []
     let checked = false

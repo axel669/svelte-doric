@@ -1,20 +1,30 @@
-# Popover
-
 Displays content over other items but isn't a full dialog window.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `object` | `{}` | The transform origin for the popover content
-| `size` | `object` | `{}` | Minimum width and height for the popover content to use. Percentages are based on the size of the static element
-| `visible` | `boolean` | `false` | If `true`, the popover will be visible
+| `anchor` | `object` | `{ left: "0px", top: "100%" }` | How to anchor the popover content to the content underneath
+| `size` | `object` | `{ width: "100%", height: "auto" }` | Size of the popover content to use. Percentages are based on the size of the content underneath
+
+## Bindings
+- show
+- hide
 
 ## Usage
-```html
-<Popover {visible} anchor={{left: "0px", top: "10px"}}>
-    Regular Content
-    <div slot="content">
-        Popover Content
-    </div>
+```svelte
+<Popover let:show let:hide>
+    <Button on:tap={show} variant="outline">
+        Show Popover
+    </Button>
+
+    <Paper card slot="content" on:tap={open}>
+        <Text>
+            Popover Content
+        </Text>
+
+        <Button slot="action" color="secondary" on:tap={hide}>
+            Close
+        </Button>
+    </Paper>
 </Popover>
 ```

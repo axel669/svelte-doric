@@ -1,6 +1,5 @@
-# Footer
-
-Element for displaying a footer at the bottom of a `Screen` component.
+Element for displaying a footer at the bottom of a `Screen` or `Paper`
+component.
 
 ## Props
 | Name | Type | Default | Description |
@@ -8,10 +7,15 @@ Element for displaying a footer at the bottom of a `Screen` component.
 | `bordered` | _boolean_ | `false` | Show a border around the footer.
 | `borderColor` | _string_ | | The color of the border, if shown. Use CSS colors.
 
+## Slots
+- left
+- right
+
 ## Usage
-```html
+```svelte
 <Screen>
     <Paper>
+        Content
     </Paper>
 
     <Footer slot="footer">

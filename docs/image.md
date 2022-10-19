@@ -1,5 +1,3 @@
-# Image
-
 Component for showing images within defined areas using fit functions.
 
 ## Props
@@ -13,6 +11,6 @@ Component for showing images within defined areas using fit functions.
 | `width` | _string_ | | Width of the image. Include CSS units
 
 ## Usage
-```html
+```svelte
 <Image alt="" fit="cover" source={url} />
 ```

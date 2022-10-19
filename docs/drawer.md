@@ -2,13 +2,16 @@
 
 Shows a drawer that slides in and out from the left side of the screen.
 
-## Props
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `open` | _boolean_ | | If `true`, the drawer will be open
+## Drawer Content
+The content of a drawer should be a component that takes a `close` property,
+which is a function that can be called to close the drawer from code. Drawers
+will automatically close if the user clicks outside the content area.
+
+Each property of the options argument will be passed into the provided
+component as indivudual component props.
 
 ## Usage
-```html
+```svelte
 <script>
     import { drawer } from "svelte-doric"
 

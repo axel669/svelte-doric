@@ -1,6 +1,6 @@
 # Grid
 
-Layout that uses flexbox under the hood to layout items with a few common
+Layout that uses grid under the hood to layout items with a few common
 styles applied.
 
 ## Props
@@ -14,10 +14,8 @@ styles applied.
 | `scrollable` | _boolean_ | `false` | Allow the grid to scroll when content overflows
 
 ## Usage
-```html
-<Paper>
-    <Grid direction cols autoRows scrollable>
-        ...actions
-    </Grid>
-</Paper>
+```svelte
+<Grid direction cols autoRows scrollable>
+    ...actions
+</Grid>
 ```

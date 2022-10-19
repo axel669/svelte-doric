@@ -1,5 +1,3 @@
-# HexagonSpinner
-
 Shows a hexagonal load spinner.
 
 ## Props
@@ -8,7 +6,7 @@ Shows a hexagonal load spinner.
 | `size` | _number_/_string_ | `100` | The size (width & height) of the spinner
 
 ## Usage
-```html
+```svelte
 <HexagonSpinner />
 <HexagonSpinner size={250} />
 ```

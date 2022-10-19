@@ -13,7 +13,7 @@ Base component to display modal content on screen.
 - close
 
 ## Usage
-```html
+```svelte
 <Modal clear bind:open on:close persistent>
     Modal Content
 </Modal>

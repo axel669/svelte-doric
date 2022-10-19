@@ -1,5 +1,3 @@
-# CircleSpinner
-
 Shows a circular load spinner.
 
 ## Props
@@ -8,7 +6,7 @@ Shows a circular load spinner.
 | `size` | _number_/_string_ | `100` | The size (width & height) of the spinner
 
 ## Usage
-```html
+```svelte
 <CircleSpinner />
 <CircleSpinner size={250} />
 ```

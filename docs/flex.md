@@ -19,13 +19,11 @@ containers, summarized (with helpful images) on [MDN](https://developer.mozilla.
 | `itemJustify` | _string_ | | Item positioning on the main-axis. See Flex Alignment for details.
 | `padding` | _string_ | `"4px"` | Padding between the container edge and the elements. Include CSS units.
 | `scrollable` | _boolean_ | `false` | Allows the flex container to scroll when content overflows.
-| `wrap` | _boolean_ ` | `false` | Allows items to wrap in the container.
+| `wrap` | _boolean_ | `false` | Allows items to wrap in the container.
 
 ## Usage
-```html
-<Paper>
-    <Flex direction gap padding scrollable>
-        ...content
-    </Flex>
-</Paper>
+```svelte
+<Flex direction gap padding scrollable>
+    ...content
+</Flex>
 ```
