@@ -1,72 +1,58 @@
 <script>
-    import {createEventDispatcher} from "svelte"
+    import {fade} from "svelte/transition"
 
     import vars from "./util/vars.js"
     import Modal from "./modal.svelte"
     import Portal from "./portal.svelte"
 
-    export let origin = {}
-    export let size = {}
-    export let visible = false
+    export let anchor = { left: "0px", top: "100%" }
+    export let size = { width: "100%", height: "auto" }
+    export let clear = false
 
-    const recalc = (wrapper, visible) => {
-        if (visible === false) {
-            return {}
-        }
-        const {left, top, width, height} = wrapper.getBoundingClientRect()
-        return {
-            left: [left, "px"],
-            top: [top, "px"],
-            width: [width, "px"],
-            height: [height, "px"],
-        }
+    const varReset =
+        "--top: unset; --left: unset; --bottom: unset; --right: unset;"
+    const anim = {
+        duration: 250
     }
 
-    const dispatch = createEventDispatcher()
-    const cancel = () => dispatch("cancel")
-    let wrapper = null
-
-    $: position = recalc(wrapper, visible)
-    $: displayVars = {...origin, ...size, ...position}
+    $: contentVars = {
+        ...anchor,
+        ...size,
+    }
+    let element = null
+    let visible = false
+    const show = () => visible = true
+    const hide = () => visible = false
 </script>
 
 <style>
-    popover-wrapper {
+    doric-popover {
         position: relative;
         display: inline-grid;
-    }
-    doric-popover {
-        position: absolute;
-        left: var(--left);
-        right: var(--right);
-        top: var(--top);
-        bottom: var(--bottom);
         overflow: visible;
-        z-index: 150;
     }
-    popover-content {
-        display: inline-block;
-        position: relative;
-        top: var(--y);
-        left: var(--x);
-        transform: translate(
-            var(--tx, 0%),
-            var(--ty, 0%)
-        );
-        min-width: var(--width);
-        min-height: var(--height);
+
+    content-wrapper {
+        position: absolute;
+        display: grid;
+        z-index: 600;
+
+        top: var(--top);
+        left: var(--left);
+        bottom: var(--bottom);
+        right: var(--right);
+        width: var(--width);
+        height: var(--height);
     }
 </style>
 
-<popover-wrapper bind:this={wrapper}>
-    <slot />
+<doric-popover bind:this={element} style={varReset}>
+    <slot {show} />
+
     {#if visible}
-        <Modal open clear on:close={cancel}>
-            <doric-popover use:vars={displayVars}>
-                <popover-content>
-                    <slot name="content" />
-                </popover-content>
-            </doric-popover>
-        </Modal>
+        <Modal open {clear} />
+        <content-wrapper use:vars={contentVars} transition:fade={anim}>
+            <slot name="content" {hide} />
+        </content-wrapper>
     {/if}
-</popover-wrapper>
+</doric-popover>
