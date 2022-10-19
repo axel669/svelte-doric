@@ -3,13 +3,13 @@
     import Icon from "./icon.svelte"
     import vars from "./util/vars"
 
-    export let options
-    export let value
     export let checkedIcon = "check-circle"
-    export let uncheckedIcon = "circle"
-    export let labelPosition = "right"
     export let cols = 1
+    export let labelPosition = "right"
     export let labelToggle = true
+    export let options
+    export let uncheckedIcon = "circle"
+    export let value
 
     const icon = (checked) => checked ? checkedIcon : uncheckedIcon
     const update = (newValue, isLabel = false) => {
@@ -69,15 +69,16 @@
 
     radio-label {
         cursor: pointer;
-        display: grid;
+        display: flex;
+        align-items: center;
         user-select: none;
         grid-area: label;
     }
-    center-text {
+    /* center-text {
         display: flex;
         align-items: center;
-    }
-    .bottom center-text, .top center-text {
+    } */
+    .bottom radio-label, .top radio-label {
         justify-content: center;
     }
 </style>
@@ -94,9 +95,7 @@
             </radio-check>
             <radio-label on:tap={() => update(option.value, true)}>
                 <slot name="label" {option}>
-                    <center-text>
-                        {option.label}
-                    </center-text>
+                    {option.label}
                 </slot>
             </radio-label>
         </radio-item>
