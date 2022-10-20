@@ -5,6 +5,7 @@
 
     export let clickable
     export let data
+    export let itemID
     export let page
     export let pageSize
 
@@ -44,7 +45,7 @@
     }
 </style>
 
-{#each items as item}
+{#each items as item (itemID(item))}
     <doric-list-item on:tap={() => itemTap(item)} class:clickable>
         {item?.label ?? ""}
         {#if clickable === true}

@@ -7,6 +7,7 @@
     export let cols
     export let data
     export let title
+    export let itemID = (i) => i
 
     export let body = Body
     export let header = Header
@@ -44,6 +45,7 @@
         {clickable}
         {page}
         {pageSize}
+        {itemID}
         on:tap
     />
     <svelte:component this={footer} {data} {pageSize} bind:page />
