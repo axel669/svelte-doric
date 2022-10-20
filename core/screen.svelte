@@ -39,7 +39,7 @@
     export const openStack = (component, props = {}) => new Promise(
         (resolve) => {
             $finishFunc = (value) => {
-                closeStack()
+                close()
                 resolve(value)
             }
             stackComp = component
