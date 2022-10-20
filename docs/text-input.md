@@ -1,11 +1,8 @@
-# TextInput
-
 Fancier looking single line text input.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `class` | _string_ | | Additional CSS classes to apply to the component
 | `disabled` | _boolean_ | `false` | If true, disables interaction with the `TextInput`
 | `error` | _string_ | | Changes the color of the input border/label to red
 | `extra` | _string_ | | Extra text to show at the bottom of the `TextInput`
@@ -23,22 +20,24 @@ Fancier looking single line text input.
 - focus
 
 ## Usage
-```html
+```svelte
 <script>
     let value = ""
 </script>
 
 <TextInput bind:value {class} {label} {info} {class} {error} {type} disabled />
-<TextInput bind:value variant="outline" />
+<TextInput bind:value flat />
 
 <TextInput>
     <Adornment slot="start">
-        <Icon name="search" />
+        <Text adorn>
+            <Icon name="search" />
+        </Text>
     </Adornment>
 </TextInput>
 <TextInput label="Currency">
     <Adornment slot="start">
-        $
+        <Text adorn>$</Text>
     </Adornment>
 </TextInput>
 ```

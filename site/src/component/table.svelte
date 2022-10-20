@@ -1,17 +1,16 @@
-Component for showing data tables.
-
-## Props
-The table is actually just a List with custom elements defined so it takes the
-same props, but the `cols` prop actually does something (documented below).
-
-## Usage
-```svelte
 <script>
+    import {
+        Table,
+    } from "@core"
+
+    import Markdown from "../app/markdown.svelte"
+    import docs from "@docs"
+
     const tableData = Array.from(
         { length: 50 },
         (_, i) => ({
             name: `Item ${i + 1}`,
-            text: `Item ${i + 1}`,
+            label: `Item ${i + 1}`,
             value: i,
             icon: (i % 2) === 0 ? "sun" : "moon",
             code: i ** 2 % 100,
@@ -25,10 +24,16 @@ same props, but the `cols` prop actually does something (documented below).
     ]
 </script>
 
-<Table data={tableData} />
+<h1>Table</h1>
+
+<div style="height: 240px; overflow: hidden; display: grid;">
+    <Table data={tableData} />
+</div>
+
 <Table
     data={tableData}
     pageSize={8}
     cols={tableCols}
 />
-```
+
+<Markdown {docs} />

@@ -1,5 +1,3 @@
-# TitleBar
-
 Component for making title bars at the top of elements on the page.
 
 ## Props
@@ -15,12 +13,21 @@ Component for making title bars at the top of elements on the page.
 - extension
 
 ## Usage
-```html
-<Paper card>
-    <TitleBar compact>
-        Section Title
+```svelte
+<Paper>
+    <TitleBar slot="title">
+        Title
     </TitleBar>
+</Paper>
+<Paper>
+    <TitleBar slot="title">
+        Other Title
 
-    ...
+        <Adornment slot="menu">
+            <Button adorn>
+                <Icon name="bars" />
+            </Button>
+        </Adornment>
+    </TitleBar>
 </Paper>
 ```

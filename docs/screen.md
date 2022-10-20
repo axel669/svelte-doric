@@ -3,6 +3,9 @@
 Element for displaying screens within an application that allows for consistent
 layout and interaction across platforms (web, mobile, cordova, etc).
 
+> `Screen` is inteded to be used as the top level for all screens in an
+> application (because the components aren't standalone).
+
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -25,7 +28,7 @@ than the parent `Screen`.
 Removes the current component from the view stack and returns the given value
 to the parent `Screen`.
 
-### .closeStack(value)
+### .closeAll(value)
 Removes all components but the top component from the view stack and passes the
 given value to the topmost `Screen`
 
@@ -34,7 +37,7 @@ given value to the topmost `Screen`
 - footer
 
 ## Usage
-```html
+```svelte
 <script>
     let scr = null
 

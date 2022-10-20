@@ -1,43 +1,55 @@
-Component for displaying lists of items that may or may not have interactions.
+Component for displaying lists of items that can optionally have interactions.
 
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `class` | _string_ | | Additional CSS classes to apply to the component
-| `compact` | _boolean_ | | If true, rows will be more compact in size
-| `height` | _string_ | | Set the height of the list, will allow for scrolling if set. Include CSS units
-| `items` | _array_ | | The items to display in the list. Items with a `header` property exists on the item, it will be rendered as a list header
-| `let:item` | | | Item or header element being rendered
+| `clickable` | _boolean_ | | If true, items will be clickable and fire an `on:tap` event with the item clicked as the detail property of the event
+| `cols` | _array_ | | Not used by the default list, but allows column information to passed into components for table-like behavior on custom components
+| `data` | _array_ | | The data to display in the list
+| `flat` | _boolean_ | `false` | If true, list will not have a border
+| `itemID` | _function_ | `(item) => item` | An optional function to use as the id in the svelte `#each`
+| `title` | _string_ | | The title to put into the header of the list
+| `square` | _boolean_ | `false` | If true, removes the rounded corners on the lsit
+| |
+| `body` | `Component` | | Custom component to render the body of the list
+| `footer` | `Component` | | Custom component to render the footer of the list
+| `header` | `Component` | | Custom component to render the header of the list
+| |
+| `page` | _number_ | | If paginated, what the current page is. Default list components will control the page without external management needed
+| `pageSize` | _number_ | | If defined, list will be paginated with pages of the size specified
 
-## Child Tags
-| Name | Description |
-| --- | --- |
-| `list-header` | Renders a list header
-| `list-header-content` | Renders the content of a list header
-| `list-item` | Renders a list item
-| `list-item-content` | Renders the content of a list item
+### Props passed to Header component
+- cols
+- data
+- title
 
-## Child Tag Props
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `list-item[control]` | _boolean_ | | If true, the item will be rendered without padding to allow the control all the item space
-| `list-item[dividers]` | _boolean_ | | If true, items will be rendered with dividers
+### Props passed to Body component
+- data
+- cols
+- clickable
+- page
+- pageSize
+- itemID
+
+### Props passed to Footer component
+- data
+- bind:page
+- pageSize
 
 ## Usage
 ```svelte
-<List {class} {compact} {height} {items} compact />
+<List
+    data={tableData}
+    title="Regular List"
+    clickable
+    on:tap={console.log}
+/>
 
-<List let:item>
-    <list-header slot="header">
-        <list-header-content>
-            {item.header}
-        </list-header-content>
-    </list-header>
-
-    <list-item>
-        <list-item-content>
-            {item.label}
-        </list-item-content>
-    </list-item>
-</List>
+<List
+    data={tableData}
+    title="Paginated List"
+    clickable
+    on:tap={console.log}
+    pageSize={7}
+/>
 ```
