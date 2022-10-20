@@ -26,7 +26,11 @@
     input-area {
         position: relative;
         display: grid;
-        grid-template-columns: max-content auto max-content;
+        grid-template-columns:
+            minmax(0px, max-content)
+            auto
+            minmax(0px, max-content)
+        ;
         grid-template-rows: max-content auto;
         grid-template-areas:
             "label label label"
