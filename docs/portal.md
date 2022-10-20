@@ -1,14 +1,13 @@
 # Portal
 
-Moves children into a different area of the DOM tree so that elements can be
-logically grouped but not forced into the same area of the DOM.
-
-## Props
-This component doesn't take in any props.
+Svelte action that moves children into a different area of the DOM tree so that
+elements can be logically grouped but not forced into the same area of the DOM.
 
 ## Usage
 ```svelte
-<Portal>
-    Portal Content
-</Portal>
+<script>
+    import { portal } from "svelte-doric"
+</script>
+
+<tag use:portal />
 ```

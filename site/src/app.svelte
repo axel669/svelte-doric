@@ -8,6 +8,7 @@
         Adornment,
         AppBar,
         Button,
+        Grid,
         Icon,
         Paper,
         Screen,
@@ -17,6 +18,9 @@
 
     import { theme } from "./app/theme.mjs"
     import { view } from "./app/view.mjs"
+
+    let a = null
+    const viewGithub = () => a.click()
 
     const openMenu = () => drawer.open(Menu)
 </script>
@@ -54,18 +58,34 @@
             padding-left: 5vw;
         }
     }
+
+    a {
+        display: none;
+    }
 </style>
 
 <AppStyle {baseline} theme={$theme} />
 
+<a href="https://github.com/axel669/svelte-doric" target="_blank" bind:this={a}>
+    Github
+</a>
+
 <Screen full>
     <AppBar slot="title">
-        Svelte Doric Components
+        Svelte Doric
 
-        <Adornment slot="menu">
-            <Button compact on:tap={openMenu}>
-                <Icon name="hamburger" />
-            </Button>
+        <Adornment flush slot="menu">
+            <Grid padding="0px" cols="1fr 1fr">
+                <Button adorn on:tap={openMenu}>
+                    <Icon name="hamburger" />
+                </Button>
+                <Button adorn on:tap={viewGithub}>
+                    <Icon name="brands:github" />
+                </Button>
+            </Grid>
+        </Adornment>
+
+        <Adornment flush slot="action">
         </Adornment>
     </AppBar>
 

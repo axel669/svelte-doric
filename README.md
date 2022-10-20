@@ -13,6 +13,8 @@ to try something new (and hopefully interesting/useful). Development is mainly
 driven by my and my friend's experiences in building web apps, so hopefully
 this makes it stay on track and not add complexity needlessly.
 
+[Component Preview Site](https://axel669.github.io/svelte-doric/)
+
 ## Installation
 
 ```bash
