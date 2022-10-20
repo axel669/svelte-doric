@@ -46,7 +46,7 @@
             stackProps = props
         }
     )
-    export const closeStack = (value = null) => {
+    export const closeAll = (value = null) => {
         $finishFunc(value)
     }
     export const close = (value) => {
