@@ -2,12 +2,12 @@
     import vars from "../util/vars"
 
     export let center = false
-    export let contentAlign = null
+    export let contentAlign = "initial"
     export let direction = "column"
     export let gap = "4px"
-    export let itemAlign = null
+    export let itemAlign = "initial"
     export let itemFill = false
-    export let itemJustify = null
+    export let itemJustify = "initial"
     export let padding = "4px"
     export let scrollable = false
     export let wrap = false
