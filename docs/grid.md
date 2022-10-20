@@ -1,5 +1,3 @@
-# Grid
-
 Layout that uses grid under the hood to layout items with a few common
 styles applied.
 

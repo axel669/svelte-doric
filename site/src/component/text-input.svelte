@@ -1,6 +1,8 @@
 <script>
     import {
         Adornment,
+        Button,
+        Grid,
         Icon,
         Text,
         TextInput,
@@ -24,10 +26,19 @@
         </Text>
     </Adornment>
 </TextInput>
-<TextInput label="Currency">
-    <Adornment slot="start">
-        <Text adorn>$</Text>
-    </Adornment>
-</TextInput>
+
+<Grid cols="1fr 1fr" padding="0px">
+    <TextInput label="Currency">
+        <Adornment slot="start">
+            <Text adorn>$</Text>
+        </Adornment>
+    </TextInput>
+
+    <TextInput label="Search Params">
+        <Adornment slot="end">
+            <Button adorn>Find</Button>
+        </Adornment>
+    </TextInput>
+</Grid>
 
 <Markdown {docs} />
