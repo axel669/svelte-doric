@@ -18,6 +18,7 @@
 
     import { theme } from "./app/theme.mjs"
     import { view } from "./app/view.mjs"
+    import screen from "./app/screen.mjs"
 
     let a = null
     const viewGithub = () => a.click()
@@ -70,7 +71,7 @@
     Github
 </a>
 
-<Screen full>
+<Screen full bind:this={$screen}>
     <AppBar slot="title">
         Svelte Doric
 

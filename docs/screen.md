@@ -1,5 +1,3 @@
-# Screen
-
 Element for displaying screens within an application that allows for consistent
 layout and interaction across platforms (web, mobile, cordova, etc).
 
