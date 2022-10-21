@@ -1,5 +1,6 @@
 <script>
     export let flush
+    export let ignoreReskin = false
 </script>
 
 <style>
@@ -12,6 +13,6 @@
     }
 </style>
 
-<doric-adornment class:flush>
+<doric-adornment class:flush class:ignore-appbar-reskin={ignoreReskin}>
     <slot />
 </doric-adornment>

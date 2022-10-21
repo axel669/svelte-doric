@@ -13,8 +13,7 @@
         display: grid;
         box-shadow: 0px 2px 2px var(--shadow-color);
     }
-    doric-app-bar:not(.compact)
-    :global(doric-adornment > *:not([ignore-titlebar-reskin])) {
+    :global(doric-adornment:not(.ignore-appbar-reskin)) {
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);
         --control-border: var(--title-bar-text);

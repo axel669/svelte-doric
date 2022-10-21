@@ -10,6 +10,7 @@ Component to add small pieces of information or interaction to other components.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `flush` | _boolean_ | | If `true`, remove adornment padding
+| `ignoreReskin` | _boolean_ | | If `true`, the adorning elements will not have their colors altered by `AppBar`
 
 ## Usage
 ```svelte
