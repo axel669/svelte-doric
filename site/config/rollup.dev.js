@@ -51,21 +51,27 @@ const libShortcut = {
 
         const dir = id.slice(0, -2)
         const files = await fs.readdir(dir)
-        const code = files.map(
-            (name) => {
-                const fullName = JSON.stringify(path.resolve(dir, name))
-                const exportName =
-                    path.basename(name, path.extname(name))
-                    .replace(/\-(\w)/g, (_, s) => s.toUpperCase())
+        const code =
+            files
+            .filter(
+                (file) => file.endsWith(".svelte")
+            )
+            .map(
+                (name) => {
+                    const fullName = JSON.stringify(path.resolve(dir, name))
+                    const exportName =
+                        path.basename(name, path.extname(name))
+                        .replace(/\-(\w)/g, (_, s) => s.toUpperCase())
 
-                if (name.endsWith(".svelte") === true) {
-                    // const exp = `${exportName.charAt(0).toUpperCase()}${exportName.slice(1)}`
-                    return `export {default as ${exportName}} from ${fullName}`
+                    if (name.endsWith(".svelte") === true) {
+                        // const exp = `${exportName.charAt(0).toUpperCase()}${exportName.slice(1)}`
+                        return `export {default as ${exportName}} from ${fullName}`
+                    }
+
+                    return `export * as ${exportName} from ${fullName}`
                 }
-
-                return `export * as ${exportName} from ${fullName}`
-            }
-        ).join("\n")
+            )
+            .join("\n")
         return { code }
     }
 }
