@@ -1,14 +1,16 @@
 <script context="module">
-    const closeContext = Symbol("Close Context")
+    import { writable } from "svelte/store"
+
+    const resolveContext = Symbol("Close Context")
     const levelContext = Symbol("Level Context")
     const widthContext = Symbol("Width Context")
 
-    let top = null
+    let topResolver = null
 </script>
 
 <script>
     import { getContext, setContext } from "svelte"
-    import { writable } from "svelte/store"
+    // import { writable } from "svelte/store"
 
     import { fly } from "svelte/transition"
 
@@ -21,40 +23,43 @@
     export let width = "min(720px, 100%)"
 
     const level = getContext(levelContext) ?? 0
-    const finish = getContext(closeContext) ?? writable(null)
+    const parentResolve = getContext(resolveContext) ?? writable(null)
     const parentWidth = getContext(widthContext) ?? "100%"
 
     let stackComp = null
+    let stackProps = {}
     const duration = 350
-    const finishFunc = writable(null)
+    const resolver = writable(null)
 
     setContext(levelContext, level + 1)
-    setContext(closeContext, finishFunc)
+    setContext(resolveContext, resolver)
     setContext(widthContext, width)
 
     const id = Math.random().toString()
 
-    top = id
-    let stackProps = {}
     export const openStack = (component, props = {}) => new Promise(
         (resolve) => {
-            $finishFunc = (value) => {
-                close()
+            $resolver = (value) => {
+                stackComp = null
+                stackProps = null
                 resolve(value)
             }
             stackComp = component
             stackProps = props
+
+            if (level !== 0) {
+                return
+            }
+            topResolver = $resolver
         }
     )
-    export const closeAll = (value = null) => {
-        $finishFunc(value)
-    }
+    export const closeAll = (value = null) => topResolver(value)
     export const close = (value) => {
-        if ($finish === null) {
+        if ($parentResolve === null) {
             return
         }
 
-        $finish(value)
+        $parentResolve(value)
     }
 
     $: screenVars = {
