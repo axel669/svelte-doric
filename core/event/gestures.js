@@ -2,6 +2,11 @@ import nvalue from "../util/nvalue"
 
 const touchState = {}
 
+const keepKeys = (source, dest) => {
+    dest.altKey = source.altKey
+    dest.ctrlKey = source.ctrlKey
+    dest.metaKey = source.metaKey
+}
 if (typeof window !== "undefined") {
     const pointerStart = "pointer-start"
     const pointerEnd = "pointer-end"
@@ -21,6 +26,7 @@ if (typeof window !== "undefined") {
             const customEvent = new CustomEvent(pointerStart, evtOptions)
             evt.identifier = nvalue(evt.identifier, -1)
             customEvent.changedTouches = isMobile ? evt.changedTouches : [evt]
+            keepKeys(evt, customEvent)
             evt.target.dispatchEvent(customEvent)
         },
         {capture: true}
@@ -34,6 +40,7 @@ if (typeof window !== "undefined") {
             const customEvent = new CustomEvent(pointerEnd, evtOptions)
             evt.identifier = nvalue(evt.identifier, -1)
             customEvent.changedTouches = isMobile ? evt.changedTouches : [evt]
+            keepKeys(evt, customEvent)
             evt.target.dispatchEvent(customEvent)
         },
         {capture: true}
@@ -75,6 +82,7 @@ if (typeof window !== "undefined") {
 
                 const customEvent = new CustomEvent("tap", evtOptions)
                 customEvent.changedTouches = [touch]
+                keepKeys(evt, customEvent)
                 touch.target.dispatchEvent(customEvent)
             }
         },
