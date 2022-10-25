@@ -5,14 +5,23 @@
 
     export let docs
 
+    let markdownContainer = null
+
     onMount(
         () => {
-            const codez = document.querySelectorAll("pre")
+            const codez = markdownContainer.querySelectorAll("pre")
             for (const code of codez) {
                 hljs.highlightBlock(code)
+            }
+
+            const anchors = markdownContainer.querySelectorAll("a")
+            for (const anchor of anchors) {
+                anchor.target = "_blank"
             }
         }
     )
 </script>
 
-<Markdown source={docs} />
+<div bind:this={markdownContainer}>
+    <Markdown source={docs} />
+</div>

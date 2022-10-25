@@ -20,9 +20,6 @@
     import { view } from "./app/view.mjs"
     import screen from "./app/screen.mjs"
 
-    let a = null
-    const viewGithub = () => a.click()
-
     const openMenu = () => drawer.open(Menu)
 </script>
 
@@ -59,17 +56,9 @@
             padding-left: 5vw;
         }
     }
-
-    a {
-        display: none;
-    }
 </style>
 
 <AppStyle {baseline} theme={$theme} />
-
-<a href="https://github.com/axel669/svelte-doric" target="_blank" bind:this={a}>
-    Github
-</a>
 
 <Screen full bind:this={$screen}>
     <AppBar slot="title">
@@ -80,7 +69,10 @@
                 <Button adorn on:tap={openMenu}>
                     <Icon name="hamburger" />
                 </Button>
-                <Button adorn on:tap={viewGithub}>
+                <Button
+                adorn
+                link="https://github.com/axel669/svelte-doric|_blank"
+                >
                     <Icon name="brands:github" />
                 </Button>
             </Grid>

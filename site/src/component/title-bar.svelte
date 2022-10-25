@@ -5,6 +5,7 @@
         Icon,
         Paper,
         Text,
+        TextInput,
         TitleBar,
     } from "@core"
 
@@ -17,6 +18,10 @@
 <Paper card>
     <TitleBar slot="title">
         Some Title
+
+        <Adornment slot="extension">
+            <TextInput label="Search" />
+        </Adornment>
     </TitleBar>
 
     <Text>

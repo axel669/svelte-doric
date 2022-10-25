@@ -53,6 +53,7 @@ export { default as hash } from "./core/browser/hash.js"
 
 export { default as css } from "./core/util/css.js"
 export { default as vars } from "./core/util/vars.js"
+export { default as link } from "./core/util/link.mjs"
 
 const drawer = {
     open: openDrawer,

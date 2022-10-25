@@ -37,6 +37,10 @@
             </Button>
         {/each}
     {/each}
+
+    <Button variant="outline" link="https://google.com">
+        Link Button
+    </Button>
 </Grid>
 
 <Markdown {docs} />

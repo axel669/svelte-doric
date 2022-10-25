@@ -3,6 +3,7 @@
         Adornment,
         AppBar,
         Button,
+        Flex,
         Icon,
         Paper,
         Screen,
@@ -30,7 +31,10 @@
         </Adornment>
 
         <Adornment flush ignoreReskin slot="extension">
-            <Tabs bind:tabGroup {options} />
+            <Flex padding="0px">
+                <Text>regular text?</Text>
+                <Tabs bind:tabGroup {options} />
+            </Flex>
         </Adornment>
     </AppBar>
 
