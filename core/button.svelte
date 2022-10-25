@@ -2,19 +2,27 @@
     import {createEventDispatcher} from "svelte";
     import Ripple from "./ripple.svelte"
     import vars from "./util/vars.js"
+    import linker from "./util/link.mjs"
 
     export let adorn
     export let buttonColor = null
     export let color = "default"
     export let compact
     export let disabled = false
+    export let link = null
     export let round
     export let square
     export let variant = "normal"
 
+    $: openLink = (link === null) ? null : linker(link)
     const dispatch = createEventDispatcher()
     const handleTap = evt => {
         if (disabled === true) {
+            return
+        }
+
+        if (openLink !== null) {
+            openLink(evt)
             return
         }
         // Mobile browsers don't like dispatching events inside custom events
