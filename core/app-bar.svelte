@@ -8,12 +8,12 @@
         z-index: +0;
         grid-template-rows: 56px min-content;
         background-color: var(--title-bar-background);
-        color: var(--title-bar-text);
 
         display: grid;
         box-shadow: 0px 2px 2px var(--shadow-color);
     }
-    :global(doric-adornment:not(.ignore-appbar-reskin)) {
+    doric-app-bar :global(doric-adornment:not(.ignore-appbar-reskin)) {
+        color: var(--title-bar-text);
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);
         --control-border: var(--title-bar-text);
@@ -23,6 +23,7 @@
     title-area {
         display: grid;
         grid-template-columns: max-content auto max-content;
+        color: var(--title-bar-text);
     }
 
     title-text {
