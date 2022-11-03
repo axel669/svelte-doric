@@ -1,16 +1,9 @@
 <script>
     export let cols
-    export let data
-    export let page
-    export let pageSize
-
-    $: items =
-        pageSize === null
-        ? data
-        : Array.from(
-            { length: pageSize },
-            (_, index) => data[page * pageSize + index]
-        )
+    // export let data
+    export let items
+    // export let page
+    // export let pageSize
 </script>
 
 <style>

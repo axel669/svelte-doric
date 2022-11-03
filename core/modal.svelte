@@ -26,18 +26,23 @@
         position: fixed;
         top: 0px;
         left: 0px;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.35);
         z-index: 500;
+        overflow: hidden;
     }
     modal-wrapper.clear {
         background-color: transparent;
     }
+    div {
+        overflow: hidden;
+    }
 </style>
 
-<modal-wrapper use:portal on:tap={close} transition:fade={anim} class:clear>
-    <div on:tap|stopPropagation>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<modal-wrapper use:portal on:click={close} transition:fade={anim} class:clear>
+    <div on:click|stopPropagation>
         <slot />
     </div>
 </modal-wrapper>

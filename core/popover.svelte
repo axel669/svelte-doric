@@ -1,9 +1,11 @@
 <script>
     import {fade} from "svelte/transition"
 
-    import vars from "./util/vars.js"
     import Modal from "./modal.svelte"
     import Portal from "./portal.svelte"
+
+    import vars from "./util/vars.js"
+    import grid from "./util/grid.mjs"
 
     export let anchor = { left: "0px", top: "100%" }
     export let size = { width: "100%", height: "auto" }
@@ -46,7 +48,7 @@
     }
 </style>
 
-<doric-popover bind:this={element} style={varReset}>
+<doric-popover bind:this={element} style={varReset} use:grid={$$props}>
     <slot {show} />
 
     {#if visible}

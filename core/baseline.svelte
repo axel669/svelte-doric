@@ -28,6 +28,8 @@
     `
 </script>
 
+<svelte:body on:touchstart={() => {}} />
+
 <style>
     :global(*) {
         box-sizing: border-box;
@@ -48,6 +50,7 @@
         height: 100%;
         overflow: hidden;
 
+        touch-action: pan-x pan-y;
         -webkit-tap-highlight-color: transparent;
 
         font-family: var(--font);

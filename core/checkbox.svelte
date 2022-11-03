@@ -13,7 +13,7 @@
     export let labelToggle = true
 
     export let checkedIcon = "check-square"
-    export let uncheckedIcon = "square"
+    export let uncheckedIcon = "regular:square"
     export let outlined
 
     const toggle = () => checked = !checked

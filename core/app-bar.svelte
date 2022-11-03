@@ -5,14 +5,14 @@
 <style>
     doric-app-bar {
         position: relative;
-        z-index: +0;
         grid-template-rows: 56px min-content;
         background-color: var(--title-bar-background);
 
         display: grid;
         box-shadow: 0px 2px 2px var(--shadow-color);
     }
-    doric-app-bar :global(doric-adornment:not(.ignore-appbar-reskin)) {
+    doric-app-bar > :global(doric-adornment:not(.ignore-appbar-reskin)),
+    title-area > :global(doric-adornment:not(.ignore-appbar-reskin)) {
         color: var(--title-bar-text);
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);

@@ -36,6 +36,7 @@ export { default as Tabs } from "./core/tabs.svelte"
 export { default as Text } from "./core/text.svelte"
 export { default as TextInput } from "./core/text-input.svelte"
 export { default as TitleBar } from "./core/title-bar.svelte"
+export { default as Toggle } from "./core/toggle.svelte"
 
 export { default as Flex } from "./core/layout/flex.svelte"
 export { default as Grid } from "./core/layout/grid.svelte"
@@ -54,6 +55,8 @@ export { default as hash } from "./core/browser/hash.js"
 export { default as css } from "./core/util/css.js"
 export { default as vars } from "./core/util/vars.js"
 export { default as link } from "./core/util/link.mjs"
+export { default as grid } from "./core/util/grid.mjs"
+export { default as onChange } from "./core/util/on-change.mjs"
 
 const drawer = {
     open: openDrawer,

@@ -1,5 +1,6 @@
 <script>
     import vars from "./util/vars.js"
+    import grid from "./util/grid.mjs"
 
     export let adorn
     export let align = "left"
@@ -53,6 +54,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 4px;
     }
 </style>
 
@@ -62,6 +64,7 @@ class:adorn
 class:subtitle
 class="{color} {align}"
 use:vars={textOpts}
+use:grid={$$props}
 >
     <slot />
 </span>

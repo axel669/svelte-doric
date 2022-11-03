@@ -85,7 +85,8 @@
     }
 </style>
 
-<toggle-wrapper class:disabled class="{labelPlacement} {klass}" on:tap={boxTap}>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<toggle-wrapper class:disabled class="{labelPlacement} {klass}" on:click={boxTap}>
     <slot />
     <toggle-label class:labelToggle bind:this={labelElement}>
         <slot name="label" />

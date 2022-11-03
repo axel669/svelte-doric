@@ -35,7 +35,7 @@
             {message}
         </Text>
         <Grid slot="action" cols="1fr">
-            <Button color="secondary" on:tap={ok}>
+            <Button color="secondary" on:click={ok}>
                 {okText}
             </Button>
         </Grid>

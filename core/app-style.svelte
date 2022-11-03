@@ -1,5 +1,5 @@
 <script context="module">
-    import "./event/gestures.js"
+    // import "./event/gestures.js"
 
     import Dialog from "./dialog.svelte"
     import Drawer from "./drawer.svelte"

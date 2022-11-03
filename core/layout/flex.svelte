@@ -1,13 +1,16 @@
 <script>
-    import vars from "../util/vars"
+    import vars from "../util/vars.js"
+    import grid from "../util/grid.mjs"
 
     export let center = false
     export let contentAlign = "initial"
     export let direction = "column"
+    export let fit
     export let gap = "4px"
     export let itemAlign = "initial"
     export let itemFill = false
     export let itemJustify = "initial"
+    export let overflow = false
     export let padding = "4px"
     export let scrollable = false
     export let wrap = false
@@ -52,6 +55,12 @@
         align-items: center;
         justify-content: center;
     }
+    flex-layout.overflow {
+        overflow: visible;
+    }
+    .fit {
+        max-height: 100%;
+    }
 
     flex-layout > :global(flex-break),
     flex-layout.item-fill > :global(flex-break) {
@@ -63,10 +72,13 @@
 
 <flex-layout
 use:vars={flexVars}
+use:grid={$$props}
 class:item-fill={itemFill}
 class:scrollable
 class:wrap
 class:center
+class:overflow
+class:fit
 >
     <slot />
 </flex-layout>

@@ -83,17 +83,18 @@
     }
 </style>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <doric-radio use:vars={radioCols}>
     {#each options as option (option)}
         <radio-item class={labelPosition}>
-            <radio-check on:tap={() => update(option.value)}>
+            <radio-check on:click={() => update(option.value)}>
                 <Button round="40px"
                 color={option.color}
                 disabled={option.disabled}>
                     <Icon name={icon(value === option.value)} size="16px" />
                 </Button>
             </radio-check>
-            <radio-label on:tap={() => update(option.value, true)}>
+            <radio-label on:click={() => update(option.value, true)}>
                 <slot name="label" {option}>
                     {option.label}
                 </slot>

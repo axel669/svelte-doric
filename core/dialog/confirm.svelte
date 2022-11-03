@@ -37,10 +37,10 @@
             {message}
         </Text>
         <Grid cols="1fr 1fr" slot="action">
-            <Button color="danger" on:tap={cancel}>
+            <Button color="danger" on:click={cancel}>
                 {cancelText}
             </Button>
-            <Button color="secondary" on:tap={ok}>
+            <Button color="secondary" on:click={ok}>
                 {okText}
             </Button>
         </Grid>

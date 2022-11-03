@@ -1,5 +1,6 @@
 <script>
     import vars from "./util/vars.js"
+    import grid from "./util/grid.mjs"
 
     export let color = "primary"
     export let anchor = {}
@@ -48,7 +49,7 @@
     }
 </style>
 
-<badge-wrapper>
+<badge-wrapper use:grid={$$props}>
     <slot />
     <doric-badge class="{color}" use:vars={badgeVars}>
         <slot name="content" />

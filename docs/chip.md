@@ -13,9 +13,9 @@ that remain largely static in position.
 - end
 
 ## Events
-- tap
+- click
 
 ## Usage
 ```svelte
-<Chip label color clickable on:tap />
+<Chip label color clickable on:click />
 ```

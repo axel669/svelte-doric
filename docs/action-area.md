@@ -5,11 +5,11 @@ a lot of the button overhead and styling.
 This component doesn't take any props.
 
 ## Events
-- tap
+- click
 
 ## Usage
 ```svelte
-<ActionArea on:tap class>
+<ActionArea on:click class>
     Content
 </ActionArea>
 ```

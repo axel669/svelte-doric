@@ -25,6 +25,10 @@
     export let pageSize
     export let rowHeight = "40px"
 
+    export let area
+    export let col
+    export let row
+
     $: columns =
         cols?.map(processCol)
         ?? Object.keys(data[0])
@@ -50,6 +54,9 @@
 
 <doric-table use:vars={tableVars}>
     <List
+        {area}
+        {col}
+        {row}
         {data}
         {pageSize}
         body={Body}

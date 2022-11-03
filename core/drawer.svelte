@@ -47,10 +47,10 @@
         position: absolute;
         top: 0px;
         left: 0px;
-        height: 100vh;
+        height: 100%;
         min-width: 10vw;
         background-color: var(--card-background);
-        overflow: auto;
+        overflow: hidden;
     }
 </style>
 

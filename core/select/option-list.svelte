@@ -28,7 +28,7 @@
                 <Icon name="circle-check" size="20px" />
             {/if}
         </Text>
-        <Button on:tap={() => select(value)} {variant} {color} {square}>
+        <Button on:click={() => select(value)} {variant} {color} {square}>
             <Icon name={icon} />
             {label}
         </Button>

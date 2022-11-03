@@ -1,11 +1,13 @@
 <script>
     import Flex from "./layout/flex.svelte"
-    import vars from "./util/vars"
+    import vars from "./util/vars.js"
+    import grid from "./util/grid.mjs"
 
     export let borderColor = null
     export let card
     export let flat
     export let layout = Flex
+    export let overflow = false
     export let square
 
     const layoutProps = Object.fromEntries(
@@ -49,27 +51,25 @@
     doric-paper.flat {
         box-shadow: none;
     }
-
-    content-wrapper {
-        display: grid;
-        overflow: hidden;
+    doric-paper.overflow {
+        overflow: visible;
     }
 </style>
 
 <doric-paper
 use:vars={variables}
+use:grid={$$props}
 class:card
 class:flat
 class:square
+class:overflow
 >
     <slot name="title">
         <div />
     </slot>
-    <content-wrapper>
-        <svelte:component this={layout} {...layoutProps}>
-            <slot />
-        </svelte:component>
-    </content-wrapper>
+    <svelte:component this={layout} {overflow} {...layoutProps}>
+        <slot />
+    </svelte:component>
     <slot name="action">
         <div />
     </slot>

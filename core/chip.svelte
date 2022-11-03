@@ -31,6 +31,18 @@
     chip.clickable {
         cursor: pointer;
     }
+    chip.clickable::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        transition: background-color 250ms linear;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    chip.clickable:not(.disabled):active::after {
+        transition: background-color 100ms linear;
+        background-color: var(--ripple-color, var(--ripple-normal));
+    }
     chip.primary {
         --fill-color: var(--primary);
     }
@@ -47,7 +59,8 @@
     }
 </style>
 
-<chip class="{color}" on:tap class:clickable>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<chip class="{color}" on:click class:clickable>
     <slot name="start">
         <div />
     </slot>
@@ -57,7 +70,7 @@
     <slot name="end">
         <div />
     </slot>
-    {#if clickable}
+    <!-- {#if clickable}
         <Ripple />
-    {/if}
+    {/if} -->
 </chip>
