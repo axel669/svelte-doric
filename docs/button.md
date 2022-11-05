@@ -11,7 +11,7 @@
 | `variant` | _string_ | `"normal"` | `Button` style variation. Valid options are: `"normal"`, `"outline"`, `"fill"`
 
 ## Events
-- tap
+- click
 
 ## Usage
 ```svelte

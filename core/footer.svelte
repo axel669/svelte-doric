@@ -1,5 +1,6 @@
 <script>
     import vars from "./util/vars.js"
+    import grid from "./util/grid.mjs"
 
     export let bordered = false
     export let borderColor = null
@@ -31,7 +32,7 @@
     }
 </style>
 
-<doric-footer class:bordered use:vars={footerOpts}>
+<doric-footer class:bordered use:vars={footerOpts} use:grid={$$props}>
     <footer-area>
         <slot name="left" />
     </footer-area>

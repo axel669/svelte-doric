@@ -26,7 +26,7 @@
         position: absolute;
         top: 0px;
         right: 0px;
-        height: 100vh;
+        height: 100%;
         min-width: 25vw;
         background-color: var(--card-background);
         overflow-y: auto;

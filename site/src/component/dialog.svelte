@@ -17,13 +17,13 @@
 
 <h1>Dialog</h1>
 
-<Button variant="outline" on:tap={showAlert}>
+<Button variant="outline" on:click={showAlert}>
     Show Alert
 </Button>
-<Button variant="outline" on:tap={showConfirm}>
+<Button variant="outline" on:click={showConfirm}>
     Show Confirm
 </Button>
-<Button variant="outline" on:tap={showPrompt}>
+<Button variant="outline" on:click={showPrompt}>
     Show Prompt
 </Button>
 

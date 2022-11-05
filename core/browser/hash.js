@@ -1,4 +1,4 @@
-const {readable} = require("svelte/store")
+import { readable } from "svelte/store"
 
 const readHash = () => {
     if (typeof document !== "undefined") {
@@ -17,4 +17,18 @@ const hashStore = readable(
     }
 )
 
-module.exports = hashStore
+export default {
+    subscribe: hashStore.subscribe,
+    set: (value) => {
+        if (value === null) {
+            history.pushState(
+                null,
+                null,
+                `${location.origin}${location.pathname}`
+            )
+            return
+        }
+        history.pushState(null, null, `#${value}`)
+    },
+    clear: () => history.pushState(null, null, "")
+}

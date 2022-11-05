@@ -36,7 +36,7 @@
 
 {#if pageSize !== null}
     <doric-list-footer>
-        <Button on:tap={prev}>
+        <Button on:click={prev}>
             <Icon name="arrow-left" />
         </Button>
 
@@ -44,7 +44,7 @@
             Page {page + 1} / {maxPage + 1}
         </pagination-info>
 
-        <Button on:tap={next}>
+        <Button on:click={next}>
             <Icon name="arrow-right" />
         </Button>
     </doric-list-footer>

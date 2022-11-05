@@ -32,7 +32,7 @@
 
 <doric-radio-buttons use:vars={radioCols}>
     {#each options as option (option)}
-        <Button on:tap={set(option.value)} color={option.color} action>
+        <Button on:click={set(option.value)} color={option.color} action>
             {#if option.value === value}
                 <Icon name={checkedIcon} size="24px" />
             {/if}

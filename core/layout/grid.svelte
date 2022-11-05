@@ -1,11 +1,15 @@
 <script>
-    import vars from "../util/vars"
+    import vars from "../util/vars.js"
+    import grid from "../util/grid.mjs"
 
-    export let autoCol = "initial"
-    export let autoRow = "initial"
+    export let areas = "initial"
+    export let autoCols = "initial"
+    export let autoRows = "initial"
     export let cols = "initial"
     export let direction = "row"
     export let gap = "4px"
+    export let fit
+    export let overflow = false
     export let padding = "4px"
     export let rows = "initial"
     export let scrollable = false
@@ -16,8 +20,11 @@
         gap,
         cols,
         rows,
-        autoCol,
-        autoRow,
+        autoCols,
+        autoRows,
+        areas: Array.isArray(areas)
+            ? areas.map(line => `"${line}"`).join("\n")
+            : areas
     }
 </script>
 
@@ -31,9 +38,10 @@
 
         grid-template-columns: var(--cols);
         grid-template-rows: var(--rows);
+        grid-template-areas: var(--areas);
 
-        grid-auto-columns: var(--autoCol);
-        grid-auto-rows: var(--autoRow);
+        grid-auto-columns: var(--autoCols);
+        grid-auto-rows: var(--autoRows);
     }
     .scrollable {
         overflow: auto;
@@ -41,8 +49,19 @@
         height: 100%;
         scroll-behavior: auto;
     }
+    .overflow {
+        overflow: visible;
+    }
+    .fit {
+        max-height: 100%;
+    }
 </style>
 
-<grid-layout use:vars={flowVars} class:scrollable>
+<grid-layout
+use:vars={flowVars}
+class:scrollable
+class:overflow
+class:fit
+use:grid={$$props}>
     <slot />
 </grid-layout>

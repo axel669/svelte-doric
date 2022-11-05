@@ -29,7 +29,7 @@ if (typeof window !== "undefined") {
             keepKeys(evt, customEvent)
             evt.target.dispatchEvent(customEvent)
         },
-        {capture: true}
+        {capture: true, passive: true}
     )
     window.addEventListener(
         sourceEvents.up,
@@ -43,7 +43,7 @@ if (typeof window !== "undefined") {
             keepKeys(evt, customEvent)
             evt.target.dispatchEvent(customEvent)
         },
-        {capture: true}
+        {capture: true, passive: true}
     )
 
     window.addEventListener(
@@ -57,7 +57,7 @@ if (typeof window !== "undefined") {
                 }
             }
         },
-        {capture: true}
+        {capture: true, passive: true}
     )
     window.addEventListener(
         pointerEnd,
@@ -86,6 +86,6 @@ if (typeof window !== "undefined") {
                 touch.target.dispatchEvent(customEvent)
             }
         },
-        {capture: true}
+        {capture: true, passive: true}
     )
 }

@@ -1,4 +1,6 @@
 <script>
+    import grid from "./util/grid.mjs"
+
     export let sticky
     export let center
     export let compact
@@ -10,6 +12,7 @@
         z-index: +0;
         grid-template-rows: 48px min-content;
         background-color: var(--background-layer);
+        color: var(--text-normal);
 
         display: grid;
     }
@@ -46,7 +49,7 @@
     }
 </style>
 
-<doric-title-bar class:sticky class:compact>
+<doric-title-bar class:sticky class:compact use:grid={$$props}>
     <title-area>
         <slot name="menu">
             <div />

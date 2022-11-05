@@ -1,11 +1,10 @@
 {
   "name": "svelte-doric",
-  "version": "1.8.4",
+  "version": "1.9.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c demo/rollup.config.js",
-    "build-site": "rollup -c site/config/rollup.dev.js"
+    "build": "rollup -c site/config/rollup.dev.js"
   },
   "author": "Axel",
   "license": "MIT",

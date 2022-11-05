@@ -63,7 +63,7 @@
     </slot>
 </ControlDrawer>
 
-<Button variant="outline" {...$$props} on:tap={() => drawer.open()} {disabled}>
+<Button variant="outline" {...$$props} on:click={() => drawer.open()} {disabled}>
     <select-layout>
         <Text adorn>
             <slot name="selected" {selected}>

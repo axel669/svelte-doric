@@ -66,7 +66,7 @@
 
         <Adornment flush slot="menu">
             <Grid padding="0px" cols="1fr 1fr">
-                <Button adorn on:tap={openMenu}>
+                <Button adorn on:click={openMenu}>
                     <Icon name="hamburger" />
                 </Button>
                 <Button

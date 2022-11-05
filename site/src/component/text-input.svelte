@@ -11,33 +11,37 @@
     import Markdown from "../app/markdown.svelte"
     import docs from "@docs"
 
-    let value = ""
+    import TestInput from "../test/text-input.svelte"
+
+    let value = "text"
 </script>
 
 <h1>TextInput</h1>
 
-<TextInput label="Stuff" bind:value />
-<TextInput label="Stuff" flat bind:value />
 
-<TextInput>
-    <Adornment slot="start">
-        <Text adorn>
+<Grid cols="1fr 1fr" padding="0px" autoRow="max-content">
+    <TextInput label="Testing?" bind:value col="span 2">
+        <Text slot="start" adorn>
             <Icon name="search" />
         </Text>
-    </Adornment>
-</TextInput>
+    </TextInput>
+    <TextInput bind:value />
+    <TextInput bind:value extra="wat" />
 
-<Grid cols="1fr 1fr" padding="0px">
-    <TextInput label="Currency">
-        <Adornment slot="start">
-            <Text adorn>$</Text>
-        </Adornment>
+    <TextInput label="Testing?" bind:value flat col="span 2">
+        <Text slot="start" adorn>
+            <Icon name="search" />
+        </Text>
+    </TextInput>
+    <TextInput bind:value flat />
+    <TextInput bind:value extra="wat" flat />
+
+    <TextInput label="Search">
+        <Button adorn slot="start">Find</Button>
     </TextInput>
 
     <TextInput label="Search Params">
-        <Adornment slot="end">
-            <Button adorn>Find</Button>
-        </Adornment>
+        <Button adorn slot="end">Find</Button>
     </TextInput>
 </Grid>
 

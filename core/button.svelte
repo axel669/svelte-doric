@@ -3,6 +3,7 @@
     import Ripple from "./ripple.svelte"
     import vars from "./util/vars.js"
     import linker from "./util/link.mjs"
+    import grid from "./util/grid.mjs"
 
     export let adorn
     export let buttonColor = null
@@ -25,11 +26,8 @@
             openLink(evt)
             return
         }
-        // Mobile browsers don't like dispatching events inside custom events
-        setTimeout(
-            () => dispatch("tap", evt),
-            0
-        )
+
+        dispatch("click", evt)
     }
 
     $: buttonVars = {
@@ -52,7 +50,6 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        z-index: +0;
         font-weight: 500;
 
         --button-color: var(--text-normal);
@@ -60,6 +57,18 @@
         --text-color: var(--button-default-text);
 
         color: var(--button-color);
+    }
+    doric-button::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        transition: background-color 200ms linear;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    doric-button:not(.disabled):active::after {
+        transition: none;
+        background-color: var(--ripple-color, var(--ripple-normal));
     }
 
     .round {
@@ -114,9 +123,11 @@
     }
 </style>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <doric-button
-    on:tap={handleTap}
+    on:click={handleTap}
     use:vars={buttonVars}
+    use:grid={$$props}
     class="{color} {variant}"
     class:disabled
     class:round
@@ -125,5 +136,4 @@
     class:square
 >
     <slot />
-    <Ripple {disabled} />
 </doric-button>

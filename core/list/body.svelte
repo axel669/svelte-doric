@@ -4,20 +4,14 @@
     import Ripple from "../ripple.svelte"
 
     export let clickable
-    export let data
+    // export let data
+    export let items
     export let itemID
-    export let page
-    export let pageSize
+    // export let page
+    // export let pageSize
 
     const dispatch = createEventDispatcher()
 
-    $: items =
-        pageSize === null
-        ? data
-        : Array.from(
-            { length: pageSize },
-            (_, index) => data[page * pageSize + index]
-        )
     $: itemTap = (item) => {
         if (clickable !== true) {
             return
@@ -45,11 +39,9 @@
     }
 </style>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 {#each items as item (itemID(item))}
-    <doric-list-item on:tap={() => itemTap(item)} class:clickable>
+    <doric-list-item on:click={() => itemTap(item)} class:clickable>
         {item?.label ?? ""}
-        {#if clickable === true}
-            <Ripple />
-        {/if}
     </doric-list-item>
 {/each}

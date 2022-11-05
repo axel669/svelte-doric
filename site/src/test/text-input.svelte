@@ -1,5 +1,5 @@
 <script>
-    import grid from "./util/grid.mjs"
+    import { grid } from "@core"
 
     export let label = ""
     export let value = ""
@@ -17,11 +17,11 @@
         display: grid;
         cursor: text;
         grid-template-columns:
-            minmax(min-content, max-content)
-            1fr
-            minmax(min-content, max-content)
+            minmax(0px, max-content)
+            auto
+            minmax(0px, max-content)
         ;
-        grid-template-rows: max-content auto max-content;
+        grid-template-rows: max-content auto minmax(0, max-content);
         grid-template-areas:
             "label label label"
             "start input end"
@@ -97,14 +97,6 @@
     extra-text:empty, input-label:empty {
         display: none;
     }
-    start-slot {
-        display: grid;
-        grid-area: start;
-    }
-    end-slot {
-        display: grid;
-        grid-area: end;
-    }
 </style>
 
 <doric-text-input
@@ -117,11 +109,6 @@ use:grid={$$props}
     <input-label>
         {label}
     </input-label>
-    {#if $$slots.start}
-        <start-slot>
-            <slot name="start" />
-        </start-slot>
-    {/if}
     <input type="text"
         {...$$props}
         bind:value
@@ -129,12 +116,8 @@ use:grid={$$props}
         on:focus
         on:blur
     />
-    {#if $$slots.end}
-        <end-slot>
-            <slot name="end" />
-        </end-slot>
-    {/if}
     <extra-text>
         {extra}
     </extra-text>
+    <slot />
 </doric-text-input>
