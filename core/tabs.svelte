@@ -7,6 +7,7 @@
     import vars from "./util/vars"
     import grid from "./util/grid.mjs"
 
+    export let adorn
     export let fillSelected = false
     export let iconTop = false
     export let options
@@ -87,6 +88,7 @@
 class:vertical
 class:scrollable
 class:fill-selected={fillSelected}
+class:ignore-appbar-reskin={adorn === "no-reskin"}
 use:vars={tabCount}
 use:grid={$$props}
 bind:this={tabParent}

@@ -1,7 +1,6 @@
 <script>
     import {
         HexagonSpinner,
-        TitleBar,
     } from "@core"
 
     import Markdown from "../app/markdown.svelte"

@@ -5,8 +5,7 @@
 
         drawer,
 
-        Adornment,
-        AppBar,
+        Appbar,
         Button,
         Grid,
         Icon,
@@ -61,26 +60,21 @@
 <AppStyle {baseline} theme={$theme} />
 
 <Screen full bind:this={$screen}>
-    <AppBar slot="title">
+    <Appbar slot="title">
         Svelte Doric
 
-        <Adornment flush slot="menu">
-            <Grid padding="0px" cols="1fr 1fr">
-                <Button adorn on:click={openMenu}>
-                    <Icon name="hamburger" />
-                </Button>
-                <Button
-                adorn
-                link="https://github.com/axel669/svelte-doric|_blank"
-                >
-                    <Icon name="brands:github" />
-                </Button>
-            </Grid>
-        </Adornment>
-
-        <Adornment flush slot="action">
-        </Adornment>
-    </AppBar>
+        <Grid padding="0px" cols="1fr 1fr" slot="menu">
+            <Button adorn on:click={openMenu}>
+                <Icon name="hamburger" />
+            </Button>
+            <Button
+            adorn
+            link="https://github.com/axel669/svelte-doric|_blank"
+            >
+                <Icon name="brands:github" />
+            </Button>
+        </Grid>
+    </Appbar>
 
     <Paper lscrollable square>
         <site-content>

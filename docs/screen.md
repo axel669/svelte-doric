@@ -47,9 +47,9 @@ given value to the topmost `Screen`
 </script>
 
 <Screen bind:this={scr}>
-    <AppBar slot="title">
+    <Appbar slot="title">
         Title
-    </AppBar>
+    </Appbar>
 
     <Paper>
     </Paper>

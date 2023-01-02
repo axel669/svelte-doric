@@ -29,9 +29,9 @@ Container component for displaying and grouping elements with some style.
 </Paper>
 
 <Paper center layout={Grid}>
-    <TitleBar slot="title">
+    <Titlebar slot="title">
         Title
-    </TitleBar>
+    </Titlebar>
 
     ...grid items
 </Paper>

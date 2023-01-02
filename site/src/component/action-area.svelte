@@ -2,7 +2,6 @@
     import {
         ActionArea,
         Paper,
-        TitleBar,
     } from "@core"
 
     import Markdown from "../app/markdown.svelte"

@@ -1,11 +1,9 @@
 <script>
     import {
-        Adornment,
         Button,
         Chip,
         Flex,
         Icon,
-        TitleBar,
     } from "@core"
 
     import Markdown from "../app/markdown.svelte"
@@ -27,11 +25,9 @@
 <Flex direction="row">
     {#each chipColors as color}
         <Chip {color} label={color}>
-            <Adornment slot="start">
-                <Button round="24px">
-                    <Icon name="close" />
-                </Button>
-            </Adornment>
+            <Button compact slot="start">
+                <Icon name="close" />
+            </Button>
         </Chip>
     {/each}
 </Flex>

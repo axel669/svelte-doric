@@ -1,7 +1,6 @@
 <script>
     import {
         List,
-        TitleBar,
     } from "@core"
 
     import Markdown from "../app/markdown.svelte"
@@ -27,7 +26,7 @@
         data={tableData}
         title="Regular List"
         clickable
-        on:tap={console.log}
+        on:click={console.log}
     />
 </div>
 
@@ -35,7 +34,7 @@
     data={tableData}
     title="Paginated List"
     clickable
-    on:tap={console.log}
+    on:click={console.log}
     pageSize={7}
 />
 

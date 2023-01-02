@@ -1,7 +1,7 @@
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `adorn` | _boolean_ | | If true, padding will be much smaller than normal
+| `adorn` | _boolean_/_string_ | | See [adornments](#adornment)
 | `buttonColor` | _CSS String_ | | Custom color for the button outside of the standard colors
 | `color` | _string_ | `"default"` | The coloration of the `Button`. Valid options are `"default"`, `"primary"`, `"secondary"`, and `"danger"`
 | `compact` | _boolean_ | | If true, default padding will be half the normal size

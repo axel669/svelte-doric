@@ -5,6 +5,7 @@ while the `TabPanel` actually renders content based on the current tab value.
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `adorn` | _boolean_/_string_ | | See [adornments](#adornment)
 | `fillSelected` | _boolean_ | | If true, the selected tab will be filled with the primary color instead of just the border
 | `tabGroup` | _any_ | | The value for the currently selected tab
 | `options` | _Array_ | List of tabs to display. See below for tab option details

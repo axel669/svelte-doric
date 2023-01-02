@@ -11,8 +11,8 @@
         display: grid;
         box-shadow: 0px 2px 2px var(--shadow-color);
     }
-    doric-app-bar > :global(doric-adornment:not(.ignore-appbar-reskin)),
-    title-area > :global(doric-adornment:not(.ignore-appbar-reskin)) {
+    doric-app-bar > :global(:not(.ignore-appbar-reskin)),
+    title-area > :global(:not(.ignore-appbar-reskin)) {
         color: var(--title-bar-text);
         --text-normal: var(--title-bar-text);
         --ripple-color: var(--ripple-dark);

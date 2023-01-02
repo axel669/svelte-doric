@@ -1,7 +1,6 @@
 <script>
     import {
-        Adornment,
-        AppBar,
+        Appbar,
         Button,
         Flex,
         Icon,
@@ -21,25 +20,21 @@
 </script>
 
 <Screen bind:this={screen}>
-    <AppBar slot="title">
+    <Appbar slot="title">
         Subscreen 2: Electric Boogaloo
 
-        <Adornment slot="action">
-            <Button on:tap={() => screen.close()}>
-                <Icon name="close" />
-            </Button>
-        </Adornment>
+        <Button on:click={() => screen.close()} adorn slot="action">
+            <Icon name="close" />
+        </Button>
 
-        <Adornment flush ignoreReskin slot="extension">
-            <Flex padding="0px">
-                <Text>regular text?</Text>
-                <Tabs bind:tabGroup {options} />
-            </Flex>
-        </Adornment>
-    </AppBar>
+        <Flex padding="0px" adorn="no-reskin" slot="extension">
+            <Text>regular text?</Text>
+            <Tabs bind:tabGroup {options} />
+        </Flex>
+    </Appbar>
 
     <Paper card square>
-        <Button on:tap={() => screen.closeAll()}>
+        <Button on:click={() => screen.closeAll()}>
             Close Entire Stack
         </Button>
         <TabPanel {tabGroup} value="left">

@@ -9,6 +9,7 @@
     export let buttonColor = null
     export let color = "default"
     export let compact
+    export let control = false
     export let disabled = false
     export let link = null
     export let round
@@ -84,6 +85,10 @@
     .adorn {
         padding-top: 2px;
         padding-bottom: 2px;
+        margin: 4px;
+    }
+    .control {
+        padding: 0px;
     }
 
     .disabled {
@@ -129,11 +134,13 @@
     use:vars={buttonVars}
     use:grid={$$props}
     class="{color} {variant}"
+    class:adorn
+    class:compact
+    class:control
     class:disabled
     class:round
-    class:compact
-    class:adorn
     class:square
+    class:ignore-appbar-reskin={adorn === "no-reskin"}
 >
     <slot />
 </doric-button>

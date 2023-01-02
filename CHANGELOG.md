@@ -1,3 +1,18 @@
+## 1.9.1
+- renamed Appbar and Titlebar
+- changed Select style
+- Select no longer crashes with no selected value by default
+- updated all uses of on:tap to on:click in docs and demo site
+- removed adornment component, updated components for adornment styles
+    - Button
+    - Flex
+    - Grid
+    - Text
+    - TextInput
+- TextInput error prop now sets extra text when non null
+- TextInput validation prop added, works with error automatically
+- TextInput transform prop added, works with validation
+
 ## 1.9.0
 
 ### Utils

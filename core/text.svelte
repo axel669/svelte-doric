@@ -62,6 +62,7 @@
 class:block
 class:adorn
 class:subtitle
+class:ignore-appbar-reskin={adorn === "no-reskin"}
 class="{color} {align}"
 use:vars={textOpts}
 use:grid={$$props}

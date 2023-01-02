@@ -1,14 +1,25 @@
 <script>
     import grid from "./util/grid.mjs"
 
-    export let label = ""
-    export let value = ""
+    export let adorn
+    export let error = null
     export let extra = ""
     export let flat
-    export let error
+    export let label = ""
+    export let value = ""
+
+    export let validate = null
+    export let transform = (text) => text
+    export let tvalue
 
     let input = null
     export const focus = () => input.focus()
+
+    $: tvalue = transform(value)
+    $: if (validate !== null) {
+        error = validate(tvalue)
+        tvalue = (error === null) ? tvalue : undefined
+    }
 </script>
 
 <style>
@@ -49,6 +60,9 @@
         border-width: 0px;
         border-bottom: 2px solid var(--control-border);
         border-radius: 0px;
+    }
+    doric-text-input.adorn {
+        margin: 4px;
     }
 
     input {
@@ -109,8 +123,10 @@
 
 <doric-text-input
 tabindex="-1"
-class:flat
+class:adorn
 class:error
+class:flat
+class:ignore-appbar-reskin={adorn === "no-reskin"}
 on:focus={focus}
 use:grid={$$props}
 >
@@ -135,6 +151,6 @@ use:grid={$$props}
         </end-slot>
     {/if}
     <extra-text>
-        {extra}
+        {error ?? extra}
     </extra-text>
 </doric-text-input>
