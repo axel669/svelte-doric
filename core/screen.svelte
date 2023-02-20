@@ -10,7 +10,6 @@
 
 <script>
     import { getContext, setContext } from "svelte"
-    // import { writable } from "svelte/store"
 
     import { fly } from "svelte/transition"
 
