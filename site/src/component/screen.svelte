@@ -1,5 +1,5 @@
 <script>
-    import { Button } from "@core"
+    import { Button, Screen } from "@core"
 
     import Subscreen from "./screen/subscreen.svelte"
     import screen from "../app/screen.mjs"
