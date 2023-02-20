@@ -2,6 +2,7 @@
     import vars from "../util/vars.js"
     import grid from "../util/grid.mjs"
 
+    export let adorn
     export let center = false
     export let contentAlign = "initial"
     export let direction = "column"
@@ -79,6 +80,7 @@ class:wrap
 class:center
 class:overflow
 class:fit
+class:ignore-appbar-reskin={adorn === "no-reskin"}
 >
     <slot />
 </flex-layout>

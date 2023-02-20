@@ -1,7 +1,6 @@
 <script>
     import {
         Avatar,
-        TitleBar,
     } from "@core"
 
     import Markdown from "../app/markdown.svelte"

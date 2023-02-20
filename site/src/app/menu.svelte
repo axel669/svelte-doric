@@ -3,7 +3,7 @@
         Button,
         Grid,
         Tabs,
-        TitleBar,
+        Titlebar,
 
         hash,
         onChange,
@@ -67,14 +67,14 @@
 <div style="width: 12.5vw;" />
 
 <Grid cols="1fr" rows="repeat(3, max-content) 3fr" fit>
-    <TitleBar>
+    <Titlebar>
         Theme
-    </TitleBar>
+    </Titlebar>
     <Tabs bind:tabGroup={$themeValue} options={themes} vertical fillSelected />
 
-    <TitleBar>
+    <Titlebar>
         Components
-    </TitleBar>
+    </Titlebar>
     <component-list bind:this={comps}>
         <Button link="">
             Home

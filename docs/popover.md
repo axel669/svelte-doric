@@ -13,16 +13,16 @@ Displays content over other items but isn't a full dialog window.
 ## Usage
 ```svelte
 <Popover let:show let:hide>
-    <Button on:tap={show} variant="outline">
+    <Button on:click={show} variant="outline">
         Show Popover
     </Button>
 
-    <Paper card slot="content" on:tap={open}>
+    <Paper card slot="content" on:click={open}>
         <Text>
             Popover Content
         </Text>
 
-        <Button slot="action" color="secondary" on:tap={hide}>
+        <Button slot="action" color="secondary" on:click={hide}>
             Close
         </Button>
     </Paper>

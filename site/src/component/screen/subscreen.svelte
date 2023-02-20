@@ -1,7 +1,6 @@
 <script>
     import {
-        Adornment,
-        AppBar,
+        Appbar,
         Button,
         Icon,
         Paper,
@@ -22,22 +21,18 @@
 </script>
 
 <Screen bind:this={screen}>
-    <AppBar slot="title">
+    <Appbar slot="title">
         Subscreen \o/
 
-        <Adornment slot="action">
-            <Button on:tap={() => screen.close()}>
-                <Icon name="close" />
-            </Button>
-        </Adornment>
+        <Button on:click={() => screen.close()} adorn slot="action">
+            <Icon name="close" />
+        </Button>
 
-        <Adornment flush ignoreReskin slot="extension">
-            <Tabs bind:tabGroup {options} />
-        </Adornment>
-    </AppBar>
+        <Tabs bind:tabGroup {options} adorn="no-reskin" slot="extension" />
+    </Appbar>
 
     <Paper card square>
-        <Button on:tap={() => screen.openStack(Sub2)}>
+        <Button on:click={() => screen.openStack(Sub2)}>
             Open Another Subscreen
         </Button>
         <TabPanel {tabGroup} value="left">

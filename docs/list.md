@@ -3,7 +3,7 @@ Component for displaying lists of items that can optionally have interactions.
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clickable` | _boolean_ | | If true, items will be clickable and fire an `on:tap` event with the item clicked as the detail property of the event
+| `clickable` | _boolean_ | | If true, items will be clickable and fire an `on:click` event with the item clicked as the detail property of the event
 | `cols` | _array_ | | Not used by the default list, but allows column information to passed into components for table-like behavior on custom components
 | `data` | _array_ | | The data to display in the list
 | `flat` | _boolean_ | `false` | If true, list will not have a border
@@ -42,14 +42,14 @@ Component for displaying lists of items that can optionally have interactions.
     data={tableData}
     title="Regular List"
     clickable
-    on:tap={console.log}
+    on:click={console.log}
 />
 
 <List
     data={tableData}
     title="Paginated List"
     clickable
-    on:tap={console.log}
+    on:click={console.log}
     pageSize={7}
 />
 ```

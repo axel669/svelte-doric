@@ -1,7 +1,6 @@
 <script>
     import {
         CircleSpinner,
-        TitleBar,
     } from "@core"
 
     import Markdown from "../app/markdown.svelte"

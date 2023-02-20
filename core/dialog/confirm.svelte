@@ -6,7 +6,7 @@
     import Icon from "../icon.svelte"
     import Paper from "../paper.svelte"
     import Text from "../text.svelte"
-    import TitleBar from "../title-bar.svelte"
+    import Titlebar from "../titlebar.svelte"
 
     import DialogContent from "./content.svelte"
 
@@ -25,12 +25,12 @@
     <Paper card>
         <svelte:fragment slot="title">
             {#if title}
-                <TitleBar compact>
+                <Titlebar compact>
                     {#if icon}
                         <Icon name={icon} />
                     {/if}
                     {title}
-                </TitleBar>
+                </Titlebar>
             {/if}
         </svelte:fragment>
         <Text>

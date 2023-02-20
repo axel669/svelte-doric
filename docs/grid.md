@@ -4,6 +4,7 @@ styles applied.
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `adorn` | _boolean_/_string_ | | See [adornments](#adornment)
 | `autoCol` | _string_ | | Shorthand for `grid-auto-columns`
 | `autoRow` | _string_ | | Shorthand for `grid-auto-rows`
 | `cols` | _string_ | | Shorthand for `grid-template-columns`

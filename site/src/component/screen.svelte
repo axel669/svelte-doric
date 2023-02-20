@@ -10,7 +10,7 @@
 
 <h1>Screen</h1>
 
-<Button on:tap={() => $screen.openStack(Subscreen)}>
+<Button on:click={() => $screen.openStack(Subscreen)}>
     Open Subscreen
 </Button>
 

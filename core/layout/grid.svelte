@@ -2,6 +2,7 @@
     import vars from "../util/vars.js"
     import grid from "../util/grid.mjs"
 
+    export let adorn
     export let areas = "initial"
     export let autoCols = "initial"
     export let autoRows = "initial"
@@ -62,6 +63,7 @@ use:vars={flowVars}
 class:scrollable
 class:overflow
 class:fit
+class:ignore-appbar-reskin={adorn === "no-reskin"}
 use:grid={$$props}>
     <slot />
 </grid-layout>

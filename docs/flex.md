@@ -10,6 +10,7 @@ containers, summarized (with helpful images) on [MDN](https://developer.mozilla.
 ## Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `adorn` | _boolean_/_string_ | | See [adornments](#adornment)
 | `center` | _boolean_ | `false` | If true, centers content in the container, overriding item and content align.
 | `contentAlign` | _string_ | | Flex line packing method on the cross axis. See Flex Alignment for details.
 | `direction` | _string_ | `"column"` | The direction the elements should be laid out. See Flex Alignment for details.

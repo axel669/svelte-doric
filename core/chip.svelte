@@ -7,13 +7,13 @@
 </script>
 
 <style>
-    chip {
+    doric-chip {
         position: relative;
         overflow: hidden;
         vertical-align: text-bottom;
         display: inline-grid;
         grid-template-columns:
-            minmax(12px, min-content) auto minmax(12px, min-content)
+            min-content auto min-content
         ;
 
         border-radius: 16px;
@@ -28,10 +28,10 @@
         font-weight: 500;
         font-size: var(--text-size-info);
     }
-    chip.clickable {
+    doric-chip.clickable {
         cursor: pointer;
     }
-    chip.clickable::after {
+    doric-chip.clickable::after {
         position: absolute;
         content: "";
         width: 100%;
@@ -39,28 +39,29 @@
         transition: background-color 250ms linear;
         background-color: rgba(0, 0, 0, 0);
     }
-    chip.clickable:not(.disabled):active::after {
+    doric-chip.clickable:not(.disabled):active::after {
         transition: background-color 100ms linear;
         background-color: var(--ripple-color, var(--ripple-normal));
     }
-    chip.primary {
+    doric-chip.primary {
         --fill-color: var(--primary);
     }
-    chip.secondary {
+    doric-chip.secondary {
         --fill-color: var(--secondary);
     }
-    chip.danger {
+    doric-chip.danger {
         --fill-color: var(--danger);
     }
 
     div {
         display: flex;
         align-items: center;
+        padding: 6px;
     }
 </style>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<chip class="{color}" on:click class:clickable>
+<doric-chip class="{color}" on:click class:clickable>
     <slot name="start">
         <div />
     </slot>
@@ -70,7 +71,4 @@
     <slot name="end">
         <div />
     </slot>
-    <!-- {#if clickable}
-        <Ripple />
-    {/if} -->
-</chip>
+</doric-chip>

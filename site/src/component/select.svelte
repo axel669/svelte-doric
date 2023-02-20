@@ -24,5 +24,7 @@
 </Text>
 
 <Select bind:value {options} label="Demo" />
+<Select {options} label="Searchable" searchable />
+<Select {options} />
 
 <Markdown {docs} />
