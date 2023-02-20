@@ -2,11 +2,11 @@
     import grid from "./util/grid.mjs"
 
     export let adorn
-    export let error = null
     export let extra = ""
     export let flat
     export let label = ""
-    export let value = ""
+    export let initial = ""
+    export let value = initial
 
     export let validate = null
     export let transform = (text) => text
@@ -16,10 +16,7 @@
     export const focus = () => input.focus()
 
     $: tvalue = transform(value)
-    $: if (validate !== null) {
-        error = validate(tvalue)
-        tvalue = (error === null) ? tvalue : undefined
-    }
+    $: error = validate?.(tvalue)
 </script>
 
 <style>
