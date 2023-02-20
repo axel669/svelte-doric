@@ -55,6 +55,7 @@ export { default as vars } from "./core/util/vars.js"
 export { default as link } from "./core/util/link.mjs"
 export { default as grid } from "./core/util/grid.mjs"
 export { default as onChange } from "./core/util/on-change.mjs"
+export * from "./core/util/handler$.mjs"
 
 const drawer = {
     open: openDrawer,

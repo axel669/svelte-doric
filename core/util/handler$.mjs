@@ -1,8 +1,8 @@
 const handler$ = (func) =>
     (...args) =>
-        () => func(...args)
+        (_, ...extra) => func(...args, ...extra)
 const eventHandler$ = (func) =>
     (...args) =>
-        (event) => func(event, ...args)
+        (...extra) => func(...extra, ...args)
 
 export { handler$, eventHandler$ }
