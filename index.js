@@ -1,6 +1,7 @@
 import { portal } from "./core/portal.svelte"
 import { openDrawer } from "./core/drawer.svelte"
 import { showDialog } from "./core/dialog.svelte"
+import { registerFormElement } from "./core/composed/form.svelte"
 
 export { default as ActionArea } from "./core/action-area.svelte"
 export { default as Appbar } from "./core/appbar.svelte"
@@ -48,6 +49,8 @@ export { default as LightTheme } from "./core/theme/light.svelte"
 export { default as DarkTheme } from "./core/theme/dark.svelte"
 export { default as TronTheme } from "./core/theme/tron.svelte"
 
+export { default as Form } from "./core/composed/form.svelte"
+
 export { default as hash } from "./core/browser/hash.js"
 
 export { default as css } from "./core/util/css.js"
@@ -64,6 +67,7 @@ const dialog = {
     show: showDialog,
 }
 export {
+    registerFormElement,
     portal,
     drawer,
     dialog,
