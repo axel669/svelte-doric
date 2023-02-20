@@ -25,6 +25,7 @@ displays, in addition to the props passed into the options.
 | `cancelText` | _string_ | `"Cancel"` | The text to show for the cancel button
 | `message` | _string_ | | The message to show in the alert
 | `okText` | _string_ | `"OK"` | The text to show for the confirm button
+| `reaction` | _function_ | | If given, clicking the ok button will trigger a reactive element and execute the async function.
 | `title` | _string_ | `"Alert"` | The title to show in the alert. Passing null will hide the title
 
 ### Prompt Props
@@ -34,6 +35,7 @@ displays, in addition to the props passed into the options.
 | `message` | _string_ | | The message to show in the alert
 | `okText` | _string_ | `"OK"` | The text to show for the confirm button
 | `placeholder` | _string_ | | Placeholder text for the text input
+| `reaction` | _function_ | | If given, clicking the ok button will trigger a reactive element and execute the async function.
 | `title` | _string_ | `"Alert"` | The title to show in the alert. Passing null will hide the title
 
 ## Usage
