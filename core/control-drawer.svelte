@@ -4,8 +4,7 @@
             delay: 0,
             duration: 250,
             css: (t, u) => `
-                transform: translateX(${u * 100}%);
-                opacity: ${t};
+                transform: translateY(${u * -100}%) translateX(-50%);
             `
         }
     }
@@ -25,10 +24,14 @@
     control-drawer {
         position: absolute;
         top: 0px;
-        right: 0px;
-        height: 100%;
-        min-width: 25vw;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 80%;
+        min-width: min(400px, 65%);
+        max-width: 85%;
         background-color: var(--card-background);
+        border: 1px solid var(--primary);
+        border-top-width: 0px;
         overflow-y: auto;
     }
 </style>
